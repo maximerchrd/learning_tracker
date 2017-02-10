@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-ldpi-v4/circulation1.jpg",
+        "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-ldpi/circulation1.jpg"
+    },
+    {
+        "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-ldpi-v4/compatibilite.jpg",
+        "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-ldpi/compatibilite.jpg"
+    },
+    {
+        "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-ldpi-v4/respiration_cellulaire.jpg",
+        "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-ldpi/respiration_cellulaire.jpg"
+    },
+    {
+        "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-ldpi-v4/ecg.jpg",
+        "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-ldpi/ecg.jpg"
+    }
+]
