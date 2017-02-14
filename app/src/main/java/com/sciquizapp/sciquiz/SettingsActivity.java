@@ -18,15 +18,22 @@ public class SettingsActivity extends Activity {
 		final EditText editName;
 		final Button buttonSaveAndBack;
 		final DbHelper db = new DbHelper(this);
+		final EditText editMaster;
 
 		editName = (EditText) findViewById(R.id.edittextnom);
 		buttonSaveAndBack = (Button) findViewById(R.id.buttonsaveandback);
 		editName.setText(db.getName(), null);
 
+		editMaster = (EditText) findViewById(R.id.edittextmaster);
+		editName.setText(db.getMaster(), null);
+
 		buttonSaveAndBack.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
+
 				String name = editName.getText().toString();
+				String master = editMaster.getText().toString();
 				db.addName(name);
+				db.addMaster(master);
 				Intent intent = new Intent(SettingsActivity.this, MenuActivity.class);
 				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				intent.putExtra("flag", "modify");

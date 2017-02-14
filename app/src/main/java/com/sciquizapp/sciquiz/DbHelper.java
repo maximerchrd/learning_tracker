@@ -42,6 +42,7 @@ public class DbHelper extends SQLiteOpenHelper {
 	// tasks Table Columns names for the settings table
 	private static final String KEY_IDsettings = "idsettings";
 	private static final String KEY_NAME = "name";
+	private static final String KEY_MASTER = "master";
 	
 
 	private SQLiteDatabase dbase;
@@ -66,12 +67,13 @@ public class DbHelper extends SQLiteOpenHelper {
 				KEY_SCORE + " TEXT, " +	KEY_LEVELscore +" TEXT)";
 		db.execSQL(sql2);
 
-		//add table for scores
+		//add table for settings
 		String sql3 = "CREATE TABLE IF NOT EXISTS " + TABLE_SETTINGS + " ( "
-				+ KEY_IDsettings + " INTEGER PRIMARY KEY AUTOINCREMENT, " + KEY_NAME +" TEXT)";
+				+ KEY_IDsettings + " INTEGER PRIMARY KEY AUTOINCREMENT, " + KEY_NAME +" TEXT," + KEY_MASTER + " TEXT)";
 		db.execSQL(sql3);
 		ContentValues values = new ContentValues();
 		values.put(KEY_NAME, "Anonyme");
+		values.put(KEY_MASTER, "Aucun");
 		// Inserting of Replacing Row
 		dbase.insert(TABLE_SETTINGS, null, values);
 		//db.close();
@@ -98,6 +100,29 @@ public class DbHelper extends SQLiteOpenHelper {
 		}
 		// return string name
 		return name;
+	}
+	//add new name
+	public void addMaster(String newname)
+	{
+		//SQLiteDatabase db = this.getWritableDatabase();
+		dbase=this.getReadableDatabase();
+		ContentValues values = new ContentValues();
+		values.put(KEY_MASTER, newname);
+		// Replacing Row
+		dbase.update(TABLE_SETTINGS, values, null, null);
+	}
+	//get name from db
+	public String getMaster() {
+		// Select All Query
+		String master = "";
+		String selectQuery = "SELECT  * FROM " + TABLE_SETTINGS;
+		dbase=this.getReadableDatabase();
+		Cursor cursor = dbase.rawQuery(selectQuery, null);
+		if (cursor.moveToPosition(0)) {
+			master = cursor.getString(2);
+		}
+		// return string name
+		return master;
 	}
 	//add new score
 	public void addScore(Score newscore)

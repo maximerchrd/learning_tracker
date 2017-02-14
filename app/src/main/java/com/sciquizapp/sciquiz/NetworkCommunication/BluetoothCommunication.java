@@ -16,8 +16,12 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
 
+import com.sciquizapp.sciquiz.DataConversion;
+import com.sciquizapp.sciquiz.DbHelper;
 import com.sciquizapp.sciquiz.OldBluetoothCommunication;
+import com.sciquizapp.sciquiz.Question;
 import com.sciquizapp.sciquiz.SingleQuestionActivity;
+import com.sciquizapp.sciquiz.WifiAccessManager;
 
 import java.io.*;
 
@@ -43,7 +47,20 @@ public class BluetoothCommunication {
 
 
     /**
+     * Constructor taking the activity context as argument
+     *
+     * @param arg_context
+     */
+    public BluetoothCommunication(Context arg_context) {
+        mContext = arg_context;
+
+        //WifiAccessManager.setWifiApState(arg_context, true);
+
+    }
+
+    /**
      * method that tries to connect to the PC through bluetooth
+     *
      * @return true if connection succeeded, false if not
      */
     public Boolean BTConnectToMaster() {
@@ -132,7 +149,7 @@ public class BluetoothCommunication {
     /**
      * method that enables the smartphone to listen for the questions from the PC
      */
-    public void listenForQuestions () {
+    public void listenForQuestions() {
         if (btSocket.isConnected()) {
             try {
                 inputStream = btSocket.getInputStream();
@@ -141,18 +158,73 @@ public class BluetoothCommunication {
             }
             new Thread(new Runnable() {
                 public void run() {
+//                    Boolean able_to_read = true;
+//                    while (able_to_read) {
+//                        try {
+//                            bytes_read = inputStream.read(buffer,0,buffer.length);
+//                            //read_offset += bytes_read;
+//                            vector_of_buffers.add(buffer);
+//                            if (buffer[1023] == 0) {
+//                                DataConversion convert_question = new DataConversion();
+//                                launchQuestionActivity(convert_question.bytearrayvectorToQuestion(vector_of_buffers));
+//                            }
+////                            if(bytes_read < 0) {
+////                                read_offset = 0;
+////                            }
+//                        } catch (IOException e) {
+//                            able_to_read = false;
+//                            e.printStackTrace();
+//                        }
+//                    }
                     Boolean able_to_read = true;
                     while (able_to_read) {
+                        current = 0;
+                        byte[] prefix_buffer = new byte[20];
+                        String sizes = "";
+                        String byteread = "";
                         try {
-                            bytes_read = inputStream.read(buffer,0,buffer.length);
-                            //read_offset += bytes_read;
-                            vector_of_buffers.add(buffer);
-//                            if(bytes_read < 0) {
-//                                read_offset = 0;
-//                            }
+                            Log.v("read input stream", "first");
+                            bytes_read = inputStream.read(prefix_buffer, 0, 20);
+                            sizes = new String(prefix_buffer, "UTF-8");
                         } catch (IOException e) {
-                            able_to_read = false;
                             e.printStackTrace();
+                            able_to_read = false;
+                        }
+                        if (sizes.split(":")[0].contains("QUEST")) {
+                            int size_of_image = Integer.parseInt(sizes.split(":")[1]);
+                            int size_of_text = Integer.parseInt(sizes.split(":")[2].replaceAll("\\D+", ""));
+                            byte[] whole_question_buffer = new byte[20 + size_of_image + size_of_text];
+                            for (int i = 0; i < 20; i++) {
+                                whole_question_buffer[i] = prefix_buffer[i];
+                            }
+                            current = 20;
+                            do {
+                                try {
+                                    //Log.v("read input stream", "second");
+
+                                    bytes_read = inputStream.read(whole_question_buffer, current, (20 + size_of_image + size_of_text - current));
+                                    Log.v("number of bytes read:", Integer.toString(bytes_read));
+//                                    for (int k = 0; k < 20 && current > 20; k++) {
+//                                        byteread += whole_question_buffer[current -21 + k];
+//                                    }
+//                                    Log.v("last bytes read: ", byteread);
+//                                    byteread = "";
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                    able_to_read = false;
+                                }
+                                if (bytes_read >= 0) {
+                                    current += bytes_read;
+                                    if (able_to_read == false) {
+                                        bytes_read = -1;
+                                        able_to_read = true;
+                                    }
+                                }
+                            }
+                            while (bytes_read > 0);    //shall be sizeRead > -1, because .read returns -1 when finished reading, but outstream not closed on server side
+                            bytes_read = 1;
+                            DataConversion convert_question = new DataConversion(mContext);
+                            launchQuestionActivity(convert_question.bytearrayvectorToQuestion(whole_question_buffer));
                         }
                     }
                 }
@@ -247,11 +319,15 @@ public class BluetoothCommunication {
         Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
         // If there are paired devices
         if (pairedDevices.size() > 0) {
+            DbHelper db = new DbHelper(mContext);
+            String master = db.getMaster();
             // Loop through paired devices
             for (BluetoothDevice device : pairedDevices) {
                 // Add the name and address to an array adapter to show in a ListView
                 Log.v("paired device", device.getName());
-                mDevice = device;
+                if (device.getName().contains(master)) {
+                    mDevice = device;
+                }
             }
         }
     }
@@ -259,24 +335,31 @@ public class BluetoothCommunication {
     /**
      *
      */
-    private void launchQuestionActivity() {
+    private void launchQuestionActivity(Question question_to_display) {
+
         Intent mIntent = new Intent(mContext, SingleQuestionActivity.class);
         Bundle bun = new Bundle();
-        if (question_text_string.length() > 0) {
-            bun.putString("question", question_text_string.split("///")[0]);
-            bun.putString("optA", question_text_string.split("///")[1]);
-            bun.putString("optB", question_text_string.split("///")[2]);
-            bun.putString("optC", question_text_string.split("///")[3]);
-            bun.putString("optD", question_text_string.split("///")[4]);
-            bun.putString("image_name", question_text_string.split("///")[5]);
-        } else {
-            bun.putString("question", "the question couldn't be read");
-            bun.putString("optA", "");
-            bun.putString("optB", "");
-            bun.putString("optC", "");
-            bun.putString("optD", "");
-            bun.putString("image_name", "");
-        }
+        bun.putString("question", question_to_display.getQUESTION());
+        bun.putString("optA", question_to_display.getOPTA());
+        bun.putString("optB", question_to_display.getOPTB());
+        bun.putString("optC", question_to_display.getOPTC());
+        bun.putString("optD", question_to_display.getOPTD());
+        bun.putString("image_name", question_to_display.getIMAGE());
+//        if (question_text_string.length() > 0) {
+//            bun.putString("question", question_text_string.split("///")[0]);
+//            bun.putString("optA", question_text_string.split("///")[1]);
+//            bun.putString("optB", question_text_string.split("///")[2]);
+//            bun.putString("optC", question_text_string.split("///")[3]);
+//            bun.putString("optD", question_text_string.split("///")[4]);
+//            bun.putString("image_name", question_text_string.split("///")[5]);
+//        } else {
+//            bun.putString("question", "the question couldn't be read");
+//            bun.putString("optA", "");
+//            bun.putString("optB", "");
+//            bun.putString("optC", "");
+//            bun.putString("optD", "");
+//            bun.putString("image_name", "");
+//        }
         //		bun.putParcelable("bluetoothSocket", btSocket);
         //		bun.putParcelable("bluetoothObject", this);
         mIntent.putExtras(bun);

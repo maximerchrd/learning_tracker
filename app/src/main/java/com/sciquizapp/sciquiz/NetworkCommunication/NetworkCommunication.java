@@ -22,7 +22,7 @@ public class NetworkCommunication {
 	 * method to launch the network of smartphones and 1 laptop communicating using wifi direct and bluetooth
 	 */
 	public void ConnectToMaster() {
-		BluetoothCommunication BTCommunication = new BluetoothCommunication();
+		BluetoothCommunication BTCommunication = new BluetoothCommunication(mContextNetCom);
 		BTCommunication.BTConnectToMaster();
 //		new Thread(new Runnable() {
 //			public void run() {

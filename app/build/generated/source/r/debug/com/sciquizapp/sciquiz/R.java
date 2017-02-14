@@ -54,34 +54,36 @@ public final class R {
         public static final int answerbuttonQuest4=0x7f090010;
         public static final int button1=0x7f090019;
         public static final int buttonchangesettings=0x7f09000a;
-        public static final int buttonsaveandback=0x7f09001d;
+        public static final int buttonsaveandback=0x7f09001f;
+        public static final int edittextmaster=0x7f09001e;
         public static final int edittextnom=0x7f09001c;
         public static final int imageview=0x7f090002;
         public static final int interactivemodebutton=0x7f090009;
         public static final int intmod_out=0x7f090004;
         public static final int intmod_wait_for_question=0x7f090003;
-        public static final int lblListHeader=0x7f090022;
-        public static final int lblListItem=0x7f090023;
+        public static final int lblListHeader=0x7f090024;
+        public static final int lblListItem=0x7f090025;
         public static final int listView1=0x7f090006;
         public static final int lvExp=0x7f09001a;
-        public static final int menu_level=0x7f090025;
-        public static final int menu_score=0x7f090026;
-        public static final int menu_settings=0x7f090024;
+        public static final int menu_level=0x7f090027;
+        public static final int menu_score=0x7f090028;
+        public static final int menu_settings=0x7f090026;
         public static final int out=0x7f090001;
         public static final int picture=0x7f090012;
         public static final int pictureQuest=0x7f09000c;
         public static final int ratingBar1=0x7f090017;
         public static final int scoresbutton=0x7f090008;
-        public static final int send=0x7f09001f;
+        public static final int send=0x7f090021;
         public static final int startbutton=0x7f090007;
         public static final int textResult=0x7f090018;
         public static final int textView1=0x7f090011;
+        public static final int textViewMaster=0x7f09001d;
         public static final int textViewNom=0x7f09001b;
         public static final int textViewQuest1=0x7f09000b;
         public static final int textViewmenu=0x7f090005;
-        public static final int textin=0x7f090020;
-        public static final int textip=0x7f090021;
-        public static final int textout=0x7f09001e;
+        public static final int textin=0x7f090022;
+        public static final int textip=0x7f090023;
+        public static final int textout=0x7f090020;
         public static final int waitingforquestion=0x7f090000;
     }
     public static final class layout {
@@ -113,16 +115,17 @@ public final class R {
         public static final int menu_level=0x7f070005;
         public static final int menu_score=0x7f070006;
         public static final int menu_settings=0x7f070007;
-        public static final int settings_name=0x7f070008;
-        public static final int str_next=0x7f070009;
-        public static final int title_activity_bluetoothclient=0x7f07000a;
-        public static final int title_activity_client=0x7f07000b;
-        public static final int title_activity_interactivemode=0x7f07000c;
-        public static final int title_activity_question=0x7f07000d;
-        public static final int title_activity_quiz=0x7f07000e;
-        public static final int title_activity_result=0x7f07000f;
-        public static final int title_activity_scores=0x7f070010;
-        public static final int title_activity_settings=0x7f070011;
+        public static final int settings_master=0x7f070008;
+        public static final int settings_name=0x7f070009;
+        public static final int str_next=0x7f07000a;
+        public static final int title_activity_bluetoothclient=0x7f07000b;
+        public static final int title_activity_client=0x7f07000c;
+        public static final int title_activity_interactivemode=0x7f07000d;
+        public static final int title_activity_question=0x7f07000e;
+        public static final int title_activity_quiz=0x7f07000f;
+        public static final int title_activity_result=0x7f070010;
+        public static final int title_activity_scores=0x7f070011;
+        public static final int title_activity_settings=0x7f070012;
     }
     public static final class style {
         /**  API 11 theme customizations can go here. 

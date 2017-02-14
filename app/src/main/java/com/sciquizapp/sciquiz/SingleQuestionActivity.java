@@ -83,7 +83,7 @@ public class SingleQuestionActivity extends Activity {
 		String optD = bun.getString("optD");
 		String image_path = bun.getString("image_name");
 //		final BluetoothClientActivity bluetooth = bun.getParcelable("bluetoothObject");
-		final OldBluetoothCommunication bluetooth = new OldBluetoothCommunication(getApplicationContext());
+		//final OldBluetoothCommunication bluetooth = new OldBluetoothCommunication(getApplicationContext());
 		currentQ = new Question("chimie","1",question,optA,optB,optC,optD,optA,image_path);
 		setQuestionView();
 		
@@ -118,28 +118,28 @@ public class SingleQuestionActivity extends Activity {
 				
 				//first we have to get the bluetoothclientactivity object from the one launching the activity question
 				
-				bluetooth.sendAnswerToServer(String.valueOf(answerButton1.getText()));
+				//bluetooth.sendAnswerToServer(String.valueOf(answerButton1.getText()));
 				finish();
 			}
 		});
 		answerButton2.setOnClickListener(new View.OnClickListener() {		
 			@Override
 			public void onClick(View v) {
-				bluetooth.sendAnswerToServer(String.valueOf(answerButton2.getText()));
+				//bluetooth.sendAnswerToServer(String.valueOf(answerButton2.getText()));
 				finish();
 			}
 		});
 		answerButton3.setOnClickListener(new View.OnClickListener() {		
 			@Override
 			public void onClick(View v) {
-				bluetooth.sendAnswerToServer(String.valueOf(answerButton3.getText()));
+				//bluetooth.sendAnswerToServer(String.valueOf(answerButton3.getText()));
 				finish();
 			}
 		});
 		answerButton4.setOnClickListener(new View.OnClickListener() {		
 			@Override
 			public void onClick(View v) {
-				bluetooth.sendAnswerToServer(String.valueOf(answerButton4.getText()));
+				//bluetooth.sendAnswerToServer(String.valueOf(answerButton4.getText()));
 				finish();
 			}
 		});

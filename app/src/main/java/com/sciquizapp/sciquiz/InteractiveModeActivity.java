@@ -71,14 +71,14 @@ public class InteractiveModeActivity extends Activity {
     {
         Log.v("onUserLeaveHint","Home button pressed");
         super.onUserLeaveHint();
-		BluetoothCommunication messageCommunication = new BluetoothCommunication();
+		BluetoothCommunication messageCommunication = new BluetoothCommunication(getApplicationContext());
 		messageCommunication.studentLeftApp();
     }
 
 	public boolean onKeyDown(int keyCode, android.view.KeyEvent event) {
 		if ((keyCode == android.view.KeyEvent.KEYCODE_BACK)) {
 			Log.v(this.getClass().getName(), "back button pressed");
-			BluetoothCommunication messageCommunication = new BluetoothCommunication();
+			BluetoothCommunication messageCommunication = new BluetoothCommunication(getApplicationContext());
 			messageCommunication.studentLeftApp();
 		}
 		return super.onKeyDown(keyCode, event);
