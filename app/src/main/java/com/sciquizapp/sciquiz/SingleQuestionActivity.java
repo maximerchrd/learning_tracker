@@ -25,6 +25,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.sciquizapp.sciquiz.NetworkCommunication.BluetoothCommunication;
+
 public class SingleQuestionActivity extends Activity {
 	//List<Question> quesList;
 	List<Question> quesList;
@@ -117,29 +120,32 @@ public class SingleQuestionActivity extends Activity {
 //				invalidateOptionsMenu();
 				
 				//first we have to get the bluetoothclientactivity object from the one launching the activity question
-				
-				//bluetooth.sendAnswerToServer(String.valueOf(answerButton1.getText()));
+				BluetoothCommunication bluetooth = ((LTApplication) getApplication()).getAppBluetooth();
+				bluetooth.sendAnswerToServer(String.valueOf(answerButton1.getText()));
 				finish();
 			}
 		});
 		answerButton2.setOnClickListener(new View.OnClickListener() {		
 			@Override
 			public void onClick(View v) {
-				//bluetooth.sendAnswerToServer(String.valueOf(answerButton2.getText()));
+				BluetoothCommunication bluetooth = ((LTApplication) getApplication()).getAppBluetooth();
+				bluetooth.sendAnswerToServer(String.valueOf(answerButton2.getText()));
 				finish();
 			}
 		});
 		answerButton3.setOnClickListener(new View.OnClickListener() {		
 			@Override
 			public void onClick(View v) {
-				//bluetooth.sendAnswerToServer(String.valueOf(answerButton3.getText()));
+				BluetoothCommunication bluetooth = ((LTApplication) getApplication()).getAppBluetooth();
+				bluetooth.sendAnswerToServer(String.valueOf(answerButton3.getText()));
 				finish();
 			}
 		});
 		answerButton4.setOnClickListener(new View.OnClickListener() {		
 			@Override
 			public void onClick(View v) {
-				//bluetooth.sendAnswerToServer(String.valueOf(answerButton4.getText()));
+				BluetoothCommunication bluetooth = ((LTApplication) getApplication()).getAppBluetooth();
+				bluetooth.sendAnswerToServer(String.valueOf(answerButton4.getText()));
 				finish();
 			}
 		});

@@ -2,27 +2,31 @@ package com.sciquizapp.sciquiz.NetworkCommunication;
 
 import java.util.ArrayList;
 
+import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 
 public class NetworkCommunication {
 	private Context mContextNetCom;
+	private Application mApplication;
 	private ArrayList<ArrayList<String>> mNetwork_addresses;
 	private WifiCommunication mWifiCom;
 	public String mWifiName = "LT_AdHoc";
 	public String mWifiPassword = "L3J28#loL";
 
-	public NetworkCommunication(Context arg_context) {
+
+	public NetworkCommunication(Context arg_context, Application application) {
 		mNetwork_addresses = new ArrayList<ArrayList<String>>();
 		mContextNetCom = arg_context;
 		mWifiCom = new WifiCommunication(arg_context);
+		mApplication = application;
 	}
 
 	/**
 	 * method to launch the network of smartphones and 1 laptop communicating using wifi direct and bluetooth
 	 */
 	public void ConnectToMaster() {
-		BluetoothCommunication BTCommunication = new BluetoothCommunication(mContextNetCom);
+		BluetoothCommunication BTCommunication = new BluetoothCommunication(mContextNetCom, mApplication);
 		BTCommunication.BTConnectToMaster();
 //		new Thread(new Runnable() {
 //			public void run() {

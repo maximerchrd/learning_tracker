@@ -25,6 +25,7 @@
 
     <!-- <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" /> -->
     <application
+        name="com.sciquizapp.sciquiz.LTApplication"
         android:name="com.android.tools.fd.runtime.BootstrapApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"

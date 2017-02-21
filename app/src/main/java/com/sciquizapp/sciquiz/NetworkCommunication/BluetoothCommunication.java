@@ -18,6 +18,7 @@ import java.util.*;
 
 import com.sciquizapp.sciquiz.DataConversion;
 import com.sciquizapp.sciquiz.DbHelper;
+import com.sciquizapp.sciquiz.LTApplication;
 import com.sciquizapp.sciquiz.OldBluetoothCommunication;
 import com.sciquizapp.sciquiz.Question;
 import com.sciquizapp.sciquiz.SingleQuestionActivity;
@@ -29,7 +30,7 @@ public class BluetoothCommunication {
     private Context mContext;
     private static final int REQUEST_ENABLE_BT = 1;
     private BluetoothAdapter mBluetoothAdapter = null;
-    private static BluetoothSocket btSocket = null;
+    private BluetoothSocket btSocket = null;
     private OutputStream outStream = null;
     private InputStream inputStream = null;
     private int current = 0; //tells where is the "cursor" when reading a file
@@ -40,6 +41,7 @@ public class BluetoothCommunication {
     private Vector<byte[]> vector_of_buffers = new Vector<byte[]>();
     private int read_offset = 0;
     private int bytes_read = 1;
+    private Application mApplication;
 
     // Well known SPP UUID
     //private static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
@@ -51,9 +53,9 @@ public class BluetoothCommunication {
      *
      * @param arg_context
      */
-    public BluetoothCommunication(Context arg_context) {
+    public BluetoothCommunication(Context arg_context, Application application) {
         mContext = arg_context;
-
+        mApplication = application;
         //WifiAccessManager.setWifiApState(arg_context, true);
 
     }
@@ -87,6 +89,8 @@ public class BluetoothCommunication {
         try {
             btSocket.connect();
             listenForQuestions();
+            WifiCommunication wifi_adhoc = new WifiCommunication(mContext);
+            wifi_adhoc.startAdhocWifi("adhoc_1", "wwf436**");
             Log.v("BT connection", "...Connection established and data link opened...");
             return true;
         } catch (IOException e) {
@@ -283,18 +287,18 @@ public class BluetoothCommunication {
         }
 
 
-        try {
-            if (outStream != null) {
-                outStream.close();
-                outStream = null;
-            }
-            if (btSocket != null) {
-                btSocket.close();
-                btSocket = null;
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            if (outStream != null) {
+//                outStream.close();
+//                outStream = null;
+//            }
+//            if (btSocket != null) {
+//                btSocket.close();
+//                btSocket = null;
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
     private void CheckBTState() {
@@ -336,7 +340,7 @@ public class BluetoothCommunication {
      *
      */
     private void launchQuestionActivity(Question question_to_display) {
-
+        ((LTApplication) mApplication).setAppBluetooth(this);
         Intent mIntent = new Intent(mContext, SingleQuestionActivity.class);
         Bundle bun = new Bundle();
         bun.putString("question", question_to_display.getQUESTION());
@@ -364,6 +368,38 @@ public class BluetoothCommunication {
         //		bun.putParcelable("bluetoothObject", this);
         mIntent.putExtras(bun);
         mContext.startActivity(mIntent);
+    }
+
+    /**
+     * method used to send the answer of the student connected with bluetooth to the PC.
+     * It sends a string containing the address, the name of the student and the answer
+     * separated by ///
+     * @param answer
+     */
+    public void sendAnswerToServer(String answer) {
+        if(btSocket.isConnected()) {
+            try {
+                outStream = btSocket.getOutputStream();
+            } catch (IOException e) {
+                Log.e("Fatal Error", "In onResume() and output stream creation failed:" + e.getMessage() + ".");
+            }
+
+            String MacAddress = android.provider.Settings.Secure.getString(mContext.getContentResolver(), "bluetooth_address");
+            DbHelper db_for_name = new DbHelper(mContext);
+            String name = db_for_name.getName();
+            answer = "ANSW0" + "///" + MacAddress + "///" + name + "///" + answer;
+            byte[] ansBuffer = answer.getBytes();
+            try {
+                outStream.write(ansBuffer, 0, ansBuffer.length);
+                Log.d("answer buffer length: ", String.valueOf(ansBuffer.length));
+                outStream.flush();
+            } catch (IOException e) {
+                String msg = "In sendAnswerToServer() and an exception occurred during write: " + e.getMessage();
+                Log.e("Fatal Error", msg);
+            }
+        } else {
+            Log.w("SendAnswerToServer","\n...socket not connected when trying to send answer...");
+        }
     }
 
 }

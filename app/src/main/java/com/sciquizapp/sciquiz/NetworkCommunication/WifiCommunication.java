@@ -69,10 +69,10 @@ public class WifiCommunication {
 	}
 
 	/**
-	 * method used to start an adhoc wifi
+	 * method to start an adhoc wifi
 	 * @param wifiName
-	 * 
-	 */
+	 * @param wifiPassword
+     */
 	public void startAdhocWifi(String wifiName, String wifiPassword) {
 		//turn off the wifi if it is on
 		new Thread(new Runnable() {
