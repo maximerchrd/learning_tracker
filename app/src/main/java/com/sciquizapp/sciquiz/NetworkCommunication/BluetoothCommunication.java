@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.app.*;
+import android.widget.TextView;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
@@ -21,6 +22,7 @@ import com.sciquizapp.sciquiz.DbHelper;
 import com.sciquizapp.sciquiz.LTApplication;
 import com.sciquizapp.sciquiz.OldBluetoothCommunication;
 import com.sciquizapp.sciquiz.Question;
+import com.sciquizapp.sciquiz.R;
 import com.sciquizapp.sciquiz.SingleQuestionActivity;
 import com.sciquizapp.sciquiz.WifiAccessManager;
 
@@ -89,8 +91,6 @@ public class BluetoothCommunication {
         try {
             btSocket.connect();
             listenForQuestions();
-            WifiCommunication wifi_adhoc = new WifiCommunication(mContext);
-            wifi_adhoc.startAdhocWifi("adhoc_1", "wwf436**");
             Log.v("BT connection", "...Connection established and data link opened...");
             return true;
         } catch (IOException e) {
@@ -229,6 +229,23 @@ public class BluetoothCommunication {
                             bytes_read = 1;
                             DataConversion convert_question = new DataConversion(mContext);
                             launchQuestionActivity(convert_question.bytearrayvectorToQuestion(whole_question_buffer));
+                        } else if (sizes.split("///")[0].contains("SERVR")) {
+                            if (sizes.split("///")[1].contains("MAX")) {
+                                try {
+                                    btSocket.close();
+                                    btSocket = null;
+                                    TextView txtView = (TextView) ((Activity)mContext).findViewById(R.id.intmod_out);
+                                    txtView.setText("Connect to an adhoc wifi");
+                                    Log.v("max clients reached", "yes");
+
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            } else {
+                                WifiCommunication wifi_adhoc = new WifiCommunication(mContext);
+                                wifi_adhoc.startAdhocWifi("adhoc_1", "wwf436**");
+                            }
+
                         }
                     }
                 }

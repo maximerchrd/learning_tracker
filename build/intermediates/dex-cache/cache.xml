@@ -2,18 +2,25 @@
 <items version="2" >
 
     <item
+        jar="/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="9455453d20bc0f75e551a79d87ba510f66a488d0">
+        <dex dex="/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/pre-dexed/debug/instant-run_579dca57bdcde7d0fdc3b91d3529631559b6e619.jar" />
+    </item>
+    <item
+        jar="/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
+        <dex dex="/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-23.4.0_57b35ce5c4ee835c3d0f445e668f692e7505f38f.jar" />
+    </item>
+    <item
         jar="/Users/maximerichard/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.4.0/support-annotations-23.4.0.jar"
         jumboMode="true"
         revision="24.0.2"
         sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
         <dex dex="/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/pre-dexed/debug/support-annotations-23.4.0_6523e48b1d0cea96f765fa53ed31dc8bc4b9d687.jar" />
-    </item>
-    <item
-        jar="/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
-        jumboMode="true"
-        revision="24.0.2"
-        sha1="0e9aa02e0ea4075278305b4fff6b9b9367e45686">
-        <dex dex="/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/pre-dexed/debug/instant-run_579dca57bdcde7d0fdc3b91d3529631559b6e619.jar" />
     </item>
     <item
         jar="/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/jars/libs/internal_impl-23.4.0.jar"
@@ -37,17 +44,10 @@
         <dex dex="/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/pre-dexed/debug/mail_1d809e5db7727e1d0ffa09547bd7b4445c983bd2.jar" />
     </item>
     <item
-        jar="/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/jars/classes.jar"
-        jumboMode="true"
-        revision="24.0.2"
-        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
-        <dex dex="/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-23.4.0_57b35ce5c4ee835c3d0f445e668f692e7505f38f.jar" />
-    </item>
-    <item
         jar="/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         revision="24.0.2"
-        sha1="a52b06b4254de59697771c10f5eb9d9f492d4ae9">
+        sha1="de00927f3a9c4685029ef1388b4359f63c33aba3">
         <dex dex="/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/pre-dexed/debug/instant-run-bootstrap_494f34fdd85177dea6bf0fb56d72a94ff4ba77f9.jar" />
     </item>
     <item

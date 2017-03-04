@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 public class InteractiveModeActivity extends Activity {
 	NetworkCommunication mNetCom;
-	TextView intmod_out;
+	public TextView intmod_out;
 	TextView intmod_wait_for_question;
 	
 	/** Called when the activity is first created. */
