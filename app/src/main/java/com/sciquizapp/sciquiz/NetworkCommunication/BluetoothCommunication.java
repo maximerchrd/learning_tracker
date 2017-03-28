@@ -419,11 +419,6 @@ public class BluetoothCommunication {
      * method to start a bluetooth server
      */
     private void startBluetoothServer() {
-        Intent discoverableIntent =
-                new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
-        discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 300);
-        mContext.startActivity(discoverableIntent);
-
         BluetoothServerSocket tmp = null;
 
         // Create a new listening server socket
