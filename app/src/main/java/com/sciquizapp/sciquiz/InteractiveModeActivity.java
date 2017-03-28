@@ -43,7 +43,8 @@ public class InteractiveModeActivity extends Activity {
 		intmod_out = (TextView) findViewById(R.id.intmod_out);
 		intmod_wait_for_question.append("En attente de la question suivante");
 		
-		mNetCom = new NetworkCommunication(this, getApplication());
+		//mNetCom = new NetworkCommunication(this, getApplication());
+		mNetCom = new NetworkCommunication(this, getApplication(), intmod_out);
 		mNetCom.ConnectToMaster();
 //        android.app.Application.ActivityLifecycleCallbacks callback = null;
 //        getApplication().registerActivityLifecycleCallbacks(callback);
@@ -71,14 +72,14 @@ public class InteractiveModeActivity extends Activity {
         Log.v("onUserLeaveHint","Home button pressed");
         super.onUserLeaveHint();
 		BluetoothCommunication bluetooth = ((LTApplication) getApplication()).getAppBluetooth();
-		bluetooth.studentLeftApp();
+		if (bluetooth != null) bluetooth.studentLeftApp();
     }
 
 	public boolean onKeyDown(int keyCode, android.view.KeyEvent event) {
 		if ((keyCode == android.view.KeyEvent.KEYCODE_BACK)) {
 			Log.v(this.getClass().getName(), "back button pressed");
 			BluetoothCommunication bluetooth = ((LTApplication) getApplication()).getAppBluetooth();
-			bluetooth.studentLeftApp();
+			if (bluetooth != null) bluetooth.studentLeftApp();
 		}
 		return super.onKeyDown(keyCode, event);
 	}

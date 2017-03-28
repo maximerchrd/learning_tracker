@@ -406,7 +406,7 @@ public class OldBluetoothCommunication {
 		try {
 			tmp = mBTAdapter.listenUsingRfcommWithServiceRecord("Android Master", MY_UUID);
 		} catch (IOException e) {
-			Log.e("Starting bluetooth server", "listen() failed", e);
+			Log.e("Starting bt server", "listen() failed", e);
 		}
 		mmServerSocket = tmp;
 

@@ -3,17 +3,20 @@ package com.sciquizapp.sciquiz.NetworkCommunication;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothManager;
+import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.app.*;
 import android.widget.TextView;
 
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.*;
 
 
@@ -31,6 +34,7 @@ import java.io.*;
 public class BluetoothCommunication {
     private Context mContext;
     private static final int REQUEST_ENABLE_BT = 1;
+    private Boolean bluetoothON = false;
     private BluetoothAdapter mBluetoothAdapter = null;
     private BluetoothSocket btSocket = null;
     private OutputStream outStream = null;
@@ -44,22 +48,40 @@ public class BluetoothCommunication {
     private int read_offset = 0;
     private int bytes_read = 1;
     private Application mApplication;
+    private TextView mTextOut;
+    private BluetoothServerSocket mServerSocket;
+    private OutputStream mServerOutStream = null;
+    private InputStream mServerInStream = null;
 
     // Well known SPP UUID
     //private static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     private static final UUID MY_UUID = UUID.fromString("d0c722b0-7e15-11e1-b0c4-0800200c9a66");
+    private static final UUID SERVER_UUID = UUID.fromString("4c98e69f-b27e-415a-b3e4-769cf2baf51e");
 
 
     /**
      * Constructor taking the activity context as argument
      *
      * @param arg_context
+     * @param application
      */
     public BluetoothCommunication(Context arg_context, Application application) {
         mContext = arg_context;
         mApplication = application;
         //WifiAccessManager.setWifiApState(arg_context, true);
 
+    }
+
+    /**
+     * Constructor
+     * @param arg_context
+     * @param application
+     * @param TextOut
+     */
+    public BluetoothCommunication(Context arg_context, Application application, TextView TextOut) {
+        mContext = arg_context;
+        mApplication = application;
+        mTextOut = TextOut;
     }
 
     /**
@@ -70,41 +92,20 @@ public class BluetoothCommunication {
     public Boolean BTConnectToMaster() {
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         CheckBTState();
-        searchForPairedDevices();
+        if (bluetoothON) {
+            searchForPairedDevices();
 
-        // Two things are needed to make a connection:
-        //   A MAC address, which we got above.
-        //   A Service ID or UUID.  In this case we are using the
-        //     UUID for SPP.
-        try {
-            btSocket = mDevice.createRfcommSocketToServiceRecord(MY_UUID);
-            //btSocket = device.createInsecureRfcommSocketToServiceRecord(MY_UUID);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            // Discovery is resource intensive.  Make sure it isn't going on
+            // when you attempt to connect and pass your message.
+            mBluetoothAdapter.cancelDiscovery();
 
-        // Discovery is resource intensive.  Make sure it isn't going on
-        // when you attempt to connect and pass your message.
-        mBluetoothAdapter.cancelDiscovery();
-
-        // Establish the connection.  This will block until it connects.
-        try {
-            btSocket.connect();
+            Boolean successfullConnection = connectToPC();
             listenForQuestions();
-            Log.v("BT connection", "...Connection established and data link opened...");
-            return true;
-        } catch (IOException e) {
-            Log.v("BT connection", "...failed ...");
-            e.printStackTrace();
-            try {
-                btSocket.close();
-            } catch (IOException e2) {
-                Log.w("Fatal Error", "unable to close socket during connection failure" + e2.getMessage() + ".");
-            }
-        }
+            startBluetoothServer();
+            return successfullConnection;
+            //send string to pc
+            //if (btSocket.isConnected()) {
 
-        //send string to pc
-        if (btSocket.isConnected()) {
 //            try {
 //                outStream = btSocket.getOutputStream();
 //            } catch (IOException e) {
@@ -132,34 +133,19 @@ public class BluetoothCommunication {
 //                    }
 //                }
 //            }).start();
-        }
+            }
 
-//        try {
-//            if (outStream != null) {
-//                outStream.close();
-//                outStream = null;
-//            }
-//            if (btSocket != null) {
-//                btSocket.close();
-//                btSocket = null;
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-
+        //}
         return false;
     }
 
     /**
      * method that enables the smartphone to listen for the questions from the PC
+     * It can also read the connection message from the server
      */
     public void listenForQuestions() {
-        if (btSocket.isConnected()) {
-            try {
-                inputStream = btSocket.getInputStream();
-            } catch (IOException e) {
-                Log.w("Fatal Error", "input stream creation failed:" + e.getMessage() + ".");
-            }
+        if ((btSocket != null && btSocket.isConnected()) || (mServerSocket != null)) {
+
             new Thread(new Runnable() {
                 public void run() {
 //                    Boolean able_to_read = true;
@@ -181,7 +167,7 @@ public class BluetoothCommunication {
 //                        }
 //                    }
                     Boolean able_to_read = true;
-                    while (able_to_read) {
+                    while (able_to_read && inputStream != null) {
                         current = 0;
                         byte[] prefix_buffer = new byte[20];
                         String sizes = "";
@@ -229,8 +215,10 @@ public class BluetoothCommunication {
                             bytes_read = 1;
                             DataConversion convert_question = new DataConversion(mContext);
                             launchQuestionActivity(convert_question.bytearrayvectorToQuestion(whole_question_buffer));
+                            disconnectFromPC();
+                            if (mServerSocket == null) startBluetoothServer();
                         } else if (sizes.split("///")[0].contains("SERVR")) {
-                            if (sizes.split("///")[1].contains("MAX")) {
+                            /*if (sizes.split("///")[1].contains("MAX")) {
                                 try {
                                     btSocket.close();
                                     btSocket = null;
@@ -244,7 +232,8 @@ public class BluetoothCommunication {
                             } else {
                                 WifiCommunication wifi_adhoc = new WifiCommunication(mContext);
                                 wifi_adhoc.startAdhocWifi("adhoc_1", "wwf436**");
-                            }
+                            }*/
+                            Log.v("in ListenforQuestions","received SERVR");
 
                         }
                     }
@@ -283,6 +272,7 @@ public class BluetoothCommunication {
      * intended to be called when the home button or the back key are pressed
      */
     public void studentLeftApp() {
+        /*
         //send string to pc
         if (btSocket != null && btSocket.isConnected()) {
             try {
@@ -302,6 +292,7 @@ public class BluetoothCommunication {
                 Log.w("Fatal Error", msg);
             }
         }
+        */
 
 
 //        try {
@@ -327,11 +318,14 @@ public class BluetoothCommunication {
         } else {
             if (mBluetoothAdapter.isEnabled()) {
                 Log.v("BT state", "...Bluetooth is enabled...");
+                bluetoothON = true;
             } else {
                 Log.v("BT state", "Turn on BT");
                 //Prompt user to turn on Bluetooth
-//                Intent enableBtIntent = new Intent(btAdapter.ACTION_REQUEST_ENABLE);
-//                startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+                mTextOut.append("Turn on Bluetooth");
+                bluetoothON = false;
+                //Intent enableBtIntent = new Intent(mBluetoothAdapter.ACTION_REQUEST_ENABLE);
+                //mApplication.startActivity(enableBtIntent); //startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
             }
         }
     }
@@ -394,29 +388,162 @@ public class BluetoothCommunication {
      * @param answer
      */
     public void sendAnswerToServer(String answer) {
-        if(btSocket.isConnected()) {
-            try {
-                outStream = btSocket.getOutputStream();
-            } catch (IOException e) {
-                Log.e("Fatal Error", "In onResume() and output stream creation failed:" + e.getMessage() + ".");
+        //for (int i = 0; i < 25; i++) {
+            connectToPC();
+            if (btSocket.isConnected()) {
+                String MacAddress = android.provider.Settings.Secure.getString(mContext.getContentResolver(), "bluetooth_address");
+                DbHelper db_for_name = new DbHelper(mContext);
+                String name = db_for_name.getName();
+
+                answer = "ANSW0" + "///" + MacAddress + "///" + name + "///" + answer;
+                byte[] ansBuffer = answer.getBytes();
+                try {
+                    outStream.write(ansBuffer, 0, ansBuffer.length);
+                    Log.d("answer buffer length: ", String.valueOf(ansBuffer.length));
+                    outStream.flush();
+                } catch (IOException e) {
+                    String msg = "In sendAnswerToServer() and an exception occurred during write: " + e.getMessage();
+                    Log.e("Fatal Error", msg);
+                }
+                answer = "";
+            } else {
+                Log.w("SendAnswerToServer", "\n...socket not connected when trying to send answer...");
             }
 
-            String MacAddress = android.provider.Settings.Secure.getString(mContext.getContentResolver(), "bluetooth_address");
-            DbHelper db_for_name = new DbHelper(mContext);
-            String name = db_for_name.getName();
-            answer = "ANSW0" + "///" + MacAddress + "///" + name + "///" + answer;
-            byte[] ansBuffer = answer.getBytes();
+            Log.v("sendanswer","disconnect");
+            disconnectFromPC();
+        //}
+    }
+
+    /**
+     * method to start a bluetooth server
+     */
+    private void startBluetoothServer() {
+        Intent discoverableIntent =
+                new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
+        discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 300);
+        mContext.startActivity(discoverableIntent);
+
+        BluetoothServerSocket tmp = null;
+
+        // Create a new listening server socket
+        try {
+            tmp = mBluetoothAdapter.listenUsingRfcommWithServiceRecord("androidmaster", SERVER_UUID);
+        } catch (IOException e) {
+            Log.e("Starting bt server", "listen() failed", e);
+        }
+        mServerSocket = tmp;
+
+//        byte[] pinBytes = "0000".getBytes();
+//
+//        Method m;
+//        try {
+//            m = mBluetoothAdapter.getClass().getMethod("setPin", byte[].class);
+//            try {
+//                m.invoke(mBluetoothAdapter, pinBytes);
+//            } catch (IllegalAccessException e) {
+//                // TODO Auto-generated catch block
+//                e.printStackTrace();
+//            } catch (IllegalArgumentException e) {
+//                // TODO Auto-generated catch block
+//                e.printStackTrace();
+//            } catch (InvocationTargetException e) {
+//                // TODO Auto-generated catch block
+//                e.printStackTrace();
+//            }
+//        } catch (NoSuchMethodException e1) {
+//            // TODO Auto-generated catch block
+//            e1.printStackTrace();
+//        }
+
+
+        new Thread(new Runnable() {
+            public void run() {
+                    BluetoothSocket socket = null;
+                    while (true) {
+                        try {
+                            socket = mServerSocket.accept();
+                            outStream = socket.getOutputStream();
+                            inputStream = socket.getInputStream();
+                            Log.v("server bt","client connected");
+                            listenForQuestions();
+                        } catch (IOException e) {
+                            break;
+                        }
+                        if (socket != null) {
+                            try {
+                                mServerSocket.close();
+                                mServerSocket = null;
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            break;
+                        }
+                    }
+                }
+        }).start();
+    }
+
+    /**
+     * Method that connects to the PC per BT. It uses the mDevice that should have been initialized
+     * as well as a UUID from the used service. It also initialize input and output streams
+     * @return true if able to connect and false otherwise
+     */
+    private Boolean connectToPC() {
+
+        // Two things are needed to make a connection:
+        //   A MAC address, which we got above.
+        //   A Service ID or UUID.  In this case we are using the
+        //     UUID for SPP.
+        try {
+            btSocket = mDevice.createRfcommSocketToServiceRecord(MY_UUID);
+            //btSocket = device.createInsecureRfcommSocketToServiceRecord(MY_UUID);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Establish the connection.  This will block until it connects.
+        try {
+            btSocket.connect();
+            inputStream = btSocket.getInputStream();
+            outStream = btSocket.getOutputStream();
+            Log.v("BT connection", "...Connection established and data link opened...");
+            return true;
+        } catch (IOException e) {
+            Log.v("BT connection", "...failed ...");
+            e.printStackTrace();
             try {
-                outStream.write(ansBuffer, 0, ansBuffer.length);
-                Log.d("answer buffer length: ", String.valueOf(ansBuffer.length));
-                outStream.flush();
-            } catch (IOException e) {
-                String msg = "In sendAnswerToServer() and an exception occurred during write: " + e.getMessage();
-                Log.e("Fatal Error", msg);
+                btSocket.close();
+            } catch (IOException e2) {
+                Log.w("Fatal Error", "unable to close socket during connection failure" + e2.getMessage() + ".");
             }
-        } else {
-            Log.w("SendAnswerToServer","\n...socket not connected when trying to send answer...");
+            return false;
         }
     }
 
+    /**
+     * Method that is used to disconnect client from PC
+     * @return true if disconnection is successfull, false otherwise
+     */
+    private Boolean disconnectFromPC() {
+        try {
+            Log.v("disconnectFromPC","closing stream");
+            if (outStream != null) {
+                outStream.close();
+                outStream = null;
+            }
+            if (inputStream !=null) {
+                inputStream.close();
+                inputStream = null;
+            }
+            if (btSocket != null) {
+                btSocket.close();
+                btSocket = null;
+            }
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
