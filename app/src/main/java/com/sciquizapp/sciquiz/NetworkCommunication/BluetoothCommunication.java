@@ -100,8 +100,14 @@ public class BluetoothCommunication {
             mBluetoothAdapter.cancelDiscovery();
 
             Boolean successfullConnection = connectToPC();
-            listenForQuestions();
             startBluetoothServer();
+            try {
+                Thread.sleep(1000);             //wait for the pc to make sure that connection is successful
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            disconnectFromPC();     //alc
+            //listenForQuestions();  alc
             return successfullConnection;
             //send string to pc
             //if (btSocket.isConnected()) {

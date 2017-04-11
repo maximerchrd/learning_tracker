@@ -28,16 +28,16 @@
         "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-hdpi/fc.jpg"
     },
     {
+        "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/respiration_cellulaire.jpg",
+        "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-hdpi/respiration_cellulaire.jpg"
+    },
+    {
         "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_launcher.png",
         "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-hdpi/ic_launcher.png"
     },
     {
         "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/bateau.jpg",
         "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-hdpi/bateau.jpg"
-    },
-    {
-        "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/respiration_cellulaire.jpg",
-        "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-hdpi/respiration_cellulaire.jpg"
     },
     {
         "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/schema_coeur.jpg",
