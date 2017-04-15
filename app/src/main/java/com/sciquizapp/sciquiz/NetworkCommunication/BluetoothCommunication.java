@@ -100,14 +100,7 @@ public class BluetoothCommunication {
             mBluetoothAdapter.cancelDiscovery();
 
             Boolean successfullConnection = connectToPC();
-            startBluetoothServer();
-            try {
-                Thread.sleep(1000);             //wait for the pc to make sure that connection is successful
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            disconnectFromPC();     //alc
-            //listenForQuestions();  alc
+            listenForQuestions();
             return successfullConnection;
             //send string to pc
             //if (btSocket.isConnected()) {
@@ -221,10 +214,8 @@ public class BluetoothCommunication {
                             bytes_read = 1;
                             DataConversion convert_question = new DataConversion(mContext);
                             launchQuestionActivity(convert_question.bytearrayvectorToQuestion(whole_question_buffer));
-                            disconnectFromPC();
-                            if (mServerSocket == null) startBluetoothServer();
                         } else if (sizes.split("///")[0].contains("SERVR")) {
-                            /*if (sizes.split("///")[1].contains("MAX")) {
+                            if (sizes.split("///")[1].contains("MAX")) {
                                 try {
                                     btSocket.close();
                                     btSocket = null;
@@ -238,7 +229,7 @@ public class BluetoothCommunication {
                             } else {
                                 WifiCommunication wifi_adhoc = new WifiCommunication(mContext);
                                 wifi_adhoc.startAdhocWifi("adhoc_1", "wwf436**");
-                            }*/
+                            }
                             Log.v("in ListenforQuestions","received SERVR");
 
                         }
@@ -395,7 +386,6 @@ public class BluetoothCommunication {
      */
     public void sendAnswerToServer(String answer) {
         //for (int i = 0; i < 25; i++) {
-            connectToPC();
             if (btSocket.isConnected()) {
                 String MacAddress = android.provider.Settings.Secure.getString(mContext.getContentResolver(), "bluetooth_address");
                 DbHelper db_for_name = new DbHelper(mContext);
@@ -416,8 +406,6 @@ public class BluetoothCommunication {
                 Log.w("SendAnswerToServer", "\n...socket not connected when trying to send answer...");
             }
 
-            Log.v("sendanswer","disconnect");
-            disconnectFromPC();
         //}
     }
 
