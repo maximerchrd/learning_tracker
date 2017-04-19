@@ -52,6 +52,7 @@ public class BluetoothCommunication {
     private BluetoothServerSocket mServerSocket;
     private OutputStream mServerOutStream = null;
     private InputStream mServerInStream = null;
+    private WifiCommunication mWifiCommunication = null;
 
     // Well known SPP UUID
     //private static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
@@ -213,6 +214,8 @@ public class BluetoothCommunication {
                             while (bytes_read > 0);    //shall be sizeRead > -1, because .read returns -1 when finished reading, but outstream not closed on server side
                             bytes_read = 1;
                             DataConversion convert_question = new DataConversion(mContext);
+                            if (mWifiCommunication == null) mWifiCommunication = new WifiCommunication(mContext, mApplication);
+                            mWifiCommunication.forwardQuestionToClient(whole_question_buffer);
                             launchQuestionActivity(convert_question.bytearrayvectorToQuestion(whole_question_buffer));
                         } else if (sizes.split("///")[0].contains("SERVR")) {
                             if (sizes.split("///")[1].contains("MAX")) {
@@ -227,8 +230,9 @@ public class BluetoothCommunication {
                                     e.printStackTrace();
                                 }
                             } else {
-                                WifiCommunication wifi_adhoc = new WifiCommunication(mContext);
-                                wifi_adhoc.startAdhocWifi("adhoc_1", "wwf436**");
+                                mWifiCommunication = new WifiCommunication(mContext, mApplication);
+                                mWifiCommunication.startAdhocWifi("adhoc_1", "wwf436**");
+
                             }
                             Log.v("in ListenforQuestions","received SERVR");
 
@@ -387,11 +391,11 @@ public class BluetoothCommunication {
     public void sendAnswerToServer(String answer) {
         //for (int i = 0; i < 25; i++) {
             if (btSocket.isConnected()) {
-                String MacAddress = android.provider.Settings.Secure.getString(mContext.getContentResolver(), "bluetooth_address");
-                DbHelper db_for_name = new DbHelper(mContext);
-                String name = db_for_name.getName();
-
-                answer = "ANSW0" + "///" + MacAddress + "///" + name + "///" + answer;
+//                String MacAddress = android.provider.Settings.Secure.getString(mContext.getContentResolver(), "bluetooth_address");
+//                DbHelper db_for_name = new DbHelper(mContext);
+//                String name = db_for_name.getName();
+//
+//                answer = "ANSW0" + "///" + MacAddress + "///" + name + "///" + answer;
                 byte[] ansBuffer = answer.getBytes();
                 try {
                     outStream.write(ansBuffer, 0, ansBuffer.length);

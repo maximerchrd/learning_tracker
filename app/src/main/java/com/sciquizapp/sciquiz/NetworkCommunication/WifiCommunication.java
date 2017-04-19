@@ -1,28 +1,106 @@
 package com.sciquizapp.sciquiz.NetworkCommunication;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
+import com.sciquizapp.sciquiz.DataConversion;
+import com.sciquizapp.sciquiz.LTApplication;
+import com.sciquizapp.sciquiz.Question;
+import com.sciquizapp.sciquiz.R;
+import com.sciquizapp.sciquiz.SingleQuestionActivity;
 import com.sciquizapp.sciquiz.WifiAccessManager;
 
+import android.app.Activity;
+import android.app.Application;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiManager;
+import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 public class WifiCommunication {
 	private WifiManager mWifi;
 	private Context mContextWifCom;
+	private Application mApplication;
+	private OutputStream mOutputStream = null;
+	private InputStream mInputStream = null;
+	private Vector<OutputStream> outputStreamVector = null;
+	private Vector<InputStream> inputStreamVector = null;
+	private int current = 0;
+	private int bytes_read = 0;
 	List<android.net.wifi.ScanResult> mScanResults = new ArrayList<android.net.wifi.ScanResult>();
 	BroadcastReceiver scanningreceiver;
 
-	public WifiCommunication(Context arg_context) {
+	public WifiCommunication(Context arg_context, Application arg_application) {
 		mContextWifCom = arg_context;
 		mWifi = (WifiManager) mContextWifCom.getSystemService(Context.WIFI_SERVICE);
+		mApplication = arg_application;
+	}
+
+	public void startServerSocket() {
+		try {
+			Boolean end = false;
+			ServerSocket ss = new ServerSocket(12345);
+			outputStreamVector = new Vector<OutputStream>();
+			inputStreamVector = new Vector<InputStream>();
+			while(!end){
+				//Server is waiting for client here, if needed
+				Socket s = ss.accept();
+				outputStreamVector.add(s.getOutputStream());
+				inputStreamVector.add(s.getInputStream());
+				BufferedReader input = new BufferedReader(new InputStreamReader(s.getInputStream()));
+				PrintWriter output = new PrintWriter(s.getOutputStream(),true); //Autoflush
+				String st = input.readLine();
+				Log.d("Tcp Example", "From client: "+st);
+				output.println("Good bye and thanks for all the fish :)");
+				s.close();
+				if (false){ end = true; }
+			}
+			ss.close();
+
+
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public void connectToServer() {
+		try {
+			Socket s = new Socket("localhost",12345);
+
+			//outgoing stream redirect to socket
+			mOutputStream = s.getOutputStream();
+			mInputStream = s.getInputStream();
+			//Close connection
+			//s.close();
+
+
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -157,5 +235,144 @@ public class WifiCommunication {
 		mWifi.saveConfiguration();
 		mWifi.reconnect();               
 
+	}
+
+	public void sendAnswerToServer(String answer) {
+		byte[] ansBuffer = answer.getBytes();
+		try {
+			mOutputStream.write(ansBuffer, 0, ansBuffer.length);
+			Log.d("answer buffer length: ", String.valueOf(ansBuffer.length));
+			mOutputStream.flush();
+		} catch (IOException e) {
+			String msg = "In sendAnswerToServer() and an exception occurred during write: " + e.getMessage();
+			Log.e("Fatal Error", msg);
+		}
+		answer = "";
+	}
+
+	public void forwardQuestionToClient (byte[] whole_question_buffer) {
+		if ( outputStreamVector != null) {
+			for (int i = 0; i < outputStreamVector.size(); i++) {
+				try {
+					outputStreamVector.elementAt(i).write(whole_question_buffer);
+				} catch (IOException e) {
+					outputStreamVector.remove(i);
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+	public void forwardDataToServer () {
+
+	}
+
+	public void listenForQuestions() {
+		new Thread(new Runnable() {
+			public void run() {
+//                    Boolean able_to_read = true;
+//                    while (able_to_read) {
+//                        try {
+//                            bytes_read = inputStream.read(buffer,0,buffer.length);
+//                            //read_offset += bytes_read;
+//                            vector_of_buffers.add(buffer);
+//                            if (buffer[1023] == 0) {
+//                                DataConversion convert_question = new DataConversion();
+//                                launchQuestionActivity(convert_question.bytearrayvectorToQuestion(vector_of_buffers));
+//                            }
+////                            if(bytes_read < 0) {
+////                                read_offset = 0;
+////                            }
+//                        } catch (IOException e) {
+//                            able_to_read = false;
+//                            e.printStackTrace();
+//                        }
+//                    }
+				Boolean able_to_read = true;
+				while (able_to_read && mInputStream != null) {
+					current = 0;
+					byte[] prefix_buffer = new byte[20];
+					String sizes = "";
+					String byteread = "";
+					try {
+						Log.v("read input stream", "first");
+						bytes_read = mInputStream.read(prefix_buffer, 0, 20);
+						sizes = new String(prefix_buffer, "UTF-8");
+					} catch (IOException e) {
+						e.printStackTrace();
+						able_to_read = false;
+					}
+					if (sizes.split(":")[0].contains("QUEST")) {
+						int size_of_image = Integer.parseInt(sizes.split(":")[1]);
+						int size_of_text = Integer.parseInt(sizes.split(":")[2].replaceAll("\\D+", ""));
+						byte[] whole_question_buffer = new byte[20 + size_of_image + size_of_text];
+						for (int i = 0; i < 20; i++) {
+							whole_question_buffer[i] = prefix_buffer[i];
+						}
+						current = 20;
+						do {
+							try {
+								//Log.v("read input stream", "second");
+
+								bytes_read = mInputStream.read(whole_question_buffer, current, (20 + size_of_image + size_of_text - current));
+								Log.v("number of bytes read:", Integer.toString(bytes_read));
+//                                    for (int k = 0; k < 20 && current > 20; k++) {
+//                                        byteread += whole_question_buffer[current -21 + k];
+//                                    }
+//                                    Log.v("last bytes read: ", byteread);
+//                                    byteread = "";
+							} catch (IOException e) {
+								e.printStackTrace();
+								able_to_read = false;
+							}
+							if (bytes_read >= 0) {
+								current += bytes_read;
+								if (able_to_read == false) {
+									bytes_read = -1;
+									able_to_read = true;
+								}
+							}
+						}
+						while (bytes_read > 0);    //shall be sizeRead > -1, because .read returns -1 when finished reading, but outstream not closed on server side
+						bytes_read = 1;
+						DataConversion convert_question = new DataConversion(mContextWifCom);
+						launchQuestionActivity(convert_question.bytearrayvectorToQuestion(whole_question_buffer));
+					} else {
+
+					}
+				}
+			}
+		}).start();
+	}
+
+	private void launchQuestionActivity(Question question_to_display) {
+		((LTApplication) mApplication).setAppWifi(this);
+		Intent mIntent = new Intent(mContextWifCom, SingleQuestionActivity.class);
+		Bundle bun = new Bundle();
+		bun.putString("question", question_to_display.getQUESTION());
+		bun.putString("optA", question_to_display.getOPTA());
+		bun.putString("optB", question_to_display.getOPTB());
+		bun.putString("optC", question_to_display.getOPTC());
+		bun.putString("optD", question_to_display.getOPTD());
+		bun.putString("image_name", question_to_display.getIMAGE());
+//        if (question_text_string.length() > 0) {
+//            bun.putString("question", question_text_string.split("///")[0]);
+//            bun.putString("optA", question_text_string.split("///")[1]);
+//            bun.putString("optB", question_text_string.split("///")[2]);
+//            bun.putString("optC", question_text_string.split("///")[3]);
+//            bun.putString("optD", question_text_string.split("///")[4]);
+//            bun.putString("image_name", question_text_string.split("///")[5]);
+//        } else {
+//            bun.putString("question", "the question couldn't be read");
+//            bun.putString("optA", "");
+//            bun.putString("optB", "");
+//            bun.putString("optC", "");
+//            bun.putString("optD", "");
+//            bun.putString("image_name", "");
+//        }
+		//		bun.putParcelable("bluetoothSocket", btSocket);
+		//		bun.putParcelable("bluetoothObject", this);
+		mIntent.putExtras(bun);
+		mContextWifCom.startActivity(mIntent);
 	}
 }
