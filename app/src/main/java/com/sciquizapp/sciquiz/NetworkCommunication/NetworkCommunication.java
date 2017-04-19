@@ -8,6 +8,7 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.sciquizapp.sciquiz.DbHelper;
+import com.sciquizapp.sciquiz.LTApplication;
 
 public class NetworkCommunication {
 	private Context mContextNetCom;
@@ -15,7 +16,7 @@ public class NetworkCommunication {
 	private ArrayList<ArrayList<String>> mNetwork_addresses;
 	private WifiCommunication mWifiCom;
 	private TextView mTextOut;
-	private Boolean connectedThroughBT;
+	public Boolean connectedThroughBT = false;
 	public String mWifiName = "LT_AdHoc";
 	public String mWifiPassword = "L3J28#loL";
 	private BluetoothCommunication BTCommunication;
@@ -35,12 +36,14 @@ public class NetworkCommunication {
 		mWifiCom = new WifiCommunication(arg_context, application);
 		mApplication = application;
 		mTextOut = textOut;
+		((LTApplication) mApplication).setAppNetwork(this);
+
 	}
 	/**
 	 * method to launch the network of smartphones and 1 laptop communicating using wifi direct and bluetooth
 	 */
 	public void ConnectToMaster() {
-		BTCommunication = new BluetoothCommunication(mContextNetCom, mApplication, mTextOut);
+		BTCommunication = new BluetoothCommunication(mContextNetCom, mApplication, mTextOut, this);
 		BTCommunication.BTConnectToMaster();
 //		new Thread(new Runnable() {
 //			public void run() {

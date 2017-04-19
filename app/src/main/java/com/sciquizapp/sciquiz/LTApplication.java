@@ -3,6 +3,7 @@ package com.sciquizapp.sciquiz;
 import android.app.Application;
 
 import com.sciquizapp.sciquiz.NetworkCommunication.BluetoothCommunication;
+import com.sciquizapp.sciquiz.NetworkCommunication.NetworkCommunication;
 import com.sciquizapp.sciquiz.NetworkCommunication.WifiCommunication;
 
 /**
@@ -11,10 +12,14 @@ import com.sciquizapp.sciquiz.NetworkCommunication.WifiCommunication;
 public class LTApplication extends Application {
     private BluetoothCommunication appBluetooth;
     private WifiCommunication appWifi;
-    public WifiCommunication getAppWifi() {return appWifi;}
+    private NetworkCommunication appNetwork;
 
+    public WifiCommunication getAppWifi() {return appWifi;}
     public BluetoothCommunication getAppBluetooth() {
         return appBluetooth;
+    }
+    public NetworkCommunication getAppNetwork() {
+        return appNetwork;
     }
 
     public void setAppBluetooth(BluetoothCommunication appBluetooth) {
@@ -23,6 +28,10 @@ public class LTApplication extends Application {
 
     public void setAppWifi(WifiCommunication appWifi) {
         this.appWifi = appWifi;
+    }
+
+    public void setAppNetwork(NetworkCommunication appNetwork) {
+        this.appNetwork = appNetwork;
     }
 
 

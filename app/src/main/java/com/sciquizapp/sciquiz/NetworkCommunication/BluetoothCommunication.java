@@ -53,6 +53,7 @@ public class BluetoothCommunication {
     private OutputStream mServerOutStream = null;
     private InputStream mServerInStream = null;
     private WifiCommunication mWifiCommunication = null;
+    private NetworkCommunication mNetworkCommunication = null;
 
     // Well known SPP UUID
     //private static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
@@ -79,10 +80,11 @@ public class BluetoothCommunication {
      * @param application
      * @param TextOut
      */
-    public BluetoothCommunication(Context arg_context, Application application, TextView TextOut) {
+    public BluetoothCommunication(Context arg_context, Application application, TextView TextOut, NetworkCommunication networkCommunication) {
         mContext = arg_context;
         mApplication = application;
         mTextOut = TextOut;
+        mNetworkCommunication = networkCommunication;
     }
 
     /**
@@ -218,6 +220,7 @@ public class BluetoothCommunication {
                             mWifiCommunication.forwardQuestionToClient(whole_question_buffer);
                             launchQuestionActivity(convert_question.bytearrayvectorToQuestion(whole_question_buffer));
                         } else if (sizes.split("///")[0].contains("SERVR")) {
+                            Log.v("in ListenforQuestions","received SERVR: " + sizes.split("///")[1]);
                             if (sizes.split("///")[1].contains("MAX")) {
                                 try {
                                     btSocket.close();
@@ -230,11 +233,10 @@ public class BluetoothCommunication {
                                     e.printStackTrace();
                                 }
                             } else {
+                                mNetworkCommunication.connectedThroughBT = true;
                                 mWifiCommunication = new WifiCommunication(mContext, mApplication);
                                 mWifiCommunication.startAdhocWifi("adhoc_1", "wwf436**");
-
                             }
-                            Log.v("in ListenforQuestions","received SERVR");
 
                         }
                     }

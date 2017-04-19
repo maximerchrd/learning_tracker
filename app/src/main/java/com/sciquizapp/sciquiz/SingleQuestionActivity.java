@@ -27,6 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sciquizapp.sciquiz.NetworkCommunication.BluetoothCommunication;
+import com.sciquizapp.sciquiz.NetworkCommunication.NetworkCommunication;
 
 public class SingleQuestionActivity extends Activity {
 	//List<Question> quesList;
@@ -120,32 +121,34 @@ public class SingleQuestionActivity extends Activity {
 //				invalidateOptionsMenu();
 				
 				//first we have to get the bluetoothclientactivity object from the one launching the activity question
-				BluetoothCommunication bluetooth = ((LTApplication) getApplication()).getAppBluetooth();
-				bluetooth.sendAnswerToServer(String.valueOf(answerButton1.getText()));
+				//BluetoothCommunication bluetooth = ((LTApplication) getApplication()).getAppBluetooth();
+				NetworkCommunication networkCommunication = ((LTApplication) getApplication()).getAppNetwork();
+				networkCommunication.sendAnswerToServer(String.valueOf(answerButton1.getText()));
+				//bluetooth.sendAnswerToServer(String.valueOf(answerButton1.getText()));
 				finish();
 			}
 		});
 		answerButton2.setOnClickListener(new View.OnClickListener() {		
 			@Override
 			public void onClick(View v) {
-				BluetoothCommunication bluetooth = ((LTApplication) getApplication()).getAppBluetooth();
-				bluetooth.sendAnswerToServer(String.valueOf(answerButton2.getText()));
+				NetworkCommunication networkCommunication = ((LTApplication) getApplication()).getAppNetwork();
+				networkCommunication.sendAnswerToServer(String.valueOf(answerButton2.getText()));
 				finish();
 			}
 		});
 		answerButton3.setOnClickListener(new View.OnClickListener() {		
 			@Override
 			public void onClick(View v) {
-				BluetoothCommunication bluetooth = ((LTApplication) getApplication()).getAppBluetooth();
-				bluetooth.sendAnswerToServer(String.valueOf(answerButton3.getText()));
+				NetworkCommunication networkCommunication = ((LTApplication) getApplication()).getAppNetwork();
+				networkCommunication.sendAnswerToServer(String.valueOf(answerButton3.getText()));
 				finish();
 			}
 		});
 		answerButton4.setOnClickListener(new View.OnClickListener() {		
 			@Override
 			public void onClick(View v) {
-				BluetoothCommunication bluetooth = ((LTApplication) getApplication()).getAppBluetooth();
-				bluetooth.sendAnswerToServer(String.valueOf(answerButton4.getText()));
+				NetworkCommunication networkCommunication = ((LTApplication) getApplication()).getAppNetwork();
+				networkCommunication.sendAnswerToServer(String.valueOf(answerButton4.getText()));
 				finish();
 			}
 		});
