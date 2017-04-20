@@ -24,12 +24,12 @@
         "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-mdpi/compatibilite.jpg"
     },
     {
-        "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-mdpi-v4/circul_schema_simple2.jpg",
-        "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-mdpi/circul_schema_simple2.jpg"
-    },
-    {
         "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-mdpi-v4/ic_launcher_old.png",
         "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-mdpi/ic_launcher_old.png"
+    },
+    {
+        "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-mdpi-v4/circul_schema_simple2.jpg",
+        "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-mdpi/circul_schema_simple2.jpg"
     },
     {
         "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-mdpi-v4/circul_schema_simple.jpg",
@@ -40,12 +40,12 @@
         "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-mdpi/circulation2.jpg"
     },
     {
-        "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-mdpi-v4/tailles_pathogenes.jpg",
-        "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-mdpi/tailles_pathogenes.jpg"
-    },
-    {
         "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-mdpi-v4/respiration_cellulaire.jpg",
         "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-mdpi/respiration_cellulaire.jpg"
+    },
+    {
+        "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-mdpi-v4/tailles_pathogenes.jpg",
+        "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-mdpi/tailles_pathogenes.jpg"
     },
     {
         "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-mdpi-v4/capillaires.jpg",

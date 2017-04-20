@@ -45,6 +45,11 @@ public class NetworkCommunication {
 	public void ConnectToMaster() {
 		BTCommunication = new BluetoothCommunication(mContextNetCom, mApplication, mTextOut, this);
 		BTCommunication.BTConnectToMaster();
+		new Thread(new Runnable() {
+			public void run() {
+				if (!connectedThroughBT) mWifiCom.connectToServer();
+			}
+		}).start();
 //		new Thread(new Runnable() {
 //			public void run() {
 //				if (mWifiCom.scanForWifiName(mWifiName)) {

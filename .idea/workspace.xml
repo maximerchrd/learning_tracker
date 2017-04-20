@@ -10,6 +10,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3c5291b7-121f-4fa7-a0d3-869a73d9a63f" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/android/tools/fd/runtime/AppPatchesLoaderImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/sciquizapp/sciquiz/LTApplication$override.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/sciquizapp/sciquiz/NetworkCommunication/BluetoothCommunication$1$override.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/sciquizapp/sciquiz/NetworkCommunication/BluetoothCommunication$2$override.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/sciquizapp/sciquiz/NetworkCommunication/BluetoothCommunication$override.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/sciquizapp/sciquiz/NetworkCommunication/NetworkCommunication$override.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication$1$override.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication$2$override.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication$3$override.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication$override.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/sciquizapp/sciquiz/SingleQuestionActivity$1$override.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/sciquizapp/sciquiz/SingleQuestionActivity$2$override.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/sciquizapp/sciquiz/SingleQuestionActivity$3$override.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/sciquizapp/sciquiz/SingleQuestionActivity$4$override.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/sciquizapp/sciquiz/SingleQuestionActivity$5$override.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/sciquizapp/sciquiz/SingleQuestionActivity$override.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/buildId.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/buildId.txt" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" />
@@ -18,61 +36,40 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/sciquizapp/sciquiz/LTApplication.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/sciquizapp/sciquiz/LTApplication.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/sciquizapp/sciquiz/NetworkCommunication/BluetoothCommunication$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/sciquizapp/sciquiz/NetworkCommunication/BluetoothCommunication$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/sciquizapp/sciquiz/NetworkCommunication/BluetoothCommunication$2.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/sciquizapp/sciquiz/NetworkCommunication/BluetoothCommunication$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/sciquizapp/sciquiz/NetworkCommunication/BluetoothCommunication.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/sciquizapp/sciquiz/NetworkCommunication/BluetoothCommunication.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/sciquizapp/sciquiz/NetworkCommunication/NetworkCommunication.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/sciquizapp/sciquiz/NetworkCommunication/NetworkCommunication.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/sciquizapp/sciquiz/SingleQuestionActivity$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/sciquizapp/sciquiz/SingleQuestionActivity$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/sciquizapp/sciquiz/SingleQuestionActivity$2.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/sciquizapp/sciquiz/SingleQuestionActivity$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/sciquizapp/sciquiz/SingleQuestionActivity$3.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/sciquizapp/sciquiz/SingleQuestionActivity$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/sciquizapp/sciquiz/SingleQuestionActivity$4.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/sciquizapp/sciquiz/SingleQuestionActivity$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/sciquizapp/sciquiz/SingleQuestionActivity$5.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/sciquizapp/sciquiz/SingleQuestionActivity$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/sciquizapp/sciquiz/SingleQuestionActivity.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/sciquizapp/sciquiz/SingleQuestionActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/sciquizapp/sciquiz/LTApplication.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/sciquizapp/sciquiz/LTApplication.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/sciquizapp/sciquiz/NetworkCommunication/BluetoothCommunication$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/sciquizapp/sciquiz/NetworkCommunication/BluetoothCommunication$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/sciquizapp/sciquiz/NetworkCommunication/BluetoothCommunication$2.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/sciquizapp/sciquiz/NetworkCommunication/BluetoothCommunication$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/sciquizapp/sciquiz/NetworkCommunication/BluetoothCommunication.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/sciquizapp/sciquiz/NetworkCommunication/BluetoothCommunication.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication$2.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication$3.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/sciquizapp/sciquiz/NetworkCommunication/NetworkCommunication.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/sciquizapp/sciquiz/NetworkCommunication/NetworkCommunication.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/sciquizapp/sciquiz/SingleQuestionActivity$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/sciquizapp/sciquiz/SingleQuestionActivity$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/sciquizapp/sciquiz/SingleQuestionActivity$2.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/sciquizapp/sciquiz/SingleQuestionActivity$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/sciquizapp/sciquiz/SingleQuestionActivity$3.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/sciquizapp/sciquiz/SingleQuestionActivity$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/sciquizapp/sciquiz/SingleQuestionActivity$4.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/sciquizapp/sciquiz/SingleQuestionActivity$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/sciquizapp/sciquiz/SingleQuestionActivity$5.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/sciquizapp/sciquiz/SingleQuestionActivity$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/sciquizapp/sciquiz/SingleQuestionActivity.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/sciquizapp/sciquiz/SingleQuestionActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_5/classes.dex" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_5/classes.dex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication$2.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication$3.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/instant-run-support/debug/classes.zip" afterPath="$PROJECT_DIR$/app/build/intermediates/instant-run-support/debug/classes.zip" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/instant-run-support/debug/resources.zip" afterPath="$PROJECT_DIR$/app/build/intermediates/instant-run-support/debug/resources.zip" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_8/classes.dex" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_8/classes.dex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/sciquizapp/sciquiz/LTApplication.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/sciquizapp/sciquiz/LTApplication.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/sciquizapp/sciquiz/NetworkCommunication/BluetoothCommunication$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/sciquizapp/sciquiz/NetworkCommunication/BluetoothCommunication$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/sciquizapp/sciquiz/NetworkCommunication/BluetoothCommunication$2.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/sciquizapp/sciquiz/NetworkCommunication/BluetoothCommunication$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/sciquizapp/sciquiz/NetworkCommunication/BluetoothCommunication.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/sciquizapp/sciquiz/NetworkCommunication/BluetoothCommunication.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/sciquizapp/sciquiz/NetworkCommunication/NetworkCommunication.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/sciquizapp/sciquiz/NetworkCommunication/NetworkCommunication.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/sciquizapp/sciquiz/SingleQuestionActivity$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/sciquizapp/sciquiz/SingleQuestionActivity$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/sciquizapp/sciquiz/SingleQuestionActivity$2.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/sciquizapp/sciquiz/SingleQuestionActivity$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/sciquizapp/sciquiz/SingleQuestionActivity$3.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/sciquizapp/sciquiz/SingleQuestionActivity$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/sciquizapp/sciquiz/SingleQuestionActivity$4.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/sciquizapp/sciquiz/SingleQuestionActivity$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/sciquizapp/sciquiz/SingleQuestionActivity$5.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/sciquizapp/sciquiz/SingleQuestionActivity$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/sciquizapp/sciquiz/SingleQuestionActivity.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/sciquizapp/sciquiz/SingleQuestionActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/android/tools/fd/runtime/AppPatchesLoaderImpl.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/android/tools/fd/runtime/AppPatchesLoaderImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/com/sciquizapp/sciquiz/LTApplication.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/com/sciquizapp/sciquiz/LTApplication.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/com/sciquizapp/sciquiz/SingleQuestionActivity$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/com/sciquizapp/sciquiz/SingleQuestionActivity$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/com/sciquizapp/sciquiz/SingleQuestionActivity$2.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/com/sciquizapp/sciquiz/SingleQuestionActivity$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/com/sciquizapp/sciquiz/SingleQuestionActivity$3.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/com/sciquizapp/sciquiz/SingleQuestionActivity$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/com/sciquizapp/sciquiz/SingleQuestionActivity$4.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/com/sciquizapp/sciquiz/SingleQuestionActivity$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/com/sciquizapp/sciquiz/SingleQuestionActivity$5.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/com/sciquizapp/sciquiz/SingleQuestionActivity$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/com/sciquizapp/sciquiz/SingleQuestionActivity.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/com/sciquizapp/sciquiz/SingleQuestionActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/com/sciquizapp/sciquiz/NetworkCommunication/BluetoothCommunication$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/com/sciquizapp/sciquiz/NetworkCommunication/BluetoothCommunication$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/com/sciquizapp/sciquiz/NetworkCommunication/BluetoothCommunication$2.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/com/sciquizapp/sciquiz/NetworkCommunication/BluetoothCommunication$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/com/sciquizapp/sciquiz/NetworkCommunication/BluetoothCommunication.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/com/sciquizapp/sciquiz/NetworkCommunication/BluetoothCommunication.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication$2.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication$3.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/com/sciquizapp/sciquiz/NetworkCommunication/NetworkCommunication.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/com/sciquizapp/sciquiz/NetworkCommunication/NetworkCommunication.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication$2.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication$3.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/outputs/apk/app-debug-unaligned.apk" afterPath="$PROJECT_DIR$/app/build/outputs/apk/app-debug-unaligned.apk" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/outputs/apk/app-debug.apk" afterPath="$PROJECT_DIR$/app/build/outputs/apk/app-debug.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/single/drawable-mdpi-v4.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/single/drawable-mdpi-v4.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/instant-run-support/debug/reload-changes.txt" afterPath="$PROJECT_DIR$/app/build/intermediates/instant-run-support/debug/reload-changes.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/restart-dex/debug/build-info.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/restart-dex/debug/build-info.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/buildId.txt" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_8/buildId.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/sciquizapp/sciquiz/LTApplication.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/sciquizapp/sciquiz/LTApplication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/sciquizapp/sciquiz/NetworkCommunication/BluetoothCommunication.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/sciquizapp/sciquiz/NetworkCommunication/BluetoothCommunication.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/sciquizapp/sciquiz/NetworkCommunication/NetworkCommunication.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/sciquizapp/sciquiz/NetworkCommunication/NetworkCommunication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/sciquizapp/sciquiz/SingleQuestionActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/sciquizapp/sciquiz/SingleQuestionActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
     </list>
     <ignored path="learning-tracker.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -104,9 +101,12 @@
       <file leaf-file-name="NetworkCommunication.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sciquizapp/sciquiz/NetworkCommunication/NetworkCommunication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.185185">
-              <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="-8.185185">
+              <caret line="51" column="19" selection-start-line="51" selection-start-column="19" selection-end-line="51" selection-end-column="19" />
+              <folding>
+                <element signature="e#1615#1720#0" expanded="true" />
+                <element signature="e#1719#1720#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -131,15 +131,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WifiCommunication.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="WifiCommunication.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.1481482">
-              <caret line="252" column="28" selection-start-line="252" selection-start-column="28" selection-end-line="252" selection-end-column="28" />
+            <state vertical-scroll-proportion="0.6724891">
+              <caret line="89" column="48" selection-start-line="89" selection-start-column="48" selection-end-line="89" selection-end-column="48" />
               <folding>
                 <element signature="e#1533#1562#0" expanded="true" />
-                <element signature="e#9294#12435#0" expanded="true" />
-                <element signature="e#12434#12435#0" expanded="true" />
+                <element signature="e#9407#12548#0" expanded="true" />
+                <element signature="e#12547#12548#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -162,11 +162,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BluetoothCommunication.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="BluetoothCommunication.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sciquizapp/sciquiz/NetworkCommunication/BluetoothCommunication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2701031">
-              <caret line="217" column="76" selection-start-line="217" selection-start-column="76" selection-end-line="217" selection-end-column="76" />
+            <state vertical-scroll-proportion="136.25926">
+              <caret line="178" column="46" selection-start-line="178" selection-start-column="46" selection-end-line="178" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1775,9 +1775,9 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/sciquizapp/sciquiz/OldBluetoothCommunication.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sciquizapp/sciquiz/SingleQuestionActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sciquizapp/sciquiz/NetworkCommunication/BluetoothCommunication.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sciquizapp/sciquiz/LTApplication.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sciquizapp/sciquiz/NetworkCommunication/NetworkCommunication.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication.java" />
       </list>
     </option>
   </component>
@@ -2284,7 +2284,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#1615#1720#0" expanded="true" />
+            <element signature="e#1719#1720#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2292,7 +2295,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#1615#1720#0" expanded="true" />
+            <element signature="e#1719#1720#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2642,30 +2648,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sciquizapp/sciquiz/NetworkCommunication/NetworkCommunication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.185185">
-          <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.1481482">
-          <caret line="252" column="28" selection-start-line="252" selection-start-column="28" selection-end-line="252" selection-end-column="28" />
+        <state vertical-scroll-proportion="-8.185185">
+          <caret line="51" column="19" selection-start-line="51" selection-start-column="19" selection-end-line="51" selection-end-column="19" />
           <folding>
-            <element signature="e#1533#1562#0" expanded="true" />
-            <element signature="e#9294#12435#0" expanded="true" />
-            <element signature="e#12434#12435#0" expanded="true" />
+            <element signature="e#1615#1720#0" expanded="true" />
+            <element signature="e#1719#1720#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sciquizapp/sciquiz/NetworkCommunication/BluetoothCommunication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2701031">
-          <caret line="217" column="76" selection-start-line="217" selection-start-column="76" selection-end-line="217" selection-end-column="76" />
+        <state vertical-scroll-proportion="136.25926">
+          <caret line="178" column="46" selection-start-line="178" selection-start-column="46" selection-end-line="178" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6724891">
+          <caret line="89" column="48" selection-start-line="89" selection-start-column="48" selection-end-line="89" selection-end-column="48" />
+          <folding>
+            <element signature="e#1533#1562#0" expanded="true" />
+            <element signature="e#9407#12548#0" expanded="true" />
+            <element signature="e#12547#12548#0" expanded="true" />
           </folding>
         </state>
       </provider>

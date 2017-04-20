@@ -52,10 +52,11 @@ public class WifiCommunication {
 		mApplication = arg_application;
 	}
 
-	public void startServerSocket() {
+	private void startServerSocket() {
 		try {
+			Log.v("startServerSocket: ","beginning");
 			Boolean end = false;
-			ServerSocket ss = new ServerSocket(12345);
+			ServerSocket ss = new ServerSocket(8080);
 			outputStreamVector = new Vector<OutputStream>();
 			inputStreamVector = new Vector<InputStream>();
 			while(!end){
@@ -85,7 +86,8 @@ public class WifiCommunication {
 
 	public void connectToServer() {
 		try {
-			Socket s = new Socket("localhost",12345);
+			Log.v("connectToServer", "beginning");
+			Socket s = new Socket("192.168.43.92",8080);
 
 			//outgoing stream redirect to socket
 			mOutputStream = s.getOutputStream();
@@ -201,6 +203,7 @@ public class WifiCommunication {
 		} catch (NoSuchMethodException e) {
 			e.printStackTrace();
 		}
+		startServerSocket();
 	}
 
 	/**
