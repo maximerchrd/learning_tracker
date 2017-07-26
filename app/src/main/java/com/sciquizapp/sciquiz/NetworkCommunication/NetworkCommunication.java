@@ -47,7 +47,7 @@ public class NetworkCommunication {
 		BTCommunication.BTConnectToMaster();
 		new Thread(new Runnable() {
 			public void run() {
-				if (!connectedThroughBT) mWifiCom.connectToServer();
+				//if (!connectedThroughBT) mWifiCom.connectToServer();
 			}
 		}).start();
 //		new Thread(new Runnable() {

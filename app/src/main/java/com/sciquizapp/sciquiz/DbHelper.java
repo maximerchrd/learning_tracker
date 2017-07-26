@@ -358,7 +358,7 @@ public class DbHelper extends SQLiteOpenHelper {
 		this.addQuestion(i16);
 		Question co1=new Question("chimie organique","1","Combien de produits différends obtient-on par la monochloration du 2-méthylbutane?","1","2","4", "5","4","");
 		this.addQuestion(co1);
-		Question co2=new Question("chimie organique","1","Quel est le produit principal de la réaction de l'acide bromhyrique sur du 2-méthylbut-2-ène?","2-bromo-2-méthylbutane","2-bromo-3-méthylbutane","3-bromo-3-méthylbutane", "3-bromo-2-méthylbutane","2-bromo-2-méthylbutane","");
+		Question co2=new Question("chimie organique","1","Quel est le produit principal de la réaction de l'acide bromhydrique sur du 2-méthylbut-2-ène?","2-bromo-2-méthylbutane","2-bromo-3-méthylbutane","3-bromo-3-méthylbutane", "3-bromo-2-méthylbutane","2-bromo-2-méthylbutane","");
 		this.addQuestion(co2);
 		Question co3=new Question("chimie organique","1","Quel métal est utilisé pour le couplage de Fukuyama?","Pd","Ru","Cu", "Mo","Pd","");
 		this.addQuestion(co3);
@@ -374,6 +374,7 @@ public class DbHelper extends SQLiteOpenHelper {
 	public void addQuestion(Question quest) {
 		//SQLiteDatabase db = this.getWritableDatabase();
 		ContentValues values = new ContentValues();
+		values.put(KEY_ID, quest.getID());
 		values.put(KEY_SUBJECT, quest.getSUBJECT());
 		values.put(KEY_LEVEL, quest.getLEVEL());
 		values.put(KEY_QUES, quest.getQUESTION()); 
@@ -388,7 +389,8 @@ public class DbHelper extends SQLiteOpenHelper {
 		values.put(KEY_TRIAL4, "0");
 		values.put(KEY_IMAGE, quest.getIMAGE());
 		// Inserting Row
-		dbase.insert(TABLE_QUEST, null, values);		
+		if (dbase == null) dbase = this.getReadableDatabase();
+		dbase.insert(TABLE_QUEST, null, values);
 	}
 	public List<Question> getAllQuestions() {
 		List<Question> quesList = new ArrayList<Question>();
@@ -451,6 +453,38 @@ public class DbHelper extends SQLiteOpenHelper {
 		}
 		// return quest list
 		return quesList;
+	}
+	public Question getQuestionWithID(int ID) {
+		List<Question> quesList = new ArrayList<Question>();
+		// Select All Query
+		String selectQuery = "SELECT  * FROM " + TABLE_QUEST;
+		dbase=this.getReadableDatabase();
+		Cursor cursor = dbase.rawQuery(selectQuery, null);
+		// looping through all rows and adding to list
+		if (cursor.moveToPosition(1)) {
+			do {
+				if (ID == cursor.getInt(0)) {
+					Question quest = new Question();
+					quest.setID(cursor.getInt(0));
+					quest.setSUBJECT(cursor.getString(1));
+					quest.setLEVEL(cursor.getString(2));
+					quest.setQUESTION(cursor.getString(3));
+					quest.setANSWER(cursor.getString(4));
+					quest.setOPTA(cursor.getString(5));
+					quest.setOPTB(cursor.getString(6));
+					quest.setOPTC(cursor.getString(7));
+					quest.setOPTD(cursor.getString(8));
+					quest.setTRIAL1(cursor.getString(9));
+					quest.setTRIAL2(cursor.getString(10));
+					quest.setTRIAL3(cursor.getString(11));
+					quest.setTRIAL4(cursor.getString(12));
+					quest.setIMAGE(cursor.getString(13)); //13, because the trials are between OPTD and IMAGE
+					return quest;
+				}
+			} while (cursor.moveToNext());
+		}
+		// return null if question not found
+		return null;
 	}
 	public List<Question> getQuestionsFromSubjectAndLevel(String subjectArg, int levelArg) {
 		List<Question> quesList = new ArrayList<Question>();

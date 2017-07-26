@@ -147,7 +147,6 @@ public class BluetoothCommunication {
      */
     public void listenForQuestions() {
         if ((btSocket != null && btSocket.isConnected()) || (mServerSocket != null)) {
-
             new Thread(new Runnable() {
                 public void run() {
 //                    Boolean able_to_read = true;
@@ -182,7 +181,8 @@ public class BluetoothCommunication {
                             e.printStackTrace();
                             able_to_read = false;
                         }
-                        if (sizes.split(":")[0].contains("QUEST")) {
+                        if (sizes.split(":")[0].contains("QUEST") || sizes.split(":")[0].contains("QUIZZ")) {
+                            Log.v("prefix contains: ", sizes.split(":")[0]);
                             int size_of_image = Integer.parseInt(sizes.split(":")[1]);
                             int size_of_text = Integer.parseInt(sizes.split(":")[2].replaceAll("\\D+", ""));
                             byte[] whole_question_buffer = new byte[20 + size_of_image + size_of_text];
@@ -216,9 +216,14 @@ public class BluetoothCommunication {
                             while (bytes_read > 0);    //shall be sizeRead > -1, because .read returns -1 when finished reading, but outstream not closed on server side
                             bytes_read = 1;
                             DataConversion convert_question = new DataConversion(mContext);
-                            if (mWifiCommunication == null) mWifiCommunication = new WifiCommunication(mContext, mApplication);
-                            mWifiCommunication.forwardQuestionToClient(whole_question_buffer);
-                            launchQuestionActivity(convert_question.bytearrayvectorToQuestion(whole_question_buffer));
+                            //if (mWifiCommunication == null) mWifiCommunication = new WifiCommunication(mContext, mApplication);
+                            //mWifiCommunication.forwardQuestionToClient(whole_question_buffer);
+                            if (sizes.split(":")[0].contains("QUEST")) {
+                                launchQuestionActivity(convert_question.bytearrayvectorToQuestion(whole_question_buffer));
+                            } else {
+                                DataConversion tempDataConversion = new DataConversion(mContext);
+                                tempDataConversion.SaveQuestionToDB(whole_question_buffer);
+                            }
                         } else if (sizes.split("///")[0].contains("SERVR")) {
                             Log.v("in ListenforQuestions","received SERVR: " + sizes.split("///")[1]);
                             if (sizes.split("///")[1].contains("MAX")) {
@@ -234,10 +239,18 @@ public class BluetoothCommunication {
                                 }
                             } else {
                                 mNetworkCommunication.connectedThroughBT = true;
-                                mWifiCommunication = new WifiCommunication(mContext, mApplication);
-                                mWifiCommunication.startAdhocWifi("adhoc_1", "wwf436**");
+                                //mWifiCommunication = new WifiCommunication(mContext, mApplication);
+                                //mWifiCommunication.startAdhocWifi("adhoc_1", "wwf436**");
                             }
 
+                        } else if (sizes.split("///")[0].contains("QUEID")) {
+                            DbHelper tempDBHelper = new DbHelper(mContext);
+                            Question questionToDisplay = tempDBHelper.getQuestionWithID(Integer.parseInt(sizes.split("///")[1]));
+                            if (questionToDisplay == null) {
+                                Log.w("trying to displ quest: ", "question not found in DB");
+                            } else {
+                                launchQuestionActivity(questionToDisplay);
+                            }
                         }
                     }
                 }
