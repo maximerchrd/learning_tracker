@@ -1,12 +1,13 @@
 package com.sciquizapp.sciquiz;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
 
-
+import android.content.Context;
 import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -18,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -35,7 +37,10 @@ public class QuestionActivity extends Activity {
 	int questionId = 1;
 	Question currentQ;
 	TextView txtQuestion;
-	Button answerButton1, answerButton2, answerButton3, answerButton4;
+	Button answerButton1, answerButton2, answerButton3, answerButton4, submitButton;
+	CheckBox checkbox1, checkBox2, checkBox3, checkBox4, checkBox5, checkBox6, checkBox7;
+	ArrayList<CheckBox> checkBoxesArray;
+	ArrayList<String> arrayOfOptions;
 	ImageView picture;
 	boolean isImageFitToScreen;
 
@@ -50,6 +55,7 @@ public class QuestionActivity extends Activity {
 		//final String subjectQuiz = bun.getString("subject");
 		//quesList = db.getQuestionsFromSubject(subjectQuiz);
 		quesList = db.getAllQuestions();
+		checkBoxesArray = new ArrayList<>();
 
 
 		txtQuestion=(TextView)findViewById(R.id.textViewQuest1);
@@ -57,6 +63,7 @@ public class QuestionActivity extends Activity {
 		answerButton2 = (Button)findViewById(R.id.answerbuttonQuest2);
 		answerButton3 = (Button)findViewById(R.id.answerbuttonQuest3);
 		answerButton4 = (Button)findViewById(R.id.answerbuttonQuest4);
+		submitButton = (Button)findViewById(R.id.submitButton);
 		picture = (ImageView)findViewById(R.id.pictureQuest);
 
 		picture.setOnClickListener(new View.OnClickListener() {
@@ -74,7 +81,15 @@ public class QuestionActivity extends Activity {
 		});
 
 		currentQ=quesList.get(questionId);
+
+
+		int numberOfOptions = currentQ.getNumberOfOptions();
 		setQuestionView();
+		for (int i = 0; i < numberOfOptions; i++) {
+			CheckBox tempCheckBox = new CheckBox(getApplicationContext());
+			//tempCheckBox.setText();
+			//checkBoxesArray.add();
+		}
 
 		answerButton1.setOnClickListener(new View.OnClickListener() {		
 			@SuppressLint("SimpleDateFormat") @Override

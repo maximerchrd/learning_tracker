@@ -135,5 +135,14 @@ public class Question {
 	public void setIMAGE(String iMAGE) {
 		IMAGE = iMAGE;
 	}
+
+	/**
+	 * this method scans the options to see which ones are not empty and returns
+	 * the number of available options (not implemented yet)
+	 * @return 4
+     */
+	public int getNumberOfOptions() {
+		return 4;
+	}
 	
 }

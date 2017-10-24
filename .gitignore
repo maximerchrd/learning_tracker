@@ -1,0 +1,14 @@
+
+*.apk
+
+*.class
+
+*.txt
+
+*.zip
+
+*.bin
+
+*.xml
+
+*.lock
