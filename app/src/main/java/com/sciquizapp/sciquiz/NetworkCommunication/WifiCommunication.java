@@ -7,10 +7,14 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.Vector;
 
@@ -52,46 +56,18 @@ public class WifiCommunication {
 		mApplication = arg_application;
 	}
 
-	private void startServerSocket() {
-		try {
-			Log.v("startServerSocket: ","beginning");
-			Boolean end = false;
-			ServerSocket ss = new ServerSocket(8080);
-			outputStreamVector = new Vector<OutputStream>();
-			inputStreamVector = new Vector<InputStream>();
-			while(!end){
-				//Server is waiting for client here, if needed
-				Socket s = ss.accept();
-				outputStreamVector.add(s.getOutputStream());
-				inputStreamVector.add(s.getInputStream());
-				BufferedReader input = new BufferedReader(new InputStreamReader(s.getInputStream()));
-				PrintWriter output = new PrintWriter(s.getOutputStream(),true); //Autoflush
-				String st = input.readLine();
-				Log.d("Tcp Example", "From client: "+st);
-				output.println("Good bye and thanks for all the fish :)");
-				s.close();
-				if (false){ end = true; }
-			}
-			ss.close();
-
-
-		} catch (UnknownHostException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 
 	public void connectToServer() {
 		try {
 			Log.v("connectToServer", "beginning");
-			Socket s = new Socket("192.168.43.92",8080);
-
+			Socket s = new Socket("192.168.43.25",9090);
+			//Socket s = new Socket("192.168.88.252",9090);
+			Log.v("server name",s.getInetAddress().getCanonicalHostName());
+			Log.v("server name",s.getInetAddress().getHostName());
 			//outgoing stream redirect to socket
 			mOutputStream = s.getOutputStream();
 			mInputStream = s.getInputStream();
+			listenForQuestions();
 			//Close connection
 			//s.close();
 
@@ -105,141 +81,6 @@ public class WifiCommunication {
 		}
 	}
 
-	/**
-	 * method that scans for wifi network and check if one of them is named wifiName
-	 * @param wifiName
-	 * @return true if the wifi name was detected, false if not
-	 */
-	public Boolean scanForWifiName(String wifiName) {
-		//start wifi if not yet done
-		if (mWifi.isWifiEnabled() == false) {
-			mWifi.setWifiEnabled(true);
-		}
-
-		//scan for wifi networks and get the list
-		mContextWifCom.registerReceiver(scanningreceiver = new BroadcastReceiver() {
-			@Override
-			public void onReceive(Context c, Intent intent) 
-			{
-				mScanResults = mWifi.getScanResults();
-			}
-		}, new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
-
-		//start the scan and wait so that mScanResults isnt empty
-		mWifi.startScan();
-		try {
-			Thread.sleep(6000);
-			mContextWifCom.unregisterReceiver(scanningreceiver);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		//get the names of the wifi networks
-		List<String> ScanResultNames = new ArrayList<String>();
-		for (int i = 0; i < mScanResults.size(); i++) {
-			ScanResultNames.add(mScanResults.get(i).SSID);
-		}
-
-		if (ScanResultNames.contains(wifiName)) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	/**
-	 * method to start an adhoc wifi
-	 * @param wifiName
-	 * @param wifiPassword
-     */
-	public void startAdhocWifi(String wifiName, String wifiPassword) {
-		//turn off the wifi if it is on
-		new Thread(new Runnable() {
-			public void run() {
-				if (mWifi.isWifiEnabled()) {
-					mWifi.setWifiEnabled(false);
-				}
-			}
-		}).start();
-
-		//wait for the wifi to be turned off, otherwise hotspot cannot be turned on. 200 ms work on huawei Y560/L01
-		try {
-			Thread.sleep(300);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		//setup the ad hoc wifi configuration
-		WifiConfiguration wifi_configuration = new WifiConfiguration();
-		wifi_configuration.SSID = wifiName;
-		wifi_configuration.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.WPA_PSK);
-		wifi_configuration.preSharedKey = wifiPassword;
-//		wifi_configuration.hiddenSSID = true;
-//		wifi_configuration.status = WifiConfiguration.Status.DISABLED;     
-//		wifi_configuration.priority = 40;
-//		wifi_configuration.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE);
-//		wifi_configuration.allowedProtocols.set(WifiConfiguration.Protocol.RSN); 
-//		wifi_configuration.allowedProtocols.set(WifiConfiguration.Protocol.WPA);
-//		wifi_configuration.allowedAuthAlgorithms.set(WifiConfiguration.AuthAlgorithm.OPEN);
-//		wifi_configuration.allowedAuthAlgorithms.set(WifiConfiguration.AuthAlgorithm.SHARED);
-//		wifi_configuration.allowedPairwiseCiphers.set(WifiConfiguration.PairwiseCipher.CCMP);
-//		wifi_configuration.allowedPairwiseCiphers.set(WifiConfiguration.PairwiseCipher.TKIP);
-//		wifi_configuration.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.WEP40);
-//		wifi_configuration.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.WEP104);
-//
-//		wifi_configuration.wepKeys[0] = "\"aaabbb1234\""; //This is the WEP Password
-//		wifi_configuration.wepTxKeyIndex = 0;
-		mWifi.addNetwork(wifi_configuration);
-		try {
-			mWifi.getClass().getMethod("setWifiApEnabled", WifiConfiguration.class, boolean.class).invoke(mWifi, wifi_configuration, true);
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (IllegalArgumentException e) {
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			e.printStackTrace();
-		} catch (NoSuchMethodException e) {
-			e.printStackTrace();
-		}
-		startServerSocket();
-	}
-
-	/**
-	 * method used to connect to an open wifi network
-	 * @param wifiName
-	 * 
-	 */
-	public void connectToWifiWithName (String wifiName, String wifiPassword) {
-		//setup the wifi configuration
-		WifiConfiguration wifi_configuration = new WifiConfiguration();
-		wifi_configuration.SSID = "\"" +  wifiName + "\"";
-//		wifi_configuration.hiddenSSID = true;
-//		wifi_configuration.status = WifiConfiguration.Status.DISABLED;     
-//		wifi_configuration.priority = 40;
-//		wifi_configuration.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.WPA_EAP);
-		wifi_configuration.preSharedKey = "\""+ "1p4W159#" +"\"";
-//		wifi_configuration.allowedProtocols.set(WifiConfiguration.Protocol.RSN); 
-//		wifi_configuration.allowedProtocols.set(WifiConfiguration.Protocol.WPA);
-//		wifi_configuration.allowedAuthAlgorithms.set(WifiConfiguration.AuthAlgorithm.OPEN);
-//		wifi_configuration.allowedAuthAlgorithms.set(WifiConfiguration.AuthAlgorithm.SHARED);
-//		wifi_configuration.allowedPairwiseCiphers.set(WifiConfiguration.PairwiseCipher.CCMP);
-//		wifi_configuration.allowedPairwiseCiphers.set(WifiConfiguration.PairwiseCipher.TKIP);
-//		wifi_configuration.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.WEP40);
-//		wifi_configuration.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.WEP104);
-//
-//		wifi_configuration.wepKeys[0] = "\"aaabbb1234\""; //This is the WEP Password
-//		wifi_configuration.wepTxKeyIndex = 0;
-
-		int networkID = mWifi.addNetwork(wifi_configuration);
-		mWifi.disconnect();
-		mWifi.enableNetwork(networkID, true);
-		mWifi.saveConfiguration();
-		mWifi.reconnect();               
-
-	}
-
 	public void sendAnswerToServer(String answer) {
 		byte[] ansBuffer = answer.getBytes();
 		try {
@@ -251,23 +92,6 @@ public class WifiCommunication {
 			Log.e("Fatal Error", msg);
 		}
 		answer = "";
-	}
-
-	public void forwardQuestionToClient (byte[] whole_question_buffer) {
-		if ( outputStreamVector != null) {
-			for (int i = 0; i < outputStreamVector.size(); i++) {
-				try {
-					outputStreamVector.elementAt(i).write(whole_question_buffer);
-				} catch (IOException e) {
-					outputStreamVector.remove(i);
-					e.printStackTrace();
-				}
-			}
-		}
-	}
-
-	public void forwardDataToServer () {
-
 	}
 
 	public void listenForQuestions() {
@@ -377,5 +201,28 @@ public class WifiCommunication {
 		//		bun.putParcelable("bluetoothObject", this);
 		mIntent.putExtras(bun);
 		mContextWifCom.startActivity(mIntent);
+	}
+
+	/**
+	 * WORK IN PROGRESS
+	 * method used to scan the wifi network to which the smartphone is connected
+	 * and try to connect to the "interesting" ip addresses (e.g. 192.168.x.xx, 127.0.x.x)
+	 */
+	public void scanAndConnectToIP() {
+		try {
+			Enumeration nis = NetworkInterface.getNetworkInterfaces();
+			while(nis.hasMoreElements())
+			{
+				NetworkInterface ni = (NetworkInterface) nis.nextElement();
+				Enumeration ias = ni.getInetAddresses();
+				while (ias.hasMoreElements())
+				{
+					InetAddress ia = (InetAddress) ias.nextElement();
+					Log.d("address found:",ia.getHostAddress());
+				}
+
+			}
+		} catch (SocketException ex) {
+		}
 	}
 }

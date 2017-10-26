@@ -9,6 +9,6 @@
 
 *.bin
 
-*.xml
-
 *.lock
+
+app/build/intermediates/classes/debug/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication$1.class
