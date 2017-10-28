@@ -1,19 +1,10 @@
-package com.sciquizapp.sciquiz;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+package com.sciquizapp.sciquiz.Activities;
 
-
-import android.content.Context;
-import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
-import android.util.Log;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,7 +14,16 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.sciquizapp.sciquiz.AndroidClient;
+import com.sciquizapp.sciquiz.DbHelper;
+import com.sciquizapp.sciquiz.Questions.Question;
+import com.sciquizapp.sciquiz.R;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 public class QuestionActivity extends Activity {
 	//List<Question> quesList;
 	List<Question> quesList;
@@ -59,90 +59,50 @@ public class QuestionActivity extends Activity {
 
 
 		txtQuestion=(TextView)findViewById(R.id.textViewQuest1);
-		answerButton1 = (Button)findViewById(R.id.answerbuttonQuest1);
-		answerButton2 = (Button)findViewById(R.id.answerbuttonQuest2);
-		answerButton3 = (Button)findViewById(R.id.answerbuttonQuest3);
-		answerButton4 = (Button)findViewById(R.id.answerbuttonQuest4);
 		submitButton = (Button)findViewById(R.id.submitButton);
 		picture = (ImageView)findViewById(R.id.pictureQuest);
 
-		picture.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				if(isImageFitToScreen) {
-					isImageFitToScreen=false;
-					picture.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, 0.19f));
-					picture.setAdjustViewBounds(true);
-				}else{
-					isImageFitToScreen=true;
-					picture.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
-				}
-			}
-		});
-
 		currentQ=quesList.get(questionId);
 
-
-		int numberOfOptions = currentQ.getNumberOfOptions();
-		setQuestionView();
-		for (int i = 0; i < numberOfOptions; i++) {
-			CheckBox tempCheckBox = new CheckBox(getApplicationContext());
-			//tempCheckBox.setText();
-			//checkBoxesArray.add();
+		if (currentQ.getIMAGE().length() > 0) {
+			picture.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					if (isImageFitToScreen) {
+						isImageFitToScreen = false;
+						picture.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, 0.19f));
+						picture.setAdjustViewBounds(true);
+					} else {
+						isImageFitToScreen = true;
+						picture.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
+					}
+				}
+			});
 		}
+		setQuestionView();
+		final CheckBox tempCheckBox = new CheckBox(getApplicationContext());
+		tempCheckBox.setText(currentQ.getOPTA());
+		checkBoxesArray.add(tempCheckBox);
+		tempCheckBox.setText(currentQ.getOPTB());
+		checkBoxesArray.add(tempCheckBox);
+		tempCheckBox.setText(currentQ.getOPTC());
+		checkBoxesArray.add(tempCheckBox);
+		tempCheckBox.setText(currentQ.getOPTD());
+		checkBoxesArray.add(tempCheckBox);
 
-		answerButton1.setOnClickListener(new View.OnClickListener() {		
+		submitButton.setOnClickListener(new View.OnClickListener() {
 			@SuppressLint("SimpleDateFormat") @Override
 			public void onClick(View v) {
 				Intent intent = new Intent(QuestionActivity.this, AndroidClient.class);
 				Bundle b = new Bundle();
-				//questionID = Integer.parseInt(incomingMessage);
-				b.putString("question", currentQ.getQUESTION());
-				b.putString("answer", String.valueOf(answerButton1.getText()));
-				if (answerButton1.getText().toString().matches(currentQ.getANSWER())) {
-					b.putString("result", "right");
-				} else {
-					b.putString("result", "wrong");
+				String answer = "";
+				for (int i = 0; i < 4; i++) {
+					if (checkBoxesArray.get(i).isChecked()) {
+						answer += checkBoxesArray.get(i).getText();
+					}
 				}
-				intent.putExtras(b);
-				startActivity(intent);
-				finish();
-				invalidateOptionsMenu();
-			}
-		});
-		answerButton2.setOnClickListener(new View.OnClickListener() {		
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(QuestionActivity.this, AndroidClient.class);
-				Bundle b = new Bundle();
-				//questionID = Integer.parseInt(incomingMessage);
-				b.putString("answer", String.valueOf(answerButton2.getText()));
-				intent.putExtras(b);
-				startActivity(intent);
-				finish();
-				invalidateOptionsMenu();
-			}
-		});
-		answerButton3.setOnClickListener(new View.OnClickListener() {		
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(QuestionActivity.this, AndroidClient.class);
-				Bundle b = new Bundle();
-				//questionID = Integer.parseInt(incomingMessage);
-				b.putString("answer", String.valueOf(answerButton3.getText()));
-				intent.putExtras(b);
-				startActivity(intent);
-				finish();
-				invalidateOptionsMenu();
-			}
-		});
-		answerButton4.setOnClickListener(new View.OnClickListener() {		
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(QuestionActivity.this, AndroidClient.class);
-				Bundle b = new Bundle();
-				//questionID = Integer.parseInt(incomingMessage);
-				b.putString("answer", String.valueOf(answerButton4.getText()));
+
+				b.putString("answer", answer);
 				intent.putExtras(b);
 				startActivity(intent);
 				finish();
@@ -170,7 +130,7 @@ public class QuestionActivity extends Activity {
 		answerButton3.setBackgroundColor(Color.parseColor("#00CCCB"));
 		answerButton4.setBackgroundColor(Color.parseColor("#00CCCB"));
 		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-				LinearLayout.LayoutParams.MATCH_PARENT,      
+				LinearLayout.LayoutParams.MATCH_PARENT,
 				LinearLayout.LayoutParams.WRAP_CONTENT
 		);
 		int height = getApplicationContext().getResources().getDisplayMetrics().heightPixels;
@@ -180,7 +140,7 @@ public class QuestionActivity extends Activity {
 		answerButton2.setLayoutParams(params);
 		answerButton3.setLayoutParams(params);
 		answerButton4.setLayoutParams(params);
-		
+
 		int imageResource = getResources().getIdentifier(currentQ.getIMAGE(), null, getPackageName());
 		picture.setImageResource(imageResource);
 

@@ -3,15 +3,13 @@ package com.sciquizapp.sciquiz;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.util.Log;
 
-import java.io.BufferedOutputStream;
+import com.sciquizapp.sciquiz.Questions.Question;
+
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.util.Vector;
 
 /**
  * Created by maximerichard on 10/02/17.

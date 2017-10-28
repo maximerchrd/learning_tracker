@@ -1,15 +1,10 @@
 package com.sciquizapp.sciquiz.NetworkCommunication;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.PrintWriter;
-import java.lang.reflect.InvocationTargetException;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
-import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
 import java.net.UnknownHostException;
@@ -18,24 +13,19 @@ import java.util.Enumeration;
 import java.util.List;
 import java.util.Vector;
 
+import com.sciquizapp.sciquiz.Activities.QuestionActivity;
+import com.sciquizapp.sciquiz.Activities.SingleQuestionActivity;
 import com.sciquizapp.sciquiz.DataConversion;
 import com.sciquizapp.sciquiz.LTApplication;
-import com.sciquizapp.sciquiz.Question;
-import com.sciquizapp.sciquiz.R;
-import com.sciquizapp.sciquiz.SingleQuestionActivity;
-import com.sciquizapp.sciquiz.WifiAccessManager;
+import com.sciquizapp.sciquiz.Questions.Question;
 
-import android.app.Activity;
 import android.app.Application;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.TextView;
 
 public class WifiCommunication {
 	private WifiManager mWifi;
@@ -164,8 +154,41 @@ public class WifiCommunication {
 						bytes_read = 1;
 						DataConversion convert_question = new DataConversion(mContextWifCom);
 						launchQuestionActivity(convert_question.bytearrayvectorToQuestion(whole_question_buffer));
-					} else {
+					} else if (sizes.split(":")[0].contains("MULTQ")) {
+						int size_of_image = Integer.parseInt(sizes.split(":")[1]);
+						int size_of_text = Integer.parseInt(sizes.split(":")[2].replaceAll("\\D+", ""));
+						byte[] whole_question_buffer = new byte[20 + size_of_image + size_of_text];
+						for (int i = 0; i < 20; i++) {
+							whole_question_buffer[i] = prefix_buffer[i];
+						}
+						current = 20;
+						do {
+							try {
+								//Log.v("read input stream", "second");
 
+								bytes_read = mInputStream.read(whole_question_buffer, current, (20 + size_of_image + size_of_text - current));
+								Log.v("number of bytes read:", Integer.toString(bytes_read));
+//                                    for (int k = 0; k < 20 && current > 20; k++) {
+//                                        byteread += whole_question_buffer[current -21 + k];
+//                                    }
+//                                    Log.v("last bytes read: ", byteread);
+//                                    byteread = "";
+							} catch (IOException e) {
+								e.printStackTrace();
+								able_to_read = false;
+							}
+							if (bytes_read >= 0) {
+								current += bytes_read;
+								if (able_to_read == false) {
+									bytes_read = -1;
+									able_to_read = true;
+								}
+							}
+						}
+						while (bytes_read > 0);    //shall be sizeRead > -1, because .read returns -1 when finished reading, but outstream not closed on server side
+						bytes_read = 1;
+						DataConversion convert_question = new DataConversion(mContextWifCom);
+						launchQuestionActivity(convert_question.bytearrayvectorToQuestion(whole_question_buffer));
 					}
 				}
 			}

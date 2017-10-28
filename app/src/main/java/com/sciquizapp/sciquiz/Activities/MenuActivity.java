@@ -1,15 +1,15 @@
-package com.sciquizapp.sciquiz;
+package com.sciquizapp.sciquiz.Activities;
 
 
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.List;
 
 import javax.mail.AuthenticationFailedException;
 import javax.mail.MessagingException;
 
 import com.sciquizapp.sciquiz.BuildConfig;
+import com.sciquizapp.sciquiz.DbHelper;
+import com.sciquizapp.sciquiz.Mail;
+import com.sciquizapp.sciquiz.R;
 
 
 import android.app.Activity;

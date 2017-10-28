@@ -1,33 +1,35 @@
-package com.sciquizapp.sciquiz;
+package com.sciquizapp.sciquiz.Activities;
 import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TableLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.sciquizapp.sciquiz.NetworkCommunication.BluetoothCommunication;
+import com.sciquizapp.sciquiz.AndroidClient;
+import com.sciquizapp.sciquiz.LTApplication;
 import com.sciquizapp.sciquiz.NetworkCommunication.NetworkCommunication;
+import com.sciquizapp.sciquiz.Questions.Question;
+import com.sciquizapp.sciquiz.R;
 
 public class SingleQuestionActivity extends Activity {
 	//List<Question> quesList;
@@ -42,42 +44,29 @@ public class SingleQuestionActivity extends Activity {
 	int questionId = 1;
 	Question currentQ;
 	TextView txtQuestion;
-	Button answerButton1, answerButton2, answerButton3, answerButton4;
+	Button submitButton;
+	ArrayList<CheckBox> checkBoxesArray;
 	ImageView picture;
 	boolean isImageFitToScreen;
+	LinearLayout linearLayout;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-		setContentView(R.layout.activity_question);
-		
+		setContentView(R.layout.activity_singlequestion);
 
 
-		txtQuestion=(TextView)findViewById(R.id.textViewQuest1);
-		answerButton1 = (Button)findViewById(R.id.answerbuttonQuest1);
-		answerButton2 = (Button)findViewById(R.id.answerbuttonQuest2);
-		answerButton3 = (Button)findViewById(R.id.answerbuttonQuest3);
-		answerButton4 = (Button)findViewById(R.id.answerbuttonQuest4);
+		linearLayout = (LinearLayout) findViewById(R.id.linearLayout);
+		txtQuestion = (TextView)findViewById(R.id.textViewQuest1);
 		picture = (ImageView)findViewById(R.id.pictureQuest);
+		submitButton = new Button(getApplicationContext());
+		checkBoxesArray = new ArrayList<>();
 
-		picture.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				if(isImageFitToScreen) {
-					isImageFitToScreen=false;
-					picture.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, 0.19f));
-					picture.setAdjustViewBounds(true);
-				}else{
-					isImageFitToScreen=true;
-					picture.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
-				}
-			}
-		});
 
 		//get bluetooth client object
 //		final BluetoothClientActivity bluetooth = (BluetoothClientActivity)getIntent().getParcelableExtra("bluetoothObject");
-		
+
 		//get question from the bundle
 		Bundle bun = getIntent().getExtras();
 		String question = bun.getString("question");
@@ -89,8 +78,23 @@ public class SingleQuestionActivity extends Activity {
 //		final BluetoothClientActivity bluetooth = bun.getParcelable("bluetoothObject");
 		//final OldBluetoothCommunication bluetooth = new OldBluetoothCommunication(getApplicationContext());
 		currentQ = new Question("chimie","1",question,optA,optB,optC,optD,optA,image_path);
+		if (currentQ.getIMAGE().length() > 0) {
+			picture.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					if(isImageFitToScreen) {
+						isImageFitToScreen=false;
+						picture.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, 0.19f));
+						picture.setAdjustViewBounds(true);
+					}else{
+						isImageFitToScreen=true;
+						picture.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
+					}
+				}
+			});
+		}
 		setQuestionView();
-		
+
 		//check if no error has occured
 		if (question == "the question couldn't be read") {
 			try {
@@ -101,55 +105,21 @@ public class SingleQuestionActivity extends Activity {
 			}
 			finish();
 		}
-		
 
-		answerButton1.setOnClickListener(new View.OnClickListener() {		
+		submitButton.setOnClickListener(new View.OnClickListener() {
 			@SuppressLint("SimpleDateFormat") @Override
 			public void onClick(View v) {
-//				Intent intent = new Intent(SingleQuestionActivity.this, AndroidClient.class);
-//				Bundle b = new Bundle();
-//				b.putString("question", currentQ.getQUESTION());
-//				b.putString("answer", String.valueOf(answerButton1.getText()));
-//				if (answerButton1.getText().toString().matches(currentQ.getANSWER())) {
-//					b.putString("result", "right");
-//				} else {
-//					b.putString("result", "wrong");
-//				}
-//				intent.putExtras(b);
-//				startActivity(intent);
-//				finish();
-//				invalidateOptionsMenu();
-				
-				//first we have to get the bluetoothclientactivity object from the one launching the activity question
-				//BluetoothCommunication bluetooth = ((LTApplication) getApplication()).getAppBluetooth();
+				String answer = "";
+				for (int i = 0; i < 4; i++) {
+					if (checkBoxesArray.get(i).isChecked()) {
+						answer += checkBoxesArray.get(i).getText();
+					}
+				}
+
 				NetworkCommunication networkCommunication = ((LTApplication) getApplication()).getAppNetwork();
-				networkCommunication.sendAnswerToServer(String.valueOf(answerButton1.getText()));
-				//bluetooth.sendAnswerToServer(String.valueOf(answerButton1.getText()));
+				networkCommunication.sendAnswerToServer(String.valueOf(answer));
 				finish();
-			}
-		});
-		answerButton2.setOnClickListener(new View.OnClickListener() {		
-			@Override
-			public void onClick(View v) {
-				NetworkCommunication networkCommunication = ((LTApplication) getApplication()).getAppNetwork();
-				networkCommunication.sendAnswerToServer(String.valueOf(answerButton2.getText()));
-				finish();
-			}
-		});
-		answerButton3.setOnClickListener(new View.OnClickListener() {		
-			@Override
-			public void onClick(View v) {
-				NetworkCommunication networkCommunication = ((LTApplication) getApplication()).getAppNetwork();
-				networkCommunication.sendAnswerToServer(String.valueOf(answerButton3.getText()));
-				finish();
-			}
-		});
-		answerButton4.setOnClickListener(new View.OnClickListener() {		
-			@Override
-			public void onClick(View v) {
-				NetworkCommunication networkCommunication = ((LTApplication) getApplication()).getAppNetwork();
-				networkCommunication.sendAnswerToServer(String.valueOf(answerButton4.getText()));
-				finish();
+				invalidateOptionsMenu();
 			}
 		});
 	}
@@ -168,29 +138,23 @@ public class SingleQuestionActivity extends Activity {
 	private void setQuestionView()
 	{
 		txtQuestion.setText(currentQ.getQUESTION());
-		answerButton1.setBackgroundColor(Color.parseColor("#00CCCB"));
-		answerButton2.setBackgroundColor(Color.parseColor("#00CCCB"));
-		answerButton3.setBackgroundColor(Color.parseColor("#00CCCB"));
-		answerButton4.setBackgroundColor(Color.parseColor("#00CCCB"));
+		submitButton.setBackgroundColor(Color.parseColor("#00CCCB"));
 		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-				LinearLayout.LayoutParams.MATCH_PARENT,      
+				LinearLayout.LayoutParams.MATCH_PARENT,
 				LinearLayout.LayoutParams.WRAP_CONTENT
 		);
 		int height = getApplicationContext().getResources().getDisplayMetrics().heightPixels;
 		int width = getApplicationContext().getResources().getDisplayMetrics().widthPixels;
 		params.setMargins(width / 40, height / 200, width / 40, height / 200);  //left, top, right, bottom
-		answerButton1.setLayoutParams(params);
-		answerButton2.setLayoutParams(params);
-		answerButton3.setLayoutParams(params);
-		answerButton4.setLayoutParams(params);
-		
+		submitButton.setLayoutParams(params);
+
 		File imgFile = new  File(getFilesDir()+"/images/" + currentQ.getIMAGE());
 		if(imgFile.exists()){
 			String path = imgFile.getAbsolutePath();
 		    Bitmap myBitmap = BitmapFactory.decodeFile(path);
 		    picture.setImageBitmap(myBitmap);
 		}
-		
+
 //		int imageResource = getResources().getIdentifier(currentQ.getIMAGE(), null, getPackageName());
 //		picture.setImageResource(imageResource);
 
@@ -213,11 +177,22 @@ public class SingleQuestionActivity extends Activity {
 			answerOptions[i] = a;
 		}
 
+		CheckBox tempCheckBox = null;
+		for (int i = 0; i < 4; i++) {
+			tempCheckBox = new CheckBox(getApplicationContext());
+			tempCheckBox.setText(answerOptions[i]);
+			tempCheckBox.setTextColor(Color.BLACK);
+			checkBoxesArray.add(tempCheckBox);
+			if(checkBoxesArray.get(i).getParent()!=null)
+				((ViewGroup)checkBoxesArray.get(i).getParent()).removeView(checkBoxesArray.get(i));
 
-		answerButton1.setText(answerOptions[0]);
-		answerButton2.setText(answerOptions[1]);
-		answerButton3.setText(answerOptions[2]);
-		answerButton4.setText(answerOptions[3]);
+			checkBoxesArray.get(i).setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.WRAP_CONTENT, 1f));
+
+			linearLayout.addView(checkBoxesArray.get(i));
+		}
+		submitButton.setText("soumettre la réponse");
+		submitButton.setTextColor(Color.WHITE);
+		linearLayout.addView(submitButton);
 		qid++;
 	}
 }

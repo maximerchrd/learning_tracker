@@ -1,4 +1,4 @@
-package com.sciquizapp.sciquiz;
+package com.sciquizapp.sciquiz.Activities;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
+
+import com.sciquizapp.sciquiz.R;
+
 public class ResultActivity extends Activity {
 	Button backToMenuButton;
 	@Override

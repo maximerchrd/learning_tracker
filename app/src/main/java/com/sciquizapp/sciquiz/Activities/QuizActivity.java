@@ -1,4 +1,4 @@
-package com.sciquizapp.sciquiz;
+package com.sciquizapp.sciquiz.Activities;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Collections;
@@ -21,6 +21,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.sciquizapp.sciquiz.DbHelper;
+import com.sciquizapp.sciquiz.Questions.Question;
+import com.sciquizapp.sciquiz.R;
+import com.sciquizapp.sciquiz.Score;
+
 public class QuizActivity extends Activity {
 	//List<Question> quesList;
 	List<Question> quesList1;

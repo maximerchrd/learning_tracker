@@ -24,8 +24,9 @@ import android.util.Log;
 import android.widget.Toast;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.wifi.WifiConfiguration;
-import android.net.wifi.WifiManager;
+
+import com.sciquizapp.sciquiz.Activities.SingleQuestionActivity;
+
 
 public class OldBluetoothCommunication {
 

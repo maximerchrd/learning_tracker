@@ -2,7 +2,6 @@ package com.sciquizapp.sciquiz.NetworkCommunication;
 
 
 import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothManager;
 import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;
 import android.bluetooth.BluetoothDevice;
@@ -10,24 +9,19 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.util.Log;
 import android.app.*;
 import android.widget.TextView;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.*;
 
 
 import com.sciquizapp.sciquiz.DataConversion;
 import com.sciquizapp.sciquiz.DbHelper;
 import com.sciquizapp.sciquiz.LTApplication;
-import com.sciquizapp.sciquiz.OldBluetoothCommunication;
-import com.sciquizapp.sciquiz.Question;
+import com.sciquizapp.sciquiz.Questions.Question;
 import com.sciquizapp.sciquiz.R;
-import com.sciquizapp.sciquiz.SingleQuestionActivity;
-import com.sciquizapp.sciquiz.WifiAccessManager;
+import com.sciquizapp.sciquiz.Activities.SingleQuestionActivity;
 
 import java.io.*;
 

@@ -1,4 +1,4 @@
-package com.sciquizapp.sciquiz;
+package com.sciquizapp.sciquiz.Activities;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -10,7 +10,12 @@ import java.util.HashMap;
 import java.util.List;
 
 import android.widget.ExpandableListView;
- 
+
+import com.sciquizapp.sciquiz.DbHelper;
+import com.sciquizapp.sciquiz.ExpandableListAdapter;
+import com.sciquizapp.sciquiz.R;
+import com.sciquizapp.sciquiz.Score;
+
 public class ScoresActivity extends Activity {
  
     ExpandableListAdapter listAdapter;

@@ -34,6 +34,7 @@ public class NetworkCommunication {
 		mApplication = application;
 		mTextOut = textOut;
 		mWifiCom = new WifiCommunication(arg_context, application);
+		//((LTApplication) mApplication).setAppWifi(mWifiCom);
 		((LTApplication) mApplication).setAppNetwork(this);
 	}
 	/**
@@ -41,7 +42,6 @@ public class NetworkCommunication {
 	 */
 	public void ConnectToMaster() {
 		if (network_solution == 0) {
-			final WifiCommunication mWifiCom = new WifiCommunication(mContextNetCom, mApplication);
 			new Thread(new Runnable() {
 				public void run() {
 					mWifiCom.connectToServer();

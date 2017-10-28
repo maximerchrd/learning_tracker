@@ -1,4 +1,4 @@
-package com.sciquizapp.sciquiz;
+package com.sciquizapp.sciquiz.Activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.view.View;
+
+import com.sciquizapp.sciquiz.DbHelper;
+import com.sciquizapp.sciquiz.R;
 
 
 public class SettingsActivity extends Activity {

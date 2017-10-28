@@ -3,27 +3,21 @@ package com.sciquizapp.sciquiz;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
-import java.io.File;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
-
-import javax.mail.AuthenticationFailedException;
-import javax.mail.MessagingException;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.Settings.Secure;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import com.sciquizapp.sciquiz.R;
-import com.sciquizapp.sciquiz.MenuActivity.SendEmailAsyncTask;
+
+import com.sciquizapp.sciquiz.Activities.MultChoiceQuestionActivity;
 
 public class AndroidClient extends Activity {
 
@@ -81,7 +75,7 @@ public class AndroidClient extends Activity {
 							dataOutputStream = new DataOutputStream(socket.getOutputStream());
 							dataInputStream = new DataInputStream(socket.getInputStream());
 							dataOutputStream.writeUTF(name);
-							Intent intent = new Intent(AndroidClient.this, QuestionActivity.class);
+							Intent intent = new Intent(AndroidClient.this, MultChoiceQuestionActivity.class);
 							String incomingMessage = dataInputStream.readUTF();
 							if (BuildConfig.DEBUG) Log.v("incoming stream", incomingMessage);
 							Bundle b = new Bundle();
