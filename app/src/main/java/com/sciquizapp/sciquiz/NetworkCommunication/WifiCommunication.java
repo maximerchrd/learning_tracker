@@ -50,7 +50,7 @@ public class WifiCommunication {
 	public void connectToServer() {
 		try {
 			Log.v("connectToServer", "beginning");
-			Socket s = new Socket("192.168.43.25",9090);
+			Socket s = new Socket("192.168.1.101",9090);
 			//Socket s = new Socket("192.168.88.252",9090);
 			Log.v("server name",s.getInetAddress().getCanonicalHostName());
 			Log.v("server name",s.getInetAddress().getHostName());

@@ -47,7 +47,7 @@ public class SingleQuestionActivity extends Activity {
 	Button submitButton;
 	ArrayList<CheckBox> checkBoxesArray;
 	ImageView picture;
-	boolean isImageFitToScreen;
+	boolean isImageFitToScreen = true;
 	LinearLayout linearLayout;
 
 	@Override
@@ -59,7 +59,7 @@ public class SingleQuestionActivity extends Activity {
 
 		linearLayout = (LinearLayout) findViewById(R.id.linearLayout);
 		txtQuestion = (TextView)findViewById(R.id.textViewQuest1);
-		picture = (ImageView)findViewById(R.id.pictureQuest);
+		picture = new ImageView(getApplicationContext());
 		submitButton = new Button(getApplicationContext());
 		checkBoxesArray = new ArrayList<>();
 
@@ -84,11 +84,13 @@ public class SingleQuestionActivity extends Activity {
 				public void onClick(View v) {
 					if(isImageFitToScreen) {
 						isImageFitToScreen=false;
-						picture.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, 0.19f));
+						picture.setAdjustViewBounds(true);
+						picture.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
 						picture.setAdjustViewBounds(true);
 					}else{
 						isImageFitToScreen=true;
-						picture.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
+						picture.setAdjustViewBounds(true);
+						picture.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 200));
 					}
 				}
 			});
@@ -138,15 +140,6 @@ public class SingleQuestionActivity extends Activity {
 	private void setQuestionView()
 	{
 		txtQuestion.setText(currentQ.getQUESTION());
-		submitButton.setBackgroundColor(Color.parseColor("#00CCCB"));
-		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-				LinearLayout.LayoutParams.MATCH_PARENT,
-				LinearLayout.LayoutParams.WRAP_CONTENT
-		);
-		int height = getApplicationContext().getResources().getDisplayMetrics().heightPixels;
-		int width = getApplicationContext().getResources().getDisplayMetrics().widthPixels;
-		params.setMargins(width / 40, height / 200, width / 40, height / 200);  //left, top, right, bottom
-		submitButton.setLayoutParams(params);
 
 		File imgFile = new  File(getFilesDir()+"/images/" + currentQ.getIMAGE());
 		if(imgFile.exists()){
@@ -154,6 +147,9 @@ public class SingleQuestionActivity extends Activity {
 		    Bitmap myBitmap = BitmapFactory.decodeFile(path);
 		    picture.setImageBitmap(myBitmap);
 		}
+		picture.setAdjustViewBounds(true);
+		picture.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 200));
+		linearLayout.addView(picture);
 
 //		int imageResource = getResources().getIdentifier(currentQ.getIMAGE(), null, getPackageName());
 //		picture.setImageResource(imageResource);
@@ -186,11 +182,20 @@ public class SingleQuestionActivity extends Activity {
 			if(checkBoxesArray.get(i).getParent()!=null)
 				((ViewGroup)checkBoxesArray.get(i).getParent()).removeView(checkBoxesArray.get(i));
 
-			checkBoxesArray.get(i).setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.WRAP_CONTENT, 1f));
+			checkBoxesArray.get(i).setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.WRAP_CONTENT, 10f));
 
 			linearLayout.addView(checkBoxesArray.get(i));
 		}
 		submitButton.setText("soumettre la réponse");
+		submitButton.setBackgroundColor(Color.parseColor("#00CCCB"));
+		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+				LinearLayout.LayoutParams.MATCH_PARENT,
+				LinearLayout.LayoutParams.WRAP_CONTENT
+		);
+		int height = getApplicationContext().getResources().getDisplayMetrics().heightPixels;
+		int width = getApplicationContext().getResources().getDisplayMetrics().widthPixels;
+		params.setMargins(width / 40, height / 200, width / 40, height / 200);  //left, top, right, bottom
+		submitButton.setLayoutParams(params);
 		submitButton.setTextColor(Color.WHITE);
 		linearLayout.addView(submitButton);
 		qid++;

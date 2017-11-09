@@ -1,5 +1,0 @@
-CHANGED,/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication$1$override.class
-CHANGED,/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/android/tools/fd/runtime/AppPatchesLoaderImpl.class
-CHANGED,/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/sciquizapp/sciquiz/NetworkCommunication/NetworkCommunication$override.class
-CHANGED,/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/sciquizapp/sciquiz/NetworkCommunication/NetworkCommunication$1$override.class
-CHANGED,/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/sciquizapp/sciquiz/NetworkCommunication/WifiCommunication$override.class

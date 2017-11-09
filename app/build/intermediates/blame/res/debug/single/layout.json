@@ -16,6 +16,10 @@
         "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/layout/list_group.xml"
     },
     {
+        "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/layout/activity_singlequestion.xml",
+        "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/layout/activity_singlequestion.xml"
+    },
+    {
         "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/layout/android_client.xml",
         "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/layout/android_client.xml"
     },
