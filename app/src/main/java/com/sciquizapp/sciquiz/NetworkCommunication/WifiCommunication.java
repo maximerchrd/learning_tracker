@@ -13,11 +13,13 @@ import java.util.Enumeration;
 import java.util.List;
 import java.util.Vector;
 
+import com.sciquizapp.sciquiz.Activities.MultChoiceQuestionActivity;
 import com.sciquizapp.sciquiz.Activities.QuestionActivity;
 import com.sciquizapp.sciquiz.Activities.SingleQuestionActivity;
 import com.sciquizapp.sciquiz.DataConversion;
 import com.sciquizapp.sciquiz.LTApplication;
 import com.sciquizapp.sciquiz.Questions.Question;
+import com.sciquizapp.sciquiz.Questions.QuestionMultipleChoice;
 
 import android.app.Application;
 import android.content.BroadcastReceiver;
@@ -188,7 +190,7 @@ public class WifiCommunication {
 						while (bytes_read > 0);    //shall be sizeRead > -1, because .read returns -1 when finished reading, but outstream not closed on server side
 						bytes_read = 1;
 						DataConversion convert_question = new DataConversion(mContextWifCom);
-						launchQuestionActivity(convert_question.bytearrayvectorToQuestion(whole_question_buffer));
+						launchMultChoiceQuestionActivity(convert_question.bytearrayvectorToMultChoiceQuestion(whole_question_buffer));
 					}
 				}
 			}
@@ -205,23 +207,25 @@ public class WifiCommunication {
 		bun.putString("optC", question_to_display.getOPTC());
 		bun.putString("optD", question_to_display.getOPTD());
 		bun.putString("image_name", question_to_display.getIMAGE());
-//        if (question_text_string.length() > 0) {
-//            bun.putString("question", question_text_string.split("///")[0]);
-//            bun.putString("optA", question_text_string.split("///")[1]);
-//            bun.putString("optB", question_text_string.split("///")[2]);
-//            bun.putString("optC", question_text_string.split("///")[3]);
-//            bun.putString("optD", question_text_string.split("///")[4]);
-//            bun.putString("image_name", question_text_string.split("///")[5]);
-//        } else {
-//            bun.putString("question", "the question couldn't be read");
-//            bun.putString("optA", "");
-//            bun.putString("optB", "");
-//            bun.putString("optC", "");
-//            bun.putString("optD", "");
-//            bun.putString("image_name", "");
-//        }
-		//		bun.putParcelable("bluetoothSocket", btSocket);
-		//		bun.putParcelable("bluetoothObject", this);
+		mIntent.putExtras(bun);
+		mContextWifCom.startActivity(mIntent);
+	}
+	private void launchMultChoiceQuestionActivity(QuestionMultipleChoice question_to_display) {
+		((LTApplication) mApplication).setAppWifi(this);
+		Intent mIntent = new Intent(mContextWifCom, MultChoiceQuestionActivity.class);
+		Bundle bun = new Bundle();
+		bun.putString("question", question_to_display.getQUESTION());
+		bun.putString("opt0", question_to_display.getOPT0());
+		bun.putString("opt1", question_to_display.getOPT1());
+		bun.putString("opt2", question_to_display.getOPT2());
+		bun.putString("opt3", question_to_display.getOPT3());
+		bun.putString("opt4", question_to_display.getOPT4());
+		bun.putString("opt5", question_to_display.getOPT5());
+		bun.putString("opt6", question_to_display.getOPT6());
+		bun.putString("opt7", question_to_display.getOPT7());
+		bun.putString("opt8", question_to_display.getOPT8());
+		bun.putString("opt9", question_to_display.getOPT9());
+		bun.putString("image_name", question_to_display.getIMAGE());
 		mIntent.putExtras(bun);
 		mContextWifCom.startActivity(mIntent);
 	}

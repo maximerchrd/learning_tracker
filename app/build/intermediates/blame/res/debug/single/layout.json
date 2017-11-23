@@ -4,6 +4,10 @@
         "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/layout/activity_menu.xml"
     },
     {
+        "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/layout/activity_multchoicequestion.xml",
+        "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/layout/activity_multchoicequestion.xml"
+    },
+    {
         "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/layout/activity_bluetoothclient.xml",
         "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/layout/activity_bluetoothclient.xml"
     },
