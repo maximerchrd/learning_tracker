@@ -69,7 +69,7 @@ public class SingleQuestionActivity extends Activity {
 
 		//get question from the bundle
 		Bundle bun = getIntent().getExtras();
-		String question = bun.getString("question");
+		final String question = bun.getString("question");
 		String optA = bun.getString("optA");		//should also be the answer
 		String optB = bun.getString("optB");
 		String optC = bun.getString("optC");
@@ -119,7 +119,7 @@ public class SingleQuestionActivity extends Activity {
 				}
 
 				NetworkCommunication networkCommunication = ((LTApplication) getApplication()).getAppNetwork();
-				networkCommunication.sendAnswerToServer(String.valueOf(answer));
+				networkCommunication.sendAnswerToServer(String.valueOf(answer), question);
 				finish();
 				invalidateOptionsMenu();
 			}

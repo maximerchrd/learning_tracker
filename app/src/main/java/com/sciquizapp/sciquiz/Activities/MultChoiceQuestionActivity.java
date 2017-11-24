@@ -72,7 +72,7 @@ public class MultChoiceQuestionActivity extends Activity {
 
 		//get question from the bundle
 		Bundle bun = getIntent().getExtras();
-		String question = bun.getString("question");
+		final String question = bun.getString("question");
 		String opt0 = bun.getString("opt0");		//should also be the answer
 		String opt1 = bun.getString("opt1");
 		String opt2 = bun.getString("opt2");
@@ -128,7 +128,7 @@ public class MultChoiceQuestionActivity extends Activity {
 				}
 
 				NetworkCommunication networkCommunication = ((LTApplication) getApplication()).getAppNetwork();
-				networkCommunication.sendAnswerToServer(String.valueOf(answer));
+				networkCommunication.sendAnswerToServer(String.valueOf(answer), question);
 				finish();
 				invalidateOptionsMenu();
 			}

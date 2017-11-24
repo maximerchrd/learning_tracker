@@ -50,12 +50,12 @@ public class NetworkCommunication {
 		}
 	}
 
-	public void sendAnswerToServer(String answer) {
+	public void sendAnswerToServer(String answer, String question) {
 		String MacAddress = android.provider.Settings.Secure.getString(mContextNetCom.getContentResolver(), "bluetooth_address");
 		DbHelper db_for_name = new DbHelper(mContextNetCom);
 		String name = db_for_name.getName();
 
-		answer = "ANSW0" + "///" + MacAddress + "///" + name + "///" + answer;
+		answer = "ANSW0" + "///" + MacAddress + "///" + name + "///" + answer + "///" + question;
 		if (network_solution == 0) {
 			mWifiCom.sendAnswerToServer(answer);
 		}
