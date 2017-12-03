@@ -38,6 +38,7 @@ public class MultChoiceQuestionActivity extends Activity {
 	int score=0;
 	int qid=0;
 	int level=1;
+	int number_of_possible_answers = 0;
 	int nbQuestionsLevel1 = 8;
 	int nbQuestionsLevel2 = 6;
 	int nbQuestionsLevel3 = 5;
@@ -50,7 +51,7 @@ public class MultChoiceQuestionActivity extends Activity {
 	ArrayList<CheckBox> checkBoxesArray;
 	ArrayList<String> arrayOfOptions;
 	ImageView picture;
-	boolean isImageFitToScreen;
+	boolean isImageFitToScreen = true;
 	LinearLayout linearLayout;
 
 	@Override
@@ -121,7 +122,7 @@ public class MultChoiceQuestionActivity extends Activity {
 			@SuppressLint("SimpleDateFormat") @Override
 			public void onClick(View v) {
 				String answer = "";
-				for (int i = 0; i < 4; i++) {
+				for (int i = 0; i < number_of_possible_answers; i++) {
 					if (checkBoxesArray.get(i).isChecked()) {
 						answer += checkBoxesArray.get(i).getText();
 					}
@@ -177,7 +178,6 @@ public class MultChoiceQuestionActivity extends Activity {
 		answerOptions[8] = currentQ.getOPT8();
 		answerOptions[9] = currentQ.getOPT9();
 
-		int number_of_possible_answers = 0;
 		for (int i = 0; i < 10; i++) {
 			if (!answerOptions[i].equals(" ")) {
 				number_of_possible_answers++;
