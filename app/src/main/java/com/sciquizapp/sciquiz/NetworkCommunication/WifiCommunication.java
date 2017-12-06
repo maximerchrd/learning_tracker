@@ -52,7 +52,7 @@ public class WifiCommunication {
 	public void connectToServer() {
 		try {
 			Log.v("connectToServer", "beginning");
-			Socket s = new Socket("192.168.1.101",9090);
+			Socket s = new Socket("192.168.1.103",9090);
 			//Socket s = new Socket("192.168.88.252",9090);
 			Log.v("server name",s.getInetAddress().getCanonicalHostName());
 			Log.v("server name",s.getInetAddress().getHostName());
@@ -116,6 +116,9 @@ public class WifiCommunication {
 					try {
 						Log.v("read input stream", "first");
 						bytes_read = mInputStream.read(prefix_buffer, 0, 20);
+						if (bytes_read < 0) {
+							able_to_read = false;
+						}
 						sizes = new String(prefix_buffer, "UTF-8");
 					} catch (IOException e) {
 						e.printStackTrace();
