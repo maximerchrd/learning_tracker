@@ -77,7 +77,7 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(sql3);
         ContentValues values = new ContentValues();
         values.put(KEY_NAME, "Anonyme");
-        values.put(KEY_MASTER, "Aucun");
+        values.put(KEY_MASTER, "192.168.1.100");
         // Inserting of Replacing Row
         dbase.insert(TABLE_SETTINGS, null, values);
 

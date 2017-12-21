@@ -17,6 +17,7 @@ import com.sciquizapp.sciquiz.Activities.MultChoiceQuestionActivity;
 import com.sciquizapp.sciquiz.Activities.QuestionActivity;
 import com.sciquizapp.sciquiz.Activities.SingleQuestionActivity;
 import com.sciquizapp.sciquiz.DataConversion;
+import com.sciquizapp.sciquiz.DbHelper;
 import com.sciquizapp.sciquiz.LTApplication;
 import com.sciquizapp.sciquiz.Questions.Question;
 import com.sciquizapp.sciquiz.Questions.QuestionMultipleChoice;
@@ -39,6 +40,7 @@ public class WifiCommunication {
 	private Vector<InputStream> inputStreamVector = null;
 	private int current = 0;
 	private int bytes_read = 0;
+	private String ip_address = "192.168.1.100";
 	List<android.net.wifi.ScanResult> mScanResults = new ArrayList<android.net.wifi.ScanResult>();
 	BroadcastReceiver scanningreceiver;
 
@@ -46,13 +48,15 @@ public class WifiCommunication {
 		mContextWifCom = arg_context;
 		mWifi = (WifiManager) mContextWifCom.getSystemService(Context.WIFI_SERVICE);
 		mApplication = arg_application;
+		final DbHelper db = new DbHelper(arg_context);
+		ip_address = db.getMaster();
 	}
 
 
 	public void connectToServer(String connectionString) {
 		try {
 			Log.v("connectToServer", "beginning");
-			Socket s = new Socket("192.168.0.103",9090);
+			Socket s = new Socket(ip_address,9090);
 			//Socket s = new Socket("192.168.88.252",9090);
 			Log.v("server name",s.getInetAddress().getCanonicalHostName());
 			Log.v("server name",s.getInetAddress().getHostName());

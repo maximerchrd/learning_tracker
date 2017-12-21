@@ -28,7 +28,7 @@ public class SettingsActivity extends Activity {
 		editName.setText(db.getName(), null);
 
 		editMaster = (EditText) findViewById(R.id.edittextmaster);
-		editName.setText(db.getMaster(), null);
+		editMaster.setText(db.getMaster(), null);
 
 		buttonSaveAndBack.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {

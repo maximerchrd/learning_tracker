@@ -15,7 +15,7 @@
     <string name="menu_score">score:</string>
     <string name="menu_level">niveau:</string>
     <string name="settings_name">Nom</string>
-    <string name="settings_master">Nom de l\'ordinateur</string>
+    <string name="settings_master">Adresse ip du serveur</string>
     <string name="button_settings_back">Sauver et revenir</string>
     <string name="button_menu_settings">Données persos</string>
     <string name="button_result_back">Retourner au menu</string>
