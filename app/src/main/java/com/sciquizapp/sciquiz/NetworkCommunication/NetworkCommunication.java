@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import android.app.Application;
 import android.content.Context;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.util.Log;
 import android.widget.TextView;
 
@@ -42,20 +44,25 @@ public class NetworkCommunication {
 	 */
 	public void ConnectToMaster() {
 		if (network_solution == 0) {
+			String MacAddress = android.provider.Settings.Secure.getString(mContextNetCom.getContentResolver(), "bluetooth_address");
+			DbHelper db_for_name = new DbHelper(mContextNetCom);
+			String name = db_for_name.getName();
+
+			final String connection = "CONN" + "///" + MacAddress + "///" + name;
 			new Thread(new Runnable() {
 				public void run() {
-					mWifiCom.connectToServer();
+					mWifiCom.connectToServer(connection);
 				}
 			}).start();
 		}
 	}
 
-	public void sendAnswerToServer(String answer, String question) {
+	public void sendAnswerToServer(String answer, String question, int id) {
 		String MacAddress = android.provider.Settings.Secure.getString(mContextNetCom.getContentResolver(), "bluetooth_address");
 		DbHelper db_for_name = new DbHelper(mContextNetCom);
 		String name = db_for_name.getName();
 
-		answer = "ANSW0" + "///" + MacAddress + "///" + name + "///" + answer + "///" + question;
+		answer = "ANSW0" + "///" + MacAddress + "///" + name + "///" + answer + "///" + question + "///" + String.valueOf(id);
 		if (network_solution == 0) {
 			mWifiCom.sendAnswerToServer(answer);
 		}

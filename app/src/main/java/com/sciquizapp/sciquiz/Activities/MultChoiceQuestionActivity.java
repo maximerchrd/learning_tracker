@@ -84,10 +84,12 @@ public class MultChoiceQuestionActivity extends Activity {
 		String opt7 = bun.getString("opt7");
 		String opt8 = bun.getString("opt8");
 		String opt9 = bun.getString("opt9");
+		int id = bun.getInt("id");
 		String image_path = bun.getString("image_name");
 //		final BluetoothClientActivity bluetooth = bun.getParcelable("bluetoothObject");
 		//final OldBluetoothCommunication bluetooth = new OldBluetoothCommunication(getApplicationContext());
 		currentQ = new QuestionMultipleChoice("chimie","1",question,opt0,opt1,opt2,opt3,opt4,opt5,opt6,opt7,opt8,opt9,image_path);
+		currentQ.setID(id);
 		if (currentQ.getIMAGE().length() > 0) {
 			picture.setOnClickListener(new View.OnClickListener() {
 				@Override
@@ -124,12 +126,12 @@ public class MultChoiceQuestionActivity extends Activity {
 				String answer = "";
 				for (int i = 0; i < number_of_possible_answers; i++) {
 					if (checkBoxesArray.get(i).isChecked()) {
-						answer += checkBoxesArray.get(i).getText();
+						answer += checkBoxesArray.get(i).getText() + "|||";
 					}
 				}
 
 				NetworkCommunication networkCommunication = ((LTApplication) getApplication()).getAppNetwork();
-				networkCommunication.sendAnswerToServer(String.valueOf(answer), question);
+				networkCommunication.sendAnswerToServer(String.valueOf(answer), question, currentQ.getID());
 				finish();
 				invalidateOptionsMenu();
 			}

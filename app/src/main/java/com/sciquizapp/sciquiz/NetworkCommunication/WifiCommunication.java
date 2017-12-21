@@ -49,16 +49,26 @@ public class WifiCommunication {
 	}
 
 
-	public void connectToServer() {
+	public void connectToServer(String connectionString) {
 		try {
 			Log.v("connectToServer", "beginning");
-			Socket s = new Socket("192.168.1.103",9090);
+			Socket s = new Socket("192.168.0.103",9090);
 			//Socket s = new Socket("192.168.88.252",9090);
 			Log.v("server name",s.getInetAddress().getCanonicalHostName());
 			Log.v("server name",s.getInetAddress().getHostName());
 			//outgoing stream redirect to socket
 			mOutputStream = s.getOutputStream();
 			mInputStream = s.getInputStream();
+
+			byte[] conBuffer = connectionString.getBytes();
+			try {
+				mOutputStream.write(conBuffer, 0, conBuffer.length);
+				mOutputStream.flush();
+			} catch (IOException e) {
+				String msg = "In connectToServer() and an exception occurred during write: " + e.getMessage();
+				Log.e("Fatal Error", msg);
+			}
+
 			listenForQuestions();
 			//Close connection
 			//s.close();
@@ -228,6 +238,7 @@ public class WifiCommunication {
 		bun.putString("opt7", question_to_display.getOPT7());
 		bun.putString("opt8", question_to_display.getOPT8());
 		bun.putString("opt9", question_to_display.getOPT9());
+		bun.putInt("id", question_to_display.getID());
 		bun.putString("image_name", question_to_display.getIMAGE());
 		mIntent.putExtras(bun);
 		mContextWifCom.startActivity(mIntent);

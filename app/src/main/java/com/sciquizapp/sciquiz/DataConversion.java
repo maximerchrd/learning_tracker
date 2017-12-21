@@ -142,8 +142,10 @@ public class DataConversion {
         question_to_return.setOPT7(question_text.split("///")[8]);
         question_to_return.setOPT8(question_text.split("///")[9]);
         question_to_return.setOPT9(question_text.split("///")[10]);
-        question_to_return.setIMAGE(question_text.split("///")[11]);
-        SaveImageFile(bitmap, question_text.split("///")[11]);
+        String ID_string = question_text.split("///")[11];
+        question_to_return.setID(Integer.parseInt(ID_string));
+        question_to_return.setIMAGE(question_text.split("///")[12]);
+        SaveImageFile(bitmap, question_text.split("///")[12]);
 
         return question_to_return;
     }
