@@ -10,7 +10,6 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Intent;
 import android.graphics.Color;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,8 +23,6 @@ import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
-import com.sciquizapp.sciquiz.AndroidClient;
-import com.sciquizapp.sciquiz.DbHelper;
 import com.sciquizapp.sciquiz.LTApplication;
 import com.sciquizapp.sciquiz.NetworkCommunication.NetworkCommunication;
 import com.sciquizapp.sciquiz.Questions.Question;
@@ -88,7 +85,7 @@ public class MultChoiceQuestionActivity extends Activity {
 		String image_path = bun.getString("image_name");
 //		final BluetoothClientActivity bluetooth = bun.getParcelable("bluetoothObject");
 		//final OldBluetoothCommunication bluetooth = new OldBluetoothCommunication(getApplicationContext());
-		currentQ = new QuestionMultipleChoice("chimie","1",question,opt0,opt1,opt2,opt3,opt4,opt5,opt6,opt7,opt8,opt9,image_path);
+		currentQ = new QuestionMultipleChoice("1",question,opt0,opt1,opt2,opt3,opt4,opt5,opt6,opt7,opt8,opt9,image_path);
 		currentQ.setID(id);
 		if (currentQ.getIMAGE().length() > 0) {
 			picture.setOnClickListener(new View.OnClickListener() {

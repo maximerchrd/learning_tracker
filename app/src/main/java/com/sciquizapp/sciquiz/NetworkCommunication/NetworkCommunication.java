@@ -4,12 +4,9 @@ import java.util.ArrayList;
 
 import android.app.Application;
 import android.content.Context;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
-import android.util.Log;
 import android.widget.TextView;
 
-import com.sciquizapp.sciquiz.DbHelper;
+import com.sciquizapp.sciquiz.database_management.DbHelper;
 import com.sciquizapp.sciquiz.LTApplication;
 
 public class NetworkCommunication {

@@ -22,7 +22,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.sciquizapp.sciquiz.DbHelper;
+import com.sciquizapp.sciquiz.database_management.DbHelper;
 import com.sciquizapp.sciquiz.Questions.Question;
 import com.sciquizapp.sciquiz.R;
 import com.sciquizapp.sciquiz.Score;

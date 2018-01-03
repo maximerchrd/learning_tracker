@@ -16,7 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.sciquizapp.sciquiz.AndroidClient;
-import com.sciquizapp.sciquiz.DbHelper;
+import com.sciquizapp.sciquiz.database_management.DbHelper;
 import com.sciquizapp.sciquiz.Questions.Question;
 import com.sciquizapp.sciquiz.R;
 

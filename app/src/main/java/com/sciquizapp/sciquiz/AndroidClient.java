@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.sciquizapp.sciquiz.Activities.MultChoiceQuestionActivity;
+import com.sciquizapp.sciquiz.database_management.DbHelper;
 
 public class AndroidClient extends Activity {
 

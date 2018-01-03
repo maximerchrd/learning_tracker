@@ -7,7 +7,7 @@ import javax.mail.AuthenticationFailedException;
 import javax.mail.MessagingException;
 
 import com.sciquizapp.sciquiz.BuildConfig;
-import com.sciquizapp.sciquiz.DbHelper;
+import com.sciquizapp.sciquiz.database_management.DbHelper;
 import com.sciquizapp.sciquiz.Mail;
 import com.sciquizapp.sciquiz.R;
 

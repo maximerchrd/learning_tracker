@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 
 import com.sciquizapp.sciquiz.Questions.Question;
 import com.sciquizapp.sciquiz.Questions.QuestionMultipleChoice;
+import com.sciquizapp.sciquiz.database_management.DbHelper;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;

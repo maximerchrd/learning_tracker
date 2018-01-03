@@ -26,6 +26,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
 import com.sciquizapp.sciquiz.Activities.SingleQuestionActivity;
+import com.sciquizapp.sciquiz.database_management.DbHelper;
 
 
 public class OldBluetoothCommunication {

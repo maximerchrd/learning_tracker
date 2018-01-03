@@ -14,18 +14,19 @@ import java.util.List;
 import java.util.Vector;
 
 import com.sciquizapp.sciquiz.Activities.MultChoiceQuestionActivity;
-import com.sciquizapp.sciquiz.Activities.QuestionActivity;
 import com.sciquizapp.sciquiz.Activities.SingleQuestionActivity;
 import com.sciquizapp.sciquiz.DataConversion;
-import com.sciquizapp.sciquiz.DbHelper;
+import com.sciquizapp.sciquiz.database_management.DbHelper;
 import com.sciquizapp.sciquiz.LTApplication;
 import com.sciquizapp.sciquiz.Questions.Question;
 import com.sciquizapp.sciquiz.Questions.QuestionMultipleChoice;
+import com.sciquizapp.sciquiz.database_management.DbTableQuestionMultipleChoice;
 
 import android.app.Application;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.util.Log;
@@ -138,6 +139,7 @@ public class WifiCommunication {
 						e.printStackTrace();
 						able_to_read = false;
 					}
+					Log.v("received string: ", sizes);
 					if (sizes.split(":")[0].contains("QUEST")) {
 						int size_of_image = Integer.parseInt(sizes.split(":")[1]);
 						int size_of_text = Integer.parseInt(sizes.split(":")[2].replaceAll("\\D+", ""));
@@ -207,7 +209,20 @@ public class WifiCommunication {
 						while (bytes_read > 0);    //shall be sizeRead > -1, because .read returns -1 when finished reading, but outstream not closed on server side
 						bytes_read = 1;
 						DataConversion convert_question = new DataConversion(mContextWifCom);
-						launchMultChoiceQuestionActivity(convert_question.bytearrayvectorToMultChoiceQuestion(whole_question_buffer));
+						QuestionMultipleChoice multquestion_to_save = convert_question.bytearrayvectorToMultChoiceQuestion(whole_question_buffer);
+						try {
+							DbTableQuestionMultipleChoice.addMultipleChoiceQuestion(multquestion_to_save);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+						//launchMultChoiceQuestionActivity(convert_question.bytearrayvectorToMultChoiceQuestion(whole_question_buffer));
+					} else if (sizes.split(":")[0].contains("QID")) {
+						if (sizes.split(":")[1].contains("MLT")) {
+							int id_global = Integer.valueOf(sizes.split("///")[1]);
+							QuestionMultipleChoice questionMultipleChoice = DbTableQuestionMultipleChoice.getQuestionWithId(id_global);
+							questionMultipleChoice.setID(id_global);
+							launchMultChoiceQuestionActivity(questionMultipleChoice);
+						}
 					}
 				}
 			}

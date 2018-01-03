@@ -1,4 +1,4 @@
-package com.sciquizapp.sciquiz;
+package com.sciquizapp.sciquiz.database_management;
 import java.sql.DriverManager;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,13 +7,15 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.sciquizapp.sciquiz.Questions.Question;
+import com.sciquizapp.sciquiz.Score;
 
 public class DbHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     // Database Name
-    private static final String DATABASE_NAME = "bioQuiz";
+    private static final String DATABASE_NAME = "learning_tracker.db";  //added the ".db" extension because onCreate() wasn't called anymore
     // tasks table name
     private static final String TABLE_QUEST = "quest";
     // tasks Table Columns names for the question table
@@ -49,7 +51,7 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final String KEY_MASTER = "master";
 
 
-    private SQLiteDatabase dbase;
+    public static SQLiteDatabase dbase;
     public DbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -63,7 +65,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 +KEY_OPTB +" TEXT, "+KEY_OPTC+" TEXT, "+KEY_OPTD +" TEXT, "+KEY_TRIAL1 +" TEXT, "
                 +KEY_TRIAL2 +" TEXT, "+KEY_TRIAL3+" TEXT, "+KEY_TRIAL4 +" TEXT,"+KEY_IMAGE+" TEXT)";
         db.execSQL(sql);
-        addQuestions();
+        //addQuestions();
 
         //add table for scores
         String sql2 = "CREATE TABLE IF NOT EXISTS " + TABLE_SCORES + " ( "
@@ -82,34 +84,8 @@ public class DbHelper extends SQLiteOpenHelper {
         dbase.insert(TABLE_SETTINGS, null, values);
 
         //Create multiple choice questions table if it doesn't exist
-        String sql4 = "DROP TABLE IF EXISTS 'multiple_choice_questions'; CREATE TABLE IF NOT EXISTS multiple_choice_questions " +
-                "(ID_QUESTION       INTEGER PRIMARY KEY AUTOINCREMENT," +
-                " SUBJECT           TEXT    NOT NULL, " +
-                " LEVEL      INT     NOT NULL, " +
-                " QUESTION           TEXT    NOT NULL, " +
-                " ANSWER           TEXT    NOT NULL, " +
-                " OPTION1           TEXT    NOT NULL, " +
-                " OPTION2           TEXT    NOT NULL, " +
-                " OPTION3           TEXT    NOT NULL, " +
-                " OPTION4           TEXT    NOT NULL, " +
-                " OPTION5           TEXT    NOT NULL, " +
-                " OPTION6           TEXT    NOT NULL, " +
-                " OPTION7           TEXT    NOT NULL, " +
-                " OPTION8           TEXT    NOT NULL, " +
-                " OPTION9           TEXT    NOT NULL, " +
-                " TRIAL0           TEXT    NOT NULL, " +
-                " TRIAL1           TEXT    NOT NULL, " +
-                " TRIAL2           TEXT    NOT NULL, " +
-                " TRIAL3           TEXT    NOT NULL, " +
-                " TRIAL4           TEXT    NOT NULL, " +
-                " TRIAL5           TEXT    NOT NULL, " +
-                " TRIAL6           TEXT    NOT NULL, " +
-                " TRIAL7           TEXT    NOT NULL, " +
-                " TRIAL8           TEXT    NOT NULL, " +
-                " TRIAL9           TEXT    NOT NULL, " +
-                " IMAGE_PATH           TEXT    NOT NULL, " +
-                " ID_GLOBAL      INT     NOT NULL) ";
-        db.execSQL(sql4);
+        DbTableQuestionMultipleChoice.createTableQuestionMultipleChoice();
+        Log.v("database: ", "finished creating tables");
         //db.close();
     }
     //add new name

@@ -11,7 +11,7 @@ import java.util.List;
 
 import android.widget.ExpandableListView;
 
-import com.sciquizapp.sciquiz.DbHelper;
+import com.sciquizapp.sciquiz.database_management.DbHelper;
 import com.sciquizapp.sciquiz.ExpandableListAdapter;
 import com.sciquizapp.sciquiz.R;
 import com.sciquizapp.sciquiz.Score;

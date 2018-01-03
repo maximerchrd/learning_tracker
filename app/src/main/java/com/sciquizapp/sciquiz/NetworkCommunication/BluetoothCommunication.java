@@ -17,7 +17,7 @@ import java.util.*;
 
 
 import com.sciquizapp.sciquiz.DataConversion;
-import com.sciquizapp.sciquiz.DbHelper;
+import com.sciquizapp.sciquiz.database_management.DbHelper;
 import com.sciquizapp.sciquiz.LTApplication;
 import com.sciquizapp.sciquiz.Questions.Question;
 import com.sciquizapp.sciquiz.R;

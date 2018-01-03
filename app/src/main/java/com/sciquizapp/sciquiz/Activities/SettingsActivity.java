@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.view.View;
 
-import com.sciquizapp.sciquiz.DbHelper;
+import com.sciquizapp.sciquiz.database_management.DbHelper;
 import com.sciquizapp.sciquiz.R;
 
 
