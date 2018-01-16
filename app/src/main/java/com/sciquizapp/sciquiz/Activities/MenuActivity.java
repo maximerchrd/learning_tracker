@@ -41,20 +41,20 @@ public class MenuActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_menu);
-		startButton = (Button)findViewById(R.id.startbutton);
+		//startButton = (Button)findViewById(R.id.startbutton);
 		scoresButton = (Button)findViewById(R.id.scoresbutton);
 		//sendButton = (Button)findViewById(R.id.sendbutton);
 		interactiveModeButton = (Button)findViewById(R.id.interactivemodebutton);
 		buttonChangeSettings = (Button)findViewById(R.id.buttonchangesettings);
 		consignes = (TextView) findViewById(R.id.textViewmenu);
-		listSubjects = (ListView) findViewById(R.id.listView1);
+		//listSubjects = (ListView) findViewById(R.id.listView1);
 		final DbHelper db = new DbHelper(this);
 
 		String subjectsRaw = db.getSubjects();
 		final String[] subjects = subjectsRaw.split("/");
 
 		//set  text for consignes
-		consignes.setText("Bonjour "+db.getName()+". Avec quel sujet voulez-vous jouer?");
+		consignes.setText("Hello "+db.getName()+".\n");
 
 		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
 				LinearLayout.LayoutParams.MATCH_PARENT,      
@@ -63,7 +63,7 @@ public class MenuActivity extends Activity {
 		int height = getApplicationContext().getResources().getDisplayMetrics().heightPixels;
 		int width = getApplicationContext().getResources().getDisplayMetrics().widthPixels;
 		params.setMargins(width / 40, height / 200, width / 40, height / 200);  //left, top, right, bottom
-		startButton.setLayoutParams(params);
+		//startButton.setLayoutParams(params);
 		scoresButton.setLayoutParams(params);
 		interactiveModeButton.setLayoutParams(params);
 		buttonChangeSettings.setLayoutParams(params);
@@ -87,7 +87,7 @@ public class MenuActivity extends Activity {
 			}
 		};
 		// Assign adapter to ListView
-		listSubjects.setAdapter(adapter); 
+		/*listSubjects.setAdapter(adapter);
 		listSubjects.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 
 		// ListView Item Click Listener
@@ -115,7 +115,7 @@ public class MenuActivity extends Activity {
 					}
 				});
 			}
-		});
+		});*/
 
 		//go to scores button
 		scoresButton.setOnClickListener(new View.OnClickListener() {		
@@ -135,52 +135,6 @@ public class MenuActivity extends Activity {
 				startActivity(intent);
 			}
 		});
-		/*
-		//send email button
-		sendButton.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				if (resultsSent == false) {
-					try
-					{
-						File root = new File(Environment.getExternalStorageDirectory(), "SciQuiz");
-						if (!root.exists()) {
-							root.mkdirs();
-						}
-						File gpxfile = new File(root, "resultats.txt");
-						FileWriter writer = new FileWriter(gpxfile);
-						//write results in file
-						List<Score> scorelist;
-						scorelist = db.getScores();
-						String username = db.getName();
-						final String android_id = Secure.getString(getBaseContext().getContentResolver(),
-								Secure.ANDROID_ID);
-						writer.append(username+"   "+android_id+"\n");
-						for (int i = 0; i < scorelist.size(); i++) {
-							Score scoreToWrite = scorelist.get(i);
-							writer.append(scoreToWrite.getSUBJECTscores()+"; "+scoreToWrite.getTIME()+"; "+scoreToWrite.getLEVEL()+"; "+scoreToWrite.getSCORE()+ "\n");
-						}
-						//write question score in file
-						List<Question> questionlist;
-						questionlist = db.getAllQuestions();
-						writer.append("Questions:\n");
-						for (int i = 1; i < questionlist.size(); i++) {
-							Question questionToWrite = questionlist.get(i);
-							writer.append(questionToWrite.getID()+"; "+questionToWrite.getSUBJECT()+"; "+questionToWrite.getLEVEL()+"; "+questionToWrite.getQUESTION()+"; "+questionToWrite.getANSWER()+"; "+questionToWrite.getTRIAL1()+"; "+questionToWrite.getTRIAL2()+"; "+questionToWrite.getTRIAL3()+"; "+questionToWrite.getTRIAL4()+ "\n");
-						}
-						writer.flush();
-						writer.close();
-						resultsSent = true;
-
-					}
-					catch(IOException e)
-					{
-						e.printStackTrace();
-					}
-					new SendEmailAsyncTask().execute();
-				}
-			}
-		});*/
 
 		//open change settings activity
 		buttonChangeSettings.setOnClickListener(new View.OnClickListener() {		

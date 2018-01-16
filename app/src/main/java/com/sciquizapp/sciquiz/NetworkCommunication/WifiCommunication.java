@@ -131,12 +131,12 @@ public class WifiCommunication {
 				Boolean able_to_read = true;
 				while (able_to_read && mInputStream != null) {
 					current = 0;
-					byte[] prefix_buffer = new byte[20];
+					byte[] prefix_buffer = new byte[40];
 					String sizes = "";
 					String byteread = "";
 					try {
 						Log.v("read input stream", "first");
-						bytes_read = mInputStream.read(prefix_buffer, 0, 20);
+						bytes_read = mInputStream.read(prefix_buffer, 0, 40);
 						if (bytes_read < 0) {
 							able_to_read = false;
 						}
@@ -149,18 +149,18 @@ public class WifiCommunication {
 					if (sizes.split(":")[0].contains("QUEST")) {
 						int size_of_image = Integer.parseInt(sizes.split(":")[1]);
 						int size_of_text = Integer.parseInt(sizes.split(":")[2].replaceAll("\\D+", ""));
-						byte[] whole_question_buffer = new byte[20 + size_of_image + size_of_text];
-						for (int i = 0; i < 20; i++) {
+						byte[] whole_question_buffer = new byte[40 + size_of_image + size_of_text];
+						for (int i = 0; i < 40; i++) {
 							whole_question_buffer[i] = prefix_buffer[i];
 						}
-						current = 20;
+						current = 40;
 						do {
 							try {
 								//Log.v("read input stream", "second");
 
-								bytes_read = mInputStream.read(whole_question_buffer, current, (20 + size_of_image + size_of_text - current));
+								bytes_read = mInputStream.read(whole_question_buffer, current, (40 + size_of_image + size_of_text - current));
 								Log.v("number of bytes read:", Integer.toString(bytes_read));
-//                                    for (int k = 0; k < 20 && current > 20; k++) {
+//                                    for (int k = 0; k < 40 && current > 40; k++) {
 //                                        byteread += whole_question_buffer[current -21 + k];
 //                                    }
 //                                    Log.v("last bytes read: ", byteread);
@@ -184,18 +184,18 @@ public class WifiCommunication {
 					} else if (sizes.split(":")[0].contains("MULTQ")) {
 						int size_of_image = Integer.parseInt(sizes.split(":")[1]);
 						int size_of_text = Integer.parseInt(sizes.split(":")[2].replaceAll("\\D+", ""));
-						byte[] whole_question_buffer = new byte[20 + size_of_image + size_of_text];
-						for (int i = 0; i < 20; i++) {
+						byte[] whole_question_buffer = new byte[40 + size_of_image + size_of_text];
+						for (int i = 0; i < 40; i++) {
 							whole_question_buffer[i] = prefix_buffer[i];
 						}
-						current = 20;
+						current = 40;
 						do {
 							try {
 								//Log.v("read input stream", "second");
 
-								bytes_read = mInputStream.read(whole_question_buffer, current, (20 + size_of_image + size_of_text - current));
+								bytes_read = mInputStream.read(whole_question_buffer, current, (40 + size_of_image + size_of_text - current));
 								Log.v("number of bytes read:", Integer.toString(bytes_read));
-//                                    for (int k = 0; k < 20 && current > 20; k++) {
+//                                    for (int k = 0; k < 40 && current > 40; k++) {
 //                                        byteread += whole_question_buffer[current -21 + k];
 //                                    }
 //                                    Log.v("last bytes read: ", byteread);

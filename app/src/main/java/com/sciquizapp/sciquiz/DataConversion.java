@@ -34,8 +34,8 @@ public class DataConversion {
 //                buffer_for_whole_question[j*(i+1)] = vector_of_buffers.elementAt(i)[j];
 //            }
 //        }
-        byte [] buffer_for_prefix = new byte[20];
-        for (int i = 0; i < 20; i++) {
+        byte [] buffer_for_prefix = new byte[40];
+        for (int i = 0; i < 40; i++) {
             buffer_for_prefix[i] = buffer_for_whole_question[i];
         }
         String sizes = null;
@@ -49,12 +49,12 @@ public class DataConversion {
 
         byte [] buffer_for_text = new byte[size_of_text];
         for (int i = 0; i < size_of_text; i++) {
-            buffer_for_text[i] = buffer_for_whole_question[i+20];
+            buffer_for_text[i] = buffer_for_whole_question[i+40];
         }
 
         byte [] buffer_for_image = new byte[size_of_image];
         for (int i = 0; i < size_of_image; i++) {
-            buffer_for_image[i] = buffer_for_whole_question[i+20+size_of_text];
+            buffer_for_image[i] = buffer_for_whole_question[i+40+size_of_text];
         }
 
         ByteArrayInputStream imageStream = new ByteArrayInputStream(buffer_for_image);
@@ -92,8 +92,8 @@ public class DataConversion {
 //                buffer_for_whole_question[j*(i+1)] = vector_of_buffers.elementAt(i)[j];
 //            }
 //        }
-        byte [] buffer_for_prefix = new byte[20];
-        for (int i = 0; i < 20; i++) {
+        byte [] buffer_for_prefix = new byte[40];
+        for (int i = 0; i < 40; i++) {
             buffer_for_prefix[i] = buffer_for_whole_question[i];
         }
         String sizes = null;
@@ -107,12 +107,12 @@ public class DataConversion {
 
         byte [] buffer_for_text = new byte[size_of_text];
         for (int i = 0; i < size_of_text; i++) {
-            buffer_for_text[i] = buffer_for_whole_question[i+20];
+            buffer_for_text[i] = buffer_for_whole_question[i+40];
         }
 
         byte [] buffer_for_image = new byte[size_of_image];
         for (int i = 0; i < size_of_image; i++) {
-            buffer_for_image[i] = buffer_for_whole_question[i+20+size_of_text];
+            buffer_for_image[i] = buffer_for_whole_question[i+40+size_of_text];
         }
 
         ByteArrayInputStream imageStream = new ByteArrayInputStream(buffer_for_image);
