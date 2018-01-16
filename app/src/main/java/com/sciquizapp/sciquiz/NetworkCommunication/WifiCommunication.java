@@ -29,6 +29,7 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.util.Log;
 
 public class WifiCommunication {
@@ -46,6 +47,11 @@ public class WifiCommunication {
 	BroadcastReceiver scanningreceiver;
 
 	public WifiCommunication(Context arg_context, Application arg_application) {
+		if (android.os.Build.VERSION.SDK_INT > 9)
+		{
+			StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+			StrictMode.setThreadPolicy(policy);
+		}
 		mContextWifCom = arg_context;
 		mWifi = (WifiManager) mContextWifCom.getSystemService(Context.WIFI_SERVICE);
 		mApplication = arg_application;
