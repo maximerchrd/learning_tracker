@@ -20,6 +20,7 @@ import com.sciquizapp.sciquiz.database_management.DbHelper;
 import com.sciquizapp.sciquiz.LTApplication;
 import com.sciquizapp.sciquiz.Questions.Question;
 import com.sciquizapp.sciquiz.Questions.QuestionMultipleChoice;
+import com.sciquizapp.sciquiz.database_management.DbTableIndividualQuestionForResult;
 import com.sciquizapp.sciquiz.database_management.DbTableQuestionMultipleChoice;
 
 import android.app.Application;
@@ -229,6 +230,8 @@ public class WifiCommunication {
 							questionMultipleChoice.setID(id_global);
 							launchMultChoiceQuestionActivity(questionMultipleChoice);
 						}
+					} else if (sizes.split(":")[0].contains("EVAL")) {
+						DbTableIndividualQuestionForResult.addIndividualQuestionForStudentResult(sizes.split("///")[2],sizes.split("///")[1]);
 					}
 				}
 			}

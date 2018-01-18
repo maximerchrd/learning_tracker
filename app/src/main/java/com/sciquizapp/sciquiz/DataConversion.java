@@ -7,6 +7,8 @@ import android.graphics.BitmapFactory;
 import com.sciquizapp.sciquiz.Questions.Question;
 import com.sciquizapp.sciquiz.Questions.QuestionMultipleChoice;
 import com.sciquizapp.sciquiz.database_management.DbHelper;
+import com.sciquizapp.sciquiz.database_management.DbTableLearningObjective;
+import com.sciquizapp.sciquiz.database_management.DbTableRelationQuestionObjective;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -145,8 +147,20 @@ public class DataConversion {
         question_to_return.setOPT9(question_text.split("///")[10]);
         String ID_string = question_text.split("///")[11];
         question_to_return.setID(Integer.parseInt(ID_string));
-        question_to_return.setIMAGE(question_text.split("///")[12]);
-        SaveImageFile(bitmap, question_text.split("///")[12]);
+        question_to_return.setIMAGE(question_text.split("///")[14]); //14 because inbetween come subjects and objectives
+        SaveImageFile(bitmap, question_text.split("///")[14]);
+
+        //deal with learning objectives
+        String learningObjectivesText = question_text.split("///")[13];
+        String[] learningObjectives = learningObjectivesText.split("\\|\\|\\|");
+        for (int i = 0; i < learningObjectives.length; i++) {
+            try {
+                DbTableLearningObjective.addLearningObjective(learningObjectives[i], -1);
+                DbTableRelationQuestionObjective.addQuestionObjectiverRelation(learningObjectives[i],ID_string);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
 
         return question_to_return;
     }

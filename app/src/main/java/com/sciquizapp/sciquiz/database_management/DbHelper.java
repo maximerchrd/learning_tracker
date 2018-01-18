@@ -83,8 +83,11 @@ public class DbHelper extends SQLiteOpenHelper {
         // Inserting of Replacing Row
         dbase.insert(TABLE_SETTINGS, null, values);
 
-        //Create multiple choice questions table if it doesn't exist
+        //Create other tables if it doesn't exist
         DbTableQuestionMultipleChoice.createTableQuestionMultipleChoice();
+        DbTableLearningObjective.createTableLearningObjectives();
+        DbTableRelationQuestionObjective.createTableRelationQuestionObjectives();
+        DbTableIndividualQuestionForResult.createTableIndividualQuestionForResult();
         Log.v("database: ", "finished creating tables");
         //db.close();
     }

@@ -23,6 +23,9 @@
         android:name="android.hardware.bluetooth_le"
         android:required="true" />
 
+    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <android:uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <!-- <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" /> -->
     <application
         android:name="com.sciquizapp.sciquiz.LTApplication"
@@ -41,44 +44,37 @@
         </activity>
         <activity
             android:name="com.sciquizapp.sciquiz.Activities.QuizActivity"
-            android:label="@string/title_activity_quiz" >
-        </activity>
+            android:label="@string/title_activity_quiz" />
         <activity
             android:name="com.sciquizapp.sciquiz.Activities.ResultActivity"
-            android:label="@string/title_activity_result" >
-        </activity>
+            android:label="@string/title_activity_result" />
         <activity
             android:name="com.sciquizapp.sciquiz.Activities.ScoresActivity"
-            android:label="@string/title_activity_scores" >
-        </activity>
+            android:label="@string/title_activity_scores" />
         <activity
             android:name="com.sciquizapp.sciquiz.Activities.SettingsActivity"
-            android:label="@string/title_activity_settings" >
-        </activity>
+            android:label="@string/title_activity_settings" />
         <activity
             android:name="com.sciquizapp.sciquiz.AndroidClient"
-            android:label="@string/title_activity_client" >
-        </activity>
+            android:label="@string/title_activity_client" />
         <activity
             android:name="com.sciquizapp.sciquiz.Activities.MultChoiceQuestionActivity"
-            android:label="@string/title_activity_question" >
-        </activity>
+            android:label="@string/title_activity_question" />
         <activity
             android:name="com.sciquizapp.sciquiz.Activities.QuestionActivity"
-            android:label="@string/title_activity_question" >
-        </activity>
+            android:label="@string/title_activity_question" />
         <activity
             android:name="com.sciquizapp.sciquiz.Activities.InteractiveModeActivity$BluetoothClientActivity"
-            android:label="@string/title_activity_bluetoothclient" >
-        </activity>
+            android:label="@string/title_activity_bluetoothclient" />
         <activity
             android:name="com.sciquizapp.sciquiz.Activities.SingleQuestionActivity"
-            android:label="@string/title_activity_question" >
-        </activity>
+            android:label="@string/title_activity_question" />
         <activity
             android:name="com.sciquizapp.sciquiz.Activities.InteractiveModeActivity"
-            android:label="@string/title_activity_interactivemode" >
-        </activity>
+            android:label="@string/title_activity_interactivemode" />
+        <activity
+            android:name="com.sciquizapp.sciquiz.Activities.EvaluationResultsActivity"
+            android:label="@string/title_activity_evaluation_results" />
     </application>
 
 </manifest>

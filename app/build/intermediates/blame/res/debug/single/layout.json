@@ -50,5 +50,9 @@
     {
         "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/layout/list_item.xml",
         "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/layout/list_item.xml"
+    },
+    {
+        "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/layout/activity_evaluation_results.xml",
+        "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/layout/activity_evaluation_results.xml"
     }
 ]

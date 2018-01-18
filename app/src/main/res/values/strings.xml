@@ -26,4 +26,5 @@
     <color name="yellow">#E8D630</color>
     <color name="red">#F7230C</color>
     <color name="green">#57D53B</color>
+    <string name="title_activity_evaluation_results">EvaluationResultsActivity</string>
 </resources>

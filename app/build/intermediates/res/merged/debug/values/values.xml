@@ -22,6 +22,7 @@
     <string name="str_next">Next</string>
     <string name="title_activity_bluetoothclient">Mode intéractif</string>
     <string name="title_activity_client">Réseau</string>
+    <string name="title_activity_evaluation_results">EvaluationResultsActivity</string>
     <string name="title_activity_interactivemode">Mode intéractif</string>
     <string name="title_activity_question">Question</string>
     <string name="title_activity_quiz">Quiz</string>
