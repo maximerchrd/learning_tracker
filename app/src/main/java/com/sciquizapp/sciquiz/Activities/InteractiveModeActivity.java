@@ -52,7 +52,7 @@ public class InteractiveModeActivity extends Activity {
 		setContentView(R.layout.activity_interactivemode);
 		intmod_wait_for_question = (TextView) findViewById(R.id.intmod_wait_for_question);
 		intmod_out = (TextView) findViewById(R.id.intmod_out);
-		intmod_wait_for_question.append("En attente de la question suivante");
+		intmod_wait_for_question.append(getString(R.string.waiting_for_question));
 		
 		//mNetCom = new NetworkCommunication(this, getApplication());
 		mNetCom = new NetworkCommunication(this, getApplication(), intmod_out);
@@ -132,7 +132,7 @@ public class InteractiveModeActivity extends Activity {
             wait_for_question = (TextView) findViewById(R.id.waitingforquestion);
             out = (TextView) findViewById(R.id.out);
 
-            wait_for_question.append("En attente de la question suivante");
+            wait_for_question.append(getString(R.string.waiting_for_question));
             //		out.append("\n...In onCreate()...");
 
             mBTCom = new OldBluetoothCommunication(this);
