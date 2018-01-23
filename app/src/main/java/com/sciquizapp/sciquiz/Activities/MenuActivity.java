@@ -54,7 +54,7 @@ public class MenuActivity extends Activity {
 		final String[] subjects = subjectsRaw.split("/");
 
 		//set  text for consignes
-		consignes.setText("Hello "+db.getName()+".\n");
+		consignes.setText(getString(R.string.hello) + " " + db.getName() +".\n");
 
 		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
 				LinearLayout.LayoutParams.MATCH_PARENT,      

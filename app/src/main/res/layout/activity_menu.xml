@@ -29,7 +29,7 @@
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:layout_weight="20"
-           android:text="Interactive mode"
+           android:text="@string/interactive_mode_button"
            android:background="@color/red"
            android:textColor="@color/white" />
 
@@ -38,7 +38,7 @@
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:layout_weight="20"
-           android:text="Evaluation Results"
+           android:text="@string/title_activity_evaluation_results"
            android:background="@color/yellow"
            android:textColor="@color/white" />
 

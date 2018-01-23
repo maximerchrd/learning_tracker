@@ -208,7 +208,7 @@ public class MultChoiceQuestionActivity extends Activity {
 
 			linearLayout.addView(checkBoxesArray.get(i));
 		}
-		submitButton.setText("soumettre la réponse");
+		submitButton.setText(getString(R.string.answer_button));
 		submitButton.setBackgroundColor(Color.parseColor("#00CCCB"));
 		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
 				LinearLayout.LayoutParams.MATCH_PARENT,

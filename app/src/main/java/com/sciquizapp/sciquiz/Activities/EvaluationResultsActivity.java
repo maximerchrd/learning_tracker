@@ -75,8 +75,8 @@ public class EvaluationResultsActivity extends Activity {
         yAxis2.setAxisMaximum(100);
         yAxis2.setAxisMinimum(0);
 
+        chart.getDescription().setEnabled(false);
         dataset.setDrawValues(false);
-
         BarData data = new BarData(dataset);
         chart.setData(data);
 

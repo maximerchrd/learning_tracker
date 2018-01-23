@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="answer_button">պատասխանը ներկայացնել</string>
     <string name="app_name">Learning Tracker</string>
-    <string name="button_menu_settings"/>
+    <string name="button_menu_settings">Կարգավորումներ</string>
+    <string name="button_result_back">վերադառնալ մենյու</string>
+    <string name="button_settings_back">Պահպանել և վերադառնալ մենյու</string>
+    <string name="hello">Բարեւ </string>
+    <string name="hello_world"/>
+    <string name="interactive_mode_button">Սկսե</string>
+    <string name="menu_level"/>
+    <string name="menu_settings"/>
+    <string name="settings_master">Միանալ IP հասցեին</string>
+    <string name="settings_name">Անուն</string>
+    <string name="str_next"/>
+    <string name="title_activity_bluetoothclient"/>
+    <string name="title_activity_evaluation_results">Գնահատման արդյունքներ</string>
+    <string name="title_activity_interactivemode">Դասասենյակի գործունեությունը</string>
+    <string name="title_activity_result">Արդյունքներ</string>
+    <string name="title_activity_settings">Կարգավորումներ</string>
+    <string name="waiting_for_question">Հաջորդ հարցի սպասում</string>
 </resources>

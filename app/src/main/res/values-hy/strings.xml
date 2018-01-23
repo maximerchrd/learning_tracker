@@ -11,8 +11,12 @@
     <string name="settings_name">Անուն</string>
     <string name="str_next"></string>
     <string name="title_activity_bluetoothclient"></string>
-    <string name="title_activity_interactivemode">Սկսել</string>
+    <string name="title_activity_interactivemode">Դասասենյակի գործունեությունը</string>
     <string name="title_activity_result">Արդյունքներ</string>
     <string name="title_activity_settings">Կարգավորումներ</string>
     <string name="waiting_for_question">Հաջորդ հարցի սպասում</string>
+    <string name="hello">Բարեւ </string>
+    <string name="title_activity_evaluation_results">Գնահատման արդյունքներ</string>
+    <string name="interactive_mode_button">Սկսե</string>
+    <string name="answer_button">պատասխանը ներկայացնել</string>
 </resources>

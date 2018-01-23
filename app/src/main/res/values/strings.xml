@@ -11,7 +11,7 @@
     <string name="title_activity_client">Network</string>
     <string name="title_activity_question">Question</string>
     <string name="title_activity_bluetoothclient">Start</string>
-    <string name="title_activity_interactivemode">Start</string>
+    <string name="title_activity_interactivemode">Classroom activity</string>
     <string name="menu_score">score:</string>
     <string name="menu_level">level:</string>
     <string name="settings_name">Name</string>
@@ -28,4 +28,7 @@
     <color name="green">#57D53B</color>
     <string name="title_activity_evaluation_results">Evaluation results</string>
     <string name="waiting_for_question">Waiting for the next question</string>
+    <string name="hello">Hello</string>
+    <string name="interactive_mode_button">Start</string>
+    <string name="answer_button">Submit the answer</string>
 </resources>
