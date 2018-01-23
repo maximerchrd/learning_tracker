@@ -5,7 +5,7 @@ android {
     buildToolsVersion "24.0.2"
 
     defaultConfig {
-        applicationId "com.sciquizapp.sciquiz"
+        applicationId "com.LearningTracker.LearningTrackerApp"
         minSdkVersion 15
         targetSdkVersion 23
     }

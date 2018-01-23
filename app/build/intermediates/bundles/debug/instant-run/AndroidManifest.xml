@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.sciquizapp.sciquiz"
+    package="com.LearningTracker.LearningTrackerApp"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -11,14 +11,14 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        name="com.sciquizapp.LearningTracker.LTApplication"
+        name="com.LearningTracker.LearningTrackerApp.LTApplication"
         android:name="com.android.tools.fd.runtime.BootstrapApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.sciquizapp.LearningTracker.Activities.MenuActivity"
+            android:name="com.LearningTracker.LearningTrackerApp.Activities.MenuActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,25 +27,25 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.sciquizapp.LearningTracker.Activities.ResultActivity"
+            android:name="com.LearningTracker.LearningTrackerApp.Activities.ResultActivity"
             android:label="@string/title_activity_result" />
         <activity
-            android:name="com.sciquizapp.LearningTracker.Activities.SettingsActivity"
+            android:name="com.LearningTracker.LearningTrackerApp.Activities.SettingsActivity"
             android:label="@string/title_activity_settings" />
         <activity
-            android:name="com.sciquizapp.LearningTracker.AndroidClient"
+            android:name="com.LearningTracker.LearningTrackerApp.AndroidClient"
             android:label="@string/title_activity_client" />
         <activity
-            android:name="com.sciquizapp.LearningTracker.Activities.MultChoiceQuestionActivity"
+            android:name="com.LearningTracker.LearningTrackerApp.Activities.MultChoiceQuestionActivity"
             android:label="@string/title_activity_question" />
         <activity
-            android:name="com.sciquizapp.LearningTracker.Activities.SingleQuestionActivity"
+            android:name="com.LearningTracker.LearningTrackerApp.Activities.SingleQuestionActivity"
             android:label="@string/title_activity_question" />
         <activity
-            android:name="com.sciquizapp.LearningTracker.Activities.InteractiveModeActivity"
+            android:name="com.LearningTracker.LearningTrackerApp.Activities.InteractiveModeActivity"
             android:label="@string/title_activity_interactivemode" />
         <activity
-            android:name="com.sciquizapp.LearningTracker.Activities.EvaluationResultsActivity"
+            android:name="com.LearningTracker.LearningTrackerApp.Activities.EvaluationResultsActivity"
             android:label="@string/title_activity_evaluation_results" />
     </application>
 
