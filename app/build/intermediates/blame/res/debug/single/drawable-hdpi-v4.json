@@ -1,74 +1,10 @@
 [
     {
-        "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/bateau_forces.jpg",
-        "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-hdpi/bateau_forces.jpg"
-    },
-    {
-        "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/ecg.jpg",
-        "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-hdpi/ecg.jpg"
-    },
-    {
-        "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/circulation2.jpg",
-        "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-hdpi/circulation2.jpg"
-    },
-    {
-        "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/circulation1.jpg",
-        "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-hdpi/circulation1.jpg"
-    },
-    {
-        "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/tailles_pathogenes.jpg",
-        "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-hdpi/tailles_pathogenes.jpg"
-    },
-    {
-        "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/compatibilite.jpg",
-        "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-hdpi/compatibilite.jpg"
-    },
-    {
-        "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/fc.jpg",
-        "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-hdpi/fc.jpg"
-    },
-    {
         "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_launcher.png",
         "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-hdpi/ic_launcher.png"
     },
     {
-        "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/bateau.jpg",
-        "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-hdpi/bateau.jpg"
-    },
-    {
-        "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/schema_coeur.jpg",
-        "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-hdpi/schema_coeur.jpg"
-    },
-    {
-        "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/respiration_cellulaire.jpg",
-        "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-hdpi/respiration_cellulaire.jpg"
-    },
-    {
-        "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/capillaires.jpg",
-        "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-hdpi/capillaires.jpg"
-    },
-    {
         "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_launcher_old.png",
         "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-hdpi/ic_launcher_old.png"
-    },
-    {
-        "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/bloc_table.jpg",
-        "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-hdpi/bloc_table.jpg"
-    },
-    {
-        "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/halterophile.jpg",
-        "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-hdpi/halterophile.jpg"
-    },
-    {
-        "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/circul_schema_simple2.jpg",
-        "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-hdpi/circul_schema_simple2.jpg"
-    },
-    {
-        "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/circul_schema_simple.jpg",
-        "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-hdpi/circul_schema_simple.jpg"
-    },
-    {
-        "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/montgolfiere.jpg",
-        "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-hdpi/montgolfiere.jpg"
     }
 ]

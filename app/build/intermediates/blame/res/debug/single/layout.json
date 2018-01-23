@@ -8,14 +8,6 @@
         "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/layout/activity_multchoicequestion.xml"
     },
     {
-        "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/layout/activity_bluetoothclient.xml",
-        "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/layout/activity_bluetoothclient.xml"
-    },
-    {
-        "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/layout/activity_question.xml",
-        "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/layout/activity_question.xml"
-    },
-    {
         "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/layout/list_group.xml",
         "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/layout/list_group.xml"
     },
@@ -30,14 +22,6 @@
     {
         "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/layout/activity_result.xml",
         "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/layout/activity_result.xml"
-    },
-    {
-        "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/layout/activity_scores.xml",
-        "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/layout/activity_scores.xml"
-    },
-    {
-        "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/layout/activity_quiz.xml",
-        "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/layout/activity_quiz.xml"
     },
     {
         "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/layout/activity_interactivemode.xml",

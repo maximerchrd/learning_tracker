@@ -185,11 +185,4 @@ public class DataConversion {
             e.printStackTrace();
         }
     }
-
-    public void SaveQuestionToDB (byte[] buffer_for_whole_question) {
-        Question questionToSave = bytearrayvectorToQuestion(buffer_for_whole_question);
-        DbHelper tempDBOperation = new DbHelper(mContext);
-        questionToSave.setID(questionToSave.getID());
-        tempDBOperation.addQuestion(questionToSave);
-    }
 }

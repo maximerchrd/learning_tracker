@@ -27,14 +27,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.sciquizapp.LearningTracker.Activities.QuizActivity"
-            android:label="@string/title_activity_quiz" />
-        <activity
             android:name="com.sciquizapp.LearningTracker.Activities.ResultActivity"
             android:label="@string/title_activity_result" />
-        <activity
-            android:name="com.sciquizapp.LearningTracker.Activities.ScoresActivity"
-            android:label="@string/title_activity_scores" />
         <activity
             android:name="com.sciquizapp.LearningTracker.Activities.SettingsActivity"
             android:label="@string/title_activity_settings" />
@@ -43,9 +37,6 @@
             android:label="@string/title_activity_client" />
         <activity
             android:name="com.sciquizapp.LearningTracker.Activities.MultChoiceQuestionActivity"
-            android:label="@string/title_activity_question" />
-        <activity
-            android:name="com.sciquizapp.LearningTracker.Activities.QuestionActivity"
             android:label="@string/title_activity_question" />
         <activity
             android:name="com.sciquizapp.LearningTracker.Activities.SingleQuestionActivity"

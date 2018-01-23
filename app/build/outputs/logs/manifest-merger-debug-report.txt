@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:2:1-60:12
+ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:2:1-51:12
 	package
 		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:3:5-45
 		INJECTED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml
@@ -31,7 +31,7 @@ ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/And
 	android:name
 		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:11:22-64
 application
-ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:13:5-58:19
+ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:13:5-49:19
 MERGED from [com.android.support:support-v4:23.4.0] /Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/AndroidManifest.xml:22:5-20
 	android:label
 		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:17:9-41
@@ -59,63 +59,45 @@ category#android.intent.category.LAUNCHER
 ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:25:17-77
 	android:name
 		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:25:27-74
-activity#com.sciquizapp.LearningTracker.Activities.QuizActivity
-ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:28:9-30:68
-	android:label
-		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:30:13-56
-	android:name
-		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:29:13-82
 activity#com.sciquizapp.LearningTracker.Activities.ResultActivity
-ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:31:9-33:70
+ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:28:9-30:70
 	android:label
-		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:33:13-58
+		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:30:13-58
 	android:name
-		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:32:13-84
-activity#com.sciquizapp.LearningTracker.Activities.ScoresActivity
+		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:29:13-84
+activity#com.sciquizapp.LearningTracker.Activities.SettingsActivity
+ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:31:9-33:72
+	android:label
+		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:33:13-60
+	android:name
+		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:32:13-86
+activity#com.sciquizapp.LearningTracker.AndroidClient
 ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:34:9-36:70
 	android:label
 		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:36:13-58
 	android:name
-		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:35:13-84
-activity#com.sciquizapp.LearningTracker.Activities.SettingsActivity
+		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:35:13-72
+activity#com.sciquizapp.LearningTracker.Activities.MultChoiceQuestionActivity
 ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:37:9-39:72
 	android:label
 		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:39:13-60
 	android:name
-		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:38:13-86
-activity#com.sciquizapp.LearningTracker.AndroidClient
-ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:40:9-42:70
-	android:label
-		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:42:13-58
-	android:name
-		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:41:13-72
-activity#com.sciquizapp.LearningTracker.Activities.MultChoiceQuestionActivity
-ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:43:9-45:72
-	android:label
-		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:45:13-60
-	android:name
-		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:44:13-96
-activity#com.sciquizapp.LearningTracker.Activities.QuestionActivity
-ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:46:9-48:72
-	android:label
-		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:48:13-60
-	android:name
-		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:47:13-86
+		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:38:13-96
 activity#com.sciquizapp.LearningTracker.Activities.SingleQuestionActivity
-ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:49:9-51:72
+ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:40:9-42:72
 	android:label
-		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:51:13-60
+		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:42:13-60
 	android:name
-		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:50:13-92
+		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:41:13-92
 activity#com.sciquizapp.LearningTracker.Activities.InteractiveModeActivity
-ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:52:9-54:79
+ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:43:9-45:79
 	android:label
-		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:54:13-67
+		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:45:13-67
 	android:name
-		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:53:13-93
+		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:44:13-93
 activity#com.sciquizapp.LearningTracker.Activities.EvaluationResultsActivity
-ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:55:9-57:82
+ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:46:9-48:82
 	android:label
-		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:57:13-70
+		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:48:13-70
 	android:name
-		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:56:13-95
+		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:47:13-95

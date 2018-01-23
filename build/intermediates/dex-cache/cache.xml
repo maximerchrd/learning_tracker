@@ -5,7 +5,7 @@
         jar="/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         revision="24.0.2"
-        sha1="4fc9b3f72b386a57e9111a5c874befde404af200">
+        sha1="95a01a827885f1794d6b60f989c731be29bee5ef">
         <dex dex="/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_579dca57bdcde7d0fdc3b91d3529631559b6e619/classes.dex" />
     </item>
     <item
@@ -54,7 +54,7 @@
         jar="/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         revision="24.0.2"
-        sha1="3a3d3f194552f3fbd701671548dd95da16cb0694">
+        sha1="120e6465b9adfc2fec251b129056e4be19cf1563">
         <dex dex="/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_494f34fdd85177dea6bf0fb56d72a94ff4ba77f9/classes.dex" />
     </item>
     <item

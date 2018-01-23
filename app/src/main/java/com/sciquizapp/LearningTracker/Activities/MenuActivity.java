@@ -46,8 +46,6 @@ public class MenuActivity extends Activity {
 		consignes = (TextView) findViewById(R.id.textViewmenu);
 		final DbHelper db = new DbHelper(this);
 
-		String subjectsRaw = db.getSubjects();
-		final String[] subjects = subjectsRaw.split("/");
 
 		//set  text for consignes
 		consignes.setText(getString(R.string.hello) + " " + db.getName() +".\n");
@@ -64,24 +62,6 @@ public class MenuActivity extends Activity {
 		interactiveModeButton.setLayoutParams(params);
 		buttonChangeSettings.setLayoutParams(params);
 
-		// Define a new Adapter:  First parameter - Context; Second parameter - Layout for the row,
-		//Third parameter - ID of the TextView to which the data is written; Fourth - the Array of data
-		//where subjects are fed to the layout
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, android.R.id.text1, subjects){
-			@Override
-			public View getView(int position, View convertView,
-					ViewGroup parent) {
-				View view =super.getView(position, convertView, parent);
-
-				TextView textView=(TextView) view.findViewById(android.R.id.text1);
-
-				/*YOUR CHOICE OF COLOR*/
-				textView.setTextColor(Color.BLACK);
-
-				return view;
-			}
-		};
 
 		//go to scores button
 		scoresButton.setOnClickListener(new View.OnClickListener() {		
