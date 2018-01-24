@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".MenuActivity" >
+    tools:context=".Activities.MenuActivity" >
 
    <LinearLayout
        android:layout_width="wrap_content"
@@ -24,21 +24,13 @@
            android:textAppearance="?android:attr/textAppearanceLarge"
            android:textColor="@color/black" />
 
-       <ListView
-           android:id="@+id/listView1"
-           android:layout_width="match_parent"
-           android:layout_height="182dp"
-           android:textColor="@color/white" >
-       </ListView>
-
        <Button
-           android:id="@+id/startbutton"
+           android:id="@+id/interactivemodebutton"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:layout_weight="20"
-           android:layout_marginTop="30dp"
-           android:text="Commencer"
-           android:background="@color/blue"
+           android:text="@string/interactive_mode_button"
+           android:background="@color/red"
            android:textColor="@color/white" />
 
        <Button
@@ -46,17 +38,8 @@
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:layout_weight="20"
-           android:text="Meilleurs scores"
+           android:text="@string/title_activity_evaluation_results"
            android:background="@color/yellow"
-           android:textColor="@color/white" />
-
-       <Button
-           android:id="@+id/interactivemodebutton"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:layout_weight="20"
-           android:text="Mode intéractif"
-           android:background="@color/red"
            android:textColor="@color/white" />
 
        <Button

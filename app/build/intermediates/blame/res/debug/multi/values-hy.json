@@ -1,0 +1,463 @@
+[
+    {
+        "outputFile": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/values-hy/values-hy.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 63,
+                    "endOffset": 114
+                },
+                "from": {
+                    "file": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/values-hy/strings.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 4,
+                        "startOffset": 1137,
+                        "endColumn": 63,
+                        "endOffset": 1196
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 119,
+                    "endColumn": 53,
+                    "endOffset": 168
+                },
+                "from": {
+                    "file": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/values-hy/strings.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 53,
+                        "endOffset": 104
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 173,
+                    "endColumn": 63,
+                    "endOffset": 232
+                },
+                "from": {
+                    "file": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/values-hy/strings.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 109,
+                        "endColumn": 63,
+                        "endOffset": 168
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 237,
+                    "endColumn": 64,
+                    "endOffset": 297
+                },
+                "from": {
+                    "file": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/values-hy/strings.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 173,
+                        "endColumn": 64,
+                        "endOffset": 233
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 302,
+                    "endColumn": 77,
+                    "endOffset": 375
+                },
+                "from": {
+                    "file": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/values-hy/strings.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 238,
+                        "endColumn": 77,
+                        "endOffset": 311
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 380,
+                    "endColumn": 40,
+                    "endOffset": 416
+                },
+                "from": {
+                    "file": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/values-hy/strings.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 955,
+                        "endColumn": 40,
+                        "endOffset": 991
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 421,
+                    "endColumn": 44,
+                    "endOffset": 461
+                },
+                "from": {
+                    "file": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/values-hy/strings.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 316,
+                        "endColumn": 44,
+                        "endOffset": 356
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 466,
+                    "endColumn": 56,
+                    "endOffset": 518
+                },
+                "from": {
+                    "file": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/values-hy/strings.xml",
+                    "position": {
+                        "startLine": 19,
+                        "startColumn": 4,
+                        "startOffset": 1080,
+                        "endColumn": 56,
+                        "endOffset": 1132
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 523,
+                    "endColumn": 43,
+                    "endOffset": 562
+                },
+                "from": {
+                    "file": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/values-hy/strings.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 361,
+                        "endColumn": 43,
+                        "endOffset": 400
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 567,
+                    "endColumn": 43,
+                    "endOffset": 606
+                },
+                "from": {
+                    "file": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/values-hy/strings.xml",
+                    "position": {
+                        "startLine": 21,
+                        "startColumn": 4,
+                        "startOffset": 1201,
+                        "endColumn": 43,
+                        "endOffset": 1240
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 611,
+                    "endColumn": 46,
+                    "endOffset": 653
+                },
+                "from": {
+                    "file": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/values-hy/strings.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 405,
+                        "endColumn": 46,
+                        "endOffset": 447
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 658,
+                    "endColumn": 61,
+                    "endOffset": 715
+                },
+                "from": {
+                    "file": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/values-hy/strings.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 452,
+                        "endColumn": 61,
+                        "endOffset": 509
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 720,
+                    "endColumn": 47,
+                    "endOffset": 763
+                },
+                "from": {
+                    "file": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/values-hy/strings.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 514,
+                        "endColumn": 47,
+                        "endOffset": 557
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 768,
+                    "endColumn": 41,
+                    "endOffset": 805
+                },
+                "from": {
+                    "file": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/values-hy/strings.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 562,
+                        "endColumn": 41,
+                        "endOffset": 599
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 810,
+                    "endColumn": 63,
+                    "endOffset": 869
+                },
+                "from": {
+                    "file": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/values-hy/strings.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 604,
+                        "endColumn": 63,
+                        "endOffset": 663
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 17,
+                    "startColumn": 4,
+                    "startOffset": 874,
+                    "endColumn": 54,
+                    "endOffset": 924
+                },
+                "from": {
+                    "file": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/values-hy/strings.xml",
+                    "position": {
+                        "startLine": 22,
+                        "startColumn": 4,
+                        "startOffset": 1245,
+                        "endColumn": 54,
+                        "endOffset": 1295
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 18,
+                    "startColumn": 4,
+                    "startOffset": 929,
+                    "endColumn": 83,
+                    "endOffset": 1008
+                },
+                "from": {
+                    "file": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/values-hy/strings.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 996,
+                        "endColumn": 83,
+                        "endOffset": 1075
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 19,
+                    "startColumn": 4,
+                    "startOffset": 1013,
+                    "endColumn": 87,
+                    "endOffset": 1096
+                },
+                "from": {
+                    "file": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/values-hy/strings.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 668,
+                        "endColumn": 87,
+                        "endOffset": 751
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 20,
+                    "startColumn": 4,
+                    "startOffset": 1101,
+                    "endColumn": 56,
+                    "endOffset": 1153
+                },
+                "from": {
+                    "file": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/values-hy/strings.xml",
+                    "position": {
+                        "startLine": 23,
+                        "startColumn": 4,
+                        "startOffset": 1300,
+                        "endColumn": 56,
+                        "endOffset": 1352
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 21,
+                    "startColumn": 4,
+                    "startOffset": 1158,
+                    "endColumn": 52,
+                    "endOffset": 1206
+                },
+                "from": {
+                    "file": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/values-hy/strings.xml",
+                    "position": {
+                        "startLine": 24,
+                        "startColumn": 4,
+                        "startOffset": 1357,
+                        "endColumn": 52,
+                        "endOffset": 1405
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 22,
+                    "startColumn": 4,
+                    "startOffset": 1211,
+                    "endColumn": 61,
+                    "endOffset": 1268
+                },
+                "from": {
+                    "file": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/values-hy/strings.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 756,
+                        "endColumn": 61,
+                        "endOffset": 813
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 23,
+                    "startColumn": 4,
+                    "startOffset": 1273,
+                    "endColumn": 54,
+                    "endOffset": 1323
+                },
+                "from": {
+                    "file": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/values-hy/strings.xml",
+                    "position": {
+                        "startLine": 25,
+                        "startColumn": 4,
+                        "startOffset": 1410,
+                        "endColumn": 54,
+                        "endOffset": 1460
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 24,
+                    "startColumn": 4,
+                    "startOffset": 1328,
+                    "endColumn": 66,
+                    "endOffset": 1390
+                },
+                "from": {
+                    "file": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/values-hy/strings.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 818,
+                        "endColumn": 66,
+                        "endOffset": 880
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 25,
+                    "startColumn": 4,
+                    "startOffset": 1395,
+                    "endColumn": 69,
+                    "endOffset": 1460
+                },
+                "from": {
+                    "file": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/values-hy/strings.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 885,
+                        "endColumn": 69,
+                        "endOffset": 950
+                    }
+                }
+            }
+        ]
+    }
+]

@@ -1,26 +1,10 @@
 [
     {
-        "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/ecg.jpg",
-        "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-xxhdpi/ecg.jpg"
-    },
-    {
         "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/ic_launcher.png",
         "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-xxhdpi/ic_launcher.png"
     },
     {
         "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/ic_launcher_old.png",
         "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-xxhdpi/ic_launcher_old.png"
-    },
-    {
-        "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/respiration_cellulaire.jpg",
-        "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-xxhdpi/respiration_cellulaire.jpg"
-    },
-    {
-        "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/circulation1.jpg",
-        "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-xxhdpi/circulation1.jpg"
-    },
-    {
-        "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/compatibilite.jpg",
-        "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-xxhdpi/compatibilite.jpg"
     }
 ]
