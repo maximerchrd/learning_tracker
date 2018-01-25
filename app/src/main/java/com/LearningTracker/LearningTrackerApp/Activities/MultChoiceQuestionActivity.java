@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -220,4 +221,17 @@ public class MultChoiceQuestionActivity extends Activity {
 		linearLayout.addView(submitButton);
 		qid++;
 	}
+
+
+	public void onWindowFocusChanged(boolean hasFocus) {
+		super.onWindowFocusChanged(hasFocus);
+		if (!hasFocus) {
+			Log.v("Question activity: ", "focus lost");
+			((LTApplication)this.getApplication()).startActivityTransitionTimer();
+		} else {
+			((LTApplication)this.getApplication()).stopActivityTransitionTimer();
+			Log.v("Question activity: ", "has focus");
+		}
+	}
+
 }

@@ -1,9 +1,13 @@
 package com.LearningTracker.LearningTrackerApp;
 
 import android.app.Application;
+import android.util.Log;
 
 import com.LearningTracker.LearningTrackerApp.NetworkCommunication.NetworkCommunication;
 import com.LearningTracker.LearningTrackerApp.NetworkCommunication.WifiCommunication;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by maximerichard on 17/02/17.
@@ -11,6 +15,8 @@ import com.LearningTracker.LearningTrackerApp.NetworkCommunication.WifiCommunica
 public class LTApplication extends Application {
     private WifiCommunication appWifi;
     private NetworkCommunication appNetwork;
+    private Integer quitApp = 0;
+    public final long MAX_ACTIVITY_TRANSITION_TIME_MS = 700;
 
     public WifiCommunication getAppWifi() {return appWifi;}
     public NetworkCommunication getAppNetwork() {
@@ -26,5 +32,42 @@ public class LTApplication extends Application {
         this.appNetwork = appNetwork;
     }
 
+    public void resetQuitApp() {
+        Thread thread = new Thread() {
+            @Override
+            public void run() {
+                try {
+                    sleep(MAX_ACTIVITY_TRANSITION_TIME_MS);
+                    quitApp = 0;
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        thread.start();
+    }
+
+    public void startActivityTransitionTimer() {
+        Thread thread = new Thread() {
+            @Override
+            public void run() {
+                try {
+                    quitApp++;
+                    sleep(MAX_ACTIVITY_TRANSITION_TIME_MS);
+                    if (quitApp > 0) {
+                        Log.v("WARNING: ", "user left application");
+                        appNetwork.sendDisconnectionSignal();
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        thread.start();
+    }
+
+    public void stopActivityTransitionTimer() {
+        quitApp--;
+    }
 
 }

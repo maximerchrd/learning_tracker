@@ -1,5 +1,6 @@
 package com.LearningTracker.LearningTrackerApp.Activities;
 
+import com.LearningTracker.LearningTrackerApp.LTApplication;
 import com.LearningTracker.LearningTrackerApp.NetworkCommunication.NetworkCommunication;
 import com.LearningTracker.LearningTrackerApp.R;
 
@@ -12,7 +13,7 @@ public class InteractiveModeActivity extends Activity {
 	NetworkCommunication mNetCom;
 	public TextView intmod_out;
 	TextView intmod_wait_for_question;
-	
+
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,8 @@ public class InteractiveModeActivity extends Activity {
 		//mNetCom = new NetworkCommunication(this, getApplication());
 		mNetCom = new NetworkCommunication(this, getApplication(), intmod_out);
 		mNetCom.ConnectToMaster();
+
+		((LTApplication)this.getApplication()).resetQuitApp();
 	}
 	
 	public void onStart() {
@@ -45,17 +48,15 @@ public class InteractiveModeActivity extends Activity {
 	public void onDestroy() {
 		super.onDestroy();
 	}
-    @Override
-    protected void onUserLeaveHint()
-    {
-        Log.v("onUserLeaveHint","Home button pressed");
-        super.onUserLeaveHint();
-    }
 
-	public boolean onKeyDown(int keyCode, android.view.KeyEvent event) {
-		if ((keyCode == android.view.KeyEvent.KEYCODE_BACK)) {
-			Log.v(this.getClass().getName(), "back button pressed");
+	public void onWindowFocusChanged(boolean hasFocus) {
+		super.onWindowFocusChanged(hasFocus);
+		if (!hasFocus) {
+			Log.v("interactive mode: ", "focus lost");
+			((LTApplication)this.getApplication()).startActivityTransitionTimer();
+		} else {
+			((LTApplication)this.getApplication()).stopActivityTransitionTimer();
+			Log.v("interactive mode: ", "has focus");
 		}
-		return super.onKeyDown(keyCode, event);
 	}
 }

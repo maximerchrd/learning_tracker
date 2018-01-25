@@ -107,6 +107,17 @@ public class WifiCommunication {
 		answer = "";
 	}
 
+	public void sendDisconnectionSignal (String signal) {
+		byte[] sigBuffer = signal.getBytes();
+		try {
+			mOutputStream.write(sigBuffer, 0, sigBuffer.length);
+			mOutputStream.flush();
+		} catch (IOException e) {
+			String msg = "In sendDisconnectionSignal() and an exception occurred during write: " + e.getMessage();
+			Log.e("Fatal Error", msg);
+		}
+	}
+
 	public void listenForQuestions() {
 		new Thread(new Runnable() {
 			public void run() {

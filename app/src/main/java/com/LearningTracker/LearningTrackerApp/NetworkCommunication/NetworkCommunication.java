@@ -65,4 +65,12 @@ public class NetworkCommunication {
 		}
 	}
 
+	public void sendDisconnectionSignal() {
+		String MacAddress = android.provider.Settings.Secure.getString(mContextNetCom.getContentResolver(), "bluetooth_address");
+		DbHelper db_for_name = new DbHelper(mContextNetCom);
+		String name = db_for_name.getName();
+		String signal = "DISC///" + MacAddress + "///" + name + "///";
+		mWifiCom.sendDisconnectionSignal(signal);
+	}
+
 }
