@@ -110,8 +110,12 @@ public class WifiCommunication {
 	public void sendDisconnectionSignal (String signal) {
 		byte[] sigBuffer = signal.getBytes();
 		try {
-			mOutputStream.write(sigBuffer, 0, sigBuffer.length);
-			mOutputStream.flush();
+			if (mOutputStream != null) {
+				mOutputStream.write(sigBuffer, 0, sigBuffer.length);
+				mOutputStream.flush();
+			} else {
+				Log.v("disconnection: ", "tries to send signal to null output stream");
+			}
 		} catch (IOException e) {
 			String msg = "In sendDisconnectionSignal() and an exception occurred during write: " + e.getMessage();
 			Log.e("Fatal Error", msg);
