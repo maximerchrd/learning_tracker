@@ -58,17 +58,17 @@ public class DbTableQuestionMultipleChoice {
                     "TRIAL8,TRIAL9,NB_CORRECT_ANS,IMAGE_PATH,ID_GLOBAL) " +
                     "VALUES ('" +
                     quest.getLEVEL() + "','" +
-                    quest.getQUESTION() + "','" +
-                    quest.getOPT0() + "','" +
-                    quest.getOPT1() + "','" +
-                    quest.getOPT2() + "','" +
-                    quest.getOPT3() + "','" +
-                    quest.getOPT4() + "','" +
-                    quest.getOPT5() + "','" +
-                    quest.getOPT6() + "','" +
-                    quest.getOPT7() + "','" +
-                    quest.getOPT8() + "','" +
-                    quest.getOPT9() + "','" +
+                    quest.getQUESTION().replace("'","''") + "','" +
+                    quest.getOPT0().replace("'","''") + "','" +
+                    quest.getOPT1().replace("'","''") + "','" +
+                    quest.getOPT2().replace("'","''") + "','" +
+                    quest.getOPT3().replace("'","''") + "','" +
+                    quest.getOPT4().replace("'","''") + "','" +
+                    quest.getOPT5().replace("'","''") + "','" +
+                    quest.getOPT6().replace("'","''") + "','" +
+                    quest.getOPT7().replace("'","''") + "','" +
+                    quest.getOPT8().replace("'","''") + "','" +
+                    quest.getOPT9().replace("'","''") + "','" +
                     quest.getTRIAL0() + "','" +
                     quest.getTRIAL1() + "','" +
                     quest.getTRIAL2() + "','" +
@@ -80,7 +80,7 @@ public class DbTableQuestionMultipleChoice {
                     quest.getTRIAL8() + "','" +
                     quest.getTRIAL9() + "','" +
                     quest.getNB_CORRECT_ANS() + "','" +
-                    quest.getIMAGE() + "','" +
+                    quest.getIMAGE().replace("'","''") + "','" +
                     quest.getID() +"');";
             DbHelper.dbase.execSQL(sql);
             Log.v("insert multQuest, ID: ", String.valueOf(quest.getID()));
