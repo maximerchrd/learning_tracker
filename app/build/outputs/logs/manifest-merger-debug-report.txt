@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:2:1-51:12
+ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:2:1-54:12
 	package
 		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:3:5-53
 		INJECTED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml
@@ -31,7 +31,7 @@ ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/And
 	android:name
 		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:11:22-64
 application
-ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:13:5-49:19
+ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:13:5-52:19
 MERGED from [com.android.support:support-v4:23.4.0] /Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/AndroidManifest.xml:22:5-20
 	android:label
 		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:17:9-41
@@ -83,21 +83,27 @@ ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/And
 		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:39:13-60
 	android:name
 		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:38:13-104
-activity#com.LearningTracker.LearningTrackerApp.Activities.SingleQuestionActivity
+activity#com.LearningTracker.LearningTrackerApp.Activities.ShortAnswerQuestionActivity
 ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:40:9-42:72
 	android:label
 		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:42:13-60
 	android:name
-		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:41:13-100
+		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:41:13-105
+activity#com.LearningTracker.LearningTrackerApp.Activities.SingleQuestionActivity
+ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:43:9-45:72
+	android:label
+		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:45:13-60
+	android:name
+		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:44:13-100
 activity#com.LearningTracker.LearningTrackerApp.Activities.InteractiveModeActivity
-ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:43:9-45:79
+ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:46:9-48:79
 	android:label
-		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:45:13-67
+		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:48:13-67
 	android:name
-		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:44:13-101
+		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:47:13-101
 activity#com.LearningTracker.LearningTrackerApp.Activities.EvaluationResultsActivity
-ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:46:9-48:82
+ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:49:9-51:82
 	android:label
-		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:48:13-70
+		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:51:13-70
 	android:name
-		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:47:13-103
+		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:50:13-103

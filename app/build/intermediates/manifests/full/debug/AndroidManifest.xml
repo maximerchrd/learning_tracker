@@ -38,6 +38,9 @@
             android:name="com.LearningTracker.LearningTrackerApp.Activities.MultChoiceQuestionActivity"
             android:label="@string/title_activity_question" />
         <activity
+            android:name="com.LearningTracker.LearningTrackerApp.Activities.ShortAnswerQuestionActivity"
+            android:label="@string/title_activity_question" />
+        <activity
             android:name="com.LearningTracker.LearningTrackerApp.Activities.SingleQuestionActivity"
             android:label="@string/title_activity_question" />
         <activity

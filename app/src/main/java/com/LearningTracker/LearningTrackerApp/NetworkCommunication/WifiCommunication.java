@@ -14,14 +14,17 @@ import java.util.List;
 import java.util.Vector;
 
 import com.LearningTracker.LearningTrackerApp.Activities.MultChoiceQuestionActivity;
+import com.LearningTracker.LearningTrackerApp.Activities.ShortAnswerQuestionActivity;
 import com.LearningTracker.LearningTrackerApp.Activities.SingleQuestionActivity;
 import com.LearningTracker.LearningTrackerApp.DataConversion;
+import com.LearningTracker.LearningTrackerApp.Questions.QuestionShortAnswer;
 import com.LearningTracker.LearningTrackerApp.database_management.DbHelper;
 import com.LearningTracker.LearningTrackerApp.LTApplication;
 import com.LearningTracker.LearningTrackerApp.Questions.Question;
 import com.LearningTracker.LearningTrackerApp.Questions.QuestionMultipleChoice;
 import com.LearningTracker.LearningTrackerApp.database_management.DbTableIndividualQuestionForResult;
 import com.LearningTracker.LearningTrackerApp.database_management.DbTableQuestionMultipleChoice;
+import com.LearningTracker.LearningTrackerApp.database_management.DbTableQuestionShortAnswer;
 
 import android.app.Application;
 import android.content.BroadcastReceiver;
@@ -237,12 +240,59 @@ public class WifiCommunication {
 							e.printStackTrace();
 						}
 						//launchMultChoiceQuestionActivity(convert_question.bytearrayvectorToMultChoiceQuestion(whole_question_buffer));
+					} else if (sizes.split(":")[0].contains("SHRTA")) {
+						int size_of_image = Integer.parseInt(sizes.split(":")[1]);
+						int size_of_text = Integer.parseInt(sizes.split(":")[2].replaceAll("\\D+", ""));
+						byte[] whole_question_buffer = new byte[40 + size_of_image + size_of_text];
+						for (int i = 0; i < 40; i++) {
+							whole_question_buffer[i] = prefix_buffer[i];
+						}
+						current = 40;
+						do {
+							try {
+								//Log.v("read input stream", "second");
+
+								bytes_read = mInputStream.read(whole_question_buffer, current, (40 + size_of_image + size_of_text - current));
+								Log.v("number of bytes read:", Integer.toString(bytes_read));
+//                                    for (int k = 0; k < 40 && current > 40; k++) {
+//                                        byteread += whole_question_buffer[current -21 + k];
+//                                    }
+//                                    Log.v("last bytes read: ", byteread);
+//                                    byteread = "";
+							} catch (IOException e) {
+								e.printStackTrace();
+								able_to_read = false;
+							}
+							if (bytes_read >= 0) {
+								current += bytes_read;
+								if (able_to_read == false) {
+									bytes_read = -1;
+									able_to_read = true;
+								}
+							}
+						}
+						while (bytes_read > 0);    //shall be sizeRead > -1, because .read returns -1 when finished reading, but outstream not closed on server side
+						bytes_read = 1;
+						DataConversion convert_question = new DataConversion(mContextWifCom);
+						QuestionShortAnswer multquestion_to_save = convert_question.bytearrayvectorToShortAnswerQuestion(whole_question_buffer);
+						try {
+							DbTableQuestionShortAnswer.addShortAnswerQuestion(multquestion_to_save);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+						//launchMultChoiceQuestionActivity(convert_question.bytearrayvectorToMultChoiceQuestion(whole_question_buffer));
 					} else if (sizes.split(":")[0].contains("QID")) {
 						if (sizes.split(":")[1].contains("MLT")) {
 							int id_global = Integer.valueOf(sizes.split("///")[1]);
 							QuestionMultipleChoice questionMultipleChoice = DbTableQuestionMultipleChoice.getQuestionWithId(id_global);
-							questionMultipleChoice.setID(id_global);
-							launchMultChoiceQuestionActivity(questionMultipleChoice);
+							if (questionMultipleChoice.getQUESTION().length() > 0) {
+								questionMultipleChoice.setID(id_global);
+								launchMultChoiceQuestionActivity(questionMultipleChoice);
+							} else {
+								QuestionShortAnswer questionShortAnswer = DbTableQuestionShortAnswer.getShortAnswerQuestionWithId(id_global);
+								questionShortAnswer.setID(id_global);
+								launchShortAnswerQuestionActivity(questionShortAnswer);
+							}
 						}
 					} else if (sizes.split(":")[0].contains("EVAL")) {
 						DbTableIndividualQuestionForResult.addIndividualQuestionForStudentResult(sizes.split("///")[2],sizes.split("///")[1]);
@@ -280,6 +330,17 @@ public class WifiCommunication {
 		bun.putString("opt7", question_to_display.getOPT7());
 		bun.putString("opt8", question_to_display.getOPT8());
 		bun.putString("opt9", question_to_display.getOPT9());
+		bun.putInt("id", question_to_display.getID());
+		bun.putString("image_name", question_to_display.getIMAGE());
+		mIntent.putExtras(bun);
+		mContextWifCom.startActivity(mIntent);
+	}
+
+	private void launchShortAnswerQuestionActivity(QuestionShortAnswer question_to_display) {
+		((LTApplication) mApplication).setAppWifi(this);
+		Intent mIntent = new Intent(mContextWifCom, ShortAnswerQuestionActivity.class);
+		Bundle bun = new Bundle();
+		bun.putString("question", question_to_display.getQUESTION());
 		bun.putInt("id", question_to_display.getID());
 		bun.putString("image_name", question_to_display.getIMAGE());
 		mIntent.putExtras(bun);
