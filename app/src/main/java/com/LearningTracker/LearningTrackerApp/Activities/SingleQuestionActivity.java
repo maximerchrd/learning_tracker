@@ -114,7 +114,7 @@ public class SingleQuestionActivity extends Activity {
 				}
 
 				NetworkCommunication networkCommunication = ((LTApplication) getApplication()).getAppNetwork();
-				networkCommunication.sendAnswerToServer(String.valueOf(answer), question, currentQ.getID());
+				networkCommunication.sendAnswerToServer(String.valueOf(answer), question, currentQ.getID(),"ANSW9");
 				finish();
 				invalidateOptionsMenu();
 			}

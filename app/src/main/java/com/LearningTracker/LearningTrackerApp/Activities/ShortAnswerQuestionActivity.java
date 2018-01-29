@@ -117,7 +117,7 @@ public class ShortAnswerQuestionActivity extends Activity {
 				String answer = textAnswer.getText().toString();
 
 				NetworkCommunication networkCommunication = ((LTApplication) getApplication()).getAppNetwork();
-				networkCommunication.sendAnswerToServer(String.valueOf(answer), question, currentQ.getID());
+				networkCommunication.sendAnswerToServer(String.valueOf(answer), question, currentQ.getID(), "ANSW1");
 				finish();
 				invalidateOptionsMenu();
 			}
@@ -151,6 +151,7 @@ public class ShortAnswerQuestionActivity extends Activity {
 
 //		int imageResource = getResources().getIdentifier(currentQ.getIMAGE(), null, getPackageName());
 //		picture.setImageResource(imageResource);
+		textAnswer.setTextColor(Color.BLACK);
 		linearLayout.addView(textAnswer);
 
 		submitButton.setText(getString(R.string.answer_button));

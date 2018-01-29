@@ -127,7 +127,7 @@ public class MultChoiceQuestionActivity extends Activity {
 				}
 
 				NetworkCommunication networkCommunication = ((LTApplication) getApplication()).getAppNetwork();
-				networkCommunication.sendAnswerToServer(String.valueOf(answer), question, currentQ.getID());
+				networkCommunication.sendAnswerToServer(String.valueOf(answer), question, currentQ.getID(), "ANSW0");
 				finish();
 				invalidateOptionsMenu();
 			}
