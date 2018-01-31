@@ -4,6 +4,10 @@ import java.util.ArrayList;
 
 import android.app.Application;
 import android.content.Context;
+import android.os.Build;
+import android.os.PowerManager;
+import android.provider.Settings;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.LearningTracker.LearningTrackerApp.database_management.DbHelper;
@@ -66,11 +70,23 @@ public class NetworkCommunication {
 	}
 
 	public void sendDisconnectionSignal() {
-		String MacAddress = android.provider.Settings.Secure.getString(mContextNetCom.getContentResolver(), "bluetooth_address");
-		DbHelper db_for_name = new DbHelper(mContextNetCom);
-		String name = db_for_name.getName();
-		String signal = "DISC///" + MacAddress + "///" + name + "///";
-		mWifiCom.sendDisconnectionSignal(signal);
+		PowerManager pm = (PowerManager) mContextNetCom.getSystemService(Context.POWER_SERVICE);
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT_WATCH) {
+			if (pm.isInteractive()) {
+                String MacAddress = Settings.Secure.getString(mContextNetCom.getContentResolver(), "bluetooth_address");
+                DbHelper db_for_name = new DbHelper(mContextNetCom);
+                String name = db_for_name.getName();
+                String signal = "DISC///" + MacAddress + "///" + name + "///";
+                mWifiCom.sendDisconnectionSignal(signal);
+            }
+		} else {
+			String MacAddress = Settings.Secure.getString(mContextNetCom.getContentResolver(), "bluetooth_address");
+			DbHelper db_for_name = new DbHelper(mContextNetCom);
+			String name = db_for_name.getName();
+			String signal = "DISC///" + MacAddress + "///" + name + "///";
+			mWifiCom.sendDisconnectionSignal(signal);
+			Log.w("sending disc sign:","Too old API doesn't allow to check for disconnection because of screen turned off");
+		}
 	}
 
 }
