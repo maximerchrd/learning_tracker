@@ -215,11 +215,11 @@ public class DataConversion {
         question_to_return.setQUESTION(question_text.split("///")[0]);
         String ID_string = question_text.split("///")[1];
         question_to_return.setID(Integer.parseInt(ID_string));
-        question_to_return.setIMAGE(question_text.split("///")[3]); //14 because inbetween come subjects and objectives
-        SaveImageFile(bitmap, question_text.split("///")[3]);
+        question_to_return.setIMAGE(question_text.split("///")[4]); //because inbetween come subjects and objectives
+        SaveImageFile(bitmap, question_text.split("///")[4]);
 
         //deal with learning objectives
-        String learningObjectivesText = question_text.split("///")[2];
+        String learningObjectivesText = question_text.split("///")[3];
         String[] learningObjectives = learningObjectivesText.split("\\|\\|\\|");
         for (int i = 0; i < learningObjectives.length; i++) {
             try {
