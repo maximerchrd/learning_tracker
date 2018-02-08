@@ -46,6 +46,7 @@ public class WifiCommunication {
 	private int current = 0;
 	private int bytes_read = 0;
 	private String ip_address = "192.168.1.100";
+	final private int PORTNUMBER = 9090;
 	List<android.net.wifi.ScanResult> mScanResults = new ArrayList<android.net.wifi.ScanResult>();
 	BroadcastReceiver scanningreceiver;
 
@@ -66,10 +67,9 @@ public class WifiCommunication {
 	public void connectToServer(String connectionString) {
 		try {
 			Log.v("connectToServer", "beginning");
-			Socket s = new Socket(ip_address,9090);
+			Socket s = new Socket(ip_address,PORTNUMBER);
 			//Socket s = new Socket("192.168.88.252",9090);
 			Log.v("server name",s.getInetAddress().getCanonicalHostName());
-			Log.v("server name",s.getInetAddress().getHostName());
 			//outgoing stream redirect to socket
 			mOutputStream = s.getOutputStream();
 			mInputStream = s.getInputStream();

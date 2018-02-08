@@ -26,7 +26,7 @@ public class DbTableRelationQuestionObjective {
         if (objective.contentEquals("")) objective = " ";
         try {
             String sql = 	"INSERT INTO question_objective_relation (ID_GLOBAL, OBJECTIVE) " +
-                    "VALUES ('" + id_global + "','" + objective + "');";
+                    "VALUES ('" + id_global + "','" + objective.replace("'", "''") + "');";
             DbHelper.dbase.execSQL(sql);
         } catch ( Exception e ) {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );

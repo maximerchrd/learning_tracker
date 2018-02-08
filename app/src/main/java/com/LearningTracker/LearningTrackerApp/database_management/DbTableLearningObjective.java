@@ -34,7 +34,7 @@ public class DbTableLearningObjective {
             String sql = 	"INSERT OR IGNORE INTO learning_objectives (ID_OBJECTIVE_GLOBAL,OBJECTIVE,LEVEL_COGNITIVE_ABILITY) " +
                     "VALUES ('" +
                     2000000 + "','" +
-                    objective + "','" +
+                    objective.replace("'", "''") + "','" +
                     level_cognitive_ability +"');";
             DbHelper.dbase.execSQL(sql);
             sql = "UPDATE learning_objectives SET ID_OBJECTIVE_GLOBAL = 2000000 + ID_OBJECTIVE WHERE ID_OBJECTIVE = (SELECT MAX(ID_OBJECTIVE) FROM learning_objectives)";
