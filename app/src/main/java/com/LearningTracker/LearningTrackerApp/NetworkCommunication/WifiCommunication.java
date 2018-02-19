@@ -36,6 +36,7 @@ import android.os.StrictMode;
 import android.util.Log;
 
 public class WifiCommunication {
+	public Integer connectionSuccess = 0;
 	private WifiManager mWifi;
 	private Context mContextWifCom;
 	private Application mApplication;
@@ -56,9 +57,10 @@ public class WifiCommunication {
 			StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 			StrictMode.setThreadPolicy(policy);
 		}
+		mApplication = arg_application;
+		((LTApplication) mApplication).setAppWifi(this);
 		mContextWifCom = arg_context;
 		mWifi = (WifiManager) mContextWifCom.getSystemService(Context.WIFI_SERVICE);
-		mApplication = arg_application;
 		final DbHelper db = new DbHelper(arg_context);
 		ip_address = db.getMaster();
 	}
@@ -68,7 +70,7 @@ public class WifiCommunication {
 		try {
 			Log.v("connectToServer", "beginning");
 			Socket s = new Socket(ip_address,PORTNUMBER);
-			//Socket s = new Socket("192.168.88.252",9090);
+			connectionSuccess = 1;
 			Log.v("server name",s.getInetAddress().getCanonicalHostName());
 			//outgoing stream redirect to socket
 			mOutputStream = s.getOutputStream();
@@ -84,15 +86,13 @@ public class WifiCommunication {
 			}
 
 			listenForQuestions();
-			//Close connection
-			//s.close();
-
-
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
+			connectionSuccess = -1;
 			e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
+			connectionSuccess = -1;
 			e.printStackTrace();
 		}
 	}

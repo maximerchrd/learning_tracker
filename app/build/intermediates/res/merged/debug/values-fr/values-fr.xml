@@ -8,6 +8,9 @@
     <string name="hello">Bonjour </string>
     <string name="hello_world">Bonjour monde</string>
     <string name="interactive_mode_button">Commencer</string>
+    <string name="keep_calm_and_restart">ET REDEMARRE L\'ACTIVITE EN CLASSE (mais avant, vérifie que tu as la bonne adresse ip dans "paramètres")</string>
+    <string name="keep_calm_and_wait">ET ATTENDS LA PROCHAINE QUESTION</string>
+    <string name="keep_calm_problem">ON A EU UN PROBLEME. REDEMARRE L\'ACTIVITE EN CLASSE</string>
     <string name="menu_level">niveau:</string>
     <string name="menu_score">score:</string>
     <string name="menu_settings">Paramètres</string>

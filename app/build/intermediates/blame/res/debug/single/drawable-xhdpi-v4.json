@@ -4,6 +4,10 @@
         "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-xhdpi/ic_launcher.png"
     },
     {
+        "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4/keep_calm_crown.png",
+        "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-xhdpi/keep_calm_crown.png"
+    },
+    {
         "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_launcher_old.png",
         "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-xhdpi/ic_launcher_old.png"
     }
