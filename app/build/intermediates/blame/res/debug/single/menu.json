@@ -1,5 +1,9 @@
 [
     {
+        "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/menu/activity_evaluation_results.xml",
+        "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/menu/activity_evaluation_results.xml"
+    },
+    {
         "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/menu/activity_settings.xml",
         "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/menu/activity_settings.xml"
     },
@@ -14,9 +18,5 @@
     {
         "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/menu/activity_scores.xml",
         "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/menu/activity_scores.xml"
-    },
-    {
-        "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/menu/activity_quiz.xml",
-        "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/menu/activity_quiz.xml"
     }
 ]

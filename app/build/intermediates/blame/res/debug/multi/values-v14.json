@@ -7,9 +7,9 @@
                     "startLine": 2,
                     "startColumn": 4,
                     "startOffset": 55,
-                    "endLine": 4,
+                    "endLine": 6,
                     "endColumn": 12,
-                    "endOffset": 201
+                    "endOffset": 304
                 },
                 "from": {
                     "file": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/values-v14/styles.xml",
@@ -17,9 +17,9 @@
                         "startLine": 7,
                         "startColumn": 4,
                         "startOffset": 220,
-                        "endLine": 9,
+                        "endLine": 11,
                         "endColumn": 12,
-                        "endOffset": 366
+                        "endOffset": 469
                     }
                 }
             }

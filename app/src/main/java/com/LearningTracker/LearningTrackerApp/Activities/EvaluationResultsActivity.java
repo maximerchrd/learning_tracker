@@ -1,12 +1,9 @@
 package com.LearningTracker.LearningTrackerApp.Activities;
 
 import android.content.pm.ActivityInfo;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.app.Activity;
 import android.support.v4.view.MenuItemCompat;
-import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
@@ -82,7 +79,7 @@ public class EvaluationResultsActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.activity_quiz, menu);
+        getMenuInflater().inflate(R.menu.activity_evaluation_results, menu);
         MenuItem menuSubject = menu.findItem(R.id.menu_subject);
 
         Spinner menuSubjectSpinner = (Spinner) MenuItemCompat.getActionView(menuSubject);

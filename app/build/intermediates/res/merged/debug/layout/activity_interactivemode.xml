@@ -27,7 +27,8 @@
 			android:text="KEEP CALM"
 			android:id="@+id/textView"
 			android:layout_gravity="center_horizontal"
-			android:layout_weight="0.03" />
+			android:layout_weight="0.03"
+			android:textColor="@color/black"/>
 
 		<TextView
 			android:layout_width="wrap_content"
@@ -39,7 +40,8 @@
 			android:layout_weight="0.26"
 			android:layout_marginLeft="40dp"
 			android:layout_marginRight="40dp"
-			android:textAlignment="center" />
+			android:textAlignment="center"
+			android:textColor="@color/black"/>
 
 	</LinearLayout>
 </RelativeLayout>

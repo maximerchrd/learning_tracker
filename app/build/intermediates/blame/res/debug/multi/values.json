@@ -729,9 +729,9 @@
                     "startLine": 40,
                     "startColumn": 4,
                     "startOffset": 2303,
-                    "endLine": 48,
+                    "endLine": 47,
                     "endColumn": 12,
-                    "endOffset": 2712
+                    "endOffset": 2590
                 },
                 "from": {
                     "file": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/values/styles.xml",
@@ -739,30 +739,30 @@
                         "startLine": 6,
                         "startColumn": 4,
                         "startOffset": 186,
-                        "endLine": 14,
+                        "endLine": 13,
                         "endColumn": 12,
-                        "endOffset": 595
+                        "endOffset": 473
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 49,
+                    "startLine": 48,
                     "startColumn": 4,
-                    "startOffset": 2717,
-                    "endLine": 53,
+                    "startOffset": 2595,
+                    "endLine": 51,
                     "endColumn": 12,
-                    "endOffset": 2995
+                    "endOffset": 2751
                 },
                 "from": {
                     "file": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/values/styles.xml",
                     "position": {
-                        "startLine": 17,
+                        "startLine": 16,
                         "startColumn": 4,
-                        "startOffset": 633,
-                        "endLine": 21,
+                        "startOffset": 511,
+                        "endLine": 19,
                         "endColumn": 12,
-                        "endOffset": 911
+                        "endOffset": 667
                     }
                 }
             }

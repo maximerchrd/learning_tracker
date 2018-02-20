@@ -42,8 +42,8 @@ public final class R {
         public static final int linearLayout=0x7f0a0014;
         public static final int linearLayoutMultChoice=0x7f0a0008;
         public static final int linearLayoutShortAnswer=0x7f0a0012;
-        public static final int menu_settings=0x7f0a001c;
-        public static final int menu_subject=0x7f0a001d;
+        public static final int menu_settings=0x7f0a001d;
+        public static final int menu_subject=0x7f0a001c;
         public static final int ratingBar1=0x7f0a000a;
         public static final int scoresbutton=0x7f0a0006;
         public static final int send=0x7f0a0017;
@@ -74,8 +74,8 @@ public final class R {
         public static final int list_item=0x7f04000a;
     }
     public static final class menu {
-        public static final int activity_menu=0x7f090000;
-        public static final int activity_quiz=0x7f090001;
+        public static final int activity_evaluation_results=0x7f090000;
+        public static final int activity_menu=0x7f090001;
         public static final int activity_result=0x7f090002;
         public static final int activity_scores=0x7f090003;
         public static final int activity_settings=0x7f090004;
@@ -116,7 +116,6 @@ public final class R {
     }
     public static final class style {
         /**  API 11 theme customizations can go here. 
- API 14 theme customizations can go here. 
 
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
