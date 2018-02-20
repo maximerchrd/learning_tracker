@@ -83,6 +83,8 @@ public class DbHelper extends SQLiteOpenHelper {
         DbTableRelationQuestionObjective.createTableRelationQuestionObjectives();
         DbTableIndividualQuestionForResult.createTableIndividualQuestionForResult();
         DbTableQuestionShortAnswer.createTableQuestionShortAnswer();
+        DbTableSubject.createTableSubject();
+        DbTableRelationQuestionSubject.createTableSubject();
         Log.v("database: ", "finished creating tables");
         //db.close();
     }

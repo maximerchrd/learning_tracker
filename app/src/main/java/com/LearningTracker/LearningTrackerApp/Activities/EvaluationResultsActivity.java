@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import com.LearningTracker.LearningTrackerApp.database_management.DbTableSubject;
 import com.github.mikephil.charting.charts.HorizontalBarChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.XAxis;
@@ -83,10 +84,8 @@ public class EvaluationResultsActivity extends Activity {
         MenuItem menuSubject = menu.findItem(R.id.menu_subject);
 
         Spinner menuSubjectSpinner = (Spinner) MenuItemCompat.getActionView(menuSubject);
-
-        String[] arraySpinner = new String[] {
-                "1", "2", "3", "4", "5"
-        };
+        Vector <String> subjectsVector = DbTableSubject.getAllSubjects();
+        String[] arraySpinner = subjectsVector.toArray(new String[subjectsVector.size()]);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, arraySpinner);
 

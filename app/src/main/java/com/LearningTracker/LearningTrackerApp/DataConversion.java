@@ -9,6 +9,8 @@ import com.LearningTracker.LearningTrackerApp.Questions.QuestionMultipleChoice;
 import com.LearningTracker.LearningTrackerApp.Questions.QuestionShortAnswer;
 import com.LearningTracker.LearningTrackerApp.database_management.DbTableLearningObjective;
 import com.LearningTracker.LearningTrackerApp.database_management.DbTableRelationQuestionObjective;
+import com.LearningTracker.LearningTrackerApp.database_management.DbTableRelationQuestionSubject;
+import com.LearningTracker.LearningTrackerApp.database_management.DbTableSubject;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -150,6 +152,17 @@ public class DataConversion {
         question_to_return.setIMAGE(question_text.split("///")[14]); //14 because inbetween come subjects and objectives
         SaveImageFile(bitmap, question_text.split("///")[14]);
 
+        //deal with subjects
+        String subjectsText = question_text.split("///")[12];
+        String[] subjects = subjectsText.split("\\|\\|\\|");
+        for (int i = 0; i < subjects.length; i++) {
+            try {
+                DbTableSubject.addSubject(subjects[i]);
+                DbTableRelationQuestionSubject.addRelationQuestionSubject(Integer.valueOf(ID_string), subjects[i]);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         //deal with learning objectives
         String learningObjectivesText = question_text.split("///")[13];
         String[] learningObjectives = learningObjectivesText.split("\\|\\|\\|");
@@ -217,6 +230,18 @@ public class DataConversion {
         question_to_return.setID(Integer.parseInt(ID_string));
         question_to_return.setIMAGE(question_text.split("///")[4]); //because inbetween come subjects and objectives
         SaveImageFile(bitmap, question_text.split("///")[4]);
+
+        //deal with subjects
+        String subjectsText = question_text.split("///")[2];
+        String[] subjects = subjectsText.split("\\|\\|\\|");
+        for (int i = 0; i < subjects.length; i++) {
+            try {
+                DbTableSubject.addSubject(subjects[i]);
+                DbTableRelationQuestionSubject.addRelationQuestionSubject(Integer.valueOf(ID_string), subjects[i]);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
 
         //deal with learning objectives
         String learningObjectivesText = question_text.split("///")[3];
