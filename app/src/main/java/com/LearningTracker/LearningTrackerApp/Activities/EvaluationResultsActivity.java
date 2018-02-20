@@ -1,8 +1,16 @@
 package com.LearningTracker.LearningTrackerApp.Activities;
 
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.app.Activity;
+import android.support.v4.view.MenuItemCompat;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import com.github.mikephil.charting.charts.HorizontalBarChart;
 import com.github.mikephil.charting.components.AxisBase;
@@ -42,18 +50,9 @@ public class EvaluationResultsActivity extends Activity {
         final ArrayList<String> labels = new ArrayList<String>();
 
         for (int i = 0; i < objectives.size(); i++) {
-            /*if (objectives.get(i).length() > 30) {
-                String splitstring = objectives.get(i);
-                splitstring = splitstring.substring(0,10) + "\n" + splitstring.substring(10,splitstring.length());
-                splitstring = splitstring.substring(0,25) + "\\n" + splitstring.substring(25,splitstring.length());
-                objectives.set(i,splitstring);
-            }*/
             labels.add(objectives.get(i));
         }
 
-        //creating the chart
-        //BarChart chart = new BarChart(getApplicationContext());
-        //setContentView(chart);
 
         XAxis xAxis = chart.getXAxis();
         xAxis.setGranularity(1.0f);
@@ -78,6 +77,26 @@ public class EvaluationResultsActivity extends Activity {
         BarData data = new BarData(dataset);
         chart.setData(data);
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.activity_quiz, menu);
+        MenuItem menuSubject = menu.findItem(R.id.menu_subject);
+
+        Spinner menuSubjectSpinner = (Spinner) MenuItemCompat.getActionView(menuSubject);
+
+        String[] arraySpinner = new String[] {
+                "1", "2", "3", "4", "5"
+        };
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, arraySpinner);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        menuSubjectSpinner.setAdapter(adapter);
+        return true;
     }
 
 }

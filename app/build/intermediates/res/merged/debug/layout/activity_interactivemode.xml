@@ -33,7 +33,7 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:textAppearance="?android:attr/textAppearanceLarge"
-			android:text="Instructions"
+			android:text="Instructions (either to wait for next question or to restart the classroom activity"
 			android:id="@+id/textView2"
 			android:layout_gravity="center_horizontal"
 			android:layout_weight="0.26"

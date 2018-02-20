@@ -5,6 +5,8 @@
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
     <style name="AppBaseTheme" parent="android:Theme.Light">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:itemBackground">@color/black</item>
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
@@ -14,6 +16,8 @@
 
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:itemBackground">@color/black</item>
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
      <!-- the theme applied to the application or activity -->

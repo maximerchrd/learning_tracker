@@ -42,9 +42,8 @@ public final class R {
         public static final int linearLayout=0x7f0a0014;
         public static final int linearLayoutMultChoice=0x7f0a0008;
         public static final int linearLayoutShortAnswer=0x7f0a0012;
-        public static final int menu_level=0x7f0a001d;
-        public static final int menu_score=0x7f0a001e;
         public static final int menu_settings=0x7f0a001c;
+        public static final int menu_subject=0x7f0a001d;
         public static final int ratingBar1=0x7f0a000a;
         public static final int scoresbutton=0x7f0a0006;
         public static final int send=0x7f0a0017;
@@ -96,23 +95,24 @@ public final class R {
         public static final int keep_calm_and_restart=0x7f050008;
         public static final int keep_calm_and_wait=0x7f050009;
         public static final int keep_calm_problem=0x7f05000a;
-        public static final int keepcalmimage=0x7f05001b;
+        public static final int keepcalmimage=0x7f05001c;
         public static final int menu_level=0x7f05000b;
         public static final int menu_score=0x7f05000c;
         public static final int menu_settings=0x7f05000d;
-        public static final int settings_master=0x7f05000e;
-        public static final int settings_name=0x7f05000f;
-        public static final int str_next=0x7f050010;
-        public static final int title_activity_bluetoothclient=0x7f050011;
-        public static final int title_activity_client=0x7f050012;
-        public static final int title_activity_evaluation_results=0x7f050013;
-        public static final int title_activity_interactivemode=0x7f050014;
-        public static final int title_activity_question=0x7f050015;
-        public static final int title_activity_quiz=0x7f050016;
-        public static final int title_activity_result=0x7f050017;
-        public static final int title_activity_scores=0x7f050018;
-        public static final int title_activity_settings=0x7f050019;
-        public static final int waiting_for_question=0x7f05001a;
+        public static final int menu_subject=0x7f05000e;
+        public static final int settings_master=0x7f05000f;
+        public static final int settings_name=0x7f050010;
+        public static final int str_next=0x7f050011;
+        public static final int title_activity_bluetoothclient=0x7f050012;
+        public static final int title_activity_client=0x7f050013;
+        public static final int title_activity_evaluation_results=0x7f050014;
+        public static final int title_activity_interactivemode=0x7f050015;
+        public static final int title_activity_question=0x7f050016;
+        public static final int title_activity_quiz=0x7f050017;
+        public static final int title_activity_result=0x7f050018;
+        public static final int title_activity_scores=0x7f050019;
+        public static final int title_activity_settings=0x7f05001a;
+        public static final int waiting_for_question=0x7f05001b;
     }
     public static final class style {
         /**  API 11 theme customizations can go here. 

@@ -120,18 +120,6 @@ public class SingleQuestionActivity extends Activity {
 			}
 		});
 	}
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.activity_quiz, menu);
-		MenuItem menuLevel = menu.findItem(R.id.menu_level);
-		String stringlevel = String.valueOf(level);
-		menuLevel.setTitle("NIVEAU:\n"+stringlevel);
-		MenuItem menuScore = menu.findItem(R.id.menu_score);
-		String stringscore = String.valueOf(score);
-		menuScore.setTitle("SCORE:\n"+stringscore);
-		return true;
-	}
 	private void setQuestionView()
 	{
 		txtQuestion.setText(currentQ.getQUESTION());

@@ -27,4 +27,5 @@
     <string name="keep_calm_and_wait">ET ATTENDS LA PROCHAINE QUESTION</string>
     <string name="keep_calm_and_restart">ET REDEMARRE L\'ACTIVITE EN CLASSE (mais avant, vérifie que tu as la bonne adresse ip dans "paramètres")</string>
     <string name="keep_calm_problem">ON A EU UN PROBLEME. REDEMARRE L\'ACTIVITE EN CLASSE</string>
+    <string name="menu_subject">Sujet</string>
 </resources>
