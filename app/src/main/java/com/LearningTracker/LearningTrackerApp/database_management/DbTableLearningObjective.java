@@ -2,6 +2,8 @@ package com.LearningTracker.LearningTrackerApp.database_management;
 
 import android.database.Cursor;
 
+import com.LearningTracker.LearningTrackerApp.R;
+
 import java.util.Collections;
 import java.util.Vector;
 
@@ -62,12 +64,21 @@ public class DbTableLearningObjective {
 
         return objectives;
     }
-    static public Vector<Vector<String>> getResultsPerObjective() {
+    static public Vector<Vector<String>> getResultsPerObjective(String subject) {
         Vector<String> objectives = new Vector<>();
         Vector<String> results = new Vector<>();
         try {
-            String query = "SELECT ID_GLOBAL,QUANTITATIVE_EVAL FROM individual_question_for_result;";
-            Cursor cursor = DbHelper.dbase.rawQuery(query, null);            Vector<String> id_questions = new Vector<>();
+            String query = "";
+            if (subject.contentEquals("All")) {
+                query = "SELECT ID_GLOBAL,QUANTITATIVE_EVAL FROM individual_question_for_result;";
+            } else {
+                query = "SELECT individual_question_for_result.ID_GLOBAL,individual_question_for_result.QUANTITATIVE_EVAL FROM individual_question_for_result " +
+                        "INNER JOIN question_subject_relation ON individual_question_for_result.ID_GLOBAL=question_subject_relation.ID_GLOBAL " +
+                        "INNER JOIN subjects ON question_subject_relation.ID_SUBJECT_GLOBAL=subjects.ID_SUBJECT_GLOBAL " +
+                        "WHERE subjects.SUBJECT='" + subject + "';";
+            }
+            Cursor cursor = DbHelper.dbase.rawQuery(query, null);
+            Vector<String> id_questions = new Vector<>();
             Vector<String> evaluations_for_each_question = new Vector<>();
             while (cursor.moveToNext()) {
                 id_questions.add(cursor.getString(0));

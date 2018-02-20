@@ -9,6 +9,7 @@
     <color name="yellow">#E8D630</color>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <string name="all_subjects">All subjects</string>
     <string name="answer_button">Submit the answer</string>
     <string name="app_name">Learning Tracker</string>
     <string name="button_menu_settings">Settings</string>

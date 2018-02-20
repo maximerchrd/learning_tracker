@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="all_subjects">Tous les sujets</string>
     <string name="answer_button">Soumettre la réponse</string>
     <string name="app_name">Learning Tracker</string>
     <string name="button_menu_settings">Paramètres</string>

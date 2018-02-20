@@ -36,4 +36,5 @@
     <string name="keep_calm_and_restart">AND RESTART THE CLASSROOM ACTIVITY (but before, check that you have the right ip address in "settings")</string>
     <string name="keep_calm_problem">THERE WAS A PROBLEM. RESTART THE CLASSROOM ACTIVITY</string>
     <string name="menu_subject">Subject</string>
+    <string name="all_subjects">All subjects</string>
 </resources>
