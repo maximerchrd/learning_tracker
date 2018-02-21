@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:2:1-57:12
+ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:2:1-60:12
 	package
 		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:3:5-53
 		INJECTED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml
@@ -31,7 +31,7 @@ ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/And
 	android:name
 		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:11:22-64
 application
-ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:13:5-55:19
+ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:13:5-58:19
 MERGED from [com.android.support:support-v4:23.4.0] /Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/AndroidManifest.xml:22:5-20
 	android:label
 		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:17:9-41
@@ -113,3 +113,9 @@ ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/And
 		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:54:13-60
 	android:name
 		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:53:13-94
+activity#com.LearningTracker.LearningTrackerApp.Activities.QuestionSetActivity
+ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:55:9-57:68
+	android:label
+		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:57:13-56
+	android:name
+		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:56:13-97

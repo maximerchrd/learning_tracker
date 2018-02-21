@@ -1,7 +1,9 @@
 package com.LearningTracker.LearningTrackerApp.Activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -36,8 +38,15 @@ public class ExerciceActivity extends Activity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 R.layout.spinner_item, arraySpinner);
         adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
-
-
         subjectsSpinner.setAdapter(adapter);
+
+        //implements the practice button
+        freePracticeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ExerciceActivity.this, QuestionSetActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

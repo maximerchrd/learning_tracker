@@ -53,6 +53,9 @@
         <activity
             android:name="com.LearningTracker.LearningTrackerApp.Activities.ExerciceActivity"
             android:label="@string/title_exercice_activity" />
+        <activity
+            android:name="com.LearningTracker.LearningTrackerApp.Activities.QuestionSetActivity"
+            android:label="@string/questionsetactivity" />
     </application>
 
 </manifest>

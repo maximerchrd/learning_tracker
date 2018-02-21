@@ -37,4 +37,5 @@
     <string name="title_exercice_activity">S\'exercer</string>
     <string name="chose_teacher">Enseignant:</string>
     <string name="chose_subject">Sujet:</string>
+    <string name="questionsetactivity">S\'exercer</string>
 </resources>

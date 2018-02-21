@@ -45,4 +45,5 @@
     <string name="title_exercice_activity">Practice</string>
     <string name="chose_teacher">Teacher:</string>
     <string name="chose_subject">Subject:</string>
+    <string name="questionsetactivity">Practice</string>
 </resources>

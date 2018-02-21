@@ -30,7 +30,8 @@
 			android:text="@string/chose_teacher"
 			android:id="@+id/teacher_textView"
 			android:layout_weight="0.03"
-			android:textColor="@color/black" />
+			android:textColor="@color/black"
+			android:layout_marginLeft="10dp" />
 
 		<Spinner
 			android:layout_width="match_parent"
@@ -75,7 +76,8 @@
 			android:text="@string/chose_subject"
 			android:id="@+id/subjects_textView"
 			android:layout_weight="0.03"
-			android:textColor="@color/black" />
+			android:textColor="@color/black"
+			android:layout_marginLeft="10dp" />
 
 		<Spinner
 			android:layout_width="match_parent"
