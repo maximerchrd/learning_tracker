@@ -38,7 +38,7 @@ public class ExerciseActivity extends Activity {
 
         //puts the subjects for which there are poorly evaluated questions into the spinner
         Vector<Vector<String>> questionIdAndSubjectsVector = DbTableSubject.getSubjectsAndQuestionsNeedingPractice();
-        Vector<String> subjectsVector = questionIdAndSubjectsVector.get(1);
+        final Vector<String> subjectsVector = questionIdAndSubjectsVector.get(1);
         subjectsVector.insertElementAt(getString(R.string.all_subjects),0);
         String[] arraySpinner = subjectsVector.toArray(new String[subjectsVector.size()]);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
@@ -55,8 +55,21 @@ public class ExerciseActivity extends Activity {
         freePracticeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ArrayList<Integer> questionIDsArrayCopy = (ArrayList<Integer>) questionIDsArray.clone();
+                String selectedSubject = subjectsSpinner.getSelectedItem().toString();
+                if (!selectedSubject.contentEquals(getString(R.string.all_subjects))) {
+                    int arraySize = questionIDsArray.size();
+                    for (int i = 0; i < arraySize; i++) {
+                        Vector<String> subjectForQuestion = DbTableSubject.getSubjectsForQuestionID(questionIDsArrayCopy.get(i));
+                        if (!subjectForQuestion.contains(selectedSubject)) {
+                            questionIDsArrayCopy.remove(i);
+                            i--;
+                            arraySize--;
+                        }
+                    }
+                }
                 Bundle bundle = new Bundle();
-                bundle.putIntegerArrayList("IDsArray",questionIDsArray);
+                bundle.putIntegerArrayList("IDsArray",questionIDsArrayCopy);
                 Intent myIntent = new Intent(mContext, QuestionSetActivity.class);
                 myIntent.putExtras(bundle);
                 mContext.startActivity(myIntent);
