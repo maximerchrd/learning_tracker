@@ -6,8 +6,13 @@
     <string name="button_menu_settings">Paramètres</string>
     <string name="button_result_back">Retourner au menu</string>
     <string name="button_settings_back">Sauver et retourner au menu</string>
+    <string name="chose_subject">Sujet:</string>
+    <string name="chose_teacher">Enseignant:</string>
+    <string name="exercices">S\'exercer</string>
+    <string name="free_practice">S\'exercer Librement</string>
     <string name="hello">Bonjour </string>
     <string name="hello_world">Bonjour monde</string>
+    <string name="homeworks">Devoirs</string>
     <string name="interactive_mode_button">Commencer</string>
     <string name="keep_calm_and_restart">ET REDEMARRE L\'ACTIVITE EN CLASSE (mais avant, vérifie que tu as la bonne adresse ip dans "paramètres")</string>
     <string name="keep_calm_and_wait">ET ATTENDS LA PROCHAINE QUESTION</string>
@@ -18,6 +23,8 @@
     <string name="menu_subject">Sujet</string>
     <string name="settings_master">Adresse ip du serveur</string>
     <string name="settings_name">Nom</string>
+    <string name="start_free_practice">Commencer de s\'exercer</string>
+    <string name="start_homeworks">Commencer les devoirs</string>
     <string name="str_next">Suivant</string>
     <string name="title_activity_bluetoothclient">Commencer</string>
     <string name="title_activity_client">Réseau</string>
@@ -28,5 +35,6 @@
     <string name="title_activity_result">Résultats</string>
     <string name="title_activity_scores">Meilleurs scores</string>
     <string name="title_activity_settings">Paramètres</string>
+    <string name="title_exercice_activity">S\'exercer</string>
     <string name="waiting_for_question">En attente de la question suivante</string>
 </resources>

@@ -29,4 +29,12 @@
     <string name="keep_calm_problem">ON A EU UN PROBLEME. REDEMARRE L\'ACTIVITE EN CLASSE</string>
     <string name="menu_subject">Sujet</string>
     <string name="all_subjects">Tous les sujets</string>
+    <string name="exercices">S\'exercer</string>
+    <string name="homeworks">Devoirs</string>
+    <string name="start_homeworks">Commencer les devoirs</string>
+    <string name="free_practice">S\'exercer Librement</string>
+    <string name="start_free_practice">Commencer de s\'exercer</string>
+    <string name="title_exercice_activity">S\'exercer</string>
+    <string name="chose_teacher">Enseignant:</string>
+    <string name="chose_subject">Sujet:</string>
 </resources>

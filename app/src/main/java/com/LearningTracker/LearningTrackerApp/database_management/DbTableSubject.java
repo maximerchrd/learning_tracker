@@ -43,11 +43,19 @@ public class DbTableSubject {
         try {
             String query = "SELECT SUBJECT FROM subjects " +
                     "INNER JOIN question_subject_relation ON subjects.ID_SUBJECT_GLOBAL = question_subject_relation.ID_SUBJECT_GLOBAL " +
-                    "INNER JOIN generic_questions ON generic_questions.ID_GLOBAL = question_subject_relation.ID_GLOBAL " +
-                    "WHERE generic_questions.ID_GLOBAL = '" + questionID + "';";
+                    "INNER JOIN multiple_choice_questions ON multiple_choice_questions.ID_GLOBAL = question_subject_relation.ID_GLOBAL " +
+                    "WHERE multiple_choice_questions.ID_GLOBAL = '" + questionID + "';";
             Cursor cursor = DbHelper.dbase.rawQuery(query, null);
             while (cursor.moveToNext()) {
                 subjects.add(cursor.getString(0));
+            }
+            query = "SELECT SUBJECT FROM subjects " +
+                    "INNER JOIN question_subject_relation ON subjects.ID_SUBJECT_GLOBAL = question_subject_relation.ID_SUBJECT_GLOBAL " +
+                    "INNER JOIN short_answer_questions ON short_answer_questions.ID_GLOBAL = question_subject_relation.ID_GLOBAL " +
+                    "WHERE short_answer_questions.ID_GLOBAL = '" + questionID + "';";
+            Cursor cursor2 = DbHelper.dbase.rawQuery(query, null);
+            while (cursor2.moveToNext()) {
+                subjects.add(cursor2.getString(0));
             }
         } catch ( Exception e ) {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
@@ -71,47 +79,79 @@ public class DbTableSubject {
 
         return subjects;
     }
-    static public Vector<String> getSubjectsWithParent(String parentSubject) {
-        Vector<String> subjects = new Vector<>();
-        String query = "";
-        if (parentSubject.contentEquals("")) {
-            query = "SELECT SUBJECT FROM subjects " +
-                    "WHERE ID_SUBJECT_GLOBAL NOT IN (SELECT ID_SUBJECT_GLOBAL_CHILD FROM subject_subject_relation);";
-        } else {
-            query = "SELECT SUBJECT FROM subjects " +
-                    "INNER JOIN subject_subject_relation ON subjects.ID_SUBJECT_GLOBAL = subject_subject_relation.ID_SUBJECT_GLOBAL_CHILD " +
-                    "WHERE subject_subject_relation.ID_SUBJECT_GLOBAL_PARENT = (select ID_SUBJECT_GLOBAL from subjects where SUBJECT='" + parentSubject + "');";
-        }
-        try {
 
+    static public Vector<Vector<String>> getSubjectsAndQuestionsNeedingPractice() {
+        Vector<Vector<String>> questionIDsAndSubjects = new Vector<>();
+        Vector<String> questionIDs = new Vector<>();
+        Vector<String> questionEvals = new Vector<>();
+        Vector<String> subjects = new Vector<>();
+        try {
+            //get all question IDs and corresponding evaluations
+            String query = "SELECT ID_GLOBAL,QUANTITATIVE_EVAL FROM individual_question_for_result;";
             Cursor cursor = DbHelper.dbase.rawQuery(query, null);
             while (cursor.moveToNext()) {
-                subjects.add(cursor.getString(0));
+                questionIDs.add(cursor.getString(0));
+                questionEvals.add(cursor.getString(1));
             }
-        } catch (Exception e) {
-            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+
+            //keep only the latest results of each question
+            int arraysLength = questionIDs.size();
+            Vector<String> singleGlobalIDs = new Vector<>();
+            for (int i = 0; i < arraysLength; i++) {
+                if (singleGlobalIDs.contains(questionIDs.get(i))) {
+                    int indexOfObjectToRemove = singleGlobalIDs.indexOf(questionIDs.get(i));
+                    questionEvals.remove(indexOfObjectToRemove);
+                    questionIDs.remove(indexOfObjectToRemove);
+                    singleGlobalIDs.remove(indexOfObjectToRemove);
+                    i--;
+                    arraysLength--;
+                }
+                singleGlobalIDs.add(questionIDs.get(i));
+            }
+
+            //remove the questions with good evaluations
+            arraysLength = questionIDs.size();
+            for (int i = 0; i < arraysLength; i++) {
+                if (Double.valueOf(questionEvals.get(i)) > 90) {
+                    questionEvals.remove(i);
+                    questionIDs.remove(i);
+                    i--;
+                    arraysLength--;
+                }
+            }
+
+            questionIDsAndSubjects.add(questionIDs);
+
+            //get the subjects for the remaining questions IDs
+            for (int i = 0; i < questionIDs.size(); i++) {
+                Vector<String> tempSubjectVector = new Vector<>();
+                tempSubjectVector = getSubjectsForQuestionID(Integer.valueOf(questionIDs.get(i)));
+                for (int j = 0; j < tempSubjectVector.size(); j++) {
+                    subjects.add(tempSubjectVector.get(j));
+                }
+            }
+
+            //remove double subjects
+            arraysLength = subjects.size();
+            Vector<String> singleSubject = new Vector<>();
+            for (int i = 0; i < arraysLength; i++) {
+                if (singleSubject.contains(subjects.get(i))) {
+                    int indexOfObjectToRemove = singleSubject.indexOf(subjects.get(i));
+                    subjects.remove(indexOfObjectToRemove);
+                    singleSubject.remove(indexOfObjectToRemove);
+                    i--;
+                    arraysLength--;
+                }
+                singleSubject.add(subjects.get(i));
+            }
+
+            questionIDsAndSubjects.add(subjects);
+
+        } catch ( Exception e ) {
+            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
             System.exit(0);
         }
 
-        return subjects;
-    }
-
-    static public Vector<String> getSubjectsWithChild(String childSubject) {
-        Vector<String> subjects = new Vector<>();
-        String query = "SELECT SUBJECT FROM subjects " +
-                "INNER JOIN subject_subject_relation ON subjects.ID_SUBJECT_GLOBAL = subject_subject_relation.ID_SUBJECT_GLOBAL_PARENT " +
-                "WHERE subject_subject_relation.ID_SUBJECT_GLOBAL_CHILD = (select ID_SUBJECT_GLOBAL from subjects where SUBJECT='" + childSubject + "');";
-
-        try {
-            Cursor cursor = DbHelper.dbase.rawQuery(query, null);
-            while (cursor.moveToNext()) {
-                subjects.add(cursor.getString(0));
-            }
-        } catch (Exception e) {
-            System.err.println(e.getClass().getName() + ": " + e.getMessage());
-            System.exit(0);
-        }
-
-        return subjects;
+        return questionIDsAndSubjects;
     }
 }

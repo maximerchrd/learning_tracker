@@ -15,7 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class MenuActivity extends Activity {
-	Button  scoresButton, buttonChangeSettings, interactiveModeButton;
+	Button  scoresButton, exerciceButton, buttonChangeSettings, interactiveModeButton;
 	TextView consignes;
 	private Boolean firstTime = null;
 
@@ -24,6 +24,7 @@ public class MenuActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_menu);
 		scoresButton = (Button)findViewById(R.id.scoresbutton);
+		exerciceButton = (Button)findViewById(R.id.exercicebutton);
 		interactiveModeButton = (Button)findViewById(R.id.interactivemodebutton);
 		buttonChangeSettings = (Button)findViewById(R.id.buttonchangesettings);
 		consignes = (TextView) findViewById(R.id.textViewmenu);
@@ -42,25 +43,33 @@ public class MenuActivity extends Activity {
 		params.setMargins(width / 40, height / 200, width / 40, height / 200);  //left, top, right, bottom
 		//startButton.setLayoutParams(params);
 		scoresButton.setLayoutParams(params);
+		exerciceButton.setLayoutParams(params);
 		interactiveModeButton.setLayoutParams(params);
 		buttonChangeSettings.setLayoutParams(params);
 
+		//start interactive questions session
+		interactiveModeButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(MenuActivity.this, InteractiveModeActivity.class);
+				startActivity(intent);
+			}
+		});
+
+		//start interactive questions session
+		exerciceButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(MenuActivity.this, ExerciceActivity.class);
+				startActivity(intent);
+			}
+		});
 
 		//go to scores button
 		scoresButton.setOnClickListener(new View.OnClickListener() {		
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(MenuActivity.this, EvaluationResultsActivity.class);
-				startActivity(intent);
-			}
-		});
-
-		
-		//start interactive questions session
-		interactiveModeButton.setOnClickListener(new View.OnClickListener() {		
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(MenuActivity.this, InteractiveModeActivity.class);
 				startActivity(intent);
 			}
 		});

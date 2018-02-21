@@ -37,4 +37,12 @@
     <string name="keep_calm_problem">THERE WAS A PROBLEM. RESTART THE CLASSROOM ACTIVITY</string>
     <string name="menu_subject">Subject</string>
     <string name="all_subjects">All subjects</string>
+    <string name="exercices">Practice</string>
+    <string name="homeworks">Homeworks</string>
+    <string name="start_homeworks">Start Homeworks</string>
+    <string name="free_practice">Free Practice</string>
+    <string name="start_free_practice">Start Free Practice</string>
+    <string name="title_exercice_activity">Practice</string>
+    <string name="chose_teacher">Teacher:</string>
+    <string name="chose_subject">Subject:</string>
 </resources>
