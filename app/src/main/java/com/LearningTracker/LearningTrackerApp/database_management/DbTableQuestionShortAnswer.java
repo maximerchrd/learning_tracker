@@ -63,6 +63,7 @@ public class DbTableQuestionShortAnswer {
                 questionShortAnswer.setQUESTION(cursor.getString(1));
                 questionShortAnswer.setIMAGE(cursor.getString(2));
             }
+            questionShortAnswer.setID(globalID);
 
             //get answers
             ArrayList<String> answers = new ArrayList<>();

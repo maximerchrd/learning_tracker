@@ -38,4 +38,8 @@
     <string name="chose_teacher">Enseignant:</string>
     <string name="chose_subject">Sujet:</string>
     <string name="questionsetactivity">S\'exercer</string>
+    <string name="correction_incorrect">Ta réponse n\'est pas correcte. La bonne réponse était: </string>
+    <string name="correction_correct">Bonne réponse!</string>
+    <string name="correction_mltchoice_incorrect">Malheureusement, cette réponse est fausse :-(</string>
+    <string name="noQuestionToPractice">Bravo! Il n\'y a plus de question qe tu devrais exercer.</string>
 </resources>

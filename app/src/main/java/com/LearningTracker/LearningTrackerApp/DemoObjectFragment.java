@@ -1,6 +1,7 @@
 package com.LearningTracker.LearningTrackerApp;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -22,6 +23,7 @@ import android.widget.TextView;
 import com.LearningTracker.LearningTrackerApp.NetworkCommunication.NetworkCommunication;
 import com.LearningTracker.LearningTrackerApp.Questions.QuestionMultipleChoice;
 import com.LearningTracker.LearningTrackerApp.Questions.QuestionShortAnswer;
+import com.LearningTracker.LearningTrackerApp.database_management.DbTableIndividualQuestionForResult;
 import com.LearningTracker.LearningTrackerApp.database_management.DbTableQuestionMultipleChoice;
 import com.LearningTracker.LearningTrackerApp.database_management.DbTableQuestionShortAnswer;
 
@@ -175,29 +177,72 @@ public class DemoObjectFragment extends Fragment {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SimpleDateFormat") @Override
             public void onClick(View v) {
-                //get the answers checked by student
-                ArrayList<String> studentAnswers = new ArrayList<String>();
-                for (int i = 0; i < checkBoxesArray.size(); i++) {
-                    if (checkBoxesArray.get(i).isChecked()) {
-                        studentAnswers.add(checkBoxesArray.get(i).getText().toString());
-                    }
-                }
-                //get the right answers
-                ArrayList<String> rightAnswers = new ArrayList<String>();
-                for (int i = 0; i < mMulChoiceQuestion.getNB_CORRECT_ANS(); i++) {
-                    rightAnswers.add(mMulChoiceQuestion.getPossibleAnswers().get(i));
-                }
-                //compare the student answers with the right answers
-                if (rightAnswers.containsAll(studentAnswers) && studentAnswers.containsAll(rightAnswers)) {
-                    Log.v("checking answers:", "correct!");
-                } else {
-                    Log.v("checking answers:", "incorrect :-(");
-                }
+                MltChoiceQuestionButtonClick();
+
             }
         });
 
         linearLayout.addView(submitButton);
     }
+
+    private void MltChoiceQuestionButtonClick() {
+        //get the answers checked by student
+        ArrayList<String> studentAnswers = new ArrayList<String>();
+        for (int i = 0; i < checkBoxesArray.size(); i++) {
+            if (checkBoxesArray.get(i).isChecked()) {
+                studentAnswers.add(checkBoxesArray.get(i).getText().toString());
+            }
+        }
+        //get the right answers
+        ArrayList<String> rightAnswers = new ArrayList<String>();
+        for (int i = 0; i < mMulChoiceQuestion.getNB_CORRECT_ANS(); i++) {
+            rightAnswers.add(mMulChoiceQuestion.getPossibleAnswers().get(i));
+        }
+        //compare the student answers with the right answers
+        if (rightAnswers.containsAll(studentAnswers) && studentAnswers.containsAll(rightAnswers)) {
+            AlertDialog alertDialog = new AlertDialog.Builder(mContext).create();
+            alertDialog.setMessage(getString(R.string.correction_correct));
+            alertDialog.show();
+            submitButton.setEnabled(false);
+            submitButton.setAlpha(0.45f);
+            picture.setAlpha(0.45f);
+            txtQuestion.setAlpha(0.45f);
+            textAnswer.setAlpha(0.45f);
+            DbTableIndividualQuestionForResult.addIndividualQuestionForStudentResult(String.valueOf(mShortAnsQuestion.getID()),"100");
+        } else {
+            String correct_answers = "";
+            for (int i = 0; i < rightAnswers.size(); i++) {
+                correct_answers += (rightAnswers.get(i));
+                if (!(i == rightAnswers.size() -1)) correct_answers += " or ";
+            }
+            AlertDialog alertDialog = new AlertDialog.Builder(mContext).create();
+            alertDialog.setMessage(getString(R.string.correction_incorrect) + correct_answers);
+            alertDialog.show();
+            submitButton.setEnabled(false);
+            submitButton.setAlpha(0.45f);
+            picture.setAlpha(0.45f);
+            txtQuestion.setAlpha(0.45f);
+            textAnswer.setAlpha(0.45f);
+
+            for (int i = 0; i < checkBoxesArray.size(); i++) {
+                if (checkBoxesArray.get(i).isChecked()) {
+                    if (rightAnswers.contains(checkBoxesArray.get(i).getText())) {
+                        checkBoxesArray.get(i).setTextColor(Color.GREEN);
+                    } else {
+                        checkBoxesArray.get(i).setTextColor(Color.RED);
+                    }
+                } else {
+                    if (rightAnswers.contains(checkBoxesArray.get(i).getText())) {
+                        checkBoxesArray.get(i).setTextColor(Color.RED);
+                    } else {
+                        checkBoxesArray.get(i).setTextColor(Color.GREEN);
+                    }
+                }
+            }
+            DbTableIndividualQuestionForResult.addIndividualQuestionForStudentResult(String.valueOf(mShortAnsQuestion.getID()),"0");
+        }
+    }
+
     private void setShortAnswerQuestionView()
     {
         if (mShortAnsQuestion.getIMAGE().length() > 0) {
@@ -249,19 +294,45 @@ public class DemoObjectFragment extends Fragment {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SimpleDateFormat") @Override
             public void onClick(View v) {
-                //get the answerof the student
-                String studentAnswers = textAnswer.getText().toString();
-                //get the right answers
-                ArrayList<String> rightAnswers = mShortAnsQuestion.getAnswers();
+                shrtAnswerQuestionButtonClick();
 
-                //compare the student answer with the right answers
-                if (rightAnswers.contains(studentAnswers)) {
-                    Log.v("checking answers:", "correct!");
-                } else {
-                    Log.v("checking answers:", "incorrect :-(");
-                }
             }
         });
         linearLayout.addView(submitButton);
+    }
+
+    private void shrtAnswerQuestionButtonClick() {
+        //get the answerof the student
+        String studentAnswers = textAnswer.getText().toString();
+        //get the right answers
+        ArrayList<String> rightAnswers = mShortAnsQuestion.getAnswers();
+
+        //compare the student answer with the right answers
+        if (rightAnswers.contains(studentAnswers)) {
+            AlertDialog alertDialog = new AlertDialog.Builder(mContext).create();
+            alertDialog.setMessage(getString(R.string.correction_correct));
+            alertDialog.show();
+            submitButton.setEnabled(false);
+            submitButton.setAlpha(0.45f);
+            picture.setAlpha(0.45f);
+            txtQuestion.setAlpha(0.45f);
+            textAnswer.setAlpha(0.45f);
+            DbTableIndividualQuestionForResult.addIndividualQuestionForStudentResult(String.valueOf(mShortAnsQuestion.getID()),"100");
+        } else {
+            String rightAnswer = "";
+            for (int i = 0; i < rightAnswers.size(); i++) {
+                rightAnswer += (rightAnswers.get(i));
+                if (!(i == rightAnswers.size() -1)) rightAnswer += " or ";
+            }
+            AlertDialog alertDialog = new AlertDialog.Builder(mContext).create();
+            alertDialog.setMessage(getString(R.string.correction_incorrect) + rightAnswer);
+            alertDialog.show();
+            submitButton.setEnabled(false);
+            submitButton.setAlpha(0.45f);
+            picture.setAlpha(0.45f);
+            txtQuestion.setAlpha(0.45f);
+            textAnswer.setAlpha(0.45f);
+            DbTableIndividualQuestionForResult.addIndividualQuestionForStudentResult(String.valueOf(mShortAnsQuestion.getID()),"0");
+        }
     }
 }

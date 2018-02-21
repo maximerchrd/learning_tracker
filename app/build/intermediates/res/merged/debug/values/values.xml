@@ -17,6 +17,9 @@
     <string name="button_settings_back">Save and go back</string>
     <string name="chose_subject">Subject:</string>
     <string name="chose_teacher">Teacher:</string>
+    <string name="correction_correct">Correct!</string>
+    <string name="correction_incorrect">Incorrect. The right answer was:</string>
+    <string name="correction_mltchoice_incorrect">Incorrect :-(</string>
     <string name="exercices">Practice</string>
     <string name="free_practice">Free Practice</string>
     <string name="hello">Hello</string>
@@ -31,6 +34,7 @@
     <string name="menu_score">score:</string>
     <string name="menu_settings">Parameters</string>
     <string name="menu_subject">Subject</string>
+    <string name="noQuestionToPractice">You are quite good! You don\'t have any more questions needing practice.</string>
     <string name="questionsetactivity">Practice</string>
     <string name="settings_master">Server ip address:</string>
     <string name="settings_name">Name</string>

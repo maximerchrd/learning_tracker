@@ -46,4 +46,8 @@
     <string name="chose_teacher">Teacher:</string>
     <string name="chose_subject">Subject:</string>
     <string name="questionsetactivity">Practice</string>
+    <string name="correction_incorrect">Incorrect. The right answer was:</string>
+    <string name="correction_correct">Correct!</string>
+    <string name="correction_mltchoice_incorrect">Incorrect :-(</string>
+    <string name="noQuestionToPractice">You are quite good! You don\'t have any more questions needing practice.</string>
 </resources>

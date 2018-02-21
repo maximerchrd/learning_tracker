@@ -113,6 +113,7 @@ public class DbTableQuestionMultipleChoice {
                 questionMultipleChoice.setNB_CORRECT_ANS(Integer.valueOf(cursor.getString(12)));
                 questionMultipleChoice.setIMAGE(cursor.getString(13));
             }
+            questionMultipleChoice.setID(globalID);
         } catch ( Exception e ) {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
             System.exit(0);

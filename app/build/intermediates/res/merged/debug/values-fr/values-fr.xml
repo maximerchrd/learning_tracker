@@ -8,6 +8,9 @@
     <string name="button_settings_back">Sauver et retourner au menu</string>
     <string name="chose_subject">Sujet:</string>
     <string name="chose_teacher">Enseignant:</string>
+    <string name="correction_correct">Bonne réponse!</string>
+    <string name="correction_incorrect">Ta réponse n\'est pas correcte. La bonne réponse était: </string>
+    <string name="correction_mltchoice_incorrect">Malheureusement, cette réponse est fausse :-(</string>
     <string name="exercices">S\'exercer</string>
     <string name="free_practice">S\'exercer Librement</string>
     <string name="hello">Bonjour </string>
@@ -21,6 +24,7 @@
     <string name="menu_score">score:</string>
     <string name="menu_settings">Paramètres</string>
     <string name="menu_subject">Sujet</string>
+    <string name="noQuestionToPractice">Bravo! Il n\'y a plus de question qe tu devrais exercer.</string>
     <string name="questionsetactivity">S\'exercer</string>
     <string name="settings_master">Adresse ip du serveur</string>
     <string name="settings_name">Nom</string>

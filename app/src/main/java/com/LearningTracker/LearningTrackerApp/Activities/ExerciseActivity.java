@@ -1,6 +1,7 @@
 package com.LearningTracker.LearningTrackerApp.Activities;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -46,33 +47,39 @@ public class ExerciseActivity extends Activity {
         adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
         subjectsSpinner.setAdapter(adapter);
 
-        //implements the practice button
-        Vector<String> questionIDsVector =  questionIdAndSubjectsVector.get(0);
-        final ArrayList<Integer> questionIDsArray = new ArrayList<>();
-        for (int i = 0; i < questionIDsVector.size(); i++) {
-            questionIDsArray.add(Integer.valueOf(questionIDsVector.get(i)));
-        }
         freePracticeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ArrayList<Integer> questionIDsArrayCopy = (ArrayList<Integer>) questionIDsArray.clone();
+                //implements the practice button
+                Vector<String> questionIDsVector =  DbTableSubject.getSubjectsAndQuestionsNeedingPractice().get(0);
+                final ArrayList<Integer> questionIDsArray = new ArrayList<>();
+                for (int i = 0; i < questionIDsVector.size(); i++) {
+                    questionIDsArray.add(Integer.valueOf(questionIDsVector.get(i)));
+                }
+                //ArrayList<Integer> questionIDsArrayCopy = (ArrayList<Integer>) questionIDsArray.clone();
                 String selectedSubject = subjectsSpinner.getSelectedItem().toString();
                 if (!selectedSubject.contentEquals(getString(R.string.all_subjects))) {
                     int arraySize = questionIDsArray.size();
                     for (int i = 0; i < arraySize; i++) {
-                        Vector<String> subjectForQuestion = DbTableSubject.getSubjectsForQuestionID(questionIDsArrayCopy.get(i));
+                        Vector<String> subjectForQuestion = DbTableSubject.getSubjectsForQuestionID(questionIDsArray.get(i));
                         if (!subjectForQuestion.contains(selectedSubject)) {
-                            questionIDsArrayCopy.remove(i);
+                            questionIDsArray.remove(i);
                             i--;
                             arraySize--;
                         }
                     }
                 }
-                Bundle bundle = new Bundle();
-                bundle.putIntegerArrayList("IDsArray",questionIDsArrayCopy);
-                Intent myIntent = new Intent(mContext, QuestionSetActivity.class);
-                myIntent.putExtras(bundle);
-                mContext.startActivity(myIntent);
+                if (questionIDsArray.size() == 0) {
+                    AlertDialog alertDialog = new AlertDialog.Builder(ExerciseActivity.this).create();
+                    alertDialog.setMessage(getString(R.string.noQuestionToPractice));
+                    alertDialog.show();
+                } else {
+                    Bundle bundle = new Bundle();
+                    bundle.putIntegerArrayList("IDsArray", questionIDsArray);
+                    Intent myIntent = new Intent(mContext, QuestionSetActivity.class);
+                    myIntent.putExtras(bundle);
+                    mContext.startActivity(myIntent);
+                }
             }
         });
     }
