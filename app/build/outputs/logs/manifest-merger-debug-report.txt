@@ -107,12 +107,12 @@ ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/And
 		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:51:13-70
 	android:name
 		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:50:13-103
-activity#com.LearningTracker.LearningTrackerApp.Activities.ExerciceActivity
+activity#com.LearningTracker.LearningTrackerApp.Activities.ExerciseActivity
 ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:52:9-54:72
 	android:label
 		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:54:13-60
 	android:name
-		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:53:13-94
+		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:53:13-56
 activity#com.LearningTracker.LearningTrackerApp.Activities.QuestionSetActivity
 ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:55:9-57:68
 	android:label
