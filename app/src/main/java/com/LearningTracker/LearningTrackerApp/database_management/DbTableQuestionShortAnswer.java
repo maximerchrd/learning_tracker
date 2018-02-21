@@ -6,6 +6,8 @@ import android.util.Log;
 import com.LearningTracker.LearningTrackerApp.Questions.QuestionMultipleChoice;
 import com.LearningTracker.LearningTrackerApp.Questions.QuestionShortAnswer;
 
+import java.util.ArrayList;
+
 /**
  * Created by maximerichard on 03.01.18.
  */
@@ -40,6 +42,9 @@ public class DbTableQuestionShortAnswer {
                     quest.getIMAGE().replace("'","''") + "','" +
                     quest.getID() +"');";
             DbHelper.dbase.execSQL(sql);
+            for (int i = 0; i < quest.getAnswers().size(); i++) {
+                DbTableAnswerOptions.addAnswerOption(String.valueOf(quest.getID()),quest.getAnswers().get(i));
+            }
             Log.v("insert shrtaQuest, ID: ", String.valueOf(quest.getID()));
         } catch ( Exception e ) {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
@@ -58,6 +63,18 @@ public class DbTableQuestionShortAnswer {
                 questionShortAnswer.setQUESTION(cursor.getString(1));
                 questionShortAnswer.setIMAGE(cursor.getString(2));
             }
+
+            //get answers
+            ArrayList<String> answers = new ArrayList<>();
+            selectQuery = "SELECT OPTION FROM answer_options " +
+                    "INNER JOIN question_answeroption_relation ON answer_options.ID_ANSWEROPTION_GLOBAL = question_answeroption_relation.ID_ANSWEROPTION_GLOBAL " +
+                    "INNER JOIN short_answer_questions ON question_answeroption_relation.ID_GLOBAL = short_answer_questions.ID_GLOBAL " +
+                    "WHERE short_answer_questions.ID_GLOBAL = '" + globalID +"';";
+            Cursor cursor2 = DbHelper.dbase.rawQuery(selectQuery, null);
+            while ( cursor2.moveToNext() ) {
+                answers.add(cursor2.getString(0));
+            }
+            questionShortAnswer.setAnswers(answers);
         } catch ( Exception e ) {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
             System.exit(0);

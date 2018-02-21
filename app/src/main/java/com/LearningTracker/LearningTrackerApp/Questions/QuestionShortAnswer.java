@@ -1,5 +1,6 @@
 package com.LearningTracker.LearningTrackerApp.Questions;
 
+import java.util.ArrayList;
 import java.util.Vector;
 
 /**
@@ -11,6 +12,7 @@ public class QuestionShortAnswer {
     private String LEVEL;
     private String QUESTION;
     private String IMAGE;
+    private ArrayList<String> answers;
 
     private Vector<String> subjects;
     private Vector<String> objectives;
@@ -47,6 +49,9 @@ public class QuestionShortAnswer {
     public String getIMAGE() {
         return IMAGE;
     }
+    public ArrayList<String> getAnswers() {
+        return answers;
+    }
     public Vector<String> getSubjects() {
         return subjects;
     }
@@ -78,5 +83,8 @@ public class QuestionShortAnswer {
     }
     public void setObjectives(Vector<String> objectives) {
         this.objectives = objectives;
+    }
+    public void setAnswers(ArrayList<String> answers) {
+        this.answers = answers;
     }
 }

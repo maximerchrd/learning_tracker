@@ -1,5 +1,6 @@
 package com.LearningTracker.LearningTrackerApp.Questions;
 
+import java.util.ArrayList;
 import java.util.Vector;
 
 /**
@@ -293,5 +294,27 @@ public class QuestionMultipleChoice {
     }
     public void setObjectives(Vector<String> objectives) {
         this.objectives = objectives;
+    }
+
+    public ArrayList<String> getPossibleAnswers() {
+        ArrayList<String> answers = new ArrayList<>();
+        answers.add(OPT0);
+        answers.add(OPT1);
+        answers.add(OPT2);
+        answers.add(OPT3);
+        answers.add(OPT4);
+        answers.add(OPT5);
+        answers.add(OPT6);
+        answers.add(OPT7);
+        answers.add(OPT8);
+        answers.add(OPT9);
+
+        for (int i = answers.size() - 1; i >= 0; i--) {
+            if (answers.get(i).length() <= 0) {
+                answers.remove(i);
+            }
+        }
+
+        return  answers;
     }
 }

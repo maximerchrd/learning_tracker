@@ -92,7 +92,7 @@ public class DbTableQuestionMultipleChoice {
     static public QuestionMultipleChoice getQuestionWithId(int globalID) {
         QuestionMultipleChoice questionMultipleChoice = new QuestionMultipleChoice();
         try {
-            String selectQuery = "SELECT  LEVEL,QUESTION,OPTION0,OPTION1,OPTION2,OPTION3,OPTION4,OPTION5,OPTION6,OPTION7,OPTION8,OPTION9," +
+            String selectQuery = "SELECT  LEVEL,QUESTION,OPTION0,OPTION1,OPTION2,OPTION3,OPTION4,OPTION5,OPTION6,OPTION7,OPTION8,OPTION9,NB_CORRECT_ANS," +
                     "IMAGE_PATH FROM multiple_choice_questions WHERE ID_GLOBAL=" + globalID + ";";
             //DbHelper.dbase = DbHelper.getReadableDatabase();
             Cursor cursor = DbHelper.dbase.rawQuery(selectQuery, null);
@@ -110,7 +110,8 @@ public class DbTableQuestionMultipleChoice {
                 questionMultipleChoice.setOPT7(cursor.getString(9));
                 questionMultipleChoice.setOPT8(cursor.getString(10));
                 questionMultipleChoice.setOPT9(cursor.getString(11));
-                questionMultipleChoice.setIMAGE(cursor.getString(12));
+                questionMultipleChoice.setNB_CORRECT_ANS(Integer.valueOf(cursor.getString(12)));
+                questionMultipleChoice.setIMAGE(cursor.getString(13));
             }
         } catch ( Exception e ) {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );

@@ -16,6 +16,7 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 
 /**
  * Created by maximerichard on 10/02/17.
@@ -149,11 +150,12 @@ public class DataConversion {
         question_to_return.setOPT9(question_text.split("///")[10]);
         String ID_string = question_text.split("///")[11];
         question_to_return.setID(Integer.parseInt(ID_string));
-        question_to_return.setIMAGE(question_text.split("///")[14]); //14 because inbetween come subjects and objectives
-        SaveImageFile(bitmap, question_text.split("///")[14]);
+        question_to_return.setNB_CORRECT_ANS(Integer.parseInt(question_text.split("///")[12]));
+        question_to_return.setIMAGE(question_text.split("///")[15]); //14 because inbetween come subjects and objectives
+        SaveImageFile(bitmap, question_text.split("///")[15]);
 
         //deal with subjects
-        String subjectsText = question_text.split("///")[12];
+        String subjectsText = question_text.split("///")[13];
         String[] subjects = subjectsText.split("\\|\\|\\|");
         for (int i = 0; i < subjects.length; i++) {
             try {
@@ -164,7 +166,7 @@ public class DataConversion {
             }
         }
         //deal with learning objectives
-        String learningObjectivesText = question_text.split("///")[13];
+        String learningObjectivesText = question_text.split("///")[14];
         String[] learningObjectives = learningObjectivesText.split("\\|\\|\\|");
         for (int i = 0; i < learningObjectives.length; i++) {
             try {
@@ -228,11 +230,17 @@ public class DataConversion {
         question_to_return.setQUESTION(question_text.split("///")[0]);
         String ID_string = question_text.split("///")[1];
         question_to_return.setID(Integer.parseInt(ID_string));
-        question_to_return.setIMAGE(question_text.split("///")[4]); //because inbetween come subjects and objectives
-        SaveImageFile(bitmap, question_text.split("///")[4]);
+        String[] answers = question_text.split("///")[2].split("\\|\\|\\|");
+        ArrayList<String> answersList = new ArrayList<>();
+        for (int i = 0; i < answers.length; i++) {
+            answersList.add(answers[i]);
+        }
+        question_to_return.setAnswers(answersList);
+        question_to_return.setIMAGE(question_text.split("///")[5]); //because inbetween come subjects and objectives
+        SaveImageFile(bitmap, question_text.split("///")[5]);
 
         //deal with subjects
-        String subjectsText = question_text.split("///")[2];
+        String subjectsText = question_text.split("///")[3];
         String[] subjects = subjectsText.split("\\|\\|\\|");
         for (int i = 0; i < subjects.length; i++) {
             try {
@@ -244,7 +252,7 @@ public class DataConversion {
         }
 
         //deal with learning objectives
-        String learningObjectivesText = question_text.split("///")[3];
+        String learningObjectivesText = question_text.split("///")[4];
         String[] learningObjectives = learningObjectivesText.split("\\|\\|\\|");
         for (int i = 0; i < learningObjectives.length; i++) {
             try {

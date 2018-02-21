@@ -1,6 +1,7 @@
 package com.LearningTracker.LearningTrackerApp.Activities;
 
 
+import com.LearningTracker.LearningTrackerApp.AndroidDatabaseManager;
 import com.LearningTracker.LearningTrackerApp.database_management.DbHelper;
 import com.LearningTracker.LearningTrackerApp.R;
 
@@ -81,5 +82,16 @@ public class MenuActivity extends Activity {
 				startActivity(intent);
 			}
 		});
+
+		Button button = (Button)findViewById(R.id.dbBrowsingButton);
+
+		button.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+
+				Intent dbmanager = new Intent(MenuActivity.this,AndroidDatabaseManager.class);
+				startActivity(dbmanager);
+			}
+		});
+
 	}
 }

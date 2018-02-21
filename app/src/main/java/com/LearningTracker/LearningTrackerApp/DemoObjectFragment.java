@@ -1,5 +1,6 @@
 package com.LearningTracker.LearningTrackerApp;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -18,6 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
+import com.LearningTracker.LearningTrackerApp.NetworkCommunication.NetworkCommunication;
 import com.LearningTracker.LearningTrackerApp.Questions.QuestionMultipleChoice;
 import com.LearningTracker.LearningTrackerApp.Questions.QuestionShortAnswer;
 import com.LearningTracker.LearningTrackerApp.database_management.DbTableQuestionMultipleChoice;
@@ -170,6 +172,30 @@ public class DemoObjectFragment extends Fragment {
         params.setMargins(width / 40, height / 200, width / 40, height / 200);  //left, top, right, bottom
         submitButton.setLayoutParams(params);
         submitButton.setTextColor(Color.WHITE);
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SimpleDateFormat") @Override
+            public void onClick(View v) {
+                //get the answers checked by student
+                ArrayList<String> studentAnswers = new ArrayList<String>();
+                for (int i = 0; i < checkBoxesArray.size(); i++) {
+                    if (checkBoxesArray.get(i).isChecked()) {
+                        studentAnswers.add(checkBoxesArray.get(i).getText().toString());
+                    }
+                }
+                //get the right answers
+                ArrayList<String> rightAnswers = new ArrayList<String>();
+                for (int i = 0; i < mMulChoiceQuestion.getNB_CORRECT_ANS(); i++) {
+                    rightAnswers.add(mMulChoiceQuestion.getPossibleAnswers().get(i));
+                }
+                //compare the student answers with the right answers
+                if (rightAnswers.containsAll(studentAnswers) && studentAnswers.containsAll(rightAnswers)) {
+                    Log.v("checking answers:", "correct!");
+                } else {
+                    Log.v("checking answers:", "incorrect :-(");
+                }
+            }
+        });
+
         linearLayout.addView(submitButton);
     }
     private void setShortAnswerQuestionView()
@@ -220,6 +246,22 @@ public class DemoObjectFragment extends Fragment {
         params.setMargins(width / 40, height / 200, width / 40, height / 200);  //left, top, right, bottom
         submitButton.setLayoutParams(params);
         submitButton.setTextColor(Color.WHITE);
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SimpleDateFormat") @Override
+            public void onClick(View v) {
+                //get the answerof the student
+                String studentAnswers = textAnswer.getText().toString();
+                //get the right answers
+                ArrayList<String> rightAnswers = mShortAnsQuestion.getAnswers();
+
+                //compare the student answer with the right answers
+                if (rightAnswers.contains(studentAnswers)) {
+                    Log.v("checking answers:", "correct!");
+                } else {
+                    Log.v("checking answers:", "incorrect :-(");
+                }
+            }
+        });
         linearLayout.addView(submitButton);
     }
 }
