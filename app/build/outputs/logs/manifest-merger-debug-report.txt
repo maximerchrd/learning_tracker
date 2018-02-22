@@ -120,9 +120,9 @@ ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/And
 	android:name
 		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:56:13-97
 activity#com.LearningTracker.LearningTrackerApp.Activities.EvaluationsGraphsActivity
-ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:58:9-60:52
+ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:58:9-60:82
 	android:label
-		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:60:13-40
+		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:60:13-70
 	android:name
 		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:59:13-103
 activity#com.LearningTracker.LearningTrackerApp.AndroidDatabaseManager

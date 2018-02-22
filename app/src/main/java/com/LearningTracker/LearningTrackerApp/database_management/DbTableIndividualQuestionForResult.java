@@ -1,5 +1,10 @@
 package com.LearningTracker.LearningTrackerApp.database_management;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 /**
  * Created by maximerichard on 03.01.18.
  */
@@ -37,5 +42,17 @@ public class DbTableIndividualQuestionForResult {
             System.exit(0);
         }
         return quantitative_evaluation;
+    }
+
+    static public void setEvalForQuestionAndStudentIDs (Double eval, String idQuestion) {
+        String sql = "UPDATE individual_question_for_result SET QUANTITATIVE_EVAL = '" + eval + "' " +
+                "WHERE ID_DIRECT_EVAL=(SELECT MAX (ID_DIRECT_EVAL) " +
+                "FROM (SELECT * FROM 'individual_question_for_result') WHERE ID_GLOBAL='" + idQuestion + "');";
+
+        try {
+            DbHelper.dbase.execSQL(sql);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

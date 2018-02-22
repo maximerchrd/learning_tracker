@@ -296,6 +296,8 @@ public class WifiCommunication {
 						}
 					} else if (sizes.split(":")[0].contains("EVAL")) {
 						DbTableIndividualQuestionForResult.addIndividualQuestionForStudentResult(sizes.split("///")[2],sizes.split("///")[1]);
+					} else if (sizes.split(":")[0].contains("UPDEV")) {
+						DbTableIndividualQuestionForResult.setEvalForQuestionAndStudentIDs(Double.valueOf(sizes.split("///")[1]),sizes.split("///")[2]);
 					}
 				}
 			}

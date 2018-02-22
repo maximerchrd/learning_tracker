@@ -57,7 +57,7 @@
             android:label="@string/questionsetactivity" />
         <activity
             android:name="com.LearningTracker.LearningTrackerApp.Activities.EvaluationsGraphsActivity"
-            android:label="DB Browsing" />
+            android:label="@string/title_activity_evaluation_results" />
         <activity
             android:name="com.LearningTracker.LearningTrackerApp.AndroidDatabaseManager"
             android:label="DB Browsing" />
