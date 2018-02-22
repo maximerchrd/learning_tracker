@@ -5,7 +5,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 
-import com.LearningTracker.LearningTrackerApp.DemoCollectionPagerAdapter;
+import com.LearningTracker.LearningTrackerApp.Activities.SwipingTools.ExerciseCollectionPagerAdapter;
 import com.LearningTracker.LearningTrackerApp.R;
 
 import java.util.ArrayList;
@@ -14,9 +14,9 @@ import java.util.ArrayList;
  * Created by maximerichard on 21.02.18.
  */
 public class QuestionSetActivity extends FragmentActivity {
-    // When requested, this adapter returns a DemoObjectFragment,
+    // When requested, this adapter returns a ExerciseObjectFragment,
     // representing an object in the collection.
-    DemoCollectionPagerAdapter mDemoCollectionPagerAdapter;
+    ExerciseCollectionPagerAdapter mDemoCollectionPagerAdapter;
     ViewPager mViewPager;
 
     public void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,7 @@ public class QuestionSetActivity extends FragmentActivity {
         // ViewPager and its adapters use support library
         // fragments, so use getSupportFragmentManager.
         mDemoCollectionPagerAdapter =
-                new DemoCollectionPagerAdapter(getSupportFragmentManager());
+                new ExerciseCollectionPagerAdapter(getSupportFragmentManager());
         mDemoCollectionPagerAdapter.setmQuestionIDs(questionIDs);
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mDemoCollectionPagerAdapter);

@@ -16,6 +16,10 @@
         "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/layout/activity_questionset.xml"
     },
     {
+        "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/layout/activity_evaluationgraphs.xml",
+        "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/layout/activity_evaluationgraphs.xml"
+    },
+    {
         "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/layout/spinner_dropdown_item.xml",
         "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/layout/spinner_dropdown_item.xml"
     },
@@ -38,6 +42,10 @@
     {
         "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/layout/fragment_collection_object.xml",
         "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/layout/fragment_collection_object.xml"
+    },
+    {
+        "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/layout/fragment_graph.xml",
+        "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/layout/fragment_graph.xml"
     },
     {
         "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/layout/activity_result.xml",

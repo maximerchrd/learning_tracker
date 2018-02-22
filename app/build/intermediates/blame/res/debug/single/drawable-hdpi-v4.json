@@ -1,9 +1,5 @@
 [
     {
-        "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/keep_calm_crown.png",
-        "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-hdpi/keep_calm_crown.png"
-    },
-    {
         "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_launcher.png",
         "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-hdpi/ic_launcher.png"
     },
