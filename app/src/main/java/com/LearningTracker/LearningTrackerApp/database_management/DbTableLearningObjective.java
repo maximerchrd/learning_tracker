@@ -57,6 +57,7 @@ public class DbTableLearningObjective {
             while (cursor.moveToNext()) {
                 objectives.add(cursor.getString(0));
             }
+            cursor.close();
         } catch ( Exception e ) {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
             System.exit(0);
@@ -84,6 +85,7 @@ public class DbTableLearningObjective {
                 id_questions.add(cursor.getString(0));
                 evaluations_for_each_question.add(cursor.getString(1));
             }
+            cursor.close();
             Vector<String> objectives_for_question = new Vector<>();
             for (int i = 0; i < id_questions.size(); i++) {
                 query = "SELECT OBJECTIVE FROM question_objective_relation " +
@@ -94,6 +96,7 @@ public class DbTableLearningObjective {
                     //multiplies each evaluation for a specific question by the number of objectives attributed to the question
                     evaluations_for_each_question.insertElementAt(evaluations_for_each_question.get(objectives_for_question.size() - 1), objectives_for_question.size());
                 }
+                cursor2.close();
                 evaluations_for_each_question.remove(objectives_for_question.size());
             }
             for (int i = 0; i < objectives_for_question.size(); i++) {

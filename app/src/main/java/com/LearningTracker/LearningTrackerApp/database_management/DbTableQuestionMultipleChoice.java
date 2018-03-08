@@ -114,6 +114,7 @@ public class DbTableQuestionMultipleChoice {
                 questionMultipleChoice.setIMAGE(cursor.getString(13));
             }
             questionMultipleChoice.setID(globalID);
+            cursor.close();
         } catch ( Exception e ) {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
             System.exit(0);

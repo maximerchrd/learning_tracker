@@ -43,6 +43,7 @@ public class DbTableRelationQuestionSubject {
             while (cursor.moveToNext()) {
                 queries.add(cursor.getString(0));
             }
+            cursor.close();
             if (queries.size() == 0) {
                 String sql = "INSERT INTO question_subject_relation (ID_GLOBAL, ID_SUBJECT_GLOBAL, SUBJECT_LEVEL) SELECT '" + questionID + "',t2.ID_SUBJECT_GLOBAL," +
                         "'1' FROM subjects t2 WHERE t2.SUBJECT='" + subject + "';";
@@ -64,6 +65,7 @@ public class DbTableRelationQuestionSubject {
             while (cursor.moveToNext()) {
                 questionIDs.add(cursor.getString(0));
             }
+            cursor.close();
         } catch (Exception e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);

@@ -64,6 +64,7 @@ public class DbTableQuestionShortAnswer {
                 questionShortAnswer.setIMAGE(cursor.getString(2));
             }
             questionShortAnswer.setID(globalID);
+            cursor.close();
 
             //get answers
             ArrayList<String> answers = new ArrayList<>();
@@ -76,6 +77,7 @@ public class DbTableQuestionShortAnswer {
                 answers.add(cursor2.getString(0));
             }
             questionShortAnswer.setAnswers(answers);
+            cursor2.close();
         } catch ( Exception e ) {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
             System.exit(0);

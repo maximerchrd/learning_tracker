@@ -93,7 +93,7 @@ public class DbTableSubject {
                 questionIDs.add(cursor.getString(0));
                 questionEvals.add(cursor.getString(1));
             }
-
+            cursor.close();
             //keep only the latest results of each question
             int arraysLength = questionIDs.size();
             Vector<String> singleGlobalIDs = new Vector<>();
