@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -32,7 +33,7 @@ public class MenuActivity extends Activity {
 
 
 		//set  text for consignes
-		consignes.setText(getString(R.string.hello) + " " + db.getName() +".\n");
+		consignes.setText(getString(R.string.hello) + " " + db.getName().split(" ")[0] + getString(R.string.instructions_menu));
 
 		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
 				LinearLayout.LayoutParams.MATCH_PARENT,      
@@ -84,14 +85,15 @@ public class MenuActivity extends Activity {
 		});
 
 		Button button = (Button)findViewById(R.id.dbBrowsingButton);
+		button.setVisibility(View.GONE);
 
-		button.setOnClickListener(new View.OnClickListener() {
+		/*button.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 
 				Intent dbmanager = new Intent(MenuActivity.this,AndroidDatabaseManager.class);
 				startActivity(dbmanager);
 			}
-		});
+		});*/
 
 	}
 }

@@ -50,4 +50,5 @@
     <string name="correction_correct">Correct!</string>
     <string name="correction_mltchoice_incorrect">Incorrect :-(</string>
     <string name="noQuestionToPractice">You are quite good! You don\'t have any more questions needing practice.</string>
+    <string name="instructions_menu">. Welcome to Learning Tracker. Check that you have the right IP address in "Settings" before starting a classroom activity.</string>
 </resources>

@@ -16,6 +16,7 @@
     <string name="hello">Bonjour </string>
     <string name="hello_world">Bonjour monde</string>
     <string name="homeworks">Devoirs</string>
+    <string name="instructions_menu">. Bienvenuce dans Learning Tracker. Vérifie dans les paramètres que tu as la bonne adresse IP avant de commencer une activité en classe.</string>
     <string name="interactive_mode_button">Commencer</string>
     <string name="keep_calm_and_restart">ET REDEMARRE L\'ACTIVITE EN CLASSE (mais avant, vérifie que tu as la bonne adresse ip dans "paramètres")</string>
     <string name="keep_calm_and_wait">ET ATTENDS LA PROCHAINE QUESTION</string>
@@ -24,7 +25,7 @@
     <string name="menu_score">score:</string>
     <string name="menu_settings">Paramètres</string>
     <string name="menu_subject">Sujet</string>
-    <string name="noQuestionToPractice">Bravo! Il n\'y a plus de question qe tu devrais exercer.</string>
+    <string name="noQuestionToPractice">Bravo! Il n\'y a plus de question que tu devrais encore exercer.</string>
     <string name="questionsetactivity">S\'exercer</string>
     <string name="settings_master">Adresse ip du serveur</string>
     <string name="settings_name">Nom</string>

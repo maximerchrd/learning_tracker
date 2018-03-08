@@ -208,11 +208,11 @@ public class GraphsObjectFragment extends Fragment {
         Vector<String> evaluations_top = new Vector<>();
         for (int i = 0; i < evaluations.size(); i++) {
             Integer eval = Double.valueOf(evaluations.get(i)).intValue();
-            if (eval < 40) {
+            if (eval < 50) {
                 evaluations_low.add(objectives.get(i));
-            } else if (eval < 45) {
+            } else if (eval < 70) {
                 evaluations_middle.add(objectives.get(i));
-            } else if (eval < 50) {
+            } else if (eval < 90) {
                 evaluations_high.add(objectives.get(i));
             } else {
                 evaluations_top.add(objectives.get(i));

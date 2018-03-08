@@ -25,6 +25,7 @@
     <string name="hello">Hello</string>
     <string name="hello_world">Hello world!</string>
     <string name="homeworks">Homeworks</string>
+    <string name="instructions_menu">. Welcome to Learning Tracker. Check that you have the right IP address in "Settings" before starting a classroom activity.</string>
     <string name="interactive_mode_button">Start</string>
     <string name="keep_calm_and_restart">AND RESTART THE CLASSROOM ACTIVITY (but before, check that you have the right ip address in "settings")</string>
     <string name="keep_calm_and_wait">AND WAIT FOR NEXT QUESTION</string>

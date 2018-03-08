@@ -1,5 +1,9 @@
 [
     {
+        "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-mdpi-v4/owl_small.png",
+        "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-mdpi/owl_small.png"
+    },
+    {
         "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/drawable-mdpi-v4/ic_launcher.png",
         "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/drawable-mdpi/ic_launcher.png"
     },

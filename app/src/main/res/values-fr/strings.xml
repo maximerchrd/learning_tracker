@@ -41,5 +41,6 @@
     <string name="correction_incorrect">Ta réponse n\'est pas correcte. La bonne réponse était: </string>
     <string name="correction_correct">Bonne réponse!</string>
     <string name="correction_mltchoice_incorrect">Malheureusement, cette réponse est fausse :-(</string>
-    <string name="noQuestionToPractice">Bravo! Il n\'y a plus de question qe tu devrais exercer.</string>
+    <string name="noQuestionToPractice">Bravo! Il n\'y a plus de question que tu devrais encore exercer.</string>
+    <string name="instructions_menu">. Bienvenuce dans Learning Tracker. Vérifie dans les paramètres que tu as la bonne adresse IP avant de commencer une activité en classe.</string>
 </resources>

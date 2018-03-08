@@ -166,7 +166,7 @@ public class WifiCommunication {
 					Log.v("received string: ", sizes);
 					if (sizes.split(":")[0].contains("QUEST")) {
 						int size_of_image = Integer.parseInt(sizes.split(":")[1]);
-						int size_of_text = Integer.parseInt(sizes.split(":")[2].replaceAll("\\D+", ""));
+						int size_of_text = Integer.parseInt(sizes.split(":")[2].replaceAll("\\D+", "")); //removes all the non number characters
 						byte[] whole_question_buffer = new byte[40 + size_of_image + size_of_text];
 						for (int i = 0; i < 40; i++) {
 							whole_question_buffer[i] = prefix_buffer[i];
