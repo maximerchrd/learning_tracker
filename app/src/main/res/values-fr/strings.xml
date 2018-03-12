@@ -25,7 +25,7 @@
     <string name="interactive_mode_button">Commencer</string>
     <string name="answer_button">Soumettre la réponse</string>
     <string name="keep_calm_and_wait">ET ATTENDS LA PROCHAINE QUESTION</string>
-    <string name="keep_calm_and_restart">ET REDEMARRE L\'ACTIVITE EN CLASSE (mais avant, vérifie que tu as la bonne adresse ip dans "paramètres")</string>
+    <string name="keep_calm_and_restart">ET REDEMARRE L\'ACTIVITE EN CLASSE (mais avant, vérifie que tu as la bonne adresse ip dans les "paramètres")</string>
     <string name="keep_calm_problem">ON A EU UN PROBLEME. REDEMARRE L\'ACTIVITE EN CLASSE</string>
     <string name="menu_subject">Sujet</string>
     <string name="all_subjects">Tous les sujets</string>
@@ -42,5 +42,5 @@
     <string name="correction_correct">Bonne réponse!</string>
     <string name="correction_mltchoice_incorrect">Malheureusement, cette réponse est fausse :-(</string>
     <string name="noQuestionToPractice">Bravo! Il n\'y a plus de question que tu devrais encore exercer.</string>
-    <string name="instructions_menu">. Bienvenuce dans Learning Tracker. Vérifie dans les paramètres que tu as la bonne adresse IP avant de commencer une activité en classe.</string>
+    <string name="instructions_menu">. Bienvenue dans Learning Tracker. Vérifie dans les paramètres que tu as la bonne adresse IP avant de commencer une activité en classe.</string>
 </resources>

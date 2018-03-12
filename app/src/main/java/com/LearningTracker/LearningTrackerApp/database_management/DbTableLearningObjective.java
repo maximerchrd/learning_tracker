@@ -119,6 +119,14 @@ public class DbTableLearningObjective {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
             System.exit(0);
         }
+        //remove empty objective
+        for (int i = 0; i < objectives.size(); i++) {
+            if (objectives.get(i).contentEquals("") || objectives.get(i).contentEquals(" ")) {
+                results.remove(i);
+                objectives.remove(i);
+                i--;
+            }
+        }
         Vector<Vector<String>> vectors = new Vector<Vector<String>>();
         vectors.add(objectives);
         vectors.add(results);

@@ -231,9 +231,14 @@ public class GraphsObjectFragment extends Fragment {
     }
     private void displayObjectives (final Vector<String> objectives, int color, Double performanceFactor) {
         for (int i = 0; i < objectives.size(); i++) {
-            objectives.set(i,objectives.get(i) + " but this is a very important learning objective that you should understand in its full extent. Yes, I promise!");
+            //objectives.set(i,objectives.get(i) + " but this is a very important learning objective that you should understand in its full extent. Yes, I promise!");
             final String fullText = objectives.get(i);
-            final String shortText = objectives.get(i).substring(0,25) + "...";
+            final String shortText;
+            if (fullText.length() > 25) {
+                shortText = objectives.get(i).substring(0,25) + "...";
+            } else {
+                shortText = fullText;
+            }
             final TextView objectiveText = new TextView(mContext);
             objectiveText.setText(shortText);
             objectiveText.setTextColor(color);
