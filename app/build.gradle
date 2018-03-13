@@ -16,6 +16,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
     }
+
+    lintOptions{
+        disable "ResourceType"
+        checkReleaseBuilds false
+        abortOnError false
+    }
 }
 
 dependencies {
@@ -24,4 +30,5 @@ dependencies {
     compile files('libs/additionnal.jar')
     compile files('libs/mail.jar')
     compile 'com.github.PhilJay:MPAndroidChart:v3.0.3'
+    compile 'com.google.android.gms:play-services-appindexing:8.1.0'
 }
