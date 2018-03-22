@@ -60,6 +60,9 @@
             android:name="com.LearningTracker.LearningTrackerApp.Activities.EvaluationsGraphsActivity"
             android:label="@string/title_activity_evaluation_results" />
         <activity
+            android:name="com.LearningTracker.LearningTrackerApp.Activities.CorrectedQuestionActivity"
+            android:label="@string/title_activity_corrected_question" />
+        <activity
             android:name="com.LearningTracker.LearningTrackerApp.AndroidDatabaseManager"
             android:label="DB Browsing" />
         <!--

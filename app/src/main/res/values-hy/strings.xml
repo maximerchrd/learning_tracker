@@ -43,4 +43,7 @@
     <string name="start_free_practice">դեռ չի թարգմանվել</string>
     <string name="start_homeworks">դեռ չի թարգմանվել</string>
     <string name="title_exercice_activity">դեռ չի թարգմանվել</string>
+    <string name="ok_button">դեռ չի թարգմանվել</string>
+    <string name="answer_example">դեռ չի թարգմանվել</string>
+    <string name="title_activity_corrected_question">դեռ չի թարգմանվել</string>
 </resources>

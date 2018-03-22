@@ -2,6 +2,7 @@
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
     <string name="all_subjects">Tous les sujets</string>
     <string name="answer_button">Soumettre la réponse</string>
+    <string name="answer_example">La réponse est par exemple: </string>
     <string name="app_name">Learning Tracker</string>
     <string name="button_menu_settings">Paramètres</string>
     <string name="button_result_back">Retourner au menu</string>
@@ -56,6 +57,7 @@
     <string name="menu_settings">Paramètres</string>
     <string name="menu_subject">Sujet</string>
     <string name="noQuestionToPractice">Bravo! Il n\'y a plus de question que tu devrais encore exercer.</string>
+    <string name="ok_button">OK</string>
     <string name="questionsetactivity">S\'exercer</string>
     <string name="settings_master">Adresse ip du serveur</string>
     <string name="settings_name">Nom</string>
@@ -64,6 +66,7 @@
     <string name="str_next">Suivant</string>
     <string name="title_activity_bluetoothclient">Commencer</string>
     <string name="title_activity_client">Réseau</string>
+    <string name="title_activity_corrected_question">Correction</string>
     <string name="title_activity_evaluation_results">Résultats de l\'évaluation</string>
     <string name="title_activity_interactivemode">Activité en classe</string>
     <string name="title_activity_question">Question</string>

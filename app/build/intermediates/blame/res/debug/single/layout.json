@@ -52,6 +52,10 @@
         "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/layout/activity_result.xml"
     },
     {
+        "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/layout/activity_corrected_question.xml",
+        "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/layout/activity_corrected_question.xml"
+    },
+    {
         "merged": "/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/res/merged/debug/layout/activity_shortanswerquestion.xml",
         "source": "/Users/maximerichard/StudioProjects/learning-tracker/app/src/main/res/layout/activity_shortanswerquestion.xml"
     },

@@ -23,6 +23,7 @@
     <integer name="google_play_services_version">8115000</integer>
     <string name="all_subjects">All subjects</string>
     <string name="answer_button">Submit the answer</string>
+    <string name="answer_example">The answer is for example:</string>
     <string name="app_name">Learning Tracker</string>
     <string name="auth_google_play_services_client_facebook_display_name">Facebook</string>
     <string name="auth_google_play_services_client_google_display_name">Google</string>
@@ -80,6 +81,7 @@
     <string name="menu_settings">Parameters</string>
     <string name="menu_subject">Subject</string>
     <string name="noQuestionToPractice">You are quite good! You don\'t have any more questions needing practice.</string>
+    <string name="ok_button">OK</string>
     <string name="questionsetactivity">Practice</string>
     <string name="settings_master">Server ip address:</string>
     <string name="settings_name">Name</string>
@@ -88,6 +90,7 @@
     <string name="str_next">Next</string>
     <string name="title_activity_bluetoothclient">Start</string>
     <string name="title_activity_client">Network</string>
+    <string name="title_activity_corrected_question">Correction</string>
     <string name="title_activity_evaluation_results">Evaluation results</string>
     <string name="title_activity_interactivemode">Classroom activity</string>
     <string name="title_activity_question">Question</string>

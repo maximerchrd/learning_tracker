@@ -43,4 +43,7 @@
     <string name="correction_mltchoice_incorrect">Malheureusement, cette réponse est fausse :-(</string>
     <string name="noQuestionToPractice">Bravo! Il n\'y a plus de question que tu devrais encore exercer.</string>
     <string name="instructions_menu">. Bienvenue dans Learning Tracker. Vérifie dans les paramètres que tu as la bonne adresse IP avant de commencer une activité en classe.</string>
+    <string name="ok_button">OK</string>
+    <string name="answer_example">La réponse est par exemple: </string>
+    <string name="title_activity_corrected_question">Correction</string>
 </resources>

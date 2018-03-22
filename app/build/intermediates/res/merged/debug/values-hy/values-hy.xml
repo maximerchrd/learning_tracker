@@ -2,6 +2,7 @@
 <resources>
     <string name="all_subjects">դեռ չի թարգմանվել</string>
     <string name="answer_button">պատասխանը ներկայացնել</string>
+    <string name="answer_example">դեռ չի թարգմանվել</string>
     <string name="app_name">Learning Tracker</string>
     <string name="button_menu_settings">Կարգավորումներ</string>
     <string name="button_result_back">վերադառնալ մենյու</string>
@@ -26,6 +27,7 @@
     <string name="menu_settings">none</string>
     <string name="menu_subject">դեռ չի թարգմանվել</string>
     <string name="noQuestionToPractice">դեռ չի թարգմանվել</string>
+    <string name="ok_button">դեռ չի թարգմանվել</string>
     <string name="questionsetactivity">դեռ չի թարգմանվել</string>
     <string name="settings_master">Միանալ IP հասցեին</string>
     <string name="settings_name">Անուն</string>
@@ -34,6 +36,7 @@
     <string name="str_next">none</string>
     <string name="title_activity_bluetoothclient">none</string>
     <string name="title_activity_client">none</string>
+    <string name="title_activity_corrected_question">դեռ չի թարգմանվել</string>
     <string name="title_activity_evaluation_results">Գնահատման արդյունքներ</string>
     <string name="title_activity_interactivemode">Դասասենյակի գործունեությունը</string>
     <string name="title_activity_question">none</string>

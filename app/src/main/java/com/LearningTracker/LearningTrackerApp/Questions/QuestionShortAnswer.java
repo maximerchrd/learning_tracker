@@ -22,6 +22,7 @@ public class QuestionShortAnswer {
         LEVEL="";
         QUESTION="";
         IMAGE="none";
+        answers = new  ArrayList<>();
     }
     public QuestionShortAnswer(String lEVEL, String qUESTION, String iMAGE) {
 
@@ -32,6 +33,7 @@ public class QuestionShortAnswer {
         } else {
             IMAGE = iMAGE;
         }
+        answers = new  ArrayList<>();
     }
     public int getID()
     {

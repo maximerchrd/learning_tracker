@@ -13,6 +13,7 @@ import java.util.Enumeration;
 import java.util.List;
 import java.util.Vector;
 
+import com.LearningTracker.LearningTrackerApp.Activities.CorrectedQuestionActivity;
 import com.LearningTracker.LearningTrackerApp.Activities.MultChoiceQuestionActivity;
 import com.LearningTracker.LearningTrackerApp.Activities.ShortAnswerQuestionActivity;
 import com.LearningTracker.LearningTrackerApp.Activities.SingleQuestionActivity;
@@ -298,6 +299,12 @@ public class WifiCommunication {
 						DbTableIndividualQuestionForResult.addIndividualQuestionForStudentResult(sizes.split("///")[2],sizes.split("///")[1]);
 					} else if (sizes.split(":")[0].contains("UPDEV")) {
 						DbTableIndividualQuestionForResult.setEvalForQuestionAndStudentIDs(Double.valueOf(sizes.split("///")[1]),sizes.split("///")[2]);
+					} else if (sizes.split(":")[0].contains("CORR")) {
+						Intent mIntent = new Intent(mContextWifCom, CorrectedQuestionActivity.class);
+						Bundle bun = new Bundle();
+						bun.putString("questionID", sizes.split("///")[1]);
+						mIntent.putExtras(bun);
+						mContextWifCom.startActivity(mIntent);
 					}
 				}
 			}
