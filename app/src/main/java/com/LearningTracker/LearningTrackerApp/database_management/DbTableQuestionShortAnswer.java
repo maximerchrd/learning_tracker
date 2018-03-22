@@ -35,7 +35,7 @@ public class DbTableQuestionShortAnswer {
      */
     static public void addShortAnswerQuestion(QuestionShortAnswer quest) throws Exception {
         try {
-            String sql = 	"INSERT OR IGNORE INTO short_answer_questions (LEVEL,QUESTION,IMAGE_PATH,ID_GLOBAL) " +
+            String sql = 	"INSERT OR REPLACE INTO short_answer_questions (LEVEL,QUESTION,IMAGE_PATH,ID_GLOBAL) " +
                     "VALUES ('" +
                     quest.getLEVEL() + "','" +
                     quest.getQUESTION().replace("'","''") + "','" +

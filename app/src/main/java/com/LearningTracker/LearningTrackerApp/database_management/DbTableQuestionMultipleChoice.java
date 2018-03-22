@@ -53,7 +53,7 @@ public class DbTableQuestionMultipleChoice {
      */
     static public void addMultipleChoiceQuestion(QuestionMultipleChoice quest) throws Exception {
         try {
-            String sql = 	"INSERT OR IGNORE INTO multiple_choice_questions (LEVEL,QUESTION,OPTION0," +
+            String sql = 	"INSERT OR REPLACE INTO multiple_choice_questions (LEVEL,QUESTION,OPTION0," +
                     "OPTION1,OPTION2,OPTION3,OPTION4,OPTION5,OPTION6,OPTION7,OPTION8,OPTION9,TRIAL0,TRIAL1,TRIAL2,TRIAL3,TRIAL4,TRIAL5,TRIAL6,TRIAL7," +
                     "TRIAL8,TRIAL9,NB_CORRECT_ANS,IMAGE_PATH,ID_GLOBAL) " +
                     "VALUES ('" +

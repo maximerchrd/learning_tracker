@@ -9,76 +9,124 @@ package com.LearningTracker.LearningTrackerApp;
 
 public final class R {
     public static final class attr {
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int circleCrop=0x7f010002;
+        /** <p>Must be a floating point value, such as "<code>1.2</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int imageAspectRatio=0x7f010001;
+        /** <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>none</code></td><td>0</td><td></td></tr>
+<tr><td><code>adjust_width</code></td><td>1</td><td></td></tr>
+<tr><td><code>adjust_height</code></td><td>2</td><td></td></tr>
+</table>
+         */
+        public static final int imageAspectRatioAdjust=0x7f010000;
     }
     public static final class color {
         public static final int black=0x7f080000;
         public static final int blue=0x7f080001;
-        public static final int green=0x7f080002;
-        public static final int grey=0x7f080003;
-        public static final int red=0x7f080004;
-        public static final int white=0x7f080005;
-        public static final int yellow=0x7f080006;
+        public static final int common_action_bar_splitter=0x7f080002;
+        public static final int common_signin_btn_dark_text_default=0x7f080003;
+        public static final int common_signin_btn_dark_text_disabled=0x7f080004;
+        public static final int common_signin_btn_dark_text_focused=0x7f080005;
+        public static final int common_signin_btn_dark_text_pressed=0x7f080006;
+        public static final int common_signin_btn_default_background=0x7f080007;
+        public static final int common_signin_btn_light_text_default=0x7f080008;
+        public static final int common_signin_btn_light_text_disabled=0x7f080009;
+        public static final int common_signin_btn_light_text_focused=0x7f08000a;
+        public static final int common_signin_btn_light_text_pressed=0x7f08000b;
+        public static final int common_signin_btn_text_dark=0x7f080011;
+        public static final int common_signin_btn_text_light=0x7f080012;
+        public static final int green=0x7f08000c;
+        public static final int grey=0x7f08000d;
+        public static final int red=0x7f08000e;
+        public static final int white=0x7f08000f;
+        public static final int yellow=0x7f080010;
     }
     public static final class dimen {
         public static final int activity_horizontal_margin=0x7f060000;
         public static final int activity_vertical_margin=0x7f060001;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
-        public static final int ic_launcher_old=0x7f020001;
-        public static final int keep_calm_crown=0x7f020002;
-        public static final int owl_small=0x7f020003;
-        public static final int target_image=0x7f020004;
+        public static final int common_full_open_on_phone=0x7f020000;
+        public static final int common_ic_googleplayservices=0x7f020001;
+        public static final int ic_launcher=0x7f020002;
+        public static final int ic_launcher_old=0x7f020003;
+        public static final int keep_calm_crown=0x7f020004;
+        public static final int owl_small=0x7f020005;
+        public static final int target_image=0x7f020006;
     }
     public static final class id {
-        public static final int button1=0x7f0a0019;
-        public static final int buttonchangesettings=0x7f0a0013;
-        public static final int buttonsaveandback=0x7f0a001e;
-        public static final int chart=0x7f0a0000;
-        public static final int dbBrowsingButton=0x7f0a000f;
-        public static final int edittextmaster=0x7f0a001d;
-        public static final int edittextnom=0x7f0a001b;
-        public static final int evaluationgraphs_pager=0x7f0a0001;
-        public static final int exercicebutton=0x7f0a0011;
-        public static final int fp_textView=0x7f0a0002;
-        public static final int freepractice_button=0x7f0a0005;
-        public static final int homework_button=0x7f0a0009;
-        public static final int horizontal_chart=0x7f0a002a;
-        public static final int hw_textView=0x7f0a0006;
-        public static final int imageView=0x7f0a000a;
-        public static final int imageView2=0x7f0a000e;
-        public static final int interactivemodebutton=0x7f0a0010;
-        public static final int lblListHeader=0x7f0a002c;
-        public static final int lblListItem=0x7f0a002d;
-        public static final int linearLayout=0x7f0a0021;
-        public static final int linearLayoutMultChoice=0x7f0a0014;
-        public static final int linearLayoutShortAnswer=0x7f0a001f;
-        public static final int menu_settings=0x7f0a002f;
-        public static final int menu_subject=0x7f0a002e;
-        public static final int pager=0x7f0a0016;
-        public static final int practice_linearLayout=0x7f0a0027;
-        public static final int questionTextFragmentCollection=0x7f0a0028;
-        public static final int ratingBar1=0x7f0a0017;
-        public static final int relativeLayoutFragment=0x7f0a0029;
-        public static final int scoresbutton=0x7f0a0012;
-        public static final int send=0x7f0a0024;
-        public static final int subjects_spinner=0x7f0a0004;
-        public static final int subjects_textView=0x7f0a0003;
-        public static final int target_image=0x7f0a002b;
-        public static final int teacher_textView=0x7f0a0007;
-        public static final int teachers_spinner=0x7f0a0008;
-        public static final int textResult=0x7f0a0018;
-        public static final int textView=0x7f0a000b;
-        public static final int textView2=0x7f0a000c;
-        public static final int textViewMaster=0x7f0a001c;
-        public static final int textViewMultChoiceQuest1=0x7f0a0015;
-        public static final int textViewNom=0x7f0a001a;
-        public static final int textViewQuest1=0x7f0a0022;
-        public static final int textViewShortAnswerQuest=0x7f0a0020;
-        public static final int textViewmenu=0x7f0a000d;
-        public static final int textin=0x7f0a0025;
-        public static final int textip=0x7f0a0026;
-        public static final int textout=0x7f0a0023;
+        public static final int adjust_height=0x7f0b0000;
+        public static final int adjust_width=0x7f0b0001;
+        public static final int button1=0x7f0b001c;
+        public static final int buttonchangesettings=0x7f0b0016;
+        public static final int buttonsaveandback=0x7f0b0021;
+        public static final int chart=0x7f0b0003;
+        public static final int dbBrowsingButton=0x7f0b0012;
+        public static final int edittextmaster=0x7f0b0020;
+        public static final int edittextnom=0x7f0b001e;
+        public static final int evaluationgraphs_pager=0x7f0b0004;
+        public static final int exercicebutton=0x7f0b0014;
+        public static final int fp_textView=0x7f0b0005;
+        public static final int freepractice_button=0x7f0b0008;
+        public static final int homework_button=0x7f0b000c;
+        public static final int horizontal_chart=0x7f0b002d;
+        public static final int hw_textView=0x7f0b0009;
+        public static final int imageView=0x7f0b000d;
+        public static final int imageView2=0x7f0b0011;
+        public static final int interactivemodebutton=0x7f0b0013;
+        public static final int lblListHeader=0x7f0b002f;
+        public static final int lblListItem=0x7f0b0030;
+        public static final int linearLayout=0x7f0b0024;
+        public static final int linearLayoutMultChoice=0x7f0b0017;
+        public static final int linearLayoutShortAnswer=0x7f0b0022;
+        public static final int menu_settings=0x7f0b0032;
+        public static final int menu_subject=0x7f0b0031;
+        public static final int none=0x7f0b0002;
+        public static final int pager=0x7f0b0019;
+        public static final int practice_linearLayout=0x7f0b002a;
+        public static final int questionTextFragmentCollection=0x7f0b002b;
+        public static final int ratingBar1=0x7f0b001a;
+        public static final int relativeLayoutFragment=0x7f0b002c;
+        public static final int scoresbutton=0x7f0b0015;
+        public static final int send=0x7f0b0027;
+        public static final int subjects_spinner=0x7f0b0007;
+        public static final int subjects_textView=0x7f0b0006;
+        public static final int target_image=0x7f0b002e;
+        public static final int teacher_textView=0x7f0b000a;
+        public static final int teachers_spinner=0x7f0b000b;
+        public static final int textResult=0x7f0b001b;
+        public static final int textView=0x7f0b000e;
+        public static final int textView2=0x7f0b000f;
+        public static final int textViewMaster=0x7f0b001f;
+        public static final int textViewMultChoiceQuest1=0x7f0b0018;
+        public static final int textViewNom=0x7f0b001d;
+        public static final int textViewQuest1=0x7f0b0025;
+        public static final int textViewShortAnswerQuest=0x7f0b0023;
+        public static final int textViewmenu=0x7f0b0010;
+        public static final int textin=0x7f0b0028;
+        public static final int textip=0x7f0b0029;
+        public static final int textout=0x7f0b0026;
+    }
+    public static final class integer {
+        public static final int google_play_services_version=0x7f090000;
     }
     public static final class layout {
         public static final int activity_evaluation_results=0x7f040000;
@@ -101,60 +149,92 @@ public final class R {
         public static final int spinner_item=0x7f040011;
     }
     public static final class menu {
-        public static final int activity_evaluation_results=0x7f090000;
-        public static final int activity_menu=0x7f090001;
-        public static final int activity_result=0x7f090002;
-        public static final int activity_scores=0x7f090003;
-        public static final int activity_settings=0x7f090004;
+        public static final int activity_evaluation_results=0x7f0a0000;
+        public static final int activity_menu=0x7f0a0001;
+        public static final int activity_result=0x7f0a0002;
+        public static final int activity_scores=0x7f0a0003;
+        public static final int activity_settings=0x7f0a0004;
     }
     public static final class mipmap {
         public static final int ic_launcher=0x7f030000;
     }
     public static final class string {
-        public static final int all_subjects=0x7f050000;
-        public static final int answer_button=0x7f050001;
-        public static final int app_name=0x7f050002;
-        public static final int button_menu_settings=0x7f050003;
-        public static final int button_result_back=0x7f050004;
-        public static final int button_settings_back=0x7f050005;
-        public static final int chose_subject=0x7f050006;
-        public static final int chose_teacher=0x7f050007;
-        public static final int correction_correct=0x7f050008;
-        public static final int correction_incorrect=0x7f050009;
-        public static final int correction_mltchoice_incorrect=0x7f05000a;
-        public static final int exercices=0x7f05000b;
-        public static final int free_practice=0x7f05000c;
-        public static final int hello=0x7f05000d;
-        public static final int hello_world=0x7f05000e;
-        public static final int homeworks=0x7f05000f;
-        public static final int instructions_menu=0x7f050010;
-        public static final int interactive_mode_button=0x7f050011;
-        public static final int keep_calm_and_restart=0x7f050012;
-        public static final int keep_calm_and_wait=0x7f050013;
-        public static final int keep_calm_problem=0x7f050014;
-        public static final int keepcalmimage=0x7f05002b;
-        public static final int menu_level=0x7f050015;
-        public static final int menu_score=0x7f050016;
-        public static final int menu_settings=0x7f050017;
-        public static final int menu_subject=0x7f050018;
-        public static final int noQuestionToPractice=0x7f050019;
-        public static final int questionsetactivity=0x7f05001a;
-        public static final int settings_master=0x7f05001b;
-        public static final int settings_name=0x7f05001c;
-        public static final int start_free_practice=0x7f05001d;
-        public static final int start_homeworks=0x7f05001e;
-        public static final int str_next=0x7f05001f;
-        public static final int title_activity_bluetoothclient=0x7f050020;
-        public static final int title_activity_client=0x7f050021;
-        public static final int title_activity_evaluation_results=0x7f050022;
-        public static final int title_activity_interactivemode=0x7f050023;
-        public static final int title_activity_question=0x7f050024;
-        public static final int title_activity_quiz=0x7f050025;
-        public static final int title_activity_result=0x7f050026;
-        public static final int title_activity_scores=0x7f050027;
-        public static final int title_activity_settings=0x7f050028;
-        public static final int title_exercice_activity=0x7f050029;
-        public static final int waiting_for_question=0x7f05002a;
+        public static final int all_subjects=0x7f05001e;
+        public static final int answer_button=0x7f05001f;
+        public static final int app_name=0x7f050020;
+        public static final int auth_google_play_services_client_facebook_display_name=0x7f050049;
+        public static final int auth_google_play_services_client_google_display_name=0x7f05004a;
+        public static final int button_menu_settings=0x7f050021;
+        public static final int button_result_back=0x7f050022;
+        public static final int button_settings_back=0x7f050023;
+        public static final int chose_subject=0x7f050024;
+        public static final int chose_teacher=0x7f050025;
+        public static final int common_android_wear_notification_needs_update_text=0x7f050000;
+        public static final int common_android_wear_update_text=0x7f050001;
+        public static final int common_android_wear_update_title=0x7f050002;
+        public static final int common_google_play_services_api_unavailable_text=0x7f050003;
+        public static final int common_google_play_services_enable_button=0x7f050004;
+        public static final int common_google_play_services_enable_text=0x7f050005;
+        public static final int common_google_play_services_enable_title=0x7f050006;
+        public static final int common_google_play_services_error_notification_requested_by_msg=0x7f050007;
+        public static final int common_google_play_services_install_button=0x7f050008;
+        public static final int common_google_play_services_install_text_phone=0x7f050009;
+        public static final int common_google_play_services_install_text_tablet=0x7f05000a;
+        public static final int common_google_play_services_install_title=0x7f05000b;
+        public static final int common_google_play_services_invalid_account_text=0x7f05000c;
+        public static final int common_google_play_services_invalid_account_title=0x7f05000d;
+        public static final int common_google_play_services_needs_enabling_title=0x7f05000e;
+        public static final int common_google_play_services_network_error_text=0x7f05000f;
+        public static final int common_google_play_services_network_error_title=0x7f050010;
+        public static final int common_google_play_services_notification_needs_update_title=0x7f050011;
+        public static final int common_google_play_services_notification_ticker=0x7f050012;
+        public static final int common_google_play_services_sign_in_failed_text=0x7f050013;
+        public static final int common_google_play_services_sign_in_failed_title=0x7f050014;
+        public static final int common_google_play_services_unknown_issue=0x7f050015;
+        public static final int common_google_play_services_unsupported_text=0x7f050016;
+        public static final int common_google_play_services_unsupported_title=0x7f050017;
+        public static final int common_google_play_services_update_button=0x7f050018;
+        public static final int common_google_play_services_update_text=0x7f050019;
+        public static final int common_google_play_services_update_title=0x7f05001a;
+        public static final int common_google_play_services_updating_text=0x7f05001b;
+        public static final int common_google_play_services_updating_title=0x7f05001c;
+        public static final int common_open_on_phone=0x7f05001d;
+        public static final int correction_correct=0x7f050026;
+        public static final int correction_incorrect=0x7f050027;
+        public static final int correction_mltchoice_incorrect=0x7f050028;
+        public static final int exercices=0x7f050029;
+        public static final int free_practice=0x7f05002a;
+        public static final int hello=0x7f05002b;
+        public static final int hello_world=0x7f05002c;
+        public static final int homeworks=0x7f05002d;
+        public static final int instructions_menu=0x7f05002e;
+        public static final int interactive_mode_button=0x7f05002f;
+        public static final int keep_calm_and_restart=0x7f050030;
+        public static final int keep_calm_and_wait=0x7f050031;
+        public static final int keep_calm_problem=0x7f050032;
+        public static final int keepcalmimage=0x7f05004b;
+        public static final int menu_level=0x7f050033;
+        public static final int menu_score=0x7f050034;
+        public static final int menu_settings=0x7f050035;
+        public static final int menu_subject=0x7f050036;
+        public static final int noQuestionToPractice=0x7f050037;
+        public static final int questionsetactivity=0x7f050038;
+        public static final int settings_master=0x7f050039;
+        public static final int settings_name=0x7f05003a;
+        public static final int start_free_practice=0x7f05003b;
+        public static final int start_homeworks=0x7f05003c;
+        public static final int str_next=0x7f05003d;
+        public static final int title_activity_bluetoothclient=0x7f05003e;
+        public static final int title_activity_client=0x7f05003f;
+        public static final int title_activity_evaluation_results=0x7f050040;
+        public static final int title_activity_interactivemode=0x7f050041;
+        public static final int title_activity_question=0x7f050042;
+        public static final int title_activity_quiz=0x7f050043;
+        public static final int title_activity_result=0x7f050044;
+        public static final int title_activity_scores=0x7f050045;
+        public static final int title_activity_settings=0x7f050046;
+        public static final int title_exercice_activity=0x7f050047;
+        public static final int waiting_for_question=0x7f050048;
     }
     public static final class style {
         /**  API 11 theme customizations can go here. 
@@ -169,4 +249,69 @@ public final class R {
          */
         public static final int AppTheme=0x7f070001;
     }
+    public static final class styleable {
+        /** Attributes that can be used with a LoadingImageView.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #LoadingImageView_circleCrop com.LearningTracker.LearningTrackerApp:circleCrop}</code></td><td></td></tr>
+           <tr><td><code>{@link #LoadingImageView_imageAspectRatio com.LearningTracker.LearningTrackerApp:imageAspectRatio}</code></td><td></td></tr>
+           <tr><td><code>{@link #LoadingImageView_imageAspectRatioAdjust com.LearningTracker.LearningTrackerApp:imageAspectRatioAdjust}</code></td><td></td></tr>
+           </table>
+           @see #LoadingImageView_circleCrop
+           @see #LoadingImageView_imageAspectRatio
+           @see #LoadingImageView_imageAspectRatioAdjust
+         */
+        public static final int[] LoadingImageView = {
+            0x7f010000, 0x7f010001, 0x7f010002
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.LearningTracker.LearningTrackerApp.R.attr#circleCrop}
+          attribute's value can be found in the {@link #LoadingImageView} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.LearningTracker.LearningTrackerApp:circleCrop
+        */
+        public static final int LoadingImageView_circleCrop = 2;
+        /**
+          <p>This symbol is the offset where the {@link com.LearningTracker.LearningTrackerApp.R.attr#imageAspectRatio}
+          attribute's value can be found in the {@link #LoadingImageView} array.
+
+
+          <p>Must be a floating point value, such as "<code>1.2</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.LearningTracker.LearningTrackerApp:imageAspectRatio
+        */
+        public static final int LoadingImageView_imageAspectRatio = 1;
+        /**
+          <p>This symbol is the offset where the {@link com.LearningTracker.LearningTrackerApp.R.attr#imageAspectRatioAdjust}
+          attribute's value can be found in the {@link #LoadingImageView} array.
+
+
+          <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>none</code></td><td>0</td><td></td></tr>
+<tr><td><code>adjust_width</code></td><td>1</td><td></td></tr>
+<tr><td><code>adjust_height</code></td><td>2</td><td></td></tr>
+</table>
+          @attr name com.LearningTracker.LearningTrackerApp:imageAspectRatioAdjust
+        */
+        public static final int LoadingImageView_imageAspectRatioAdjust = 0;
+    };
 }

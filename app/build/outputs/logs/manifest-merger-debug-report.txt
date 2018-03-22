@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:2:1-66:12
+ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:2:1-70:12
 	package
 		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:3:5-53
 		INJECTED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml
@@ -18,6 +18,9 @@ ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/And
 uses-sdk
 ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:7:5-9:41
 MERGED from [com.android.support:support-v4:23.4.0] /Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/AndroidManifest.xml:20:5-43
+MERGED from [com.google.android.gms:play-services-appindexing:8.1.0] /Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/8.1.0/AndroidManifest.xml:18:5-42
+MERGED from [com.google.android.gms:play-services-basement:8.1.0] /Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.1.0/AndroidManifest.xml:18:5-42
+MERGED from [com.android.support:support-v4:23.4.0] /Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/AndroidManifest.xml:20:5-43
 	android:targetSdkVersion
 		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:9:9-38
 		INJECTED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml
@@ -31,7 +34,10 @@ ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/And
 	android:name
 		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:11:22-64
 application
-ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:13:5-64:19
+ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:13:5-68:19
+MERGED from [com.android.support:support-v4:23.4.0] /Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-appindexing:8.1.0] /Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/8.1.0/AndroidManifest.xml:19:5-20
+MERGED from [com.google.android.gms:play-services-basement:8.1.0] /Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.1.0/AndroidManifest.xml:20:5-24:19
 MERGED from [com.android.support:support-v4:23.4.0] /Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/AndroidManifest.xml:22:5-20
 	android:label
 		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:17:9-41
@@ -131,3 +137,10 @@ ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/And
 		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:63:13-40
 	android:name
 		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:62:13-89
+meta-data#com.google.android.gms.version
+ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:65:9-67:69
+MERGED from [com.google.android.gms:play-services-basement:8.1.0] /Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.1.0/AndroidManifest.xml:21:9-23:69
+	android:value
+		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:67:13-66
+	android:name
+		ADDED from /Users/maximerichard/StudioProjects/learning-tracker/app/src/main/AndroidManifest.xml:66:13-58

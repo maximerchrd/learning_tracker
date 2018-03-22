@@ -17,11 +17,6 @@ android {
         }
     }
 
-    lintOptions{
-        disable "ResourceType"
-        checkReleaseBuilds false
-        abortOnError false
-    }
 }
 
 dependencies {

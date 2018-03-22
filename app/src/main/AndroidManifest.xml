@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.1" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.LearningTracker.LearningTrackerApp"
-    android:versionCode="1"
-    android:versionName="1.0">
+    android:versionCode="2"
+    android:versionName="1.1">
 
     <uses-sdk
         android:minSdkVersion="23"
@@ -60,7 +60,11 @@
             android:label="@string/title_activity_evaluation_results"></activity>
         <activity
             android:name="com.LearningTracker.LearningTrackerApp.AndroidDatabaseManager"
-            android:label="DB Browsing"></activity>
+            android:label="DB Browsing"></activity><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
+     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
     </application>
 
 </manifest>
