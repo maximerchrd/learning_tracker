@@ -28,7 +28,7 @@ public class DataConversion {
     public DataConversion(Context arg_context) {
         mContext = arg_context;
     }
-    
+
     public QuestionMultipleChoice bytearrayvectorToMultChoiceQuestion(byte[] buffer_for_whole_question) {
         QuestionMultipleChoice question_to_return = new QuestionMultipleChoice();
 

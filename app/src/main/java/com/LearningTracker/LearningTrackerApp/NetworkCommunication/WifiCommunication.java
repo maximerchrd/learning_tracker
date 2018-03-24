@@ -187,6 +187,7 @@ public class WifiCommunication {
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
+						sendReceivedQuestion(String.valueOf(multquestion_to_save.getID()));
 						//launchMultChoiceQuestionActivity(convert_question.bytearrayvectorToMultChoiceQuestion(whole_question_buffer));
 					} else if (sizes.split(":")[0].contains("SHRTA")) {
 						int size_of_image = Integer.parseInt(sizes.split(":")[1]);
@@ -222,12 +223,13 @@ public class WifiCommunication {
 						while (bytes_read > 0);    //shall be sizeRead > -1, because .read returns -1 when finished reading, but outstream not closed on server side
 						bytes_read = 1;
 						DataConversion convert_question = new DataConversion(mContextWifCom);
-						QuestionShortAnswer multquestion_to_save = convert_question.bytearrayvectorToShortAnswerQuestion(whole_question_buffer);
+						QuestionShortAnswer shrtquestion_to_save = convert_question.bytearrayvectorToShortAnswerQuestion(whole_question_buffer);
 						try {
-							DbTableQuestionShortAnswer.addShortAnswerQuestion(multquestion_to_save);
+							DbTableQuestionShortAnswer.addShortAnswerQuestion(shrtquestion_to_save);
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
+						sendReceivedQuestion(String.valueOf(shrtquestion_to_save.getID()));
 						//launchMultChoiceQuestionActivity(convert_question.bytearrayvectorToMultChoiceQuestion(whole_question_buffer));
 					} else if (sizes.split(":")[0].contains("QID")) {
 						if (sizes.split(":")[1].contains("MLT")) {
@@ -256,6 +258,22 @@ public class WifiCommunication {
 				}
 			}
 		}).start();
+	}
+
+	private void sendReceivedQuestion(String questionID) {
+		String message = "GOTIT///" + questionID + "///";
+		byte[] sigBuffer = message.getBytes();
+		try {
+			if (mOutputStream != null) {
+				mOutputStream.write(sigBuffer, 0, sigBuffer.length);
+				mOutputStream.flush();
+			} else {
+				Log.v("sendReceivedQuestion: ", "tries to send message to null output stream");
+			}
+		} catch (IOException e) {
+			String msg = "In sendReceivedQuestion() and an exception occurred during write: " + e.getMessage();
+			Log.e("Fatal Error", msg);
+		}
 	}
 
 	private void launchQuestionActivity(Question question_to_display) {
