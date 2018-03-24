@@ -129,24 +129,6 @@ public class WifiCommunication {
 	public void listenForQuestions() {
 		new Thread(new Runnable() {
 			public void run() {
-//                    Boolean able_to_read = true;
-//                    while (able_to_read) {
-//                        try {
-//                            bytes_read = inputStream.read(buffer,0,buffer.length);
-//                            //read_offset += bytes_read;
-//                            vector_of_buffers.add(buffer);
-//                            if (buffer[1023] == 0) {
-//                                DataConversion convert_question = new DataConversion();
-//                                launchQuestionActivity(convert_question.bytearrayvectorToQuestion(vector_of_buffers));
-//                            }
-////                            if(bytes_read < 0) {
-////                                read_offset = 0;
-////                            }
-//                        } catch (IOException e) {
-//                            able_to_read = false;
-//                            e.printStackTrace();
-//                        }
-//                    }
 				Boolean able_to_read = true;
 				while (able_to_read && mInputStream != null) {
 					current = 0;
@@ -165,42 +147,7 @@ public class WifiCommunication {
 						able_to_read = false;
 					}
 					Log.v("received string: ", sizes);
-					if (sizes.split(":")[0].contains("QUEST")) {
-						int size_of_image = Integer.parseInt(sizes.split(":")[1]);
-						int size_of_text = Integer.parseInt(sizes.split(":")[2].replaceAll("\\D+", "")); //removes all the non number characters
-						byte[] whole_question_buffer = new byte[40 + size_of_image + size_of_text];
-						for (int i = 0; i < 40; i++) {
-							whole_question_buffer[i] = prefix_buffer[i];
-						}
-						current = 40;
-						do {
-							try {
-								//Log.v("read input stream", "second");
-
-								bytes_read = mInputStream.read(whole_question_buffer, current, (40 + size_of_image + size_of_text - current));
-								Log.v("number of bytes read:", Integer.toString(bytes_read));
-//                                    for (int k = 0; k < 40 && current > 40; k++) {
-//                                        byteread += whole_question_buffer[current -21 + k];
-//                                    }
-//                                    Log.v("last bytes read: ", byteread);
-//                                    byteread = "";
-							} catch (IOException e) {
-								e.printStackTrace();
-								able_to_read = false;
-							}
-							if (bytes_read >= 0) {
-								current += bytes_read;
-								if (able_to_read == false) {
-									bytes_read = -1;
-									able_to_read = true;
-								}
-							}
-						}
-						while (bytes_read > 0);    //shall be sizeRead > -1, because .read returns -1 when finished reading, but outstream not closed on server side
-						bytes_read = 1;
-						DataConversion convert_question = new DataConversion(mContextWifCom);
-						launchQuestionActivity(convert_question.bytearrayvectorToQuestion(whole_question_buffer));
-					} else if (sizes.split(":")[0].contains("MULTQ")) {
+					if (sizes.split(":")[0].contains("MULTQ")) {
 						int size_of_image = Integer.parseInt(sizes.split(":")[1]);
 						int size_of_text = Integer.parseInt(sizes.split(":")[2].replaceAll("\\D+", ""));
 						byte[] whole_question_buffer = new byte[40 + size_of_image + size_of_text];

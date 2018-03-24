@@ -28,75 +28,10 @@ public class DataConversion {
     public DataConversion(Context arg_context) {
         mContext = arg_context;
     }
-    /**
-     * Method that converts a vector of byte arrays into a Question object
-     */
-    public Question bytearrayvectorToQuestion(byte[] buffer_for_whole_question) {
-        Question question_to_return = new Question();
-//        byte [] buffer_for_whole_question = new byte[vector_of_buffers.size()*1024];
-//        for (int i = 0; i < vector_of_buffers.size(); i++) {
-//            for (int j = 0; j < 1024; j++) {
-//                buffer_for_whole_question[j*(i+1)] = vector_of_buffers.elementAt(i)[j];
-//            }
-//        }
-        byte [] buffer_for_prefix = new byte[40];
-        for (int i = 0; i < 40; i++) {
-            buffer_for_prefix[i] = buffer_for_whole_question[i];
-        }
-        String sizes = null;
-        try {
-            sizes = new String(buffer_for_prefix, "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        int size_of_image = Integer.parseInt(sizes.split(":")[1]);
-        int size_of_text = Integer.parseInt(sizes.split(":")[2].replaceAll("\\D+",""));
-
-        byte [] buffer_for_text = new byte[size_of_text];
-        for (int i = 0; i < size_of_text; i++) {
-            buffer_for_text[i] = buffer_for_whole_question[i+40];
-        }
-
-        byte [] buffer_for_image = new byte[size_of_image];
-        for (int i = 0; i < size_of_image; i++) {
-            buffer_for_image[i] = buffer_for_whole_question[i+40+size_of_text];
-        }
-
-        ByteArrayInputStream imageStream = new ByteArrayInputStream(buffer_for_image);
-        Bitmap bitmap = BitmapFactory.decodeStream(imageStream);
-        Bitmap bitmap2 = BitmapFactory.decodeByteArray(buffer_for_image, 0, buffer_for_image.length);
-        String array_string = "";
-//        for (int i = 0; i < buffer_for_image.length; i++) {
-//            array_string += buffer_for_image[i];
-//        }
-//        Log.e("data buffer: ", array_string);
-        //			picture = (ImageView)findViewById(R.id.imageview);
-        //			picture.setImageBitmap(bitmap);
-
-        String question_text = "";
-        try {
-            question_text =  new String(buffer_for_text, "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        question_to_return.setQUESTION(question_text.split("///")[0]);
-        question_to_return.setOPTA(question_text.split("///")[1]);
-        question_to_return.setOPTB(question_text.split("///")[2]);
-        question_to_return.setOPTC(question_text.split("///")[3]);
-        question_to_return.setOPTD(question_text.split("///")[4]);
-        question_to_return.setIMAGE(question_text.split("///")[5]);
-        SaveImageFile(bitmap, question_text.split("///")[5]);
-
-        return question_to_return;
-    }
+    
     public QuestionMultipleChoice bytearrayvectorToMultChoiceQuestion(byte[] buffer_for_whole_question) {
         QuestionMultipleChoice question_to_return = new QuestionMultipleChoice();
-//        byte [] buffer_for_whole_question = new byte[vector_of_buffers.size()*1024];
-//        for (int i = 0; i < vector_of_buffers.size(); i++) {
-//            for (int j = 0; j < 1024; j++) {
-//                buffer_for_whole_question[j*(i+1)] = vector_of_buffers.elementAt(i)[j];
-//            }
-//        }
+
         byte [] buffer_for_prefix = new byte[40];
         for (int i = 0; i < 40; i++) {
             buffer_for_prefix[i] = buffer_for_whole_question[i];
@@ -122,14 +57,8 @@ public class DataConversion {
 
         ByteArrayInputStream imageStream = new ByteArrayInputStream(buffer_for_image);
         Bitmap bitmap = BitmapFactory.decodeStream(imageStream);
-        Bitmap bitmap2 = BitmapFactory.decodeByteArray(buffer_for_image, 0, buffer_for_image.length);
-        String array_string = "";
-//        for (int i = 0; i < buffer_for_image.length; i++) {
-//            array_string += buffer_for_image[i];
-//        }
-//        Log.e("data buffer: ", array_string);
-        //			picture = (ImageView)findViewById(R.id.imageview);
-        //			picture.setImageBitmap(bitmap);
+
+
 
         String question_text = "";
         try {
@@ -181,12 +110,7 @@ public class DataConversion {
     }
     public QuestionShortAnswer bytearrayvectorToShortAnswerQuestion(byte[] buffer_for_whole_question) {
         QuestionShortAnswer question_to_return = new QuestionShortAnswer();
-//        byte [] buffer_for_whole_question = new byte[vector_of_buffers.size()*1024];
-//        for (int i = 0; i < vector_of_buffers.size(); i++) {
-//            for (int j = 0; j < 1024; j++) {
-//                buffer_for_whole_question[j*(i+1)] = vector_of_buffers.elementAt(i)[j];
-//            }
-//        }
+
         byte [] buffer_for_prefix = new byte[40];
         for (int i = 0; i < 40; i++) {
             buffer_for_prefix[i] = buffer_for_whole_question[i];
@@ -212,14 +136,6 @@ public class DataConversion {
 
         ByteArrayInputStream imageStream = new ByteArrayInputStream(buffer_for_image);
         Bitmap bitmap = BitmapFactory.decodeStream(imageStream);
-        Bitmap bitmap2 = BitmapFactory.decodeByteArray(buffer_for_image, 0, buffer_for_image.length);
-        String array_string = "";
-//        for (int i = 0; i < buffer_for_image.length; i++) {
-//            array_string += buffer_for_image[i];
-//        }
-//        Log.e("data buffer: ", array_string);
-        //			picture = (ImageView)findViewById(R.id.imageview);
-        //			picture.setImageBitmap(bitmap);
 
         String question_text = "";
         try {
