@@ -3,6 +3,7 @@ package com.LearningTracker.LearningTrackerApp;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 
 import com.LearningTracker.LearningTrackerApp.Questions.Question;
 import com.LearningTracker.LearningTrackerApp.Questions.QuestionMultipleChoice;
@@ -67,44 +68,46 @@ public class DataConversion {
             e.printStackTrace();
         }
         question_to_return.setQUESTION(question_text.split("///")[0]);
-        question_to_return.setOPT0(question_text.split("///")[1]);
-        question_to_return.setOPT1(question_text.split("///")[2]);
-        question_to_return.setOPT2(question_text.split("///")[3]);
-        question_to_return.setOPT3(question_text.split("///")[4]);
-        question_to_return.setOPT4(question_text.split("///")[5]);
-        question_to_return.setOPT5(question_text.split("///")[6]);
-        question_to_return.setOPT6(question_text.split("///")[7]);
-        question_to_return.setOPT7(question_text.split("///")[8]);
-        question_to_return.setOPT8(question_text.split("///")[9]);
-        question_to_return.setOPT9(question_text.split("///")[10]);
-        String ID_string = question_text.split("///")[11];
-        question_to_return.setID(Integer.parseInt(ID_string));
-        question_to_return.setNB_CORRECT_ANS(Integer.parseInt(question_text.split("///")[12]));
-        question_to_return.setIMAGE(question_text.split("///")[15]); //14 because inbetween come subjects and objectives
-        SaveImageFile(bitmap, question_text.split("///")[15]);
+        if (question_text.split("///").length > 15) {
+            question_to_return.setOPT0(question_text.split("///")[1]);
+            question_to_return.setOPT1(question_text.split("///")[2]);
+            question_to_return.setOPT2(question_text.split("///")[3]);
+            question_to_return.setOPT3(question_text.split("///")[4]);
+            question_to_return.setOPT4(question_text.split("///")[5]);
+            question_to_return.setOPT5(question_text.split("///")[6]);
+            question_to_return.setOPT6(question_text.split("///")[7]);
+            question_to_return.setOPT7(question_text.split("///")[8]);
+            question_to_return.setOPT8(question_text.split("///")[9]);
+            question_to_return.setOPT9(question_text.split("///")[10]);
+            String ID_string = question_text.split("///")[11];
+            question_to_return.setID(Integer.parseInt(ID_string));
+            question_to_return.setNB_CORRECT_ANS(Integer.parseInt(question_text.split("///")[12]));
+            question_to_return.setIMAGE(question_text.split("///")[15]); //14 because inbetween come subjects and objectives
+            SaveImageFile(bitmap, question_text.split("///")[15]);
 
-        //deal with subjects
-        String subjectsText = question_text.split("///")[13];
-        String[] subjects = subjectsText.split("\\|\\|\\|");
-        for (int i = 0; i < subjects.length; i++) {
-            try {
-                DbTableSubject.addSubject(subjects[i]);
-                DbTableRelationQuestionSubject.addRelationQuestionSubject(Integer.valueOf(ID_string), subjects[i]);
-            } catch (Exception e) {
-                e.printStackTrace();
+            //deal with subjects
+            String subjectsText = question_text.split("///")[13];
+            String[] subjects = subjectsText.split("\\|\\|\\|");
+            for (int i = 0; i < subjects.length; i++) {
+                try {
+                    DbTableSubject.addSubject(subjects[i]);
+                    DbTableRelationQuestionSubject.addRelationQuestionSubject(Integer.valueOf(ID_string), subjects[i]);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
-        }
-        //deal with learning objectives
-        String learningObjectivesText = question_text.split("///")[14];
-        String[] learningObjectives = learningObjectivesText.split("\\|\\|\\|");
-        for (int i = 0; i < learningObjectives.length; i++) {
-            try {
-                DbTableLearningObjective.addLearningObjective(learningObjectives[i], -1);
-                DbTableRelationQuestionObjective.addQuestionObjectiverRelation(learningObjectives[i],ID_string);
-            } catch (Exception e) {
-                e.printStackTrace();
+            //deal with learning objectives
+            String learningObjectivesText = question_text.split("///")[14];
+            String[] learningObjectives = learningObjectivesText.split("\\|\\|\\|");
+            for (int i = 0; i < learningObjectives.length; i++) {
+                try {
+                    DbTableLearningObjective.addLearningObjective(learningObjectives[i], -1);
+                    DbTableRelationQuestionObjective.addQuestionObjectiverRelation(learningObjectives[i], ID_string);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
-        }
+        } else { Log.w("reading mcq buffer", "question text not complete (array after split is too short)"); }
 
         return question_to_return;
     }
@@ -144,40 +147,50 @@ public class DataConversion {
             e.printStackTrace();
         }
         question_to_return.setQUESTION(question_text.split("///")[0]);
-        String ID_string = question_text.split("///")[1];
-        question_to_return.setID(Integer.parseInt(ID_string));
-        String[] answers = question_text.split("///")[2].split("\\|\\|\\|");
-        ArrayList<String> answersList = new ArrayList<>();
-        for (int i = 0; i < answers.length; i++) {
-            answersList.add(answers[i]);
-        }
-        question_to_return.setAnswers(answersList);
-        question_to_return.setIMAGE(question_text.split("///")[5]); //because inbetween come subjects and objectives
-        SaveImageFile(bitmap, question_text.split("///")[5]);
-
-        //deal with subjects
-        String subjectsText = question_text.split("///")[3];
-        String[] subjects = subjectsText.split("\\|\\|\\|");
-        for (int i = 0; i < subjects.length; i++) {
-            try {
-                DbTableSubject.addSubject(subjects[i]);
-                DbTableRelationQuestionSubject.addRelationQuestionSubject(Integer.valueOf(ID_string), subjects[i]);
-            } catch (Exception e) {
-                e.printStackTrace();
+        String ID_string = "";
+        if (question_text.split("///").length > 1) {
+            ID_string = question_text.split("///")[1];
+            question_to_return.setID(Integer.parseInt(ID_string));
+        } else { Log.w("reading quest buffer", "no ID"); }
+        if (question_text.split("///").length > 2) {
+            String[] answers = question_text.split("///")[2].split("\\|\\|\\|");
+            ArrayList<String> answersList = new ArrayList<>();
+            for (int i = 0; i < answers.length; i++) {
+                answersList.add(answers[i]);
             }
-        }
-
-        //deal with learning objectives
-        String learningObjectivesText = question_text.split("///")[4];
-        String[] learningObjectives = learningObjectivesText.split("\\|\\|\\|");
-        for (int i = 0; i < learningObjectives.length; i++) {
-            try {
-                DbTableLearningObjective.addLearningObjective(learningObjectives[i], -1);
-                DbTableRelationQuestionObjective.addQuestionObjectiverRelation(learningObjectives[i],ID_string);
-            } catch (Exception e) {
-                e.printStackTrace();
+            question_to_return.setAnswers(answersList);
+        } else { Log.w("reading quest buffer", "no answers"); }
+        if (question_text.split("///").length > 5) {
+            question_to_return.setIMAGE(question_text.split("///")[5]); //because inbetween come subjects and objectives
+            SaveImageFile(bitmap, question_text.split("///")[5]);
+        } else { Log.w("reading quest buffer", "no image indication"); }
+        if (question_text.split("///").length > 3) {
+            //deal with subjects
+            String subjectsText = question_text.split("///")[3];
+            String[] subjects = subjectsText.split("\\|\\|\\|");
+            for (int i = 0; i < subjects.length; i++) {
+                try {
+                    DbTableSubject.addSubject(subjects[i]);
+                    DbTableRelationQuestionSubject.addRelationQuestionSubject(Integer.valueOf(ID_string), subjects[i]);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
-        }
+        } else { Log.w("reading quest buffer", "no subject indication"); }
+
+        if (question_text.split("///").length > 4) {
+            //deal with learning objectives
+            String learningObjectivesText = question_text.split("///")[4];
+            String[] learningObjectives = learningObjectivesText.split("\\|\\|\\|");
+            for (int i = 0; i < learningObjectives.length; i++) {
+                try {
+                    DbTableLearningObjective.addLearningObjective(learningObjectives[i], -1);
+                    DbTableRelationQuestionObjective.addQuestionObjectiverRelation(learningObjectives[i], ID_string);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        } else { Log.w("reading quest buffer", "no objectives indication"); }
 
         return question_to_return;
     }
@@ -194,10 +207,14 @@ public class DataConversion {
             file.delete();
         }
         try {
-            FileOutputStream out = new FileOutputStream(file);
-            imageToSave.compress(Bitmap.CompressFormat.JPEG, 100, out);
-            out.flush();
-            out.close();
+            if (imageToSave != null) {
+                FileOutputStream out = new FileOutputStream(file);
+                imageToSave.compress(Bitmap.CompressFormat.JPEG, 100, out);
+                out.flush();
+                out.close();
+            } else {
+                Log.v("Writing image to file", "Bitmap is null");
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
