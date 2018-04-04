@@ -21,6 +21,7 @@ import com.google.android.gms.nearby.connection.PayloadCallback;
 import com.google.android.gms.nearby.connection.PayloadTransferUpdate;
 import com.google.android.gms.nearby.connection.Strategy;
 
+import java.io.InputStream;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
@@ -166,4 +167,28 @@ public class NearbyProtocolAdvertiser implements
             logView.append("\nonDisconnected: " + endpointId);
         }
     };
+
+    public void sendMessage(String message) {
+        Log.v(TAG, "About to send message: " + message);
+        Nearby.Connections.sendPayload(mGoogleApiClient, mRemotePeerEndpoints, Payload.fromBytes(message.getBytes(Charset.forName("UTF-8"))));
+    }
+
+    public void sendData(InputStream dataStream) {
+        Log.v(TAG, "trying to send data through stream");
+        Nearby.Connections.sendPayload(mGoogleApiClient, mRemotePeerEndpoints, Payload.fromStream(dataStream));
+    }
+
+    public void stopNearby() {
+        if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
+            Nearby.Connections.stopAdvertising(mGoogleApiClient);
+
+            if (!mRemotePeerEndpoints.isEmpty()) {
+                Nearby.Connections.sendPayload(mGoogleApiClient, mRemotePeerEndpoints, Payload.fromBytes("Shutting down host".getBytes(Charset.forName("UTF-8"))));
+                Nearby.Connections.stopAllEndpoints(mGoogleApiClient);
+                mRemotePeerEndpoints.clear();
+            }
+
+            mGoogleApiClient.disconnect();
+        }
+    }
 }

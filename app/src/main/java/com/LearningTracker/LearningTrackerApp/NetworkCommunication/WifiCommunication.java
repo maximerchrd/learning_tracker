@@ -56,6 +56,7 @@ public class WifiCommunication {
 	BroadcastReceiver scanningreceiver;
 	private TextView logView = null;
 
+	public WifiCommunication() {}
 	public WifiCommunication(Context arg_context, Application arg_application, TextView logView) {
 		if (android.os.Build.VERSION.SDK_INT > 9)
 		{
@@ -102,7 +103,7 @@ public class WifiCommunication {
 
 		} catch (UnknownHostException e) {
 			Log.v("connection to server", ": failure, unknown host");
-			nearbyProtocolDiscoverer = new NearbyProtocolDiscoverer(mContextWifCom, logView);
+			nearbyProtocolDiscoverer = new NearbyProtocolDiscoverer(mContextWifCom, logView, this);
 			nearbyProtocolDiscoverer.connect();
 
 			// TODO Auto-generated catch block
@@ -110,7 +111,7 @@ public class WifiCommunication {
 			e.printStackTrace();
 		} catch (IOException e) {
 			Log.v("connection to server", ": failure, i/o exception");
-			nearbyProtocolDiscoverer = new NearbyProtocolDiscoverer(mContextWifCom, logView);
+			nearbyProtocolDiscoverer = new NearbyProtocolDiscoverer(mContextWifCom, logView, this);
 			nearbyProtocolDiscoverer.connect();
 
 			// TODO Auto-generated catch block
@@ -144,6 +145,12 @@ public class WifiCommunication {
 		} catch (IOException e) {
 			String msg = "In sendDisconnectionSignal() and an exception occurred during write: " + e.getMessage();
 			Log.e("Fatal Error", msg);
+		}
+		if (nearbyProtocolAdvertiser != null ) {
+			nearbyProtocolAdvertiser.stopNearby();
+		}
+		if (nearbyProtocolDiscoverer != null) {
+			nearbyProtocolDiscoverer.stopNearby();
 		}
 	}
 
@@ -209,6 +216,11 @@ public class WifiCommunication {
 							e.printStackTrace();
 						}
 						sendReceivedQuestion(String.valueOf(multquestion_to_save.getID()));
+
+						//forward question through Nearby Connection
+						if (nearbyProtocolAdvertiser != null) {
+							nearbyProtocolAdvertiser.sendMessage(convert_question.getLastConvertedQuestionText());
+						}
 						//launchMultChoiceQuestionActivity(convert_question.bytearrayvectorToMultChoiceQuestion(whole_question_buffer));
 					} else if (sizes.split(":")[0].contains("SHRTA")) {
 						int size_of_image = Integer.parseInt(sizes.split(":")[1]);
@@ -264,6 +276,11 @@ public class WifiCommunication {
 								questionShortAnswer.setID(id_global);
 								launchShortAnswerQuestionActivity(questionShortAnswer);
 							}
+
+							//forward QID through Nearby Connection
+							if (nearbyProtocolAdvertiser != null) {
+								nearbyProtocolAdvertiser.sendMessage(sizes);
+							}
 						}
 					} else if (sizes.split(":")[0].contains("EVAL")) {
 						DbTableIndividualQuestionForResult.addIndividualQuestionForStudentResult(sizes.split("///")[2],sizes.split("///")[1]);
@@ -312,7 +329,7 @@ public class WifiCommunication {
 		mIntent.putExtras(bun);
 		mContextWifCom.startActivity(mIntent);
 	}
-	private void launchMultChoiceQuestionActivity(QuestionMultipleChoice question_to_display) {
+	public void launchMultChoiceQuestionActivity(QuestionMultipleChoice question_to_display) {
 		((LTApplication) mApplication).setAppWifi(this);
 		Intent mIntent = new Intent(mContextWifCom, MultChoiceQuestionActivity.class);
 		Bundle bun = new Bundle();

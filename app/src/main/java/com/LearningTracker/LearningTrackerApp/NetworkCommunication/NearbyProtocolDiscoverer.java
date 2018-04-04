@@ -4,10 +4,14 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.LearningTracker.LearningTrackerApp.DataConversion;
+import com.LearningTracker.LearningTrackerApp.Questions.QuestionMultipleChoice;
 import com.LearningTracker.LearningTrackerApp.R;
+import com.LearningTracker.LearningTrackerApp.database_management.DbTableQuestionMultipleChoice;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
@@ -25,6 +29,7 @@ import com.google.android.gms.nearby.connection.PayloadCallback;
 import com.google.android.gms.nearby.connection.PayloadTransferUpdate;
 import com.google.android.gms.nearby.connection.Strategy;
 
+import java.io.InputStream;
 import java.nio.charset.Charset;
 
 /**
@@ -34,6 +39,9 @@ public class NearbyProtocolDiscoverer {
     private static final String TAG = "Nearby";
     private TextView logView;
     private Context context = null;
+    private String currentFileName = "";
+    private String pendingFileName = "";
+    private WifiCommunication wifiCommunication = null;
     /**
      * service id. discoverer and advertiser can use this id to
      * verify each other before connecting
@@ -44,9 +52,9 @@ public class NearbyProtocolDiscoverer {
     private String mRemoteHostEndpoint;
     private boolean mIsConnected;
 
-    public NearbyProtocolDiscoverer(Context context, final TextView logView) {
-
+    public NearbyProtocolDiscoverer(Context context, final TextView logView, WifiCommunication wifiCommunication) {
         this.logView = logView;
+        this.wifiCommunication = wifiCommunication;
         mGoogleApiClient = new GoogleApiClient.Builder(context)
                 .addConnectionCallbacks(new GoogleApiClient.ConnectionCallbacks() {
                     @Override
@@ -94,8 +102,28 @@ public class NearbyProtocolDiscoverer {
                                         Nearby.Connections.acceptConnection(mGoogleApiClient, endpointId, new PayloadCallback() {
                                             @Override
                                             public void onPayloadReceived(String endpointId, Payload payload) {
-                                                if (payload.getType() == Payload.Type.BYTES) {
-                                                    logView.append("onPayloadReceived: " + new String(payload.asBytes()));
+                                                if (payload.getType() == Payload.Type.BYTES) {          //ok to receive text up to 3500 characters
+                                                    String textReceived = new String(payload.asBytes());
+                                                    logView.append("onPayloadReceived: " + textReceived);
+                                                    Log.v(TAG,textReceived);
+                                                    if (textReceived.split("///")[0].contains("MULTQ")) {
+                                                        DataConversion dataConversion = new DataConversion(context);
+                                                        QuestionMultipleChoice questionMultipleChoice = dataConversion.textToQuestionMultipleChoice(textReceived);
+                                                        try {
+                                                            DbTableQuestionMultipleChoice.addMultipleChoiceQuestion(questionMultipleChoice);
+                                                        } catch (Exception e) {
+                                                            e.printStackTrace();
+                                                        }
+                                                    } else if (textReceived.split("///")[0].contains("QID")) {
+                                                        int id_global = Integer.valueOf(textReceived.split("///")[1]);
+                                                        QuestionMultipleChoice questionMultipleChoice = DbTableQuestionMultipleChoice.getQuestionWithId(id_global);
+                                                        if (questionMultipleChoice.getQUESTION().length() > 0) {
+                                                            questionMultipleChoice.setID(id_global);
+                                                            wifiCommunication.launchMultChoiceQuestionActivity(questionMultipleChoice);
+                                                        }
+                                                    }
+                                                } else if (payload.getType() == Payload.Type.FILE) {
+
                                                 }
                                             }
 
@@ -169,5 +197,24 @@ public class NearbyProtocolDiscoverer {
         Nearby.Connections.sendPayload(mGoogleApiClient, mRemoteHostEndpoint, Payload.fromBytes(message.getBytes(Charset.forName("UTF-8"))));
     }
 
+    public void sendData(InputStream dataStream) {
+        Log.v(TAG, "trying to send data through stream");
+        Nearby.Connections.sendPayload(mGoogleApiClient, mRemoteHostEndpoint, Payload.fromStream(dataStream));
+    }
+
+    public void stopNearby() {
+        if (mGoogleApiClient.isConnected()) {
+            if (!mIsConnected || TextUtils.isEmpty(mRemoteHostEndpoint)) {
+                Nearby.Connections.stopDiscovery(mGoogleApiClient);
+                return;
+            }
+            sendMessage("Client disconnecting");
+            Nearby.Connections.disconnectFromEndpoint(mGoogleApiClient, mRemoteHostEndpoint);
+            mRemoteHostEndpoint = null;
+            mIsConnected = false;
+
+            mGoogleApiClient.disconnect();
+        }
+    }
 
 }

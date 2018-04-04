@@ -26,6 +26,7 @@ import java.util.ArrayList;
  */
 public class DataConversion {
     Context mContext = null;
+    private String lastConvertedQuestionText = "";
     public DataConversion(Context arg_context) {
         mContext = arg_context;
     }
@@ -64,6 +65,8 @@ public class DataConversion {
         String question_text = "";
         try {
             question_text =  new String(buffer_for_text, "UTF-8");
+            lastConvertedQuestionText = "MULTQ///";
+            lastConvertedQuestionText += question_text;
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
@@ -194,6 +197,54 @@ public class DataConversion {
 
         return question_to_return;
     }
+
+    public QuestionMultipleChoice textToQuestionMultipleChoice(String questionText) {
+        questionText = questionText.substring(8);
+        QuestionMultipleChoice questionMultipleChoice = new QuestionMultipleChoice();
+        questionMultipleChoice.setQUESTION(questionText.split("///")[0]);
+        if (questionText.split("///").length > 15) {
+            questionMultipleChoice.setOPT0(questionText.split("///")[1]);
+            questionMultipleChoice.setOPT1(questionText.split("///")[2]);
+            questionMultipleChoice.setOPT2(questionText.split("///")[3]);
+            questionMultipleChoice.setOPT3(questionText.split("///")[4]);
+            questionMultipleChoice.setOPT4(questionText.split("///")[5]);
+            questionMultipleChoice.setOPT5(questionText.split("///")[6]);
+            questionMultipleChoice.setOPT6(questionText.split("///")[7]);
+            questionMultipleChoice.setOPT7(questionText.split("///")[8]);
+            questionMultipleChoice.setOPT8(questionText.split("///")[9]);
+            questionMultipleChoice.setOPT9(questionText.split("///")[10]);
+            String ID_string = questionText.split("///")[11];
+            questionMultipleChoice.setID(Integer.parseInt(ID_string));
+            questionMultipleChoice.setNB_CORRECT_ANS(Integer.parseInt(questionText.split("///")[12]));
+            questionMultipleChoice.setIMAGE(questionText.split("///")[15]); //14 because inbetween come subjects and objectives
+
+            //deal with subjects
+            String subjectsText = questionText.split("///")[13];
+            String[] subjects = subjectsText.split("\\|\\|\\|");
+            for (int i = 0; i < subjects.length; i++) {
+                try {
+                    DbTableSubject.addSubject(subjects[i]);
+                    DbTableRelationQuestionSubject.addRelationQuestionSubject(Integer.valueOf(ID_string), subjects[i]);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            //deal with learning objectives
+            String learningObjectivesText = questionText.split("///")[14];
+            String[] learningObjectives = learningObjectivesText.split("\\|\\|\\|");
+            for (int i = 0; i < learningObjectives.length; i++) {
+                try {
+                    DbTableLearningObjective.addLearningObjective(learningObjectives[i], -1);
+                    DbTableRelationQuestionObjective.addQuestionObjectiverRelation(learningObjectives[i], ID_string);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        } else { Log.w("reading mcq buffer", "question text not complete (array after split is too short)"); }
+
+        return questionMultipleChoice;
+    }
+
     private void SaveImageFile(Bitmap imageToSave, String fileName) {
 
         File directory = new File(mContext.getFilesDir(),"images");
@@ -219,4 +270,10 @@ public class DataConversion {
             e.printStackTrace();
         }
     }
+
+
+    public String getLastConvertedQuestionText() {
+        return lastConvertedQuestionText;
+    }
+
 }
