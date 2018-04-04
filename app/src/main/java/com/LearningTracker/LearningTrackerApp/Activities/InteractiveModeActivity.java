@@ -12,7 +12,8 @@ import android.widget.TextView;
 public class InteractiveModeActivity extends Activity {
     NetworkCommunication mNetCom;
     public TextView intmod_out;
-    TextView intmod_wait_for_question;
+    private TextView intmod_wait_for_question;
+    private TextView logView = null;
 
     /**
      * Called when the activity is first created.
@@ -24,9 +25,10 @@ public class InteractiveModeActivity extends Activity {
         //initialize view
         setContentView(R.layout.activity_interactivemode);
         intmod_wait_for_question = (TextView) findViewById(R.id.textView2);
+        logView = (TextView) findViewById(R.id.textView3);
 
         //mNetCom = new NetworkCommunication(this, getApplication());
-        mNetCom = new NetworkCommunication(this, getApplication(), intmod_out);
+        mNetCom = new NetworkCommunication(this, getApplication(), intmod_out, logView);
         mNetCom.ConnectToMaster();
         Boolean connectionInfo = false;
         for (int i = 0;!connectionInfo && i < 16; i++) {

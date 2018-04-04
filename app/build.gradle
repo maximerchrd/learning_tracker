@@ -25,4 +25,5 @@ dependencies {
     compile files('libs/mail.jar')
     compile 'com.github.PhilJay:MPAndroidChart:v3.0.3'
     compile 'com.google.android.gms:play-services-appindexing:8.1.0'
+    compile 'com.google.android.gms:play-services-nearby:11.0.4'
 }

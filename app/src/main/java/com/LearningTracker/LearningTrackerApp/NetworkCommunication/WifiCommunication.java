@@ -35,8 +35,11 @@ import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
+import android.widget.TextView;
 
 public class WifiCommunication {
+	private NearbyProtocolAdvertiser nearbyProtocolAdvertiser = null;
+	private NearbyProtocolDiscoverer nearbyProtocolDiscoverer = null;
 	public Integer connectionSuccess = 0;
 	private WifiManager mWifi;
 	private Context mContextWifCom;
@@ -51,8 +54,9 @@ public class WifiCommunication {
 	final private int PORTNUMBER = 9090;
 	List<android.net.wifi.ScanResult> mScanResults = new ArrayList<android.net.wifi.ScanResult>();
 	BroadcastReceiver scanningreceiver;
+	private TextView logView = null;
 
-	public WifiCommunication(Context arg_context, Application arg_application) {
+	public WifiCommunication(Context arg_context, Application arg_application, TextView logView) {
 		if (android.os.Build.VERSION.SDK_INT > 9)
 		{
 			StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -64,6 +68,7 @@ public class WifiCommunication {
 		mWifi = (WifiManager) mContextWifCom.getSystemService(Context.WIFI_SERVICE);
 		final DbHelper db = new DbHelper(arg_context);
 		ip_address = db.getMaster();
+		this.logView = logView;
 	}
 
 
@@ -71,6 +76,11 @@ public class WifiCommunication {
 		try {
 			Log.v("connectToServer", "beginning");
 			Socket s = new Socket(ip_address,PORTNUMBER);
+
+			// advertise nearby service
+			nearbyProtocolAdvertiser = new NearbyProtocolAdvertiser(mContextWifCom, logView);
+			nearbyProtocolAdvertiser.connect();
+
 			connectionSuccess = 1;
 			Log.v("server name",s.getInetAddress().getCanonicalHostName());
 			//outgoing stream redirect to socket
@@ -87,11 +97,22 @@ public class WifiCommunication {
 			}
 
 			listenForQuestions();
+
+
+
 		} catch (UnknownHostException e) {
+			Log.v("connection to server", ": failure, unknown host");
+			nearbyProtocolDiscoverer = new NearbyProtocolDiscoverer(mContextWifCom, logView);
+			nearbyProtocolDiscoverer.connect();
+
 			// TODO Auto-generated catch block
 			connectionSuccess = -1;
 			e.printStackTrace();
 		} catch (IOException e) {
+			Log.v("connection to server", ": failure, i/o exception");
+			nearbyProtocolDiscoverer = new NearbyProtocolDiscoverer(mContextWifCom, logView);
+			nearbyProtocolDiscoverer.connect();
+
 			// TODO Auto-generated catch block
 			connectionSuccess = -1;
 			e.printStackTrace();
@@ -223,7 +244,7 @@ public class WifiCommunication {
 						while (bytes_read > 0);    //shall be sizeRead > -1, because .read returns -1 when finished reading, but outstream not closed on server side
 						bytes_read = 1;
 						DataConversion convert_question = new DataConversion(mContextWifCom);
-						QuestionShortAnswer shrtquestion_to_save = convert_question.bytearrayvectorToShortAnswerQuestion(whole_question_buffer);
+							QuestionShortAnswer shrtquestion_to_save = convert_question.bytearrayvectorToShortAnswerQuestion(whole_question_buffer);
 						try {
 							DbTableQuestionShortAnswer.addShortAnswerQuestion(shrtquestion_to_save);
 						} catch (Exception e) {
@@ -254,6 +275,8 @@ public class WifiCommunication {
 						bun.putString("questionID", sizes.split("///")[1]);
 						mIntent.putExtras(bun);
 						mContextWifCom.startActivity(mIntent);
+					} else if (sizes.split(":")[0].contains("SERVR")) {
+						Log.v("connection: ", "received SERVR");
 					}
 				}
 			}

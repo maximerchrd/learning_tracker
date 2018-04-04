@@ -24,19 +24,19 @@ public class NetworkCommunication {
 
 
 
-	public NetworkCommunication(Context arg_context, Application application) {
+	/*public NetworkCommunication(Context arg_context, Application application) {
 		mNetwork_addresses = new ArrayList<ArrayList<String>>();
 		mContextNetCom = arg_context;
 		mWifiCom = new WifiCommunication(arg_context, application);
 		mApplication = application;
-	}
+	}*/
 
-	public NetworkCommunication(Context arg_context, Application application, TextView textOut) {
+	public NetworkCommunication(Context arg_context, Application application, TextView textOut, TextView logView) {
 		mNetwork_addresses = new ArrayList<ArrayList<String>>();
 		mContextNetCom = arg_context;
 		mApplication = application;
 		mTextOut = textOut;
-		mWifiCom = new WifiCommunication(arg_context, application);
+		mWifiCom = new WifiCommunication(arg_context, application, logView);
 		//((LTApplication) mApplication).setAppWifi(mWifiCom);
 		((LTApplication) mApplication).setAppNetwork(this);
 	}
