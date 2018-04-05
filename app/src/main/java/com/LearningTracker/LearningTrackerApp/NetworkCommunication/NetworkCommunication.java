@@ -49,7 +49,7 @@ public class NetworkCommunication {
 			DbHelper db_for_name = new DbHelper(mContextNetCom);
 			String name = db_for_name.getName();
 
-			final String connection = "CONN" + "///" + MacAddress + "///" + name;
+			final String connection = "CONN" + "///" + MacAddress + "///" + name + "///Android///";
 			new Thread(new Runnable() {
 				public void run() {
 					mWifiCom.connectToServer(connection);

@@ -78,10 +78,6 @@ public class WifiCommunication {
 			Log.v("connectToServer", "beginning");
 			Socket s = new Socket(ip_address,PORTNUMBER);
 
-			// advertise nearby service
-			nearbyProtocolAdvertiser = new NearbyProtocolAdvertiser(mContextWifCom, logView);
-			nearbyProtocolAdvertiser.connect();
-
 			connectionSuccess = 1;
 			Log.v("server name",s.getInetAddress().getCanonicalHostName());
 			//outgoing stream redirect to socket
@@ -155,6 +151,7 @@ public class WifiCommunication {
 	}
 
 	public void listenForQuestions() {
+		final WifiCommunication selfWifiCommunication = this;
 		new Thread(new Runnable() {
 			public void run() {
 				Boolean able_to_read = true;
@@ -294,6 +291,16 @@ public class WifiCommunication {
 						mContextWifCom.startActivity(mIntent);
 					} else if (sizes.split(":")[0].contains("SERVR")) {
 						Log.v("connection: ", "received SERVR");
+						if (sizes.split("///").length > 0) {
+							if (sizes.split("///")[1].contains("ADVER")) {
+								// advertise nearby service
+								nearbyProtocolAdvertiser = new NearbyProtocolAdvertiser(mContextWifCom, logView);
+								nearbyProtocolAdvertiser.connect();
+							} else if (sizes.split("///")[1].contains("DISCV")) {
+								nearbyProtocolDiscoverer = new NearbyProtocolDiscoverer(mContextWifCom, logView, selfWifiCommunication);
+								nearbyProtocolDiscoverer.connect();
+							}
+						}
 					}
 				}
 			}

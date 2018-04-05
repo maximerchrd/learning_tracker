@@ -169,8 +169,12 @@ public class NearbyProtocolAdvertiser implements
     };
 
     public void sendMessage(String message) {
-        Log.v(TAG, "About to send message: " + message);
-        Nearby.Connections.sendPayload(mGoogleApiClient, mRemotePeerEndpoints, Payload.fromBytes(message.getBytes(Charset.forName("UTF-8"))));
+        if (mRemotePeerEndpoints.size() > 0) {
+            Log.v(TAG, "About to send message: " + message);
+            Nearby.Connections.sendPayload(mGoogleApiClient, mRemotePeerEndpoints, Payload.fromBytes(message.getBytes(Charset.forName("UTF-8"))));
+        } else {
+            Log.v(TAG, "Cannot send: " + message + ". No connected discoverer.");
+        }
     }
 
     public void sendData(InputStream dataStream) {

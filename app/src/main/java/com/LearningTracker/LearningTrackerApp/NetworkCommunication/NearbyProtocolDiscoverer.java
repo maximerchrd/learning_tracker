@@ -81,7 +81,7 @@ public class NearbyProtocolDiscoverer {
     }
 
     public void connect() {
-        logView.append("onStart: connect");
+        Log.v(TAG, "onStart: connect");
         mGoogleApiClient.connect();
     }
 
