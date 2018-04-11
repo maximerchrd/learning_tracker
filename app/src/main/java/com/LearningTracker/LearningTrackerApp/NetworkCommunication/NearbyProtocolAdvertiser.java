@@ -2,11 +2,14 @@ package com.LearningTracker.LearningTrackerApp.NetworkCommunication;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.ParcelFileDescriptor;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.LearningTracker.LearningTrackerApp.Questions.QuestionMultipleChoice;
+import com.LearningTracker.LearningTrackerApp.Questions.QuestionShortAnswer;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
@@ -21,6 +24,8 @@ import com.google.android.gms.nearby.connection.PayloadCallback;
 import com.google.android.gms.nearby.connection.PayloadTransferUpdate;
 import com.google.android.gms.nearby.connection.Strategy;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
@@ -34,6 +39,7 @@ public class NearbyProtocolAdvertiser implements
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener {
 
+    private Context mContext;
     private TextView logView = null;
 
     private GoogleApiClient mGoogleApiClient;
@@ -58,6 +64,7 @@ public class NearbyProtocolAdvertiser implements
     public static final Strategy STRATEGY = Strategy.P2P_CLUSTER;
 
     public NearbyProtocolAdvertiser(Context context, TextView logView) {
+        this.mContext = context;
         this.logView = logView;
         final TextView logViewFinal = logView;
         mGoogleApiClient = new GoogleApiClient.Builder(context)
@@ -177,9 +184,40 @@ public class NearbyProtocolAdvertiser implements
         }
     }
 
-    public void sendData(InputStream dataStream) {
-        Log.v(TAG, "trying to send data through stream");
-        Nearby.Connections.sendPayload(mGoogleApiClient, mRemotePeerEndpoints, Payload.fromStream(dataStream));
+    public void sendQuestionMultipleChoice(QuestionMultipleChoice questionMult, String questionText, String fileName) {
+        Log.v(TAG, "trying to send file through stream");
+        File directory = new File(mContext.getFilesDir(),"images");
+        File file = new File(directory,fileName);
+
+        String payLoadID = "";
+        try {
+            Payload payload = Payload.fromFile(file);
+            payLoadID = String.valueOf(payload.getId());
+            String target = questionMult.getIMAGE();
+            String replacement = payLoadID + ":" + questionMult.getIMAGE();
+            questionText = questionText.replace(target, replacement);
+            sendMessage(questionText);
+            Nearby.Connections.sendPayload(mGoogleApiClient, mRemotePeerEndpoints, payload);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void sendQuestionShortAnswer(QuestionShortAnswer questionShrtaq, String questionText, String fileName) {
+        Log.v(TAG, "trying to send file through stream");
+        File directory = new File(mContext.getFilesDir(),"images");
+        File file = new File(directory,fileName);
+
+        String payLoadID = "";
+        try {
+            Payload payload = Payload.fromFile(file);
+            payLoadID = String.valueOf(payload.getId());
+            questionText = questionText.replace(questionShrtaq.getIMAGE(), payLoadID + ":" + questionShrtaq.getIMAGE());
+            sendMessage(questionText);
+            Nearby.Connections.sendPayload(mGoogleApiClient, mRemotePeerEndpoints, payload);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public void stopNearby() {

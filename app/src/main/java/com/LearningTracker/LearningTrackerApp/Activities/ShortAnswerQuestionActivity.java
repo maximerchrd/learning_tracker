@@ -127,6 +127,9 @@ public class ShortAnswerQuestionActivity extends Activity {
 	{
 		txtQuestion.setText(currentQ.getQUESTION());
 
+		if (currentQ.getIMAGE().contains(":") && currentQ.getIMAGE().length() > currentQ.getIMAGE().indexOf(":") + 1) {
+			currentQ.setIMAGE(currentQ.getIMAGE().substring(currentQ.getIMAGE().indexOf(":") + 1));
+		}
 		File imgFile = new  File(getFilesDir()+"/images/" + currentQ.getIMAGE());
 		if(imgFile.exists()){
 			String path = imgFile.getAbsolutePath();

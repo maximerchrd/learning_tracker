@@ -1,17 +1,23 @@
 package com.LearningTracker.LearningTrackerApp.NetworkCommunication;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.util.SimpleArrayMap;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.LearningTracker.LearningTrackerApp.Activities.CorrectedQuestionActivity;
 import com.LearningTracker.LearningTrackerApp.DataConversion;
 import com.LearningTracker.LearningTrackerApp.Questions.QuestionMultipleChoice;
+import com.LearningTracker.LearningTrackerApp.Questions.QuestionShortAnswer;
 import com.LearningTracker.LearningTrackerApp.R;
+import com.LearningTracker.LearningTrackerApp.database_management.DbTableIndividualQuestionForResult;
 import com.LearningTracker.LearningTrackerApp.database_management.DbTableQuestionMultipleChoice;
+import com.LearningTracker.LearningTrackerApp.database_management.DbTableQuestionShortAnswer;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
@@ -29,7 +35,12 @@ import com.google.android.gms.nearby.connection.PayloadCallback;
 import com.google.android.gms.nearby.connection.PayloadTransferUpdate;
 import com.google.android.gms.nearby.connection.Strategy;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.charset.Charset;
 
 /**
@@ -37,11 +48,15 @@ import java.nio.charset.Charset;
  */
 public class NearbyProtocolDiscoverer {
     private static final String TAG = "Nearby";
+    private final String defaultFileName = "defaultFileName";
     private TextView logView;
     private Context context = null;
     private String currentFileName = "";
     private String pendingFileName = "";
     private WifiCommunication wifiCommunication = null;
+    private final SimpleArrayMap<Long, Payload> incomingPayloads = new SimpleArrayMap<>();
+    private final SimpleArrayMap<Long, String> filePayloadFilenames = new SimpleArrayMap<>();
+
     /**
      * service id. discoverer and advertiser can use this id to
      * verify each other before connecting
@@ -53,6 +68,7 @@ public class NearbyProtocolDiscoverer {
     private boolean mIsConnected;
 
     public NearbyProtocolDiscoverer(Context context, final TextView logView, WifiCommunication wifiCommunication) {
+        this.context = context;
         this.logView = logView;
         this.wifiCommunication = wifiCommunication;
         mGoogleApiClient = new GoogleApiClient.Builder(context)
@@ -104,13 +120,20 @@ public class NearbyProtocolDiscoverer {
                                             public void onPayloadReceived(String endpointId, Payload payload) {
                                                 if (payload.getType() == Payload.Type.BYTES) {          //ok to receive text up to 3500 characters
                                                     String textReceived = new String(payload.asBytes());
-                                                    logView.append("onPayloadReceived: " + textReceived);
-                                                    Log.v(TAG,textReceived);
+                                                    Log.v(TAG, "onPayloadReceived: " + textReceived);
                                                     if (textReceived.split("///")[0].contains("MULTQ")) {
-                                                        DataConversion dataConversion = new DataConversion(context);
-                                                        QuestionMultipleChoice questionMultipleChoice = dataConversion.textToQuestionMultipleChoice(textReceived);
+                                                        QuestionMultipleChoice questionMultipleChoice = DataConversion.textToQuestionMultipleChoice(textReceived);
+                                                        addPayloadFilename(questionMultipleChoice.getIMAGE());
                                                         try {
                                                             DbTableQuestionMultipleChoice.addMultipleChoiceQuestion(questionMultipleChoice);
+                                                        } catch (Exception e) {
+                                                            e.printStackTrace();
+                                                        }
+                                                    } else if (textReceived.split("///")[0].contains("SHRTA")) {
+                                                        QuestionShortAnswer questionShortAnswer = DataConversion.textToQuestionShortAnswere(textReceived);
+                                                        addPayloadFilename(questionShortAnswer.getIMAGE());
+                                                        try {
+                                                            DbTableQuestionShortAnswer.addShortAnswerQuestion(questionShortAnswer);
                                                         } catch (Exception e) {
                                                             e.printStackTrace();
                                                         }
@@ -120,16 +143,79 @@ public class NearbyProtocolDiscoverer {
                                                         if (questionMultipleChoice.getQUESTION().length() > 0) {
                                                             questionMultipleChoice.setID(id_global);
                                                             wifiCommunication.launchMultChoiceQuestionActivity(questionMultipleChoice);
+                                                        } else {
+                                                            QuestionShortAnswer questionShortAnswer = DbTableQuestionShortAnswer.getShortAnswerQuestionWithId(id_global);
+                                                            questionShortAnswer.setID(id_global);
+                                                            wifiCommunication.launchShortAnswerQuestionActivity(questionShortAnswer);
                                                         }
+                                                    } else if (textReceived.split("///")[0].contains("EVAL")) {
+                                                        DbTableIndividualQuestionForResult.addIndividualQuestionForStudentResult(textReceived.split("///")[2],textReceived.split("///")[1]);
+                                                    } else if (textReceived.split("///")[0].contains("UPDEV")) {
+                                                        DbTableIndividualQuestionForResult.setEvalForQuestionAndStudentIDs(Double.valueOf(textReceived.split("///")[1]),textReceived.split("///")[2]);
+                                                    } else if (textReceived.split("///")[0].contains("CORR")) {
+                                                        Intent mIntent = new Intent(context, CorrectedQuestionActivity.class);
+                                                        Bundle bun = new Bundle();
+                                                        bun.putString("questionID", textReceived.split("///")[1]);
+                                                        mIntent.putExtras(bun);
+                                                        context.startActivity(mIntent);
                                                     }
                                                 } else if (payload.getType() == Payload.Type.FILE) {
-
+                                                    // Add this to our tracking map, so that we can retrieve the payload later.
+                                                    incomingPayloads.put(payload.getId(), payload);
                                                 }
                                             }
+
+                                            /**
+                                             * Extracts the payloadId and filename from the message and stores it in the
+                                             * filePayloadFilenames map. The format is payloadId:filename.
+                                             */
+                                            private void addPayloadFilename(String payloadFilenameMessage) {
+                                                int colonIndex = payloadFilenameMessage.indexOf(":");
+                                                if (colonIndex >= 0) {
+                                                    String payloadId = payloadFilenameMessage.substring(0, colonIndex);
+                                                    String filename = payloadFilenameMessage.substring(colonIndex + 1);
+                                                    Long longPayloadId = Long.parseLong(payloadId);
+                                                    filePayloadFilenames.put(longPayloadId, filename);
+                                                    String direc = context.getFilesDir().getAbsolutePath();
+                                                    File directory = new File(context.getFilesDir(),"images");
+                                                    File file = new File(directory,defaultFileName);
+                                                    if (file.exists()) {
+                                                        file.renameTo(new File(file.getParentFile(), filename));
+                                                    }
+                                                }
+                                            }
+
 
                                             @Override
                                             public void onPayloadTransferUpdate(String endpointId, PayloadTransferUpdate update) {
                                                 // Provides updates about the progress of both incoming and outgoing payloads
+                                                if (update.getStatus() == PayloadTransferUpdate.Status.SUCCESS) {
+                                                    Long payloadId = update.getPayloadId();
+                                                    Payload payload = incomingPayloads.remove(payloadId);
+                                                    if (payload != null && payload.getType() == Payload.Type.FILE) {
+                                                        // Retrieve the filename that was received in a bytes payload.
+                                                        String newFilename = filePayloadFilenames.remove(payloadId);
+
+                                                        File payloadFile = payload.asFile().asJavaFile();
+
+                                                        // Rename the file.
+                                                        File directory = new File(context.getFilesDir(),"images");
+                                                        if (!directory.exists()) {
+                                                            directory.mkdirs();
+                                                        }
+                                                        if (payloadFile == null) {
+                                                            Log.v(TAG, "problem receiving file: file == null when trying to rename it");
+                                                        } else if (newFilename == null)  {
+                                                            File file = new File(directory,defaultFileName);
+                                                            payloadFile.renameTo(file);
+                                                            Log.v(TAG, "problem receiving file: fileName == null when trying to rename it");
+                                                        } else {
+                                                            File file = new File(directory,newFilename);
+                                                            moveFile(payloadFile.getAbsolutePath(),file.getAbsolutePath());
+                                                            Log.v(TAG, "file: " + file.getAbsolutePath() + " renaming success: " + file.exists());
+                                                        }
+                                                    }
+                                                }
                                             }
                                         });
                                     }
@@ -193,7 +279,7 @@ public class NearbyProtocolDiscoverer {
     }
 
     private void sendMessage(String message) {
-        logView.append("About to send message: " + message);
+        Log.v(TAG, "About to send message: " + message);
         Nearby.Connections.sendPayload(mGoogleApiClient, mRemoteHostEndpoint, Payload.fromBytes(message.getBytes(Charset.forName("UTF-8"))));
     }
 
@@ -215,6 +301,43 @@ public class NearbyProtocolDiscoverer {
 
             mGoogleApiClient.disconnect();
         }
+    }
+
+    private void moveFile(String inputFile, String outputFile) {
+
+        InputStream in = null;
+        OutputStream out = null;
+        try {
+
+            in = new FileInputStream(inputFile);
+            out = new FileOutputStream(outputFile);
+
+            byte[] buffer = new byte[1024];
+            int read;
+            while ((read = in.read(buffer)) != -1) {
+                out.write(buffer, 0, read);
+            }
+            in.close();
+            in = null;
+
+            // write the output file
+            out.flush();
+            out.close();
+            out = null;
+
+            // delete the original file
+            new File(inputFile).delete();
+
+
+        }
+
+        catch (FileNotFoundException fnfe1) {
+            Log.e(TAG, fnfe1.getMessage());
+        }
+        catch (Exception e) {
+            Log.e(TAG, e.getMessage());
+        }
+
     }
 
 }

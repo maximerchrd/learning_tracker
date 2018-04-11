@@ -18,6 +18,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by maximerichard on 10/02/17.
@@ -146,6 +147,8 @@ public class DataConversion {
         String question_text = "";
         try {
             question_text =  new String(buffer_for_text, "UTF-8");
+            lastConvertedQuestionText = "SHRTA" + "///";
+            lastConvertedQuestionText += question_text;
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
@@ -198,7 +201,7 @@ public class DataConversion {
         return question_to_return;
     }
 
-    public QuestionMultipleChoice textToQuestionMultipleChoice(String questionText) {
+    public static QuestionMultipleChoice textToQuestionMultipleChoice(String questionText) {
         questionText = questionText.substring(8);
         QuestionMultipleChoice questionMultipleChoice = new QuestionMultipleChoice();
         questionMultipleChoice.setQUESTION(questionText.split("///")[0]);
@@ -243,6 +246,45 @@ public class DataConversion {
         } else { Log.w("reading mcq buffer", "question text not complete (array after split is too short)"); }
 
         return questionMultipleChoice;
+    }
+
+    public static QuestionShortAnswer textToQuestionShortAnswere(String questionText) {
+        questionText = questionText.substring(8);
+        QuestionShortAnswer questionShortAnswer = new QuestionShortAnswer();
+        questionShortAnswer.setQUESTION(questionText.split("///")[0]);
+        if (questionText.split("///").length > 5) {
+            String ID_string = questionText.split("///")[1];
+            questionShortAnswer.setID(Integer.valueOf(ID_string));
+            ArrayList<String> answers = new ArrayList<>(Arrays.asList(questionText.split("///")[2].split("\\|\\|\\|")));
+            questionShortAnswer.setAnswers(answers);
+
+            questionShortAnswer.setIMAGE(questionText.split("///")[5]); //14 because inbetween come subjects and objectives
+
+            //deal with subjects
+            String subjectsText = questionText.split("///")[3];
+            String[] subjects = subjectsText.split("\\|\\|\\|");
+            for (int i = 0; i < subjects.length; i++) {
+                try {
+                    DbTableSubject.addSubject(subjects[i]);
+                    DbTableRelationQuestionSubject.addRelationQuestionSubject(Integer.valueOf(ID_string), subjects[i]);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            //deal with learning objectives
+            String learningObjectivesText = questionText.split("///")[4];
+            String[] learningObjectives = learningObjectivesText.split("\\|\\|\\|");
+            for (int i = 0; i < learningObjectives.length; i++) {
+                try {
+                    DbTableLearningObjective.addLearningObjective(learningObjectives[i], -1);
+                    DbTableRelationQuestionObjective.addQuestionObjectiverRelation(learningObjectives[i], ID_string);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        } else { Log.w("reading mcq buffer", "question text not complete (array after split is too short)"); }
+
+        return questionShortAnswer;
     }
 
     private void SaveImageFile(Bitmap imageToSave, String fileName) {
