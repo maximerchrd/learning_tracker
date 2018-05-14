@@ -16,46 +16,18 @@
         <dex dex="/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-fragment-25.2.0_2c7e1ac58fb3cfb1dcf4a7ddb35c2842f3063601/classes.dex" />
     </item>
     <item
-        jar="/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.2.0/jars/classes.jar"
-        jumboMode="true"
-        revision="24.0.2"
-        sha1="e820b7be8c035dd522da4bc822e8a76c8e27921a">
-        <dex dex="/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-25.2.0_46ac5322a74546b2b57d90438fae2ded7fb829b1/classes.dex" />
-    </item>
-    <item
-        jar="/Users/maximerichard/.gradle/caches/modules-2/files-2.1/com.github.PhilJay/MPAndroidChart/v3.0.3/92fb46ea210fc3f0ab1125f28b33cf098583e8cf/MPAndroidChart-v3.0.3.jar"
-        jumboMode="true"
-        revision="24.0.2"
-        sha1="92fb46ea210fc3f0ab1125f28b33cf098583e8cf">
-        <dex dex="/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/transforms/dex/debug/folders/1000/10/MPAndroidChart-v3.0.3_3abc185695a286bfb71669b15b9ad0afe75fb4b1/classes.dex" />
-    </item>
-    <item
-        jar="/Users/maximerichard/StudioProjects/learning-tracker/app/libs/mail.jar"
-        jumboMode="true"
-        revision="24.0.2"
-        sha1="428e267abff0d10802ccde86b915da2c20471160">
-        <dex dex="/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/transforms/dex/debug/folders/1000/2/mail_1d809e5db7727e1d0ffa09547bd7b4445c983bd2/classes.dex" />
-    </item>
-    <item
-        jar="/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.2.0/jars/classes.jar"
-        jumboMode="true"
-        revision="24.0.2"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-25.2.0_971b39926feae0c413f3824d6479d2f4f33d4ad4/classes.dex" />
-    </item>
-    <item
-        jar="/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        revision="24.0.2"
-        sha1="4346bdab89a2bd0ce8e089e7a8e890d448ab36bc">
-        <dex dex="/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_494f34fdd85177dea6bf0fb56d72a94ff4ba77f9/classes.dex" />
-    </item>
-    <item
         jar="/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         revision="24.0.2"
         sha1="27d8852bb6ad469aca8c3763c8f42f62a8a920ae">
         <dex dex="/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_579dca57bdcde7d0fdc3b91d3529631559b6e619/classes.dex" />
+    </item>
+    <item
+        jar="/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.2.0/jars/classes.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="e820b7be8c035dd522da4bc822e8a76c8e27921a">
+        <dex dex="/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-25.2.0_46ac5322a74546b2b57d90438fae2ded7fb829b1/classes.dex" />
     </item>
     <item
         jar="/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/11.0.4/jars/classes.jar"
@@ -70,6 +42,13 @@
         revision="24.0.2"
         sha1="2430e711762a749feb00b3d64858ca4768251b9d">
         <dex dex="/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-tasks-11.0.4_7a2e0afb4085399bb1fee7aa758d59732c64abaf/classes.dex" />
+    </item>
+    <item
+        jar="/Users/maximerichard/.gradle/caches/modules-2/files-2.1/com.github.PhilJay/MPAndroidChart/v3.0.3/92fb46ea210fc3f0ab1125f28b33cf098583e8cf/MPAndroidChart-v3.0.3.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="92fb46ea210fc3f0ab1125f28b33cf098583e8cf">
+        <dex dex="/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/transforms/dex/debug/folders/1000/10/MPAndroidChart-v3.0.3_3abc185695a286bfb71669b15b9ad0afe75fb4b1/classes.dex" />
     </item>
     <item
         jar="/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-nearby/11.0.4/jars/classes.jar"
@@ -100,11 +79,32 @@
         <dex dex="/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/transforms/dex/debug/folders/1000/2/activation_a1f202aa36d8a893c33450ea4fd92ce41c9d4ed3/classes.dex" />
     </item>
     <item
+        jar="/Users/maximerichard/StudioProjects/learning-tracker/app/libs/mail.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="428e267abff0d10802ccde86b915da2c20471160">
+        <dex dex="/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/transforms/dex/debug/folders/1000/2/mail_1d809e5db7727e1d0ffa09547bd7b4445c983bd2/classes.dex" />
+    </item>
+    <item
+        jar="/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.2.0/jars/classes.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-25.2.0_971b39926feae0c413f3824d6479d2f4f33d4ad4/classes.dex" />
+    </item>
+    <item
         jar="/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.2.0/jars/classes.jar"
         jumboMode="true"
         revision="24.0.2"
         sha1="fa0446a14ed5dd3725047d6399ffea771a564b30">
         <dex dex="/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-25.2.0_ba5d2623021c4884297842c94e4f72c53970bf31/classes.dex" />
+    </item>
+    <item
+        jar="/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="4346bdab89a2bd0ce8e089e7a8e890d448ab36bc">
+        <dex dex="/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_494f34fdd85177dea6bf0fb56d72a94ff4ba77f9/classes.dex" />
     </item>
     <item
         jar="/Users/maximerichard/StudioProjects/learning-tracker/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/11.0.4/jars/classes.jar"

@@ -38,8 +38,6 @@ import android.util.Log;
 import android.widget.TextView;
 
 public class WifiCommunication {
-	private NearbyProtocolAdvertiser nearbyProtocolAdvertiser = null;
-	private NearbyProtocolDiscoverer nearbyProtocolDiscoverer = null;
 	public Integer connectionSuccess = 0;
 	private WifiManager mWifi;
 	private Context mContextWifCom;
@@ -56,7 +54,6 @@ public class WifiCommunication {
 	BroadcastReceiver scanningreceiver;
 	private TextView logView = null;
 
-	public WifiCommunication() {}
 	public WifiCommunication(Context arg_context, Application arg_application, TextView logView) {
 		if (android.os.Build.VERSION.SDK_INT > 9)
 		{
@@ -99,16 +96,12 @@ public class WifiCommunication {
 
 		} catch (UnknownHostException e) {
 			Log.v("connection to server", ": failure, unknown host");
-			nearbyProtocolDiscoverer = new NearbyProtocolDiscoverer(mContextWifCom, logView, this);
-			nearbyProtocolDiscoverer.connect();
 
 			// TODO Auto-generated catch block
 			connectionSuccess = -1;
 			e.printStackTrace();
 		} catch (IOException e) {
 			Log.v("connection to server", ": failure, i/o exception");
-			nearbyProtocolDiscoverer = new NearbyProtocolDiscoverer(mContextWifCom, logView, this);
-			nearbyProtocolDiscoverer.connect();
 
 			// TODO Auto-generated catch block
 			connectionSuccess = -1;
@@ -142,12 +135,6 @@ public class WifiCommunication {
 			String msg = "In sendDisconnectionSignal() and an exception occurred during write: " + e.getMessage();
 			Log.e("Fatal Error", msg);
 		}
-		if (nearbyProtocolAdvertiser != null ) {
-			nearbyProtocolAdvertiser.stopNearby();
-		}
-		if (nearbyProtocolDiscoverer != null) {
-			nearbyProtocolDiscoverer.stopNearby();
-		}
 	}
 
 	public void listenForQuestions() {
@@ -157,12 +144,12 @@ public class WifiCommunication {
 				Boolean able_to_read = true;
 				while (able_to_read && mInputStream != null) {
 					current = 0;
-					byte[] prefix_buffer = new byte[40];
+					byte[] prefix_buffer = new byte[80];
 					String sizes = "";
 					String byteread = "";
 					try {
 						Log.v("read input stream", "first");
-						bytes_read = mInputStream.read(prefix_buffer, 0, 40);
+						bytes_read = mInputStream.read(prefix_buffer, 0, 80);
 						if (bytes_read < 0) {
 							able_to_read = false;
 						}
@@ -175,18 +162,18 @@ public class WifiCommunication {
 					if (sizes.split(":")[0].contains("MULTQ")) {
 						int size_of_image = Integer.parseInt(sizes.split(":")[1]);
 						int size_of_text = Integer.parseInt(sizes.split(":")[2].replaceAll("\\D+", ""));
-						byte[] whole_question_buffer = new byte[40 + size_of_image + size_of_text];
-						for (int i = 0; i < 40; i++) {
+						byte[] whole_question_buffer = new byte[80 + size_of_image + size_of_text];
+						for (int i = 0; i < 80; i++) {
 							whole_question_buffer[i] = prefix_buffer[i];
 						}
-						current = 40;
+						current = 80;
 						do {
 							try {
 								//Log.v("read input stream", "second");
 
-								bytes_read = mInputStream.read(whole_question_buffer, current, (40 + size_of_image + size_of_text - current));
+								bytes_read = mInputStream.read(whole_question_buffer, current, (80 + size_of_image + size_of_text - current));
 								Log.v("number of bytes read:", Integer.toString(bytes_read));
-//                                    for (int k = 0; k < 40 && current > 40; k++) {
+//                                    for (int k = 0; k < 80 && current > 80; k++) {
 //                                        byteread += whole_question_buffer[current -21 + k];
 //                                    }
 //                                    Log.v("last bytes read: ", byteread);
@@ -213,26 +200,21 @@ public class WifiCommunication {
 							e.printStackTrace();
 						}
 						sendReceivedQuestion(String.valueOf(multquestion_to_save.getID()));
-
-						//forward question through Nearby Connection
-						if (nearbyProtocolAdvertiser != null) {
-							nearbyProtocolAdvertiser.sendQuestionMultipleChoice(multquestion_to_save, convert_question.getLastConvertedQuestionText(), multquestion_to_save.getIMAGE());
-						}
 					} else if (sizes.split(":")[0].contains("SHRTA")) {
 						int size_of_image = Integer.parseInt(sizes.split(":")[1]);
 						int size_of_text = Integer.parseInt(sizes.split(":")[2].replaceAll("\\D+", ""));
-						byte[] whole_question_buffer = new byte[40 + size_of_image + size_of_text];
-						for (int i = 0; i < 40; i++) {
+						byte[] whole_question_buffer = new byte[80 + size_of_image + size_of_text];
+						for (int i = 0; i < 80; i++) {
 							whole_question_buffer[i] = prefix_buffer[i];
 						}
-						current = 40;
+						current = 80;
 						do {
 							try {
 								//Log.v("read input stream", "second");
 
-								bytes_read = mInputStream.read(whole_question_buffer, current, (40 + size_of_image + size_of_text - current));
+								bytes_read = mInputStream.read(whole_question_buffer, current, (80 + size_of_image + size_of_text - current));
 								Log.v("number of bytes read:", Integer.toString(bytes_read));
-//                                    for (int k = 0; k < 40 && current > 40; k++) {
+//                                    for (int k = 0; k < 80 && current > 80; k++) {
 //                                        byteread += whole_question_buffer[current -21 + k];
 //                                    }
 //                                    Log.v("last bytes read: ", byteread);
@@ -259,11 +241,6 @@ public class WifiCommunication {
 							e.printStackTrace();
 						}
 						sendReceivedQuestion(String.valueOf(shrtquestion_to_save.getID()));
-
-						//forward question through Nearby Connection
-						if (nearbyProtocolAdvertiser != null) {
-							nearbyProtocolAdvertiser.sendQuestionShortAnswer(shrtquestion_to_save, convert_question.getLastConvertedQuestionText(), shrtquestion_to_save.getIMAGE());
-						}
 						//launchMultChoiceQuestionActivity(convert_question.bytearrayvectorToMultChoiceQuestion(whole_question_buffer));
 					} else if (sizes.split(":")[0].contains("QID")) {
 						if (sizes.split(":")[1].contains("MLT")) {
@@ -277,49 +254,19 @@ public class WifiCommunication {
 								questionShortAnswer.setID(id_global);
 								launchShortAnswerQuestionActivity(questionShortAnswer);
 							}
-
-							//forward QID through Nearby Connection
-							if (nearbyProtocolAdvertiser != null) {
-								nearbyProtocolAdvertiser.sendMessage(sizes);
-							}
 						}
 					} else if (sizes.split(":")[0].contains("EVAL")) {
 						DbTableIndividualQuestionForResult.addIndividualQuestionForStudentResult(sizes.split("///")[2],sizes.split("///")[1]);
-
-						//forward evaluation through Nearby Connection
-						if (nearbyProtocolAdvertiser != null) {
-							nearbyProtocolAdvertiser.sendMessage(sizes);
-						}
 					} else if (sizes.split(":")[0].contains("UPDEV")) {
 						DbTableIndividualQuestionForResult.setEvalForQuestionAndStudentIDs(Double.valueOf(sizes.split("///")[1]),sizes.split("///")[2]);
-
-						//forward evaluation through Nearby Connection
-						if (nearbyProtocolAdvertiser != null) {
-							nearbyProtocolAdvertiser.sendMessage(sizes);
-						}
 					} else if (sizes.split(":")[0].contains("CORR")) {
 						Intent mIntent = new Intent(mContextWifCom, CorrectedQuestionActivity.class);
 						Bundle bun = new Bundle();
 						bun.putString("questionID", sizes.split("///")[1]);
 						mIntent.putExtras(bun);
 						mContextWifCom.startActivity(mIntent);
-
-						//forward correction ID through Nearby Connection
-						if (nearbyProtocolAdvertiser != null) {
-							nearbyProtocolAdvertiser.sendMessage(sizes);
-						}
-					} else if (sizes.split(":")[0].contains("SERVR")) {
-						Log.v("connection: ", "received SERVR");
-						if (sizes.split("///").length > 0) {
-							if (sizes.split("///")[1].contains("ADVER")) {
-								// advertise nearby service
-								nearbyProtocolAdvertiser = new NearbyProtocolAdvertiser(mContextWifCom, logView);
-								nearbyProtocolAdvertiser.connect();
-							} else if (sizes.split("///")[1].contains("DISCV")) {
-								nearbyProtocolDiscoverer = new NearbyProtocolDiscoverer(mContextWifCom, logView, selfWifiCommunication);
-								nearbyProtocolDiscoverer.connect();
-							}
-						}
+					} else {
+						Log.v("WifiCommunication: ", "received message but don't recognize prefix");
 					}
 				}
 			}
