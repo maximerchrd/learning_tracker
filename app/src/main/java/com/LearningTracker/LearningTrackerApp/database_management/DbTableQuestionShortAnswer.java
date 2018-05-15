@@ -84,4 +84,22 @@ public class DbTableQuestionShortAnswer {
         }
         return questionShortAnswer;
     }
+
+    static public String getAllShortAnswerIds() {
+        String IDs = "";
+        try {
+            String selectQuery = "SELECT ID_GLOBAL FROM short_answer_questions;";
+            //DbHelper.dbase = DbHelper.getReadableDatabase();
+            Cursor cursor = DbHelper.dbase.rawQuery(selectQuery, null);
+            // looping through all rows and adding to list
+            while (cursor.moveToNext()) {
+                IDs += cursor.getString(0) + "|";
+            }
+            cursor.close();
+        } catch ( Exception e ) {
+            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+            System.exit(0);
+        }
+        return IDs;
+    }
 }

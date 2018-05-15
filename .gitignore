@@ -23,3 +23,5 @@ app/src/main/java/com/learningtracker/LearningTracker/Activities/SingleQuestionA
 *.gradle
 
 *.json
+
+.idea/workspace.xml

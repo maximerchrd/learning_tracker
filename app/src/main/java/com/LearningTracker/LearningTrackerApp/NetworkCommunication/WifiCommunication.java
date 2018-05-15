@@ -76,11 +76,6 @@ public class WifiCommunication {
 		try {
 			Log.v("connectToServer", "beginning");
 			Socket s = new Socket(ip_address,PORTNUMBER);
-
-			// advertise nearby service
-			nearbyProtocolAdvertiser = new NearbyProtocolAdvertiser(mContextWifCom, logView);
-			nearbyProtocolAdvertiser.connect();
-
 			connectionSuccess = 1;
 			Log.v("server name",s.getInetAddress().getCanonicalHostName());
 			//outgoing stream redirect to socket
@@ -102,16 +97,12 @@ public class WifiCommunication {
 
 		} catch (UnknownHostException e) {
 			Log.v("connection to server", ": failure, unknown host");
-			nearbyProtocolDiscoverer = new NearbyProtocolDiscoverer(mContextWifCom, logView);
-			nearbyProtocolDiscoverer.connect();
 
 			// TODO Auto-generated catch block
 			connectionSuccess = -1;
 			e.printStackTrace();
 		} catch (IOException e) {
 			Log.v("connection to server", ": failure, i/o exception");
-			nearbyProtocolDiscoverer = new NearbyProtocolDiscoverer(mContextWifCom, logView);
-			nearbyProtocolDiscoverer.connect();
 
 			// TODO Auto-generated catch block
 			connectionSuccess = -1;
@@ -148,17 +139,18 @@ public class WifiCommunication {
 	}
 
 	public void listenForQuestions() {
+		final WifiCommunication selfWifiCommunication = this;
 		new Thread(new Runnable() {
 			public void run() {
 				Boolean able_to_read = true;
 				while (able_to_read && mInputStream != null) {
 					current = 0;
-					byte[] prefix_buffer = new byte[40];
+					byte[] prefix_buffer = new byte[80];
 					String sizes = "";
 					String byteread = "";
 					try {
 						Log.v("read input stream", "first");
-						bytes_read = mInputStream.read(prefix_buffer, 0, 40);
+						bytes_read = mInputStream.read(prefix_buffer, 0, 80);
 						if (bytes_read < 0) {
 							able_to_read = false;
 						}
@@ -171,18 +163,18 @@ public class WifiCommunication {
 					if (sizes.split(":")[0].contains("MULTQ")) {
 						int size_of_image = Integer.parseInt(sizes.split(":")[1]);
 						int size_of_text = Integer.parseInt(sizes.split(":")[2].replaceAll("\\D+", ""));
-						byte[] whole_question_buffer = new byte[40 + size_of_image + size_of_text];
-						for (int i = 0; i < 40; i++) {
+						byte[] whole_question_buffer = new byte[80 + size_of_image + size_of_text];
+						for (int i = 0; i < 80; i++) {
 							whole_question_buffer[i] = prefix_buffer[i];
 						}
-						current = 40;
+						current = 80;
 						do {
 							try {
 								//Log.v("read input stream", "second");
 
-								bytes_read = mInputStream.read(whole_question_buffer, current, (40 + size_of_image + size_of_text - current));
+								bytes_read = mInputStream.read(whole_question_buffer, current, (80 + size_of_image + size_of_text - current));
 								Log.v("number of bytes read:", Integer.toString(bytes_read));
-//                                    for (int k = 0; k < 40 && current > 40; k++) {
+//                                    for (int k = 0; k < 80 && current > 80; k++) {
 //                                        byteread += whole_question_buffer[current -21 + k];
 //                                    }
 //                                    Log.v("last bytes read: ", byteread);
@@ -209,22 +201,21 @@ public class WifiCommunication {
 							e.printStackTrace();
 						}
 						sendReceivedQuestion(String.valueOf(multquestion_to_save.getID()));
-						//launchMultChoiceQuestionActivity(convert_question.bytearrayvectorToMultChoiceQuestion(whole_question_buffer));
 					} else if (sizes.split(":")[0].contains("SHRTA")) {
 						int size_of_image = Integer.parseInt(sizes.split(":")[1]);
 						int size_of_text = Integer.parseInt(sizes.split(":")[2].replaceAll("\\D+", ""));
-						byte[] whole_question_buffer = new byte[40 + size_of_image + size_of_text];
-						for (int i = 0; i < 40; i++) {
+						byte[] whole_question_buffer = new byte[80 + size_of_image + size_of_text];
+						for (int i = 0; i < 80; i++) {
 							whole_question_buffer[i] = prefix_buffer[i];
 						}
-						current = 40;
+						current = 80;
 						do {
 							try {
 								//Log.v("read input stream", "second");
 
-								bytes_read = mInputStream.read(whole_question_buffer, current, (40 + size_of_image + size_of_text - current));
+								bytes_read = mInputStream.read(whole_question_buffer, current, (80 + size_of_image + size_of_text - current));
 								Log.v("number of bytes read:", Integer.toString(bytes_read));
-//                                    for (int k = 0; k < 40 && current > 40; k++) {
+//                                    for (int k = 0; k < 80 && current > 80; k++) {
 //                                        byteread += whole_question_buffer[current -21 + k];
 //                                    }
 //                                    Log.v("last bytes read: ", byteread);
@@ -275,8 +266,6 @@ public class WifiCommunication {
 						bun.putString("questionID", sizes.split("///")[1]);
 						mIntent.putExtras(bun);
 						mContextWifCom.startActivity(mIntent);
-					} else if (sizes.split(":")[0].contains("SERVR")) {
-						Log.v("connection: ", "received SERVR");
 					}
 				}
 			}
@@ -312,7 +301,7 @@ public class WifiCommunication {
 		mIntent.putExtras(bun);
 		mContextWifCom.startActivity(mIntent);
 	}
-	private void launchMultChoiceQuestionActivity(QuestionMultipleChoice question_to_display) {
+	public void launchMultChoiceQuestionActivity(QuestionMultipleChoice question_to_display) {
 		((LTApplication) mApplication).setAppWifi(this);
 		Intent mIntent = new Intent(mContextWifCom, MultChoiceQuestionActivity.class);
 		Bundle bun = new Bundle();
@@ -333,7 +322,7 @@ public class WifiCommunication {
 		mContextWifCom.startActivity(mIntent);
 	}
 
-	private void launchShortAnswerQuestionActivity(QuestionShortAnswer question_to_display) {
+	public void launchShortAnswerQuestionActivity(QuestionShortAnswer question_to_display) {
 		((LTApplication) mApplication).setAppWifi(this);
 		Intent mIntent = new Intent(mContextWifCom, ShortAnswerQuestionActivity.class);
 		Bundle bun = new Bundle();
