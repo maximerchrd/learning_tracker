@@ -1,4 +1,4 @@
-package com.LearningTracker.LearningTrackerApp;
+package com.LearningTracker.LearningTrackerApp.NetworkCommunication;
 
 import android.content.Context;
 import android.graphics.Bitmap;
