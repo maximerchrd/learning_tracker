@@ -43,14 +43,5 @@
 			android:textAlignment="center"
 			android:textColor="@color/black"/>
 
-		<TextView
-			android:layout_width="277dp"
-			android:layout_height="wrap_content"
-			android:text="Log Console"
-			android:id="@+id/textView3"
-			android:layout_gravity="center_horizontal"
-			android:layout_weight="0.25"
-			android:textColor="@color/black" />
-
 	</LinearLayout>
 </RelativeLayout>

@@ -17,7 +17,6 @@ import com.LearningTracker.LearningTrackerApp.Activities.CorrectedQuestionActivi
 import com.LearningTracker.LearningTrackerApp.Activities.MultChoiceQuestionActivity;
 import com.LearningTracker.LearningTrackerApp.Activities.ShortAnswerQuestionActivity;
 import com.LearningTracker.LearningTrackerApp.Activities.SingleQuestionActivity;
-import com.LearningTracker.LearningTrackerApp.DataConversion;
 import com.LearningTracker.LearningTrackerApp.Questions.QuestionShortAnswer;
 import com.LearningTracker.LearningTrackerApp.database_management.DbHelper;
 import com.LearningTracker.LearningTrackerApp.LTApplication;
@@ -38,8 +37,6 @@ import android.util.Log;
 import android.widget.TextView;
 
 public class WifiCommunication {
-	private NearbyProtocolAdvertiser nearbyProtocolAdvertiser = null;
-	private NearbyProtocolDiscoverer nearbyProtocolDiscoverer = null;
 	public Integer connectionSuccess = 0;
 	private WifiManager mWifi;
 	private Context mContextWifCom;

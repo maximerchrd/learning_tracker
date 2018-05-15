@@ -37,9 +37,6 @@
             android:name="com.LearningTracker.LearningTrackerApp.Activities.SettingsActivity"
             android:label="@string/title_activity_settings"></activity>
         <activity
-            android:name="com.LearningTracker.LearningTrackerApp.AndroidClient"
-            android:label="@string/title_activity_client"></activity>
-        <activity
             android:name="com.LearningTracker.LearningTrackerApp.Activities.MultChoiceQuestionActivity"
             android:label="@string/title_activity_question"></activity>
         <activity
