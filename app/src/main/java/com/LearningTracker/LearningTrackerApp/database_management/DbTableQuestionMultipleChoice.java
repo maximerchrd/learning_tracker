@@ -25,16 +25,6 @@ public class DbTableQuestionMultipleChoice {
                     " OPTION7           TEXT    NOT NULL, " +
                     " OPTION8           TEXT    NOT NULL, " +
                     " OPTION9           TEXT    NOT NULL, " +
-                    " TRIAL0           TEXT    NOT NULL, " +
-                    " TRIAL1           TEXT    NOT NULL, " +
-                    " TRIAL2           TEXT    NOT NULL, " +
-                    " TRIAL3           TEXT    NOT NULL, " +
-                    " TRIAL4           TEXT    NOT NULL, " +
-                    " TRIAL5           TEXT    NOT NULL, " +
-                    " TRIAL6           TEXT    NOT NULL, " +
-                    " TRIAL7           TEXT    NOT NULL, " +
-                    " TRIAL8           TEXT    NOT NULL, " +
-                    " TRIAL9           TEXT    NOT NULL, " +
                     " NB_CORRECT_ANS        INT     NOT NULL, " +
                     " IMAGE_PATH           TEXT    NOT NULL, " +
                     " ID_GLOBAL           INT    NOT NULL, " +
@@ -54,8 +44,7 @@ public class DbTableQuestionMultipleChoice {
     static public void addMultipleChoiceQuestion(QuestionMultipleChoice quest) throws Exception {
         try {
             String sql = 	"INSERT OR REPLACE INTO multiple_choice_questions (LEVEL,QUESTION,OPTION0," +
-                    "OPTION1,OPTION2,OPTION3,OPTION4,OPTION5,OPTION6,OPTION7,OPTION8,OPTION9,TRIAL0,TRIAL1,TRIAL2,TRIAL3,TRIAL4,TRIAL5,TRIAL6,TRIAL7," +
-                    "TRIAL8,TRIAL9,NB_CORRECT_ANS,IMAGE_PATH,ID_GLOBAL) " +
+                    "OPTION1,OPTION2,OPTION3,OPTION4,OPTION5,OPTION6,OPTION7,OPTION8,OPTION9,NB_CORRECT_ANS,IMAGE_PATH,ID_GLOBAL) " +
                     "VALUES ('" +
                     quest.getLEVEL() + "','" +
                     quest.getQUESTION().replace("'","''") + "','" +
@@ -69,16 +58,6 @@ public class DbTableQuestionMultipleChoice {
                     quest.getOPT7().replace("'","''") + "','" +
                     quest.getOPT8().replace("'","''") + "','" +
                     quest.getOPT9().replace("'","''") + "','" +
-                    quest.getTRIAL0() + "','" +
-                    quest.getTRIAL1() + "','" +
-                    quest.getTRIAL2() + "','" +
-                    quest.getTRIAL3() + "','" +
-                    quest.getTRIAL4() + "','" +
-                    quest.getTRIAL5() + "','" +
-                    quest.getTRIAL6() + "','" +
-                    quest.getTRIAL7() + "','" +
-                    quest.getTRIAL8() + "','" +
-                    quest.getTRIAL9() + "','" +
                     quest.getNB_CORRECT_ANS() + "','" +
                     quest.getIMAGE().replace("'","''") + "','" +
                     quest.getID() +"');";
@@ -120,5 +99,25 @@ public class DbTableQuestionMultipleChoice {
             System.exit(0);
         }
         return questionMultipleChoice;
+    }
+
+    static public String getAllQuestionMultipleChoiceIds() {
+        String IDs = "";
+
+        try {
+            String selectQuery = "SELECT ID_GLOBAL FROM multiple_choice_questions;";
+            //DbHelper.dbase = DbHelper.getReadableDatabase();
+            Cursor cursor = DbHelper.dbase.rawQuery(selectQuery, null);
+            // looping through all rows and adding to list
+            while (cursor.moveToNext()) {
+                IDs += cursor.getString(0) + "|";
+            }
+            cursor.close();
+        } catch ( Exception e ) {
+            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+            System.exit(0);
+        }
+
+        return IDs;
     }
 }

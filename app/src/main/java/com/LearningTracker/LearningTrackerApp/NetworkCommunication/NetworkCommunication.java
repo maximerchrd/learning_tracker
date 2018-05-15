@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import com.LearningTracker.LearningTrackerApp.database_management.DbHelper;
 import com.LearningTracker.LearningTrackerApp.LTApplication;
+import com.LearningTracker.LearningTrackerApp.database_management.DbTableQuestionMultipleChoice;
+import com.LearningTracker.LearningTrackerApp.database_management.DbTableQuestionShortAnswer;
 
 public class NetworkCommunication {
 	private Context mContextNetCom;
@@ -49,7 +51,9 @@ public class NetworkCommunication {
 			DbHelper db_for_name = new DbHelper(mContextNetCom);
 			String name = db_for_name.getName();
 
-			final String connection = "CONN" + "///" + MacAddress + "///" + name + "///Android///";
+			final String connection = "CONN" + "///" + MacAddress + "///" + name + "///" +
+					DbTableQuestionMultipleChoice.getAllQuestionMultipleChoiceIds() + "|" +
+					DbTableQuestionShortAnswer.getAllShortAnswerIds() + "///";
 			new Thread(new Runnable() {
 				public void run() {
 					mWifiCom.connectToServer(connection);
